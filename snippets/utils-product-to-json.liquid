@@ -1,0 +1,11 @@
+    {% assign product_data = all_products[name] %}  
+    {% assign sticker_data = product_data.metafields.sticker %}
+    {% assign colors_data = product_data.options_by_name['Color'].values %}
+    {% unless colors_data %}
+      {% assign colors_data = product_data.options_by_name['Couleur'].values %}
+    {% endunless %}
+    Object.assign(
+      {{ product_data | json }},
+      { "sticker": {{ sticker_data | json }}},
+      { "colors" : {{ colors_data | json }} }
+    )

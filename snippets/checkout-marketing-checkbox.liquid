@@ -1,0 +1,24 @@
+<script>
+/* script below allows to check/uncheck marketing checkbox based on the country */  
+(function(jQuery) {
+  jQuery(document).on("page:load", function() {
+    var countryName = "{{ checkout.shipping_address.country }}"; // for some magic reason Country Code isn't populated that's why we're using "country" here
+    var acceptsMarketingByDefault = countryName && countryName.toLowerCase().includes('united states');
+    var hasErrors = document.querySelectorAll('div.field--error').length > 0;
+
+    var acceptMarketingCheckboxElement = document.querySelector('#checkout_buyer_accepts_marketing');
+    if (!acceptMarketingCheckboxElement) {
+      return;
+    }
+
+    var currentState = acceptMarketingCheckboxElement.checked;
+    var email = document.querySelector('#checkout_email').value;
+    var hasEmail = email && email.length > 0 ? true : false;
+
+    // this condition needed to prevent automatic check/uncheck on validation errors and if form loaded for a second time
+    if (!hasErrors && !hasEmail && currentState !== acceptsMarketingByDefault) {
+      acceptMarketingCheckboxElement.click();
+    }
+  });
+})(Checkout.jQuery);
+</script>

@@ -1,0 +1,270 @@
+<section class="fall-page-hero tw-relative tw-flex tw-items-center tw-justify-center tw-overflow-hidden msm:tw-hidden">
+    <div class="tw-relative tw-z-20 tw-text-center tw-flex tw-flex-col tw-items-center tw-justify-center">
+      <h1 class="tw-m-auto tw-font-serif tw-text-sm tw-text-white tw-leading-tight tw-text-center tw-font-light tw-tracking-heading tw-uppercase">
+        {{ section.settings.top_text }}
+      </h1>
+      <h1 class="tw-m-auto tw-my-2 tw-font-serif msm:tw-text-4xl sm:tw-text-5xl tw-text-white tw-leading-tight tw-text-center tw-font-light tw-tracking-normal">
+        {{ section.settings.centre_text }}
+      </h1>
+      <h1 class="tw-m-auto tw-font-serif tw-text-sm tw-text-white tw-leading-tight tw-text-center tw-font-light tw-tracking-heading tw-uppercase">
+        watch the video below
+      </h1>
+      <!-- <div class="tw-mx-auto"> -->
+        <!-- <button onclick = "startFallHeroPopup();" class="fall-play-button sm:tw-mr-2 tw-max-w-sm tw-flex tw-items-center tw-justify-center" style="border: 1px solid white;"> -->
+          <!-- <img class="fall-play-svg" src="{{ 'play-desktop.svg' | asset_url }}" /> -->
+            <!-- <p class="tw-pl-4 tw-pt-6 tw-text-xs tw-font-agrandir tw-leading-normal tw-text-center tw-font-medium tw-text-white tw-uppercase tw-tracking-heading">
+              {{ section.settings.button_text }}
+            </p> -->
+        <!-- </button> -->
+      <!-- </div> -->
+    </div>
+    <!-- <img class="tw-absolute tw-z-10 tw-w-full fall-page-hero tw-object-fill msm:tw-hidden" src="{{ section.settings.video_slider | img_url: 'master' }}" alt="fall-page-hero" /> -->
+    <img class="tw-absolute tw-z-10 tw-w-full fall-page-hero tw-object-cover" src="{{ section.settings.video_slider | img_url: 'master' }}" alt="fall-page-hero">
+    <!-- <div class="playFallVideo">
+        <span class="msm:tw-hidden">
+          <iframe width="700" height="500" class="new-fall-hero-video" src="https://www.youtube.com/embed/vH4A7lVNZY8"></iframe>
+        </span>
+        <span class="sm:tw-hidden">
+          <iframe width="300" height="150" class="new-fall-hero-video1" src="https://www.youtube.com/embed/vH4A7lVNZY8">></iframe>
+        </span>
+        <img class="fall-video-close" onclick ="stopFallHeroPopup();" alt="close-icon" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9Ii43NSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48Y2lyY2xlIHN0cm9rZS1vcGFjaXR5PSIuMzA0IiBjeD0iMTUiIGN5PSIxNSIgcj0iMTQuNjI1Ii8+PHBhdGggZD0iTTggOGwxMy44ODUgMTMuODg1TTggMjEuODg1TDIxLjg4NSA4IiBzdHJva2UtbGluZWNhcD0ic3F1YXJlIi8+PC9nPjwvc3ZnPg==">
+    </div> -->
+</section>
+
+<section class="tw-py-8 tw-relative tw-flex tw-items-center tw-justify-center tw-overflow-hidden sm:tw-hidden">
+  <div class="tw-relative tw-z-20 tw-text-center tw-flex tw-flex-col tw-items-center tw-justify-center">
+    <h1 class="tw-m-auto tw-font-serif tw-text-sm tw-text-black tw-leading-tight tw-text-center tw-font-light tw-tracking-heading tw-uppercase">
+      {{ section.settings.top_text }}
+    </h1>
+    <h1 class="tw-m-auto tw-my-2 tw-font-serif msm:tw-text-4xl sm:tw-text-5xl tw-text-black tw-leading-tight tw-text-center tw-font-light tw-tracking-normal">
+      {{ section.settings.centre_text }}
+    </h1>
+    <h1 class="tw-m-auto tw-font-serif tw-text-sm tw-text-black tw-leading-tight tw-text-center tw-font-light tw-tracking-heading tw-uppercase">
+      watch the video below
+    </h1>
+  </div>
+</section>
+
+<section class="tw-flex tw-justify-items-center tw-p-8">
+  <span class="tw-mx-auto msm:tw-hidden">
+    <iframe width="1100" height="600" class="new-fall-hero-video" src="{{ section.settings.harmon-brothers-video-url }}"></iframe>
+  </span>
+  <span class="tw-mx-auto sm:tw-hidden">
+    <iframe width="500" height="200" class="new-fall-hero-video1" src="{{ section.settings.harmon-brothers-video-url }}">></iframe>
+  </span>
+</section>
+
+<section class="tw-container tw-mx-auto tw-flex msm:tw-align-start tw-items-center tw-justify-center">
+    <div class="tw-flex tw-overflow-x-scroll tw-hide-scroll-bar">
+        <div class="tw-flex tw-flex-nowrap tw-flex-row">
+            <div class="tw-inline-block msm:tw-w-72 tw-px-4">
+                <img src="{{ section.settings.card1image | img_url: 'master' }}" class="tw-mx-auto tw-w-full" alt="temp">
+                <p class="tw-text-3xl msm:tw-text-2xl tw-font-serif tw-text-center tw-font-light tw-tracking-normal tw-pt-6 msm:tw-pt-3 tw-mb-0">
+                    {{ section.settings.card1title }}
+                </p>
+                <p class="tw-text-center tw-pt-1 msm:tw-max-w-xs sm:tw-max-w-sm">
+                  Made using one of the world’s strongest polymers, 
+                  <span class="msm:tw-hidden"><br></span>Sheertex tights are guaranteed to last.
+                  
+                </p>
+            </div>
+            <div class="tw-inline-block msm:tw-w-72 tw-px-4">
+                <img src="{{ section.settings.card2image | img_url: 'master' }}" class="tw-mx-auto tw-w-full" alt="temp">
+                <p class="tw-text-3xl msm:tw-text-2xl tw-font-serif tw-text-center tw-font-light tw-tracking-normal tw-pt-6 msm:tw-pt-3 tw-mb-0">
+                    {{ section.settings.card2title }}
+                </p>
+                <p class="tw-text-center tw-max-w-sm tw-pt-1">
+                  Designed and made-to-last responsibly in Canada,
+                  <span class="msm:tw-hidden"><br></span>with inclusive sizing up to 3XL, and 6 nude shades.
+                </p>
+            </div>
+            <div class="tw-inline-block msm:tw-w-72 tw-px-4">
+                <img src="{{ section.settings.card3image | img_url: 'master' }}" class="tw-mx-auto tw-w-full" alt="temp">
+                <p class="tw-text-3xl msm:tw-text-2xl tw-font-serif tw-text-center tw-font-light tw-tracking-normal tw-pt-6 msm:tw-pt-3 tw-mb-0">
+                    {{ section.settings.card3title }}
+                </p>
+                <p class="tw-text-center tw-max-w-sm tw-pt-1">
+                  Incredibly strong but also incredibly silky and soft. 
+                  <span class="msm:tw-hidden"><br></span>They feel and look just like traditional tights.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% style %}
+.fall-page-hero {
+  min-height: 65vh;
+}
+.fall-page-hero-m {
+  min-height: 65vh;
+}
+@media (min-width: 640px) {
+    .fall-emilie-img-2 {
+      max-width: 540px;
+    }
+    .fall-quote-container {
+        padding-top: 10rem;
+        padding-bottom: 10rem;
+    }
+}
+@media (max-width: 640px) {
+    .fall-page-hero {
+        min-height: 65vh;
+    }
+    .fall-quote-content {
+        min-height: 260px;
+    }
+}
+.fall-lp-container {
+  background-image: linear-gradient(to bottom, #f5ede3, #f5ede3 122%);
+}
+.fall-play-button {
+  width: 260px;
+  height: 50px;
+}
+.fall-play-svg {
+    width: 22px;
+    height: 22px;
+}
+.playFallVideo, .playFallVideoM  {
+  position: fixed;
+  top: 50%;
+  bottom: 50%;
+  transform: translate(0, -50%);
+  z-index: 100000;
+  background: rgba(0,0,0,.5);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+}
+.playFallVideo video, .playFallVideoM video {
+  position: relative;
+  max-width: 900px;
+  outline: none;
+}
+.fall-video-close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  cursor: pointer;
+  filter: invert(1);
+  max-width: 32px;
+}
+.fall-video-close-m {
+  position: absolute;
+  top: 100px;
+  right: 30px;
+  cursor: pointer;
+  filter: invert(1);
+  max-width: 24px;
+}
+.playFallVideo.active, .playFallVideoM.active {
+  visibility: visible;
+  opacity: 1;
+}
+@media (max-width: 991px) {
+  .playFallVideo video, .playFallVideoM video {
+    max-width: 90%;
+  }
+}
+{% endstyle %}
+
+<script type="text/javascript">
+    var playFallVideo = document.querySelector(".playFallVideo");
+    var fallHero =  document.querySelector('.new-fall-hero-video');
+    var fallHeroM =  document.querySelector('.new-fall-hero-video1');
+    
+    function startFallHeroPopup(){
+      if(playFallVideo && fallHero) {
+        playFallVideo.classList.add("active");
+      }
+    }
+    function stopFallHeroPopup(){
+      if(playFallVideo && fallHero) {
+        fallHero.src = fallHero.src;
+        fallHeroM.src = fallHeroM.src;
+        playFallVideo.classList.remove("active");
+      }
+    }
+</script>
+
+{% schema %}
+  {
+    "name": "Harmon Brothers Vid",
+    "presets": [
+      {
+        "name": "Harmon Brothers Vid",
+        "category": "Promotional"
+      }
+    ],
+    "settings": [
+    {
+      "type": "url",
+      "id": "harmon-brothers-video-url",
+      "label": "Link to harmon brothers youtube video",
+      "info": "Finding the embed code on YouTube: Go to YouTube. Navigate to the video you wish to embed. Click the Share link below the video, then click the Embed link, and get the src link."
+    },
+    {
+      "type": "html",
+      "id": "top_text",
+      "label": "Title 1 Text",
+      "default": "sheertex presents"
+    },
+    {
+      "type": "html",
+      "id": "centre_text",
+      "label": "Title 2 Text",
+      "default": "Sonia Wears The Tights"
+    },
+    {
+      "type": "html",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "watch the video below"
+    },
+    {
+      "type": "image_picker",
+      "id": "video_slider",
+      "label": "Video CTA Background"
+    },
+    {
+      "type": "html",
+      "id": "card1title",
+      "label": "Card 1 Title",
+      "default": "Sheertex Knit"
+    },
+    {
+      "type": "html",
+      "id": "card2title",
+      "label": "Card 2 Title",
+      "default": "Sustainability"
+    },
+    {
+      "type": "html",
+      "id": "card3title",
+      "label": "Card 3 Title",
+      "default": "Feel Like Real Tights"
+    },
+    {
+      "type": "image_picker",
+      "id": "card1image",
+      "label": "Card 1 Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "card2image",
+      "label": "Card 2 Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "card3image",
+      "label": "Card 3 Image"
+    }
+    ]
+  }
+{% endschema %}

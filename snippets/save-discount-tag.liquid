@@ -1,0 +1,66 @@
+<style>
+.pdp-save__container{
+  width: 75px;
+  height: 38px;
+}
+.pdp-save__label{
+  color: white;
+  font-family: Agrandir;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.104rem;
+  font-size: 0.6rem;
+  line-height: 1.8;
+  margin-top: -1.9rem;
+  margin-left: 0.5rem;
+}
+</style>
+
+{% comment %} Can be cleaned up and make use of switch if possible and render svg only once for all {% endcomment %}
+{%if product.tags contains 'sticker_save-20%' %}
+    <div class="save-20-col tw-ml-3 tw-mb-4">
+      <div class="pdp-save__container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 29">
+          <path fill="#eb3223" fill-rule="evenodd" d="M66.34 0H5.64A5.68 5.68 0 010 5.71v17.57a5.68 5.68 0 015.64 5.71h60.7A5.69 5.69 0 0172 23.27V5.71A5.68 5.68 0 0166.34 0z"/>
+        </svg>
+      </div>
+      <div class="pdp-save__label">Save 20%</div>
+  </div>
+{% elsif product.tags contains 'sticker_save-25%' %}
+  <div class="save-20-col tw-ml-3 tw-mb-4">
+    <div class="pdp-save__container">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 29">
+        <path fill="#eb3223" fill-rule="evenodd" d="M66.34 0H5.64A5.68 5.68 0 010 5.71v17.57a5.68 5.68 0 015.64 5.71h60.7A5.69 5.69 0 0172 23.27V5.71A5.68 5.68 0 0166.34 0z"/>
+      </svg>
+    </div>
+    <div class="pdp-save__label">Save 25%</div>
+</div>
+{% elsif product.tags contains 'sticker_save-30%' %}
+  <div class="save-20-col tw-ml-3 tw-mb-4">
+    <div class="pdp-save__container">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 29">
+        <path fill="#eb3223" fill-rule="evenodd" d="M66.34 0H5.64A5.68 5.68 0 010 5.71v17.57a5.68 5.68 0 015.64 5.71h60.7A5.69 5.69 0 0172 23.27V5.71A5.68 5.68 0 0166.34 0z"/>
+      </svg>
+    </div>
+    <div class="pdp-save__label">Save 30%</div>
+</div>
+{% elsif product.tags contains 'sticker_save-40%' %}
+  <div class="save-20-col tw-ml-3 tw-mb-4">
+    <div class="pdp-save__container">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 29">
+        <path fill="#eb3223" fill-rule="evenodd" d="M66.34 0H5.64A5.68 5.68 0 010 5.71v17.57a5.68 5.68 0 015.64 5.71h60.7A5.69 5.69 0 0172 23.27V5.71A5.68 5.68 0 0166.34 0z"/>
+      </svg>
+    </div>
+    <div class="pdp-save__label">Save 40%</div>
+</div>
+{% elsif product.tags contains 'sticker_save-50%' %}
+  <div class="save-20-col tw-ml-3 tw-mb-4">
+    <div class="pdp-save__container">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 29">
+        <path fill="#eb3223" fill-rule="evenodd" d="M66.34 0H5.64A5.68 5.68 0 010 5.71v17.57a5.68 5.68 0 015.64 5.71h60.7A5.69 5.69 0 0172 23.27V5.71A5.68 5.68 0 0166.34 0z"/>
+      </svg>
+    </div>
+    <div class="pdp-save__label">Save 50%</div>
+</div>
+{%endif%}
+

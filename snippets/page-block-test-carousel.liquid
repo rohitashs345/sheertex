@@ -1,0 +1,371 @@
+{{ 'test-carousel-tailwind.css' | asset_url | stylesheet_tag }}
+
+<style>
+    .linaria__cmt5rrd {
+        text-align: left !important;
+        background-color: #ddff98 !important;
+        width: 100% !important;
+        padding: 1.0625rem 1.25rem 1.5rem !important;
+    }
+
+    .linaria__ttga75c {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, 20rem) !important;
+        grid-template-rows: 1fr !important;
+        grid-auto-rows: 0px !important;
+        grid-auto-columns: 0px !important;
+        overflow: hidden !important;
+        justify-content: center !important;
+    }
+
+    .linaria__d10ozfv0 {
+        width: 14.3125rem !important;
+    }
+
+    .linaria__hf0et90 {
+        font-size: 2rem !important;
+        line-height: 1.125 !important;
+        font-family: Matiere !important;
+        font-weight: 300 !important;
+    }
+
+    .linaria__hq4vvwc {
+        font-size: .75rem !important;
+        line-height: 0.8125rem !important;
+        letter-spacing: 1.29px !important;
+        text-transform: uppercase !important;
+        font-family: Agrandir !important;
+        font-weight: 500 !important;
+    }
+
+    .linaria__hxh3xeb {
+        font-size: 1.25rem !important;
+        line-height: 1.4 !important;
+
+        letter-spacing: 1.67px !important;
+        font-family: Agrandir !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+    }
+
+    .linaria__iw8hiiy {
+        width: 3.75rem !important;
+        height: 3.75rem  !important;
+    }
+
+    .linaria__p1e2fjzs.lazyload:not([src]), .linaria__p1e2fjzs.lazyload > *:not([src]) {
+        visibility: hidden  !important;
+    }
+
+    .linaria__t1gjepmb {
+        position: relative  !important;
+        margin-top: -2rem !important;
+    }
+
+    .linaria__t1x1p0dy {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: grid !important;
+        justify-items: center !important;
+        padding-bottom: 50px;
+        border-bottom: 1px solid #949494;
+    }
+
+    .linaria__tevc45r {
+        text-transform: uppercase !important;
+        display: block !important;
+        padding-top: 0.44rem !important;
+    }
+
+    .linaria__tqjp5cn {
+        font-size: .875rem !important;
+        line-height: 1.25rem !important;
+        letter-spacing: 1.29px !important;
+        text-transform: uppercase !important;
+        font-family: Agrandir Narrow !important;
+        font-weight: 300 !important;
+    }
+
+    .test-button {
+        border: solid 1px black;
+    }
+
+    .test-button-selected {
+        border-color: transparent !important;
+    }
+
+    .test-button-extinguisher.test-button-selected,
+    .test-button-extinguisher:hover {
+        background-color: #e8e8f2;
+    }
+
+    .test-button-pineapple.test-button-selected,
+    .test-button-pineapple:hover {
+        background-color: #f7eee3;
+    }
+
+    .test-button-seashells.test-button-selected,
+    .test-button-seashells:hover {
+        background-color: #bbc1b5;
+    }
+
+    .test-button-watermelon.test-button-selected,
+    .test-button-watermelon:hover {
+        background-color: #FFD9BF;
+    }
+
+    @media only screen and (max-width: 650px) {
+        .test-video-section:nth-child(n+2) {
+            display: none;
+        }
+    }
+</style>
+
+<script>
+
+    function playTestVideo(button, videoNumber) {
+        button.classList.add('test-button-selected');
+        const video = document.querySelector('#test-video-' + videoNumber);
+        turnOn(video);
+    }
+
+    function turnOn(selectedVideo) {
+        window.jQuery( document ).ready(function() {
+            const testVideos = document.querySelectorAll('.test-video');
+            testVideos.forEach(function (testVideo) {
+                if (testVideo !== selectedVideo) {
+                    testVideo.pause();
+                }
+            });
+            var playPromise = selectedVideo.play();
+            if (playPromise !== undefined) {
+                playPromise.then( _ => {
+                    //Automatic playback started (playing)  
+                })
+                .catch(error => {
+                    //Auto-play prevented (paused)
+                });
+            }
+        });
+    }
+
+</script>
+{% if product.handle != 'no-sweat-shortie' or product.handle != 'test-kit' %}
+<div class="test-carousel">
+    <div>
+        <p class="uppercase text-center mb-6 linaria__hxh3xeb"
+           style="padding-top: 5.5rem;">
+            {% if request.locale.iso_code == 'en' %}
+                PUT OUR KNIT TO THE TEST
+            {% elsif request.locale.iso_code == 'fr' %}
+                Mettez notre tricot à l’épreuve
+            {% endif %}
+        </p>
+        
+
+    </div>
+    <div class="linaria__ttga75c">
+        <div class="test-video-section relative linaria__t1x1p0dy">
+            <div class="w-full px-3">
+                <video muted loop playsinline autoplay id="test-video-1"
+                       class="test-video lozad"
+                       style="background-color: #e1d3c4"
+                       onmouseover="turnOn(this)"
+                       poster={{ 'test-extinguisher-poster.png' | asset_url }}>
+                    <source data-src={{ 'test-extinguisher.mp4' | asset_url }}
+                            type="video/mp4">
+                    <source data-src={{ 'test-extinguisher.webm' | asset_url }}
+                            type="video/webm">
+                </video>
+            </div>
+
+            <div class="linaria__t1gjepmb">
+                <aside class="linaria__d10ozfv0 linaria__cmt5rrd"><h2 class="linaria__hf0et90"
+                                                                      style=" padding-bottom: 1.4rem;">
+                        <span style="font-size: inherit;">Test 01</span></h2>
+                    <hr class="border-black">
+                <span class="linaria__tevc45r linaria__tqjp5cn">
+                    {% if request.locale.iso_code == 'en' %}
+                        Classic Sheer Tights
+                    {% elsif request.locale.iso_code == 'fr' %}
+                        COLLANT DIAPHANE CLASSIQUE
+                    {% endif %}
+                </span>
+                    {% if request.locale.iso_code == 'en' %}
+                        <hr class="border-black">
+                        <span class="linaria__tevc45r linaria__tqjp5cn"
+                            style="">10 LB Fire Extinguisher</span>
+                        <hr class="border-black">
+                        <span class="linaria__tevc45r linaria__tqjp5cn"
+                            style="">Testing Strength</span>
+                        <hr class="border-black">
+                        <a class="block underline pt-8 hover:no-underline uppercase leading-normal linaria__hq4vvwc"
+                        href="/collections/all/products/classic-sheers"
+                        style="">Shop Now</a>
+                    {% elsif request.locale.iso_code == 'fr' %}
+                        <hr class="border-black">
+                        <span class="linaria__tevc45r linaria__tqjp5cn"
+                            style="">Extincteur 10 livres</span>
+                        <hr class="border-black">
+                        <span class="linaria__tevc45r linaria__tqjp5cn"
+                            style="">Test de force</span>
+                        <hr class="border-black">
+                        <a class="block underline pt-8 hover:no-underline uppercase leading-normal linaria__hq4vvwc"
+                        href="/collections/all/products/classic-sheers"
+                        style="">Magasinez</a>  
+                    {% endif %}                  
+                </aside>
+            </div>
+        </div>
+        <div class="test-video-section relative linaria__t1x1p0dy">
+            <div class="w-full px-3">
+                <video muted loop id="test-video-2"
+                       class="test-video lozad"
+                       style="background-color: #e1d3c4"
+                       onmouseover="turnOn(this)"
+                       poster={{ 'test-pineapple-poster.png' | asset_url }}>
+                    <source data-src={{ 'test-pineapple.mp4' | asset_url }}
+                            type="video/mp4">
+                    <source data-src={{ 'test-pineapple.webm' | asset_url }}
+                            type="video/webm">
+                </video>
+            </div>
+            <div class="linaria__t1gjepmb">
+                <aside class="linaria__d10ozfv0 linaria__cmt5rrd"><h2 class="linaria__hf0et90"
+                                                                      style=" padding-bottom: 1.4rem;">
+                        <span style="font-size: inherit;">Test 02</span></h2>
+                    <hr class="border-black">
+                {% if request.locale.iso_code == 'en' %}
+                    <span class="linaria__tevc45r linaria__tqjp5cn"
+                          style="">Shaping Sheer Tights</span>
+                    <hr class="border-black">
+                    <span class="linaria__tevc45r linaria__tqjp5cn"
+                          style="">Pineapple</span>
+                    <hr class="border-black">
+                    <span class="linaria__tevc45r linaria__tqjp5cn"
+                          style="">Testing Strength</span>
+                    <hr class="border-black">
+                    <a class="block underline pt-8 hover:no-underline uppercase leading-normal linaria__hq4vvwc"
+                       href="/products/shaping-unbreakable-sheer-tights"
+                       style="">Shop Now</a>
+                {% elsif request.locale.iso_code == 'fr' %}
+                    <span class="linaria__tevc45r linaria__tqjp5cn"
+                          style="">Collant diaphane avec culotte de maintien</span>
+                    <hr class="border-black">
+                    <span class="linaria__tevc45r linaria__tqjp5cn"
+                          style="">Ananas</span>
+                    <hr class="border-black">
+                    <span class="linaria__tevc45r linaria__tqjp5cn"
+                          style="">Test de force</span>
+                    <hr class="border-black">
+                    <a class="block underline pt-8 hover:no-underline uppercase leading-normal linaria__hq4vvwc"
+                       href="/products/shaping-unbreakable-sheer-tights"
+                       style="">Magasinez</a>   
+                {% endif %}                 
+                </aside>
+            </div>
+        </div>
+        <div class="test-video-section relative linaria__t1x1p0dy">
+
+            <div class="w-full px-3">
+                <video muted loop id="test-video-3"
+                       class="test-video lozad"
+                       style="background-color: #e1d3c4"
+                       onmouseover="turnOn(this)"
+                       poster={{ 'test-seashells-poster.png' | asset_url }}>
+                    <source data-src={{ 'test-seashells.mp4' | asset_url }}
+                            type="video/mp4">
+                    <source data-src={{ 'test-seashells.webm' | asset_url }}
+                            type="video/webm">
+                </video>
+            </div>
+            <div class="linaria__t1gjepmb">
+                <aside class="linaria__d10ozfv0 linaria__cmt5rrd"><h2 class="linaria__hf0et90"
+                                                                      style=" padding-bottom: 1.4rem;">
+                        <span style="font-size: inherit;">Test 03</span></h2>
+                    <hr class="border-black">
+                    <span class="linaria__tevc45r linaria__tqjp5cn">
+                        {% if request.locale.iso_code == 'en' %}
+                            Classic Sheer Tights
+                        {% elsif request.locale.iso_code == 'fr' %}
+                            COLLANT DIAPHANE CLASSIQUE
+                        {% endif %}                        
+                    </span>
+                    <hr class="border-black">
+                    {% if request.locale.iso_code == 'en' %}
+                        <span class="linaria__tevc45r linaria__tqjp5cn"
+                            style="">Spiky Seashells</span>
+                        <hr class="border-black">
+                        <span class="linaria__tevc45r linaria__tqjp5cn"
+                            style="">Testing Strength</span>
+                        <hr class="border-black">
+                        <a class="block underline pt-8 hover:no-underline uppercase leading-normal linaria__hq4vvwc"
+                        href="/collections/all/products/classic-sheers"
+                        style="">Shop Now</a>
+                    {% elsif request.locale.iso_code == 'fr' %}
+                        <span class="linaria__tevc45r linaria__tqjp5cn"
+                            style="">Coquillage épineux</span>
+                        <hr class="border-black">
+                        <span class="linaria__tevc45r linaria__tqjp5cn"
+                            style="">Test de force</span>
+                        <hr class="border-black">
+                        <a class="block underline pt-8 hover:no-underline uppercase leading-normal linaria__hq4vvwc"
+                        href="/collections/all/products/classic-sheers"
+                        style="">Magasinez</a>
+                    {% endif %}
+                </aside>
+            </div>
+        </div>
+        <div class="test-video-section relative linaria__t1x1p0dy">
+            <div class="w-full px-3">
+                <video muted loop id="test-video-4"
+                       class="test-video lozad"
+                       style="background-color: #e1d3c4"
+                       onmouseover="turnOn(this)"
+                       poster={{ 'test-watermelon-poster.png' | asset_url }}>
+                    <source data-src={{ 'test-watermelon.mp4' | asset_url }}
+                            type="video/mp4">
+                    <source data-src={{ 'test-watermelon.webm' | asset_url }}
+                            type="video/webm">
+                </video>
+            </div>
+            <div class="linaria__t1gjepmb">
+                <aside class="linaria__d10ozfv0 linaria__cmt5rrd"><h2 class="linaria__hf0et90"
+                                                                      style="--hf0et90-1:Matiere S,Georgia,Cambria,&quot;Times New Roman&quot;,Times,serif; --hf0et90-2:300; padding-bottom: 1.4rem;">
+                        <span style="font-size: inherit;">Test 04</span></h2>
+                    <hr class="border-black">
+                    <span class="linaria__tevc45r linaria__tqjp5cn">
+                        {% if request.locale.iso_code == 'en' %}
+                            Classic Sheer Tights
+                        {% elsif request.locale.iso_code == 'fr' %}
+                            COLLANT DIAPHANE CLASSIQUE
+                        {% endif %}
+                    </span>
+                    <hr class="border-black">
+                    {% if request.locale.iso_code == 'en' %}
+                        <span class="linaria__tevc45r linaria__tqjp5cn"
+                            style="">Watermelon</span>
+                        <hr class="border-black">
+                        <span class="linaria__tevc45r linaria__tqjp5cn"
+                            style="">Testing Strength</span>
+                        <hr class="border-black">
+                        <a class="block underline pt-8 hover:no-underline uppercase leading-normal linaria__hq4vvwc"
+                        href="/collections/all/products/classic-sheers"
+                        style="">Shop Now</a>
+                    {% elsif request.locale.iso_code == 'fr' %}
+                        <span class="linaria__tevc45r linaria__tqjp5cn"
+                            style="">Pastèque</span>
+                        <hr class="border-black">
+                        <span class="linaria__tevc45r linaria__tqjp5cn"
+                            style="">Test de force</span>
+                        <hr class="border-black">
+                        <a class="block underline pt-8 hover:no-underline uppercase leading-normal linaria__hq4vvwc"
+                        href="/collections/all/products/classic-sheers"
+                        style="">Magasinez</a>
+                    {% endif %}
+                </aside>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}

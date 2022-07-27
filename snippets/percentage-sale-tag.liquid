@@ -1,0 +1,7 @@
+{% if collection.handle != "" and product.compare_at_price > product.price %}
+{% assign percentage_sale =  product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | floor %}
+<span class="ab-percentage-deal-tags tw-text-xs tw-text-red tw-font-semibold tw-flex tw-items-center lg:tw-ml-2">
+  {% include 'percentage-sale-icon' %}
+  {{ percentage_sale }}%  OFF
+</span>
+{% endif %}

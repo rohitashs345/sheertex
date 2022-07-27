@@ -1,0 +1,244 @@
+{{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+{{ 'landing2.scss' | asset_url | stylesheet_tag }}
+{{ 'countrySelect.min.css' | asset_url | stylesheet_tag }}
+
+{% if settings.enable_currencies %}
+  <link rel="stylesheet" href="{{ 'currency-flags.css' | asset_url }}">
+{% endif %}
+
+
+<style>
+/* Agrandir */
+@font-face {
+  font-family: Agrandir;
+  font-weight: 400;
+  font-style: normal;
+  src: local('Agrandir Regular'), local('Agrandir-Regular'), url("https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Agrandir-Regular.woff2?v=1602163609") format("woff2"),
+       url("https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Agrandir-Regular.woff?v=1602163620") format("woff");
+  font-display: swap; 
+}
+
+@font-face {
+  font-family: Agrandir;
+  font-weight: 500;
+  font-style: normal;
+  src: local('Agrandir Medium'), local('Agrandir-Medium'), url("https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Agrandir-Medium.woff2?v=1602163609") format("woff2"),
+       url("https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Agrandir-Medium.woff?v=1602163621") format("woff");
+       font-display: swap;
+}
+
+
+@font-face {
+  font-family: Agrandir;
+  font-weight: 700;
+  font-style: normal;
+  src: local('Agrandir Bold'), local('Agrandir-Bold'), url("https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Agrandir-Bold.woff2?v=1602163609") format("woff2"),
+       url("https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Agrandir-Bold.woff?v=1602163620") format("woff");
+  font-display: swap;
+      }
+
+
+@font-face {
+  font-family: 'Agrandir Narrow';
+  font-weight: 400;
+  font-style: normal;
+  src: local('Agrandir Narrow'), local('Agrandir-Narrow'), url("https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Agrandir-Narrow.woff2?v=1602163608") format("woff2"),
+       url("https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Agrandir-Narrow.woff?v=1602163620") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Agrandir Narrow';
+  font-weight: 500;
+  font-style: normal;
+  src: local('Agrandir NarrowMedium'), local('Agrandir-NarrowMedium'), url("https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Agrandir-NarrowMedium.woff2?v=1602163609") format("woff2"),
+       url("https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Agrandir-NarrowMedium.woff?v=1602163620") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Agrandir Narrow';
+  font-weight: 400;
+  font-style: italic;
+  src: local('Agrandir NarrowItalic'), local('Agrandir-NarrowItalic'), url("https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Agrandir-NarrowItalic.woff2?v=1602163609") format("woff2"),
+       url("https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Agrandir-NarrowItalic.woff?v=1602163620") format("woff");
+  font-display: swap;
+}
+
+/* Matiere */
+@font-face {
+  font-family: Matiere;
+  font-weight: 400;
+  font-style: normal;
+  src: local('Matiere S Light'), local('Matiere-S-Light'), url("https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Matiere-S-Light.woff2?v=1602163648") format("woff2"),
+       url("https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Matiere-S-Light.woff?v=1602163648") format("woff");
+  font-display: swap;
+}
+
+/* Eckmannpsych Small */
+@font-face {font-family: "Eckmannpsych Small"; src: url("//db.onlinewebfonts.com/t/2222cf021b5f54c92d76328a2f7ec80b.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/2222cf021b5f54c92d76328a2f7ec80b.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/2222cf021b5f54c92d76328a2f7ec80b.woff") format("woff"), url("//db.onlinewebfonts.com/t/2222cf021b5f54c92d76328a2f7ec80b.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/2222cf021b5f54c92d76328a2f7ec80b.svg#Eckmannpsych Small") format("svg"); } 
+
+/* Theme font overrides */
+h1, .h1, h2, .h2, h4, .h4, h5, .h5, h6, .h6,
+.currency-picker__label, .btn, 
+.subtitle, .larger-text .subtitle {
+  font-family: Agrandir;
+  letter-spacing: 0.104rem;
+}
+
+h1, .h1, {
+  font-family: Agrandir;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 1.4;
+  letter-spacing: 0.104rem;
+}
+
+.hero .hero__title.hero__title {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  margin: 4.5rem 0 2rem;
+  line-height: 1
+}
+  
+.hero__subtitle, h2, .h2, h3, .h3,
+.ajaxcart__subtotal, .grid-product__title,
+.collection-description h1 {
+  font-family: Matiere;
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+  
+.collection-description h1 > strong {
+  font-weight: 400;
+}
+
+.hero__subtitle, h2, .h2, h3, .h3 {
+  margin-bottom: 1.5rem;
+}
+  
+.hero__subtitle {
+  font-size: 2.125rem;
+  letter-spacing: 0;
+  text-transform: none;
+  margin-top: 0;
+  margin-bottom: 2.5rem;
+  line-height: 1;
+}
+
+.hero__text-content.vertical-center .hero__link.hero__link,
+.hero__link {
+  text-transform: uppercase;
+  margin-top: 0;
+}
+  
+.subtitle, .larger-text .subtitle {
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+body, input, textarea, button, select, p,
+.larger-text body, .larger-text input, .larger-text textarea,
+.larger-text button, .larger-text select, .larger-text p,
+.enlarge-text body, .enlarge-text input, .enlarge-text textarea,
+.enlarge-text button, .enlarge-text select, .enlarge-text p,
+.rte .enlarge-text body, .rte .enlarge-text input, .rte .enlarge-text textarea,
+.rte .enlarge-text button, .rte .enlarge-text select, .rte .enlarge-text p,
+.gizmodoBustleContainer {
+  font-family: 'Agrandir Narrow';
+  line-height: 1.5;
+  font-size: .875rem;
+  letter-spacing: 0.01625rem;
+}
+  
+.btn, .btn:not(.btn--no-animate):not(.btn--secondary):not(.btn--tertiary):not(.btn--inverse) {
+  font-weight: 500;
+  background-color: #ddff98;
+  background-image: none;
+  color: #000;
+}
+  
+.btn:not(.btn--no-animate):not(.btn--secondary):not(.btn--tertiary):not(.btn--inverse):hover {
+  padding-right: 20px;
+  background-position: 0 0;
+  background-color: #FFF;
+  background-image: none;
+  border-color: #000;
+  text-decoration: underline;
+}
+  
+.btn--secondary:not(.btn--no-animate):not(.btn--tertiary) {
+  padding: 9px 0;
+  background-color: transparent;
+  text-decoration: underline;
+}
+.btn--secondary:not(.btn--no-animate):not(.btn--tertiary):hover {
+  color: #000;
+  padding-right: 0;
+}
+
+.btn--secondary::after {
+  content: '➞';
+}
+  
+.feature-row__text .btn {
+    margin: 1.75rem 13.33333px 0 0;
+}
+  
+.gizmodoContainer-content {
+  margin-top: 0;
+}
+.gizmodoContainer-gizmodo .img, .bustleContainer-bustle .img {
+  width: 22%;
+}
+  
+.gizmodoContainer-gizmodo {
+  margin-top: 0.5rem;
+}
+  
+.add-and-buy .btn.add-to-cart,
+.shopify-payment-button .shopify-payment-button__button--unbranded {
+  font-family: Agrandir;
+  text-transform: uppercase;
+  border-color: transparent;
+  padding: 13px;
+  font-weight: 500;
+  letter-spacing: 0.104rem;
+}
+  
+.product__quantity {
+  margin-bottom: 0;
+  margin-top: 3px;
+}
+  
+.product__quantity .js-qty__num {
+  padding: 12px 25px;
+}
+  
+.variant-input-wrap label {
+  font-family: Agrandir;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.104rem;
+  font-size: 0.6rem;
+}
+
+.grid-product__title {
+  font-size: 1.25em;
+}
+  
+@media only screen and (min-width: 590px) {
+  .hero .hero__title.hero__title {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (min-width: 768px) {  
+  .gizmodoContainer, .bustleContainer {
+    font-size: 0.875rem;
+  }
+}
+</style>
+{% include 'style-tags', layout: 'theme' %}

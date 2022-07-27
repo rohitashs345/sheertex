@@ -1,0 +1,252 @@
+<div id="FaqTemplateSection" data-section-id="{{ section.id }}" data-section-type="faq-page-template-section" class="__active__BV_sR">
+  <div class="page-width tw-flex tw-mx-auto tw-mt-16">
+    {% if section.blocks.size > 0 %}
+      {% assign rich_blocks = section.blocks | where: "type", "rich-text" %}
+      {% if rich_blocks.size > 0 %}
+        <div class="tw-w-80 tw-hidden">
+          <h2 class="__page-title__y-y2L">FAQ</h2>
+          <div class="tw-mr-16 tw-bg-brown-200 tw-p-4">
+            <p class="p __filter-title__1JqkO">Browse by topic</p>
+            <ul class="ul tw-list-none tw-mx-0">
+              {% for rich_block in rich_blocks %}
+                <li class="__filter-item__tseJc"><a href="#{{ rich_block.settings.title | handle }}" class="a">{{ rich_block.settings.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      {% endif %}
+      <div class="tw-flex-1">
+        {% assign first_rich = true %}
+        {% for block in section.blocks %}
+          {% if block.type == 'rich-text' %}
+            {% if first_rich %}
+              <div id="{{ block.settings.title | handle }}" class="__faq-block__3lUeH">
+                <h2 class="tw-text-center tw-uppercase __topic-title__3aGwO">
+                  {{ block.settings.title }}
+                </h2>
+            {% else %}
+              </div>
+              <div id="{{ block.settings.title | handle }}" class="__faq-block__3lUeH">
+                <h2 class="tw-text-center tw-uppercase __topic-title__3aGwO">
+                  {{ block.settings.title }}
+                </h2>
+            {% endif %}
+            {% assign first_rich = false %}
+          {% else %}
+            {% if forloop.last == true %}
+                <div class="tw-py-6 tw-pl-4 tw-pr-16 faq-content __faq-content__-N0f2">
+                  <div>{{ block.settings.title }}</div>
+                  <div class="tw-px-16 tw-hidden __faq-answer__13d-3">{{ block.settings.text }}</div>
+                  {% if block.settings.faq_answer_image != blank %}
+                    <div class="tw-px-16 tw-hidden __faq-answer__13d-3"><img src="{{ block.settings.faq_answer_image }}" alt="faq-answer-img"></div>
+                  {% endif %}
+                </div>
+              </div>
+            {% else %}
+                <div class="tw-py-6 tw-pl-4 tw-pr-12 faq-content __faq-content__-N0f2">
+                  <div>{{ block.settings.title }}</div>
+                  <div class="tw-px-16 tw-hidden __faq-answer__13d-3">{{ block.settings.text }}</div>
+                  {% if block.settings.faq_answer_image != blank %}
+                    <div class="tw-px-16 tw-hidden __faq-answer__13d-3"><img src="{{ block.settings.faq_answer_image }}" alt="faq-answer-img"></div>
+                  {% endif %}
+                </div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+<style>
+  .__page-title__y-y2L {
+    font-family: 'Agrandir';
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+  }
+  .__topic-title__3aGwO {
+    font-family: 'Agrandir';
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: 0.1rem;
+  }
+  .__filter-title__1JqkO {
+    position: relative;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: 'Agrandir';
+    letter-spacing: 0.104rem;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+  }
+  .__filter-title__1JqkO:after {
+    content: '^';
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 20px;
+  }
+  .__filter-item__tseJc {
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  .__filter-item__tseJc a {
+    font-family: 'Agrandir';
+    letter-spacing: 0.104rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 13px;
+  }
+  .__faq-block__3lUeH {
+    margin-bottom: 100px;
+    scroll-margin-top: 4rem;
+  }
+  .__faq-block__3lUeH:last-child {
+    margin-bottom: 0px;
+  }
+  .__faq-content__-N0f2 {
+    border-top: 1px solid #404040;
+    font-size: 18px;
+    position: relative;
+    cursor: pointer;
+  }
+  .__faq-content__-N0f2:last-child {
+    border-bottom: 1px solid #404040;
+  }
+  .__faq-content__-N0f2:after {
+    content: '+';
+    position: absolute;
+    right: 1.5rem;
+    top: 1rem;
+    font-size: 30px;
+  }
+  .__faq-content__-N0f2.__active__BV_sR:after {
+    content: '-';
+  }
+  .__faq-content__-N0f2.__active__BV_sR>.__faq-answer__13d-3{
+    display: block;
+  }
+  .__faq-content__-N0f2 p {
+    font-size: 18px;
+    margin-top: 20px;
+  }
+</style>
+<script>
+  var activeClass = document.getElementById('FaqTemplateSection').className.split(' ')[0];
+  var faqContents = document.querySelectorAll(".faq-content"), i;
+  for(i = 0; i < faqContents.length; i++)
+  {
+    var faqContent = faqContents[i];
+    faqContent && faqContent.addEventListener('click', function() {
+      this.classList.toggle(activeClass);
+    });
+  }
+</script>
+{% schema %}
+  {
+    "name": "Faq Page",
+    "class": "tw-my-16",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "page_title_enable",
+        "label": "Show page title"
+      },
+      {
+        "type": "checkbox",
+        "id": "page_content_enable",
+        "label": "Show page content"
+      }
+    ],
+    "default": {
+      "blocks": [
+        {
+          "type": "rich-text",
+          "settings": {
+            "title": "Shipping policy"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "title": "Where do you ship to?"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "title": "How long will my order take?"
+          }
+        },
+        {
+          "type": "rich-text",
+          "settings": {
+            "title": "Returns and exchanges"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "title": "How do I ship my order back to you?"
+          }
+        }
+      ]
+    },
+    "blocks": [
+      {
+        "type": "rich-text",
+        "name": "Rich text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Rich text"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text"
+          },
+          {
+            "type": "select",
+            "id": "align_text",
+            "label": "Text alignment",
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Centered"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "question",
+        "name": "Question",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Question",
+            "default": "Frequently asked question"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text"
+          },
+          {
+            "type": "text",
+            "id": "faq_answer_image",
+            "label": "Enter Image URL"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

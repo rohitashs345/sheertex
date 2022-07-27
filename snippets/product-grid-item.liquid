@@ -1,0 +1,284 @@
+{% unless grid_item_width %}
+  {%- assign grid_item_width = 'medium-up--one-quarter small--one-half' -%}
+{% endunless %}
+
+{% assign on_sale = false %}
+{% if product.compare_at_price > product.price %}
+  {%- assign on_sale = true -%}
+{% endif %}
+
+{%- assign product_tags = product.tags | join: ',' -%}
+{%- assign has_custom_label = false -%}
+{% if product_tags contains '_label_' %}
+  {% for tag in product.tags %}
+    {% if tag contains '_label_' %}
+      {%- assign tag_starts_with = tag | slice: 0 -%}
+      {% if tag_starts_with == '_' %}
+        {%- assign has_custom_label = true -%}
+        {%- assign custom_label = tag | replace: '_label_', '' -%}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+
+<div class="grid__item grid-product {{ grid_item_width }}{% if settings.quick_shop_enable and canonical_url contains 'products' or canonical_url contains 'search' and sold_out == false %} grid-product__has-quick-shop{% endif %}" data-aos="row-of-{{ per_row }}">
+  <div class="grid-product__content">
+    {% if has_custom_label %}
+      <div class="grid-product__tag grid-product__tag--custom">
+        {{ custom_label }}
+      </div>
+    {% else %}     
+      {% if on_sale and sold_out == false %}
+        {% if settings.product_save_amount %}
+          <div class="grid-product__tag grid-product__tag--sale">
+            {% if settings.product_save_type == 'dollar' %}
+              {% capture saved_amount %}{{ product.compare_at_price | minus: product.price | money }}{% endcapture %}
+            {% else %}
+              {% capture saved_amount %}{{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round }}%{% endcapture %}
+            {% endif %}
+            {{ 'products.general.save_html' | t: saved_amount: saved_amount }}
+          </div>
+        {% endif %}
+      {% endif %}
+    {% endif %}
+    
+    {%comment%}
+    {% if settings.quick_shop_enable and canonical_url contains 'products' or canonical_url contains 'search' and sold_out == false %}
+    
+      <div class="quick-product__btn js-modal-open-quick-modal-{{ product.id }} small--hide" data-product-id="{{ product.id }}">
+        <span class="quick-product__label">{{ settings.quick_shop_text }}</span>
+      </div>
+    {% endif %}
+    {%endcomment%}
+
+    {%- assign fixed_aspect_ratio = false -%}
+    {% unless settings.product_grid_image_size == 'natural' %}
+      {%- assign fixed_aspect_ratio = true -%}
+    {% endunless %}
+
+    <a href="{{ product.url | within: collection }}" class="grid-product__link{% comment %} COVID-19 disabled {% if sold_out %} grid-product__link--disabled{% endif %}{% endcomment %}">
+      <div class="grid-product__image-mask">
+        {% if fixed_aspect_ratio %}
+          <div>
+            class="grid__image-ratio grid__image-ratio--{{ settings.product_grid_image_size }}"
+            loading="lazy"
+            bgset="{% include 'bgset', image: product.featured_image %}"
+          </div>
+        {% else %}
+          <div class="image-wrap"
+            style="height: 0; padding-bottom: {{ 100 | divided_by: product.featured_image.aspect_ratio }}%;"
+            >
+
+            {% comment %}temp block to change the featured image on an evergreen ad campaign for Julian March 2022{% endcomment %}
+            {% if page.url == "/pages/women-tights" and product.handle == 'classic-sheer-tights' %}
+                <img 
+                    class="grid-product__image"
+                    loading="lazy"
+                    src="{{ '030922_PG_Classics_2.png' | asset_url }}"
+                    alt="{{ product.featured_image.alt | escape }}">
+            {% elsif page.url == "/pages/women-tights" and product.handle == 'essential-sheer-tights' %}
+                <img 
+                    class="grid-product__image"
+                    loading="lazy"
+                    src="{{ '030922_PG_Essentials_2x.png' | asset_url }}"
+                    alt="{{ product.featured_image.alt | escape }}">
+            {% elsif page.url == "/pages/women-tights" and product.handle == 'backseam-classic-sheer-tights' %}
+                <img 
+                    class="grid-product__image"
+                    loading="lazy"
+                    src="{{ '030922_PG_Backseam_2x.png' | asset_url }}"
+                    alt="{{ product.featured_image.alt | escape }}">
+            {% elsif page.url == "/pages/women-tights" and product.handle == 'shaping-sheer-tights-1' %}
+                <img 
+                    class="grid-product__image"
+                    loading="lazy"
+                    src="{{ '030922_PG_Shaping_2x.png' | asset_url }}"
+                    alt="{{ product.featured_image.alt | escape }}">
+            {% else %}
+            {% comment %}end of temp block to change the featured image on an evergreen ad campaign for Julian March 2022{% endcomment %}
+            <img 
+              class="grid-product__image hey"
+              width="400"
+              height="500"
+              loading="lazy"
+              src="{{ product.featured_image | img_url: '400x' }}"
+              alt="{{ product.featured_image.alt | escape }}"
+              style="height:auto;"
+              >
+            {% endif %} {% comment %} remove this endif too for Julian March 2022 {% endcomment %}
+          </div>
+        {% endif %}
+        {%comment%}Adding tag to collections pages "Best Value", "Best Seller", "New"{%endcomment%}
+        {%include 'Collections-page-tags'%}
+
+        {% unless sold_out %}
+          {% if settings.product_hover_image and product.images.size > 1 %}
+            {% for image in product.images offset: 1 limit: 1 %}
+              {%- assign second_image = image -%}
+            {% endfor %}
+            <div
+              class="grid-product__secondary-image small--hide lozad"
+              loading="lazy"
+              bgset="{% include 'bgset', image: second_image %}">
+            </div>
+          {% endif %}
+        {% endunless %}
+
+      </div>
+
+      <div class="grid-product__meta">
+        <div class="grid-product__title">{{ product.title }}</div>
+        {% if settings.vendor_enable %}
+          <div class="grid-product__vendor">{{ product.vendor }}</div>
+        {% endif %}
+        <div class="tw-flex tw-flex-col lg:tw-flex-row">
+        <div class="grid-product__price control-ab-test tw-flex tw-items-center sm:tw-flex-wrap tw-justify-start">
+          {% if on_sale %}
+            <span class="visually-hidden igPrice">{{ 'products.general.regular_price' | t }}</span>
+            <span class="grid-product__price--original igComparePrice">{{ product.compare_at_price | money }}</span>
+            <span class="visually-hidden igPrice">{{ 'products.general.sale_price' | t }}</span>
+          {% endif %}
+          {% if product.price_varies %}
+            {% assign price = product.price_min | money %}
+            <span {% if on_sale %}class="sale-price tw-text-base igPrice"{% else %}class="tw-text-base igPrice"{% endif %} data-product-id="{{product.id}}">
+              {{ price }}
+            </span>
+          {% else %}
+            <span {% if on_sale %}class="sale-price tw-text-base igPrice"{% endif %} data-product-id="{{product.id}}">
+              {{ product.price  | money }}
+            </span>
+          {% endif %}         
+
+          {%- assign product_variant = product.selected_or_first_available_variant -%}
+          {%- if product_variant.unit_price_measurement -%}
+            <div class="product__unit-price">
+              {%- capture unit_price_base_unit -%}
+                {%- if product_variant.unit_price_measurement -%}
+                  {%- if product_variant.unit_price_measurement.reference_value != 1 -%}
+                    {{ product_variant.unit_price_measurement.reference_value }}
+                  {%- endif -%}
+                  {{ product_variant.unit_price_measurement.reference_unit }}
+                {%- endif -%}
+              {%- endcapture -%}
+
+              {{ product_variant.unit_price | money }}/{{ unit_price_base_unit }}
+            </div>
+          {%- endif -%}
+          <div class="tw-mt-1">
+            {%include 'save-discount-tag' %}
+          </div>
+        </div>
+        {%- comment -%}
+        {% include 'percentage-sale-tag' %}
+        {%- endcomment -%}
+      </div>
+        {%comment%}
+        {% assign found = false %}
+        {% for c in collections['clearance'].products %}
+          {% if c.handle == product.handle %}
+            {% assign found = true %}
+          {% endif %}
+        {% endfor %}
+        {% if found == false %}
+          {% if product.handle == 'essential-sheer-tights' %}
+            <p class="tw-mb-0 tw-py-2 plp-90-day-tag">30 Day Guarantee</p>
+          {% else %}
+            <p class="tw-mb-0 tw-py-2 plp-90-day-tag">90 Day Guarantee</p>
+          {% endif %}
+        {% endif %}
+        
+        Show how much you save in %
+        {%endcomment%}
+        {% if on_sale %}
+            {% if settings.product_save_amount %}
+              <div class='sale-price tw-hidden'>
+                {% if settings.product_save_type == 'dollar' %}
+                  {% capture saved_amount %}{{ product.compare_at_price | minus: product.price | money }}{% endcapture %}
+                {% else %}
+                  {% capture saved_amount %}{{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round }}%{% endcapture %}
+                {% endif %}
+                {{ 'products.general.save_html' | t: saved_amount: saved_amount }}
+              </div>
+           {% endif %}
+        {% endif %}
+        {%comment%}
+         Alter sale price and regular price to A/B test and display
+        {%endcomment%}
+        <div class="grid-product__price variation-ab-test tw-flex tw-items-center sm:tw-flex-wrap tw-justify-start tw-hidden">
+          {% if product.price_varies %}
+            {% assign price = product.price_min | money %}
+            <span {% if on_sale %}class="sale-price tw-mr-1 igPrice"{% endif %}>
+              {{ price }}
+            </span>
+          {% else %}
+            <span {% if on_sale %}class="sale-price tw-mr-1 igPrice"{% endif %}>
+              {{ product.price  | money }}
+            </span>
+          {% endif %}
+          
+          {% if on_sale %}
+            <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+            <span class="grid-product__price--original">{{ product.compare_at_price | money }}</span>
+            <span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+          {% endif %}
+
+          {%- assign product_variant = product.selected_or_first_available_variant -%}
+          {%- if product_variant.unit_price_measurement -%}
+            <div class="product__unit-price">
+              {%- capture unit_price_base_unit -%}
+                {%- if product_variant.unit_price_measurement -%}
+                  {%- if product_variant.unit_price_measurement.reference_value != 1 -%}
+                    {{ product_variant.unit_price_measurement.reference_value }}
+                  {%- endif -%}
+                  {{ product_variant.unit_price_measurement.reference_unit }}
+                {%- endif -%}
+              {%- endcapture -%}
+
+              {{ product_variant.unit_price | money }}/{{ unit_price_base_unit }}
+            </div>
+          {%- endif -%}
+          <div class="tw-mt-1">
+            {%include 'save-discount-tag' %}
+          </div>
+        </div>   
+      </div>
+    </a>
+    {% if product.tags contains 'show_deal_line' and settings.show_plp_deal_line %}
+        <p class="tw-mb-0">{{ settings.plp_deal_line }}</p>
+    {% else %}
+      {% if settings.collection_color_swatches %}
+        {%- assign swatch_file_extension = 'png' -%}
+        {% for option in product.options_with_values %}
+          {%- assign option_name = option.name | downcase -%}
+          {% if option_name contains 'color' or option_name contains 'colour' or option_name contains 'couleur' %}
+            {%- assign option_index = forloop.index0 -%}
+            {%- assign values = '' -%}
+            <div class="grid-product__colors">
+              {% for variant in product.variants %}
+                {%- assign value = variant.options[option_index] %}
+                {% unless values contains value %}
+                  {%- assign values = values | join: ',' %}
+                  {%- assign values = values | append: ',' | append: value %}
+                  {%- assign values = values | split: ',' %}
+
+                  {%- assign color_image = value | handle | append: '.' | append: swatch_file_extension | asset_img_url: '50x' | prepend: 'https:' | split: '?' | first -%}
+                  {%- assign color_swatch_fallback = value | split: ' ' | last | handle -%}
+
+                  <a
+                    href="{{ variant.url | within: collection }}"
+                    class="color-swatch color-swatch--small"
+                    style="background-image: url({{ color_image }}); background-color: {{ color_swatch_fallback }};">
+                  </a>
+                {% endunless %}
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endif %}
+
+    <hr class="product-grid__line"/>
+    <a href="{{ product.url | within: collection }}"> {% include 'plp-yotpo-star-rating' %}</a>
+  </div>
+</div>

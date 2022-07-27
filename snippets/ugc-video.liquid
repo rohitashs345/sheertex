@@ -1,0 +1,27 @@
+{% if is_mobile %}
+<div class="grid__item grid-product small--one-half medium-up--one-quarter aos-init aos-animate" style="margin-top: -13%">
+{% else %}
+<div class="grid__item grid-product small--one-half medium-up--one-quarter aos-init aos-animate slick-slide slick-current slick-active" data-aos="row-of-4" tabindex="-1" role="option" aria-describedby="slick-slide20" data-slick-index="0" aria-hidden="false">
+{% endif %}
+  <div class="grid-product__content">
+    {% if is_mobile %}
+    <div class="grid-product__image-mask" style="overflow: visible !important">
+      <div style="overflow: visible !important">
+    {% else %}
+    <div class="grid-product__image-mask">
+      <div>
+    {% endif %}
+        <video class="grid-product__image product-video lozad" width="270" height="500" controls loop playsinline autoplay muted poster="{{ base_name | append: '.png' | asset_url }}">
+          <source data-src="{{ base_name | append: '.webm' | asset_url }}" type='video/webm; codecs=vp9,vorbis'>
+          <source data-src="{{ base_name | append: '.mp4' | asset_url }}" type='video/mp4'>
+        </video>
+        <noscript>
+          <video class="grid-product__image product-video" width="270" height="500" controls loop playsinline autoplay muted poster="{{ base_name | append: '.png' | asset_url }}">
+            <source src="{{ base_name | append: '.webm' | asset_url }}" type='video/webm; codecs=vp9,vorbis'>
+            <source src="{{ base_name | append: '.mp4' | asset_url }}" type='video/mp4'>
+          </video>
+        </noscript>
+      </div>
+    </div>
+  </div>
+</div>

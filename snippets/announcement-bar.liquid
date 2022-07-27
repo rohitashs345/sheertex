@@ -1,0 +1,42 @@
+<style>
+  .__banner__20Ezk {
+    background-color: #e8e8f2;
+    font-family: Agrandir;
+    letter-spacing: 0.104rem;
+    font-size: 12px;
+  }
+
+  @media (max-width: 600px) {
+    .__banner__20Ezk {
+      position: fixed;
+      bottom: 67px;
+      left: -16px;
+      width: 100vw;
+      border-radius: 0;
+      z-index: 2;
+      text-align: center;
+      transition: bottom 0.3s;
+    }
+
+    .__banner__20Ezk[data-scrolled=true] {
+      bottom: 0;
+    }
+  }
+</style>
+
+<div id="announcement-banner" data-scrolled="false" class="tw-mx-4 tw-font-medium tw-uppercase tw-tracking-wider tw-px-4 tw-pt-2 tw-pb-1 tw-rounded-sm __banner__20Ezk">
+  P.S. Add to cart for a surprise gift
+</div>
+
+<script>
+  let banner = document.getElementById('announcement-banner');
+  let onScroll = function() {
+    if (document.documentElement.scrollTop > 100) {
+      banner.setAttribute('data-scrolled', 'true');
+    } else {
+      banner.setAttribute('data-scrolled', 'false');
+    }
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+</script>

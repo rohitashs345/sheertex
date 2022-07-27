@@ -1,0 +1,78 @@
+<div id="GetInTouchSection" data-section-id="{{ section.id }}" data-section-type="get-in-touch-section">
+  <h2 class="tw-text-center">Get In Touch</h2>
+  <div class="tw-container __section-content__G45pH">
+    <ul class="tw-my-8 __contact-info__zMjLt">
+      <li>
+        <p class="tw-font-medium tw-tracking-wide tw-uppercase">Call Us</p>
+        <a href="tel:+1 800 715 1658">1 (800) 715 1658</a>
+      </li>
+      <li>
+        <p class="tw-font-medium tw-tracking-wide tw-uppercase">Email Us</p>
+        <a href="mailto:hello@sheertex.com">hello@sheertex.com</a>
+      </li>
+    </ul>
+    <div class="__image-wrapper__3ovpz">
+      <img src="{{ section.settings.image | img_url: 'master' }}" loading="lazy" class="tw-px-16 tw-py-8 tw-w-full tw-h-full">
+      <div class="tw-bg-green-200 __factory-info__3r_20">
+        <h2>Our Factory & HQ</h2>
+        <p>7471 Avenue Leonard-de vinci</p>
+        <p>Montreal, QC</p>
+        <p>H2A 2P3</p>
+        <p>
+          <a href="https://goo.gl/maps/aCrdS2CekBHGANm8A" target="_blank" rel="noreferrer">
+            Get directions
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .__section-content__G45pH {
+    display: flex;
+  }
+  .__contact-info__zMjLt {
+    display: grid;
+    flex: 1 1 50%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 100px);
+    list-style: none;
+  }
+  .__contact-info__zMjLt li:last-child {
+    grid-column: 2/3;
+  }
+  .__image-wrapper__3ovpz {
+    flex: 1 1 50%;
+    position: relative;
+    display: flex;
+  }
+  .__factory-info__3r_20 {
+    position: absolute;
+    bottom: 0;
+    padding: 20px;
+  }
+  .__factory-info__3r_20 h2 {
+    text-transform: none;
+  }
+  .__factory-info__3r_20 p {
+    margin: 0;
+    border-top: solid 1px black;
+  }
+  .__factory-info__3r_20 p:last-child {
+    border-bottom: solid 1px black;
+    margin-bottom: 1em;
+  }
+</style>
+{% schema %}
+  {
+    "name": "Get In Touch Section",
+    "class": "get-in-touch tw-my-16",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      }
+    ]
+  }
+{% endschema %}

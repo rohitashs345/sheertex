@@ -1,0 +1,97 @@
+<script src="https://unpkg.com/dayjs@1.10.7/dayjs.min.js"></script>
+<script src="https://unpkg.com/dayjs@1.10.7/plugin/utc.js"></script>
+<script src="https://unpkg.com/dayjs@1.10.7/plugin/timezone.js"></script>
+<script>dayjs.extend(window.dayjs_plugin_utc)</script>
+<script>dayjs.extend(window.dayjs_plugin_timezone)</script>
+<script>
+/* Removing 1-H delivery method based on schedule */
+function findAndRemoveASRDeliveryMethod() {
+  const asrDeliveryMethod = Array.from(document.querySelectorAll('fieldset[data-shipping-methods] div[data-shipping-method]')).find(elem => elem.getAttribute('data-shipping-method').includes('Advanced Shipping Rules'));
+  if (asrDeliveryMethod) {
+    asrDeliveryMethod.parentElement.remove();
+    return true;
+  }
+  
+  return false;
+}
+
+/* Removing Standard delivery method from ASR app */
+function findAndRemoveASRStandardDeliveryMethod() {
+  const asrStandardDeliveryMethod = document.querySelector('.radio__label__primary');
+
+  if (asrStandardDeliveryMethod && asrStandardDeliveryMethod.innerText == 'Standard Shipping') {
+    asrStandardDeliveryMethod.parentElement.parentElement.parentElement.remove();
+    return true;
+  }
+
+  return false;
+}
+
+function isOneHourShippingAvailable() {  
+  const currentDateTimeInMontreal = dayjs.tz(dayjs(), 'America/Montreal');
+  const currentDayOfWeek = currentDateTimeInMontreal.day(); // 0 (Sunday) - 6 (Saturday)
+  const startOfTheDay = currentDateTimeInMontreal.startOf('date');
+  
+  /*
+  M 9am - 4pm
+  T-F 9am - 5pm
+  S-S 12pm - 5pm 
+  */
+  const workingSchedule = [
+    // Sunday
+    {
+      start: startOfTheDay.add(12, 'hour'),
+      end: startOfTheDay.add(17, 'hour')
+    },
+    // Monday
+    {
+      start: startOfTheDay.add(9, 'hour'),
+      end: startOfTheDay.add(16, 'hour')
+    },
+    // Tuesday
+    {
+      start: startOfTheDay.add(9, 'hour'),
+      end: startOfTheDay.add(17, 'hour')
+    },
+    // Wednesday
+    {
+      start: startOfTheDay.add(9, 'hour'),
+      end: startOfTheDay.add(17, 'hour')
+    },
+    // Thursday
+    {
+      start: startOfTheDay.add(9, 'hour'),
+      end: startOfTheDay.add(17, 'hour')
+    },
+    // Friday
+    {
+      start: startOfTheDay.add(9, 'hour'),
+      end: startOfTheDay.add(17, 'hour')
+    },
+    // Saturday
+    {
+      start: startOfTheDay.add(12, 'hour'),
+      end: startOfTheDay.add(17, 'hour')
+    },
+  ];
+
+  const dayOfWeek = currentDateTimeInMontreal.day();
+  const todaySchedule = workingSchedule[dayOfWeek];
+  
+  if (currentDateTimeInMontreal.isAfter(todaySchedule.start) && currentDateTimeInMontreal.isBefore(todaySchedule.end)) {
+    return true;
+  }
+  
+  return false;
+}
+
+function shouldOneHourDeliveryMethodBeRemoved() {
+  const isAvailable = isOneHourShippingAvailable();
+  if (!isAvailable) {
+    findAndRemoveASRDeliveryMethod() && console.log('[INFORMATION] 1-hour shipping was removed due to working schedule');
+  }  
+}
+
+setInterval(findAndRemoveASRStandardDeliveryMethod, 500);
+setInterval(shouldOneHourDeliveryMethodBeRemoved, 500);
+</script>

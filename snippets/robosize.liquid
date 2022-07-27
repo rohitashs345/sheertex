@@ -1,0 +1,10 @@
+
+        {% assign t = template | prepend: '/' | append: '.' %}
+        {% if t contains '/product.' %}
+        <script>
+        window.Robosize = window.Robosize === undefined ? {} : window.Robosize;
+        Robosize.shop = "{{ shop.permanent_domain }}";
+        Robosize.product = {{product.id}};
+        </script>
+        {% endif %}
+        

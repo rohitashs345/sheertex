@@ -1,0 +1,548 @@
+{% comment %}ly_liquid_scripts_begin{% endcomment %}{% capture ly_liquid_content %}{% comment %}ly_liquid_scripts_end{% endcomment %}
+
+<!doctype html>
+<html class="no-js" lang="{{ shop.locale }}">
+<head>
+  <script type="text/javascript">(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/adHUgZ44BbeiOCY10qaUDqvvZbshC3XsPNl48aLn/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();</script>  
+  {% comment %} load HEAD js asap, e.g. for analytics tags {% endcomment %}
+  {% include '_theme__head--js' %}
+  <meta name="google-site-verification" content="HSd57L7znJPp62dJe19jfAo3hsPrUaQeGrDZWS4wfJc" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="theme-color" content="{{ settings.color_button }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="preconnect" href="https://geolocation-db.com">
+  <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com">
+  <meta name="format-detection" content="telephone=no">
+
+  {%- if settings.favicon -%}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />
+  {%- endif -%}
+
+  {% include 'seo-title' %}
+  <title>{{ seo_title }}</title>
+
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+
+  {% include 'social-meta-tags' %}
+
+  {% include '_theme__head--css' %}
+
+  {{ 'sheertex-bundle.css' | asset_url | stylesheet_tag }}
+
+  {% render 'treedify' %}
+
+  {{ content_for_header }}
+
+  
+  {% render 'vwo-smart-code' %}
+
+
+
+{% render 'eu-cookie-consent-script' %}
+
+{%- if settings.enable_one_page_checkout -%}
+<!--ONE PAGE CHECKOUT-->
+<script data-cfasync='false'>if(window.location.pathname=='/securecheckout'){document.title = 'Secure checkout';var css = 'body > :not(#cartLoader) {display:none !important}',head = document.head || document.getElementsByTagName('head')[0],style = document.createElement('style');head.appendChild(style);style.appendChild(document.createTextNode(css));var svg = "<svg style='position:fixed;top:100px;left:50%;margin-left:-100px;' width='200px'  height='200px'  xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='xMidYMid' class='lds-rolling' style='background: none;'><circle cx='50' cy='50' fill='none' ng-attr-stroke='{{config.color}}' ng-attr-stroke-width='{{config.width}}' ng-attr-r='{{config.radius}}' ng-attr-stroke-dasharray='{{config.dasharray}}' stroke='#197bbd' stroke-width='2' r='15' stroke-dasharray='70.68583470577033 25.561944901923447' transform='rotate(243.197 50 50)'><animateTransform attributeName='transform' type='rotate' calcMode='linear' values='0 50 50;360 50 50' keyTimes='0;1' dur='1s' begin='0s' repeatCount='indefinite'></animateTransform></circle></svg>";document.open();document.write("<!doctype ht"+"ml><ht"+"ml><bo"+"dy><div id='cartLoader' style='min-height:600px;width:100%;text-align:center;background-color: rgba(255, 255, 255, .5);position:absolute;z-index:9999999999'>"+svg+"</div></b"+"ody></ht"+"ml>");document.close();}var opcSettings = {checkoutUrl : 'securecheckout', enabled : true, design : 1, skipCart : false, oneClickBuy : false, customJsFile : 'https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0114%2F4120%2F9408%2Ffiles%2Fcheckoutbtn20.js%3Fv%3D1635342872', customCssFile : '', btnSelector : '', enablePopup: false, popupHtml : "",popupBkg : '#ffffff',upsells : '',boosters : {"booster1":null,"booster1_text":"","booster1_text2":null,"booster1_min":null,"booster2":null,"booster3":null,"booster3_heading":"","booster3_title1":null,"booster3_text1":null,"booster3_img1":null,"booster3_title2":null,"booster3_text2":null,"booster3_img2":null,"booster3_title3":null,"booster3_text3":null,"booster3_img3":null,"booster3_title4":null,"booster3_text4":null,"booster3_img4":null,"booster4":null,"booster4_img":null,"booster5":"1"}};var opcLang = {completeOrder : "Complete order", payment : "Payment", shippingMethod : "Shipping method", secureCheckout : "Secure Checkout", paymentNotice : "Please submit information in previous step to show payment methods",shippingNotice : "Please submit shipping information in previous step to show shipping methods",upsellTitle : "Would you like also this? (optional)",upsellAdded : "Product has been successfully added to checkout",addToCheckout : "Add to checkout"};</script>
+<script src='https://d17awlyy7mou9o.cloudfront.net/shopify/script.js?v=2&shop=sheertexsheers.myshopify.com'></script>    
+<!--ONE PAGE CHECKOUT-->
+{%- endif -%}
+
+
+ <!--begin-boost-pfs-filter-css-->
+   {% render 'boost-pfs-style' %}
+ <!--end-boost-pfs-filter-css-->
+
+ <!--begin-intelligems-js-->
+ <script>
+Handlebars.registerHelper('noIgDiscount', function(arg1, options) {
+    return (arg1.find(discount => discount.discount_application.title === 'intelligems' )) ? options.inverse(this) : options.fn(this) ;
+});
+
+Handlebars.registerHelper('hasExtraDiscounts', function(arg1, options) {
+    return arg1.some(discount => discount.discount_application.title !== 'intelligems' ) ;
+});
+
+Handlebars.registerHelper('toString', function(arg1) {
+    const obj = JSON.stringify(arg1, null, 2)
+    console.error("HANDLEBARS")
+    console.error(obj);
+    return obj
+});
+ </script>
+ <script src="https://cdn.intelligems.io/bb414402e16a.js"></script>
+ <!--end-intelligems-js-->
+
+ <!-- Scripts from David to run on every page -->
+ <script src="https://cdn.yottaa.com/rapid.rum.min.js?key=QojUeHroeaW38A"></script>
+<script>
+ Yo.configure('https://qoe-1.yottaa.net/api/v1/configure.rapid.js?key=QojUeHroeaW38A');
+</script>
+
+<!-- Shopify Pixel Script July 2022 -->
+<script async defer src="https://js.crrnt.app/ls/cookie/CA_Y2xpZW50SWQ9MTIw"></script>
+
+</head>
+
+<body class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if settings.enable_currencies %} currencies-enabled{% endif %}" data-transitions="{{ settings.animate_page_transitions }}">
+  <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+
+  <div id="PageContainer" class="page-container">    
+    <div class="transition-body">
+      {%- comment -%}
+      -- Commented out the brand header as per David M request
+      {% include 'temp__common-header' %}      
+      {%- endcomment -%}      
+      <div class='tw-sticky tw-top-0 tw-z-30'>
+        <div id="qab_placeholder"></div>
+        {% section 'header' %}
+      </div>
+      <main class="main-content" id="MainContent">
+        {{ content_for_layout }}
+	    <noscript class="endOfLayoutContentX" type="text/mark"></noscript>{% render 'treedify_script' %}
+      </main>
+
+      {% section 'footer-value-prop-section' %}
+      {% section 'footer' %}
+    </div>
+  </div>
+  
+  {% unless request.path contains 'subscribe' %}
+      {% section 'newsletter-popup' %}
+  {% endunless %}
+
+
+  {%- if settings.enable_currencies -%}
+    {%- include 'currency-modal' -%}
+    {%- include 'utils-convert-to-customer-currency' -%}
+  {%- endif -%}
+
+  {% comment %}
+    Custom markup for slider arrows using theme icons
+  {% endcomment %}
+  <div class="hide">
+    <button id="prevArrowTemplate" class="slick-prev" aria-label="{{ 'general.pagination.previous' | t }}" type="button">
+      <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-left" viewBox="0 0 284.49 498.98"><path d="M249.49 0a35 35 0 0 1 24.75 59.75L84.49 249.49l189.75 189.74a35.002 35.002 0 1 1-49.5 49.5L10.25 274.24a35 35 0 0 1 0-49.5L224.74 10.25A34.89 34.89 0 0 1 249.49 0z"/></svg>
+      <span class="icon__fallback-text">{{ 'general.pagination.previous' | t }}</span>
+    </button>
+    <button id="nextArrowTemplate" class="slick-next" aria-label="{{ 'general.pagination.next' | t }}" type="button">
+      <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right" viewBox="0 0 284.49 498.98"><path d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z"/></svg>
+      <span class="icon__fallback-text">{{ 'general.pagination.next' | t }}</span>
+    </button>
+  </div>
+  {% include 'video-modal' %}
+  {% include 'photoswipe-template' %}
+  {% comment %} load remaining js assets {% endcomment %}
+  {% include '_theme__body--js' %}
+  {% include 'geo-modal' %}
+  {% include 'denier-modal' %}
+
+{% comment %}ly_liquid_scripts_begin{% endcomment %}{% endcapture %}{% render 'ly-liquid-scripts' content: ly_liquid_content %}{% comment %}ly_liquid_scripts_end{% endcomment %}{% comment %}ly_core_scripts_begin{% endcomment %}{% render 'ly-core-scripts' %}{% comment %}ly_core_scripts_end{% endcomment %}{% comment %}ly_switcher_factory_begin{% endcomment %}{% render 'ly-switcher-factory' %}{% comment %}ly_switcher_factory_end{% endcomment %}
+
+
+ <!--begin-boost-pfs-js-->
+   {% render 'boost-pfs' %}
+ <!--end-boost-pfs-js-->
+  <!--Gorgias Chat Widget Start-->
+{% if shop.locale == 'fr' %}
+<script id="gorgias-chat-widget-install-v2" src="https://config.gorgias.chat/gorgias-chat-bundle-loader.js?applicationId=16051"></script>
+<script>
+GorgiasChat.init().then(function() {
+    var chatDict = {
+      actionPostbackError: "An error occurred while processing your action. Please try again.",
+      backLabelBackAt: "Back online at {time}",
+      backLabelBackInAMinute: "Back in 1 minute",
+      backLabelBackInAnHour: "Back in 1 hour",
+      backLabelBackInDays: "Back in {value} days",
+      backLabelBackInHours: "Back in {value} hours",
+      backLabelBackInMinutes: "Back in {value} minutes",
+      backLabelBackOn: "Back on {weekday}",
+      backLabelBackTomorrow: "Back soon",
+      campaignClickToReply: "Click to reply",
+      clickToRetry: "Le message n'a pas été remis. Appuyez pour réessayer.",
+      conversationTimestampHeaderFormat: "MMMM D",
+      emailCaptureInputLabel: "Get notified by emails",
+      emailCaptureOfflineThanksText: "Thanks {email}! We'll get back to you shortly.",
+      emailCaptureOfflineTriggerText: "We're away, leave us your email and we'll respond shortly.",
+      emailCaptureOnlineThanksText: "Thanks! We'll email you at {email} if you leave.",
+      emailCaptureOnlineTriggerText: "Leave us your email and we will reply soon.",
+      emailCaptureOnlineTriggerTextShortly: "Laissez-nous votre courriel et nous vous répondrons sous peu.",
+      emailCapturePlaceholder: "votre@courriel.com",
+      emailCaptureRequiredEmailPlaceholder: "Leave your email",
+      emailCaptureRequiredMessagePlaceholder: "Write your message",
+      emailCaptureThanksText: "Thanks for reaching out! You'll get replies here and in your email.",
+      emailCaptureTriggerBackOnlineAt: "We'll be back online at {time}",
+      emailCaptureTriggerBackOnlineOn: "We'll be back online on {weekday}",
+      emailCaptureTriggerTextBase: "Leave us your email and we'll get back to you.",
+      emailCaptureTriggerTypicalReplyDay: "We typically reply in a day.",
+      emailCaptureTriggerTypicalReplyHours: "We typically reply in a few hours.",
+      emailCaptureTriggerTypicalReplyMinutes: "We typically reply in a few minutes.",
+      fetchHistory: "Load more",
+      fetchingHistory: "Retrieving history...",
+      headerText: "Gorgias Team",
+      inputPlaceholder: "Type a message...",
+      introductionText: "Comment-pouvons-nous vous aider?",
+      invalidFileError: "Only images are supported. Choose a file with a supported extension (jpg, jpeg, png, gif, or bmp).",
+      messageDelivered: "Delivered",
+      messageError: "An error occurred while sending your message. Please try again.",
+      messageIndicatorTitlePlural: "({count}) New messages",
+      messageIndicatorTitleSingular: "({count}) New message",
+      messageRelativeTimeDay: "{value}d ",
+      messageRelativeTimeHour: "{value}h ",
+      messageRelativeTimeJustNow: "Maintenant",
+      messageRelativeTimeMinute: "{value}m ",
+      messageSending: "Sending...",
+      messageTimestampFormat: "h:mm A",
+      offlineIntroductionText: "We'll be back soon",
+      poweredBy: "Powered by",
+      poweredByGorgias: "Powered by Gorgias",
+      send: "Send",
+      shopClosed: "{shopName} is now closed. Agents might not be available.",
+      shopClosingInAMinute: "{shopName} is closing in 1 minute.",
+      shopClosingInLessThanAMinute: "{shopName} is closing in less than 1 minute.",
+      shopClosingSoon: "{shopName} is closing in {minutes} minutes.",
+      tapToRetry: "Le message n'a pas été remis. Appuyez pour réessayer.",
+      unsupportedActionType: "Unsupported action type.",
+      unsupportedMessageType: "Unsupported message type.",
+      usualReplyTimeDay: "Typically replies within a day",
+      usualReplyTimeHours: "Typically replies in a few hours",
+      usualReplyTimeMinutes: "Réponses en quelques minutes"
+    }
+
+    window.GORGIAS_CHAT_TEXTS = chatDict
+    GorgiasChat.updateTexts(chatDict)
+})
+</script>
+<script>
+GorgiasChat.init().then(function() {
+    var chatDict = {
+      actionPostbackError: "An error occurred while processing your action. Please try again.",
+      backLabelBackAt: "Back online at {time}",
+      backLabelBackInAMinute: "Back in 1 minute",
+      backLabelBackInAnHour: "Back in 1 hour",
+      backLabelBackInDays: "Back in {value} days",
+      backLabelBackInHours: "Back in {value} hours",
+      backLabelBackInMinutes: "Back in {value} minutes",
+      backLabelBackOn: "Back on {weekday}",
+      backLabelBackTomorrow: "Back soon",
+      campaignClickToReply: "Click to reply",
+      clickToRetry: "Le message n'a pas été remis. Cliquer pour réessayer.",
+      conversationTimestampHeaderFormat: "MMMM D",
+      emailCaptureInputLabel: "Notifications par courriel",
+      emailCaptureOfflineThanksText: "Thanks {email}! We'll get back to you shortly.",
+      emailCaptureOfflineTriggerText: "We're away, leave us your email and we'll respond shortly.",
+      emailCaptureOnlineThanksText: "Thanks! We'll email you at {email} if you leave.",
+      emailCaptureOnlineTriggerText: "Leave us your email and we will reply soon.",
+      emailCaptureOnlineTriggerTextShortly: "Laissez-nous votre courriel et nous vous répondrons sous peu.",
+      emailCapturePlaceholder: "votre@courriel.com",
+      emailCaptureRequiredEmailPlaceholder: "Leave your email",
+      emailCaptureRequiredMessagePlaceholder: "Write your message",
+      emailCaptureThanksText: "Thanks for reaching out! You'll get replies here and in your email.",
+      emailCaptureTriggerBackOnlineAt: "We'll be back online at {time}",
+      emailCaptureTriggerBackOnlineOn: "We'll be back online on {weekday}",
+      emailCaptureTriggerTextBase: "Leave us your email and we'll get back to you.",
+      emailCaptureTriggerTypicalReplyDay: "We typically reply in a day.",
+      emailCaptureTriggerTypicalReplyHours: "We typically reply in a few hours.",
+      emailCaptureTriggerTypicalReplyMinutes: "We typically reply in a few minutes.",
+      fetchHistory: "Load more",
+      fetchingHistory: "Retrieving history...",
+      headerText: "Gorgias Team",
+      inputPlaceholder: "Écrire votre message...",
+      introductionText: "Comment pouvons-nous vous aider?",
+      invalidFileError: "Only images are supported. Choose a file with a supported extension (jpg, jpeg, png, gif, or bmp).",
+      messageDelivered: "Delivered",
+      messageError: "An error occurred while sending your message. Please try again.",
+      messageIndicatorTitlePlural: "({count}) New messages",
+      messageIndicatorTitleSingular: "({count}) New message",
+      messageRelativeTimeDay: "{value}d ",
+      messageRelativeTimeHour: "{value}h ",
+      messageRelativeTimeJustNow: "Maintenant",
+      messageRelativeTimeMinute: "{value}m ",
+      messageSending: "Sending...",
+      messageTimestampFormat: "h:mm A",
+      offlineIntroductionText: "We'll be back soon",
+      poweredBy: "Powered by",
+      poweredByGorgias: "Powered by Gorgias",
+      send: "Send",
+      shopClosed: "{shopName} is now closed. Agents might not be available.",
+      shopClosingInAMinute: "{shopName} is closing in 1 minute.",
+      shopClosingInLessThanAMinute: "{shopName} is closing in less than 1 minute.",
+      shopClosingSoon: "{shopName} is closing in {minutes} minutes.",
+      tapToRetry: "Le message n'a pas été remis. Appuyez pour réessayer.",
+      unsupportedActionType: "Unsupported action type.",
+      unsupportedMessageType: "Unsupported message type.",
+      usualReplyTimeDay: "Typically replies within a day",
+      usualReplyTimeHours: "Typically replies in a few hours",
+      usualReplyTimeMinutes: "Réponses en quelques minutes"
+  }
+
+  var sspDict = {
+      applyPromoCode: "Apply promo code",
+      april: "Apr",
+      articleRecommendationInputPlaceholder: "Need more help? Ask us a question!",
+      attemptedDelivery: "Attempted delivery",
+      august: "Aug",
+      backToHome: "Back To Home",
+      billingInformation: "Billing information",
+      cancel: "Cancel",
+      cancelFulfillment: "Cancel fulfillment",
+      cancelMessageDescription: "I'd like to cancel the following fulfillment",
+      cancelOrder: "Cancel an order",
+      canceled: "Canceled",
+      cancelled: "Cancelled",
+      cantSignIn: "Can't sign in?",
+      changeShippingAddress: "I'd like to change my shipping address",
+      checkSpamFolder: "If you can't find the verification email, please check your spam and junk folders.",
+      checkpointAttemptFail: "Failed attempt",
+      checkpointAvailableForPickup: "Available for pickup",
+      checkpointDelivered: "Delivered",
+      checkpointException: "Exception",
+      checkpointException_001: "Exception",
+      checkpointException_002: "Customer moved",
+      checkpointException_003: "Customer refused delivery",
+      checkpointException_004: "Delayed (Customs clearance)",
+      checkpointException_005: "Delayed (External factors)",
+      checkpointException_006: "Held for payment",
+      checkpointException_007: "Incorrect Address",
+      checkpointException_008: "Pick up missed",
+      checkpointException_009: "Rejected by carrier",
+      checkpointException_010: "Returning to sender",
+      checkpointException_011: "Returned to sender",
+      checkpointException_012: "Shipment damage",
+      checkpointException_013: "Shipment lost",
+      checkpointExpired: "Expired",
+      checkpointInTransit: "In transit",
+      checkpointInfoReceived: "Info received",
+      checkpointOrderPlaced: "Order placed",
+      checkpointOutForDelivery: "Out for delivery",
+      checkpointPending: "Pending",
+      codeExpiresIn: "Code expires in",
+      codeSentTo: "Code sent to",
+      codeWillExpire: "This code will expire in 10 minutes. If you didn't initiate this request, please let our support agents know.",
+      confirmed: "Confirmed",
+      createdAt: "Created at",
+      customerHasNoOrdersEmail: "No orders found for this email",
+      customerHasNoOrdersPhone: "No orders found for this phone number",
+      damagedInDelivery: "My order was damaged in delivery",
+      december: "Dec",
+      delivered: "Delivered",
+      deliveredAt: "at",
+      deliveredOn: "Delivered on",
+      deliveredVia: "Shipped via",
+      editOrder: "Edit order",
+      email: "Email",
+      errorFetchingOrders: "An error occurred while fetching your orders",
+      errorSendingReportIssue: "Something went wrong while sending the report issue.",
+      estimatedDelivery: "Estimated delivery",
+      etaProvidedBy: "ETA provided by",
+      expectToBeDeliveredBy: "by",
+      failedDelivery: "Failed delivery",
+      failedFulfillment: "Failed fulfillment",
+      failure: "Failure",
+      february: "Feb",
+      fillYourEmailToTalkToAnAgent: "Fill your email to talk to an agent",
+      findOrder: "Find your order",
+      fulfillment: "Fulfillment",
+      fulfillmentDetails: "Fulfillment details",
+      happyToHelp: "Happy to help, have a great day!",
+      hiFirstname: "Hi {{firstName}},",
+      howCanIHelp: "Comment pouvons-nous vous aider?",
+      iHaveTheFollowingIssue: "I have the following Issue:",
+      iWouldLikeToCancelTheFollowingOrder: "I'd like to cancel the following order",
+      iWouldLikeToReturnTheFollowingItems: "I'd like to return the following items",
+      inTransit: "In transit",
+      inTransitVia: "In-transit via",
+      incorrectOrder: "I did not receive the correct order",
+      invalidCode: "Invalid code",
+      invalidPhoneNumber: "Invalid phone number",
+      itemNames: "Item names",
+      itemsRequestedForReturn: "Items requested for return",
+      january: "Jan",
+      july: "Jul",
+      june: "June",
+      labelPrinted: "Label printed",
+      labelPurchased: "Label purchased",
+      lastUpdated: "Last updated",
+      learnMore: "Learn more",
+      lostOrderDetails: "Lost your order details? Talk to an agent",
+      manageYourOrders: "Manage your orders",
+      march: "Mar",
+      maxVerificationAttemptsReached: "Maximum verification attempts reached",
+      may: "May",
+      needHelp: "Need more help?",
+      noCustomerAssociatedEmail: "No customer associated with this email",
+      noCustomerAssociatedPhone: "No customer associated with this phone number",
+      noINeedMoreHelp: "No, I need more help",
+      november: "Nov",
+      october: "Oct",
+      oneItemSelected: "1 item selected",
+      order: "Order",
+      orderCreated: "Order Created",
+      orderNotFound: "We have no record of that order number and email combination. Please try again or ",
+      orderNumber: "Order number",
+      orderPlaced: "Order placed",
+      other: "Other",
+      outForDelivery: "Out for delivery",
+      outForDeliveryVia: "Out for delivery via",
+      partiallyRefunded: "Partially refunded",
+      pastDeliveryDate: "I'm past my expected delivery date",
+      payment: "Payment",
+      pendingDelivery: "Pending delivery",
+      pleaseRefreshPageToUseChat: "Please refresh your page to continue using the chat.",
+      pleaseUseVerificationCodeToLogIn: "Please use this verification code to complete your log-in:",
+      previousConversation: "Previous Conversation",
+      processing: "Processing",
+      processingFulfillment: "Processing fulfillment",
+      provideEmailAndOrderNumber: "You must provide an email and an order number",
+      quantityToReturn: "Quantity to return",
+      quickAnswers: "Quick answers",
+      readyForPickup: "Ready for pickup",
+      reasonCancelOrder: "I'd like to cancel my order",
+      reasonCancelSubscription: "I'd like to cancel my subscription",
+      reasonChangeDeliveryDate: "I'd like to change the delivery date",
+      reasonChangeShippingAddress: "I'd like to change my shipping address",
+      reasonDidNotReceiveRefund: "I didn't get my refund",
+      reasonDiscountNotWorking: "My discount code is not working",
+      reasonEditOrder: "I'd like to edit my order",
+      reasonEditSubscription: "I'd like to edit my subscription",
+      reasonExchangeRequest: "I'd like to exchange items in my order",
+      reasonForgotToUseDiscount: "I forgot to apply my discount code",
+      reasonIncorrectItems: "The items are different from what I ordered",
+      reasonItemsMissing: "Some items are missing from my order",
+      reasonNotHappy: "I'm not happy with the product I received :-1:",
+      reasonOrderDamaged: "My order was damaged in delivery",
+      reasonOrderDefective: "The items in my order are defective",
+      reasonOrderStillNotShipped: "My order should have shipped by now",
+      reasonOrderStuckInTransit: "My order has been stuck in transit",
+      reasonOther: "Other",
+      reasonPastExpectedDeliveryDate: "I'm past my expected delivery date",
+      reasonReorderItems: "I'd like to reorder some items",
+      reasonReplaceItemsRequest: "I'd like to replace items in my order",
+      reasonRequestDiscount: "I'd like a discount code",
+      reasonRequestRefund: "I'd like to get a refund for this order",
+      reasonReturnProduct: "I'd like to return a product",
+      reasonVeryHappy: "I'm very happy with the product I received :+1:",
+      reasonWhereIsMyOrder: "Where is my order?",
+      refunded: "Refunded",
+      reportAnIssueWithOrder: "Report an issue with an order",
+      reportIssue: "Report issue",
+      requestCancellation: "Request Cancellation",
+      requestReturn: "Request Return",
+      resendCode: "Resend code",
+      return: "Return",
+      returnItems: "Return items",
+      returnOrder: "Return an order",
+      see1MoreItem: "1 more item",
+      see1MoreOrder: "See 1 more order",
+      seeMoreItems: "{moreItemsCount} more items",
+      seeMoreOrders: "See {nextPageOrderCount} more orders",
+      seeOrders: "See your orders",
+      selectAll: "Select all",
+      sendCode: "Send code",
+      sendUsAMessage: "Send us a message",
+      sent: "Sent",
+      september: "Sept",
+      severalItemsSelected: "{itemsSelectedCount} items selected",
+      shipmentBeingDelivered: "Order shipment is being delivered to its final destination.",
+      shipping: "Shipping",
+      shippingAddress: "Shipping address",
+      shippingInformation: "Shipping information",
+      showLessItems: "Show less",
+      signIn: "Sign in",
+      sincerely: "Sincerely,",
+      sms: "SMS",
+      sorryToHearThatEmailNotRequired: "Sorry to hear that! Someone will be with you soon.",
+      sorryToHearThatEmailRequired: "Sorry to hear that. Leave us your email and we'll get back to you.",
+      sorryToHearThatOfflineEmailCaptured: "Sorry to hear that, we'll get back to you by email.",
+      sorryToHearThatOnlineEmailCaptured: "I'm sorry to hear that. An agent will be with you in a few minutes.",
+      startConversation: "Start conversation",
+      stuckInTransit: "My order has been stuck in transit for several days",
+      subtotal: "Subtotal (Inc. tax)",
+      summary: "Summary",
+      supportTeam: "The {{shopFriendlyName}} support team",
+      talkToLiveAgent: "talk to a live agent",
+      thanksOurTeamWillRespond: "Thanks, our team will respond shortly.",
+      total: "Total",
+      track: "Track",
+      trackOrder: "Track an order",
+      trackingNumber: "Tracking number",
+      trackingNumberPrefix: "Tracking no.",
+      trackingUrl: "Tracking Url",
+      trySigningInWithOrderNumber: "Try signing in with order number",
+      unavailable: "Unavailable",
+      unfulfilled: "Unfulfilled",
+      verificationCodeField: "6-digit code",
+      wasThisHelpful: "Was this helpful?",
+      whatIsWrongWithOrder: "What is wrong with your order?",
+      yesThankYou: "Yes, thank you",
+      youWillGetRepliesByEmail: "Thanks! You'll get replies by email.",
+      youWillGetRepliesHereAndByEmail: "Thanks! You'll get replies here and by email.",
+      yourEmail: "Your email",
+      yourOrders: "Your orders",
+      yourPhoneNumber: "Your phone number"
+    }
+
+    window.GORGIAS_CHAT_TEXTS = chatDict
+    GorgiasChat.updateTexts(chatDict)
+    GorgiasChat.updateSSPTexts(sspDict)
+})
+</script>
+  <script>
+GorgiasChat.init().then(function() {
+    GorgiasChat.disableSSP()
+})
+</script>
+  <script>
+    GorgiasChat.init().then(function() {
+        GorgiasChat.hidePoweredBy(true)
+    })
+</script>
+{% else %}
+<script id="gorgias-chat-widget-install-v2" src="https://config.gorgias.chat/gorgias-chat-bundle-loader.js?applicationId=16051&lang=fr"></script> 
+{% endif %}
+  <!--Gorgias Chat Widget End-->
+  
+</body>
+</html>
+
+<!-- Begin Shopify-Afterpay JavaScript Snippet (v1.0.9) -->
+<script type="text/javascript" defer="defer">
+  // Overrides:
+  // var afterpay_min = 0.04;            // As per your Afterpay contract.
+  // var afterpay_max = 2000.00;         // As per your Afterpay contract.
+  // var afterpay_cbt_enabled = false;   // As per your Afterpay contract; change to true to display Cross-Border Trade artwork (for AU/NZ).
+  var afterpay_logo_theme = 'black'; // Can be 'colour', 'black' or 'white'.
+  var afterpay_product_selector = '#product-price-selector';
+  // var afterpay_cart_integration_enabled = true;
+  // var afterpay_cart_static_selector = '#cart-subtotal-selector';
+
+  // Non-editable fields:
+  var afterpay_shop_currency = {{ shop.currency | json }};
+  var afterpay_cart_currency = {{ cart.currency.iso_code | json }};
+  var afterpay_shop_money_format = {{ shop.money_format | json }};
+  var afterpay_shop_permanent_domain = {{ shop.permanent_domain | json }};
+  var afterpay_theme_name = {{ theme.name | json }};
+  var afterpay_product = {{ product | json }};
+  var afterpay_current_variant = {{ product.selected_or_first_available_variant | json }};
+  var afterpay_cart_total_price = {{ cart.total_price | json }};
+  var afterpay_js_snippet_version = '1.0.9';
+</script>
+<script
+  type="text/javascript"
+  src="https://static.afterpay.com/shopify-afterpay-javascript.js"
+  defer="defer"
+></script>
+
+
+<script>
+  window.jQuery.noConflict();   
+</script>
+
+<script src="https://cdn.attn.tv/sheertex/dtag.js"></script>
+
+{% render 'svelte-context-generator' %}
+{{ 'svelte-bundle.js' |  asset_url | script_tag }}
+{{ 'svelte-bundle.css' | asset_url | stylesheet_tag }}

@@ -1,0 +1,50 @@
+<style>
+.all-cat-sec::-webkit-scrollbar {
+  display: none;
+}
+</style>
+
+<section class="all-cat-sec tw-flex tw-align-start tw-justify-between tw-overflow-x-scroll msm:tw-pl-0 tw-my-8" >
+  <a href="https://www.sheertex.com/collections/new-arrivals" class="tw-flex">
+      <div class="tw-flex tw-items-center tw-mr-2 tw-justify-center tw-rounded-xl tw-w-64" style="background-image: url({{ 'plp-shop-newarrivals.png' | asset_img_url: '800x' }})">
+        <p class="tw-z-20 tw-mb-1 tw-p-16 tw-text-xs tw-font-sans tw-text-white tw-text-center tw-uppercase">
+          {{ 'sections.collection-template.new_arrivals_html' | t }}
+        </p>        
+      </div>
+  </a>
+  <a href="https://www.sheertex.com/collections/best-sellers-1" class="tw-flex">
+  <div class="tw-flex tw-items-center tw-mr-2 tw-justify-center tw-rounded-xl tw-w-64" style="background-image: url({{ 'plp-shop-bestsellers.png' | asset_img_url: '800x' }})">
+    <p class="tw-z-20 tw-mb-1 tw-p-16 tw-text-xs tw-font-sans tw-text-white tw-text-center tw-uppercase">
+      {{ 'sections.collection-template.best_sellers_html' | t }}
+    </p>    
+  </div>
+  </a>
+  <a href="https://www.sheertex.com/products/classic-sheer-tights" class="tw-flex">
+  <div class="tw-flex tw-items-center tw-mr-2 tw-justify-center tw-rounded-xl tw-w-64" style="background-image: url({{ 'plp-shop-classic.png' | asset_img_url: '800x' }})">
+    <p class="tw-z-20 tw-mb-1 tw-p-16 md:tw-p-10 tw-text-xs tw-font-sans tw-text-white tw-text-center tw-uppercase">
+      {{ 'sections.collection-template.classic_sheer_html' | t }}
+    </p>    
+  </div>
+  </a>
+  <a href="https://www.sheertex.com/products/fine-ribbed-sheer-tights" class="tw-flex">
+  <div class="tw-flex tw-items-center tw-mr-2 tw-justify-center tw-rounded-xl tw-w-64" style="background-image: url({{ 'plp-shop-ribbed.png' | asset_img_url: '800x' }})">
+    <p class="tw-z-20 tw-mb-1 tw-p-16 tw-text-xs tw-font-sans tw-text-white tw-text-center tw-uppercase">
+      {{ 'sections.collection-template.ribbed_classic_sheer_html' | t }}
+    </p>    
+  </div>
+  </a>
+  <a href="https://www.sheertex.com/collections/nude-tights-pantyhose" class="tw-flex">
+    <div class="tw-flex tw-items-center tw-mr-2 tw-justify-center tw-rounded-xl tw-w-64" style="background-image: url({{ 'plp-nude-tights.png' | asset_img_url: '800x' }})">
+      <p class="tw-z-20 tw-mb-1 tw-p-14 msm:tw-p-16 tw-text-xs tw-font-sans tw-text-white tw-text-center tw-uppercase">
+        {{ 'sections.collection-template.colored_html' | t }}
+      </p>      
+    </div>
+  </a>
+  <a href="https://www.sheertex.com/pages/shop-sets" class="tw-flex">
+  <div class="tw-flex tw-items-center tw-justify-center tw-rounded-xl tw-w-64" style="background-image: url({{ 'plp-shop-bundles.png' | asset_img_url: '800x' }})">
+    <p class="tw-z-20 tw-mb-1 tw-p-16 tw-text-xs tw-font-sans tw-text-white tw-text-center tw-uppercase">
+      {{ 'sections.collection-template.shop_bundles_html' | t }}
+    </p>    
+  </div>
+  </a>
+</section>

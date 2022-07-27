@@ -1,0 +1,194 @@
+<div
+  id="NewCollectionSection"
+  data-section-id="{{ section.id }}"
+  data-section-type="new-collection-template">
+
+  <div class="collection_header">
+    {% if section.settings.banner_header != blank %}
+      <h1>{{ section.settings.banner_header }}</h1>
+    {% endif %}
+    {% if section.settings.banner_content != blank %}
+      <p>{{ section.settings.banner_content }}</p>
+    {% endif %}
+  </div>
+  <div class="nav_list">
+    <ul>
+      {% for block in section.blocks %}
+        {% if block.settings.collection != blank %}
+          {% if block.settings.collection_title != blank %}
+            <li><a href="#{{ block.settings.collection_title | handle }}">{{ block.settings.collection_title | upcase }}</a></li>
+          {% else %}
+            <li><a href="#{{ collections[block.settings.collection].title | handle }}">{{ collections[block.settings.collection].title | upcase }}</a></li>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="page-width page-content">
+    {% for block in section.blocks %}
+      {% assign collection = collections[block.settings.collection] %}
+      {%- assign per_row = block.settings.per_row -%}
+      <div class="collection-block" id="{% if block.settings.collection_title != blank %}{{ block.settings.collection_title | handle }}{% else %}{{ collection.title | handle }}{% endif %}">
+        {% if block.settings.enable_hero %}
+          <div class="collection_hero">
+            <div class="hero-content">
+              <div class="hero-title">
+                {% if block.settings.collection_title != blank %}
+                  <h2>{{ block.settings.collection_title }}</h2>
+                {% else %}
+                  <h2>{{ collection.title }}</h2>
+                {% endif %}
+              </div>
+              {% if block.settings.hero_content %}
+                <div class="hero-text">
+                  <p>{{ block.settings.hero_content }}</p>
+                </div>
+              {% endif %}
+              {% if block.settings.button_text != blank and block.settings.button_url != blank %}
+                <div class="hero-button">
+                  <a href="{{ block.settings.button_url }}" class="btn">{{ block.settings.button_text }}</a>
+                </div>
+              {% endif %}
+            </div>
+            <div class="hero-image">
+              {%- assign img_url = block.settings.hero_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+              <img 
+                  class="feature-row__image"
+                  loading="lazy"
+                  src="{{ img_url }}"
+                  alt="{{ block.settings.hero_image.alt }}">
+            </div>
+          </div>
+        {% else %}
+          <div class="collection_title">
+            {% if block.settings.collection_title != blank %}
+              <h2>{{ block.settings.collection_title }}</h2>
+            {% else %}
+              <h2>{{ collection.title }}</h2>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% unless block.settings.button_text != blank and block.settings.button_url != blank %}
+          <div class="collection_content">
+            <div class="grid grid--uniform">
+              {% assign grid_item_width = 'medium-up--one-third' %}
+
+              {% case per_row %}
+              {% when 1 %}
+                {%- assign grid_item_width = '' -%}
+              {% when 2 %}
+                {%- assign grid_item_width = 'medium-up--one-half' -%}
+              {% when 3 %}
+                {%- assign grid_item_width = 'medium-up--one-third' -%}
+              {% when 4 %}
+                {%- assign grid_item_width = 'medium-up--one-quarter' -%}
+              {% when 5 %}
+                {%- assign grid_item_width = 'medium-up--one-fifth' -%}
+              {% endcase %}
+
+              {% if collection.products.length > block.settings.product_limit %}
+                {% for i in (1..block.settings.product_limit) %}
+                  {% assign product = collection.products[forloop.index0] %}
+                  {% include 'product-grid-item' %}
+                {% endfor %}
+              {% else %}
+                {% for i in (1..collection.products.length) %}
+                  {% assign product = collection.products[forloop.index0] %}
+                  {% include 'product-grid-item' %}
+                {% endfor %}
+              {% endif %}
+            </div>
+            {% if collection.products.length > block.settings.product_limit %}
+              <div class="view_all">
+                <a href="{{ collection.url }}" class="btn">View All</a>
+              </div>
+            {% endif %}
+          </div>
+        {% endunless %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Gift guide page",
+    "class": "new-collection",
+    "settings": [
+      {
+        "type": "text",
+        "id": "banner_header",
+        "label": "Banner Header"
+      },
+      {
+        "type": "textarea",
+        "id": "banner_content",
+        "label": "Banner Content"
+      }
+    ],
+    "blocks":[
+      {
+        "type": "Collection",
+        "name": "Collection",
+        "settings":[
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          },
+          {
+            "type": "text",
+            "id": "collection_title",
+            "label": "Collection Title"
+          },
+          {
+            "type": "textarea",
+            "id": "hero_content",
+            "label": "Hero content"
+          },
+          {
+            "type": "checkbox",
+            "id": "enable_hero",
+            "label": "Hero Enable",
+            "default": false
+          },
+          {
+            "type": "image_picker",
+            "id": "hero_image",
+            "label": "Hero Image"
+          },
+          {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text"
+          },
+          {
+            "type": "url",
+            "id": "button_url",
+            "label": "Button Link"
+          },
+          {
+            "type": "range",
+            "id": "product_limit",
+            "min": 1,
+            "max": 20,
+            "step": 1,
+            "label": "Product Limit",
+            "default": 4
+          },
+          {
+            "type": "range",
+            "id": "per_row",
+            "label": "Products per row",
+            "default": 4,
+            "min": 1,
+            "max": 5,
+            "step": 1
+          }
+        ]
+       }
+     ]
+  }
+{% endschema %}

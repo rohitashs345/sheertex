@@ -1,0 +1,44 @@
+<div class="section-content tw-border-t-0 tw-text-center tw-mt-12 tw-mb-16">
+    <p class="tw-font-sans tw-leading-normal tw-text-center tw-tracking-mini-heading tw-font-bold tw-text-sm msm:tw-text-xs tw-uppercase">{{section.settings.header}}</p>
+    <p class="hp-value-prop-description tw-px-4 tw-text-4xl msm:tw-text-2xl tw-font-serif">{{section.settings.body}}</p>
+    <a href="{{section.settings.bottom_link}}" class="tw-cursor-pointer msm:tw-text-xs sm:tw-text-xs tw-font-sans tw-leading-normal tw-uppercase tw-text-center tw-tracking-wide tw-font-medium tw-underline">
+            Discover how we did it?
+    </a>
+</div>
+
+{% schema %}
+{
+  "name": "HP Incase wondering",
+    "settings": [
+        {
+            "type": "text",
+            "id": "header",
+            "label": "Header",
+            "default": "In case you were wondering"
+        },
+        {
+            "type": "html",
+            "id": "body",
+            "label": "Body",
+            "default": "Will my tights really make it through the day?"
+        },
+        {
+            "type": "text",
+            "id": "bottom_text",
+            "label": "Bottom text",
+            "default": "Discover how we did it?"
+        },
+        {
+            "type": "url",
+            "id": "bottom_link",
+            "label": "Bottom link"
+        }
+    ],
+  "presets": [
+    {
+      "name": "HP Incase wondering",
+      "category": "Sheertex Inc"
+    }
+  ]
+}
+{% endschema %}

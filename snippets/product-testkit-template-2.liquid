@@ -1,0 +1,186 @@
+{% style %}
+@media (max-width: 640px){
+  .test-page-hero {
+      min-height: 45vh;
+  }
+}
+@media (min-width: 640px){
+  .test-page-hero {
+      min-height: 65vh;
+  }
+}
+
+.test-press-sec {
+  background: #f1e7db;
+}
+
+.gizmodoContainer, .timeContainer, .bustleContainer {
+  background: transparent;
+}
+
+.test-page-review-header {
+  font-family: 'Agrandir';
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.104rem;
+  font-weight: bold;
+  margin-top: 75px;
+  margin-bottom: 20px;
+}
+.test-page-review {
+  max-width:700px;
+  margin-top: 20px;
+  font-family: 'Matiere';
+}
+.test-page-review-button {
+  font-family: 'Agrandir';
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.104rem;
+  font-weight: 500;
+}
+.test-page-review-button:hover {
+  text-decoration: underline;
+  border: 1px solid black;
+}
+.test-page-review-name {
+  font-family: 'Agrandir';
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.104rem;
+  font-weight: 500;
+}
+{% endstyle %}
+
+<script>
+    function turnOnTest(selectedVideo) {
+        window.jQuery( document ).ready(function() {
+            const testVideos = document.querySelectorAll('.testkit-testimonal-video');
+            testVideos.forEach(function (testVideo) {
+                if (testVideo !== selectedVideo) {
+                  testVideo.pause();
+                }
+            });
+            var playPromise = selectedVideo.play();
+            if (playPromise !== undefined) {
+                playPromise.then( _ => {
+                  //Automatic playback started (playing)  
+                })
+                .catch(error => {
+                  //Auto-play prevented (paused)
+                });
+            }
+        });
+    }
+</script>
+
+{% render 'why-sheertex-animated-icons' %}
+<section class="tw-mt-12 tw-bg-brown-200 tw-py-12">
+  <h1 class="testkit-hero-subline tw-text-center tw-pb-10">The hype is real</h1>
+  <div class="testkit-testimonial-container tw-flex tw-container tw-mx-auto tw-overflow-x-scroll tw-justify-between tw-items-center">
+    <video autoplay loop muted playsinline 
+      class="testkit-testimonal-video tw-pr-8" 
+      id="testkit-page-video-1"
+      onmouseover="turnOnTest(this)"
+      poster="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Test-Sock-Strength1.png?v=1628616187"
+    >
+      <source src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Test-Sock-Strength1.webm?v=1628616187" type='video/webm; codecs=vp9,vorbis'>
+      <source src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Test-Sock-Strength1.mp4?v=1628616187" type="video/mp4" />Your browser does not support the video tag.
+    </video>
+    <video loop muted 
+      class="testkit-testimonal-video tw-pr-8 msm:tw-hidden"
+      id="testkit-page-video-2"
+      onmouseover="turnOnTest(this)"
+      poster="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Test2_4ac8cffe-596a-402c-8f72-1645268731c0.png?v=1628620273"
+    >
+      <source src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Test2_1.webm?v=1628618063" type='video/webm; codecs=vp9,vorbis'>
+      <source src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Test2.mp4?v=1628618063" type="video/mp4" />Your browser does not support the video tag.
+    </video>
+    <video loop muted  
+      class="testkit-testimonal-video tw-pr-8 msm:tw-hidden"
+      id="testkit-page-video-3"
+      onmouseover="turnOnTest(this)"
+      poster="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Test3_c5520959-fa87-4b64-b526-ecd546b26cd7.png?v=1628620294"
+    >
+      <source src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/test3_1.webm?v=1628618187" type='video/webm; codecs=vp9,vorbis'>
+      <source src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/test3.mp4?v=1628618187" type="video/mp4" />Your browser does not support the video tag.
+    </video>
+  </div>
+  <div class="tw-uppercase tw-font-sans tw-font-medium tw-tracking-widest tw-mt-16 tw-mb-6 tw-text-center"><a class="tw-bg-white tw-px-12 tw-py-2" href=" https://www.sheertex.com/cart/31686925680711:1">Get your test kit</a></div>
+</section>
+
+<section class="test-page-reviews-sec tw-text-center tw-mb-16">
+  <p class ="test-page-review-header msm:tw-px-4">
+    {% if request.locale.iso_code == 'en' %}
+      With thousands of 5 star reviews<br>(and counting)
+    {% elsif request.locale.iso_code == 'fr' %}
+      DES MILLIERS D’ÉVALUATIONS CINQ ÉTOILES<br>(ET ÇA CONTINUE!)
+    {% endif %}
+  </p>
+  <div class="msm:tw-px-4">
+    <img src="{{ '5-star.svg' | asset_url }}" loading="lazy" height="11px">
+    <p class="test-page-review msm:tw-text-base tw-text-2xl tw-mx-auto">"
+      {% if request.locale.iso_code == 'en' %}
+        They look and feel great along with giving you confidence to dash into the garden, walking the dogs,
+        messing with the cat without fear of snags and tears! No more having to stash an extra pair for an emergency!"
+      {% elsif request.locale.iso_code == 'fr' %}
+        Ils sont beaux et agréables à porter et vous permettent de vous aventurer dans le jardin,
+        de promener le chien ou de vous occuper de votre chat sans craindre les accrocs et les déchirures!
+        Vous n'aurez plus à garder une paire supplémentaire en cas d'urgence!
+      {% endif %}
+    </p>
+    <p class="test-page-review-name">— Kim R.</p>
+  </div>
+  <div class="tw-mt-12">
+    <a href="https://www.sheertex.com/cart/31686925680711:1" class="tw-px-16 tw-py-2 tw-bg-green-200 tw-uppercase tw-font-sans tw-font-medium tw-tracking-widest">
+      Get Started
+    </a>
+  </div>
+</section>
+
+<section class="test-press-sec">
+  <div class="tw-uppercase tw-mb-6 tw-font-bold tw-text-center tw-font-sans tw-font-heading tw-pt-16 msm:tw-pt-12">Don’t just take our word for it</div>
+  <div class="gizmodoBustleContainer tw-w-full mlg:tw-mx-0 tw-pb-6">
+      <div class="gizmodoContainer tw-mx-3 sm:tw-mx-0">
+        <div class="gizmodoContainer-content">
+          <span class="big-quote">"</span>
+            {% if request.locale.iso_code == 'en' %}
+              You can stretch and twist the Sheertex as much as you like and they won't break. You'd have to be the Hulk to tear a hole through these things.
+            {% elsif request.locale.iso_code == 'fr' %}
+              Vous pouvez étirer et tordre les collants Sheertex autant que vous le souhaitez et ils ne se déchireront pas. Il faudrait être Hulk pour faire un trou dedans.
+            {% endif %}
+          <span class="big-quote">"</span>
+        </div>
+        <div class="gizmodoContainer-gizmodo">
+          <img 
+            class="img"
+            loading="lazy" 
+            src ="https://cdn.shopify.com/s/files/1/0316/1119/1435/files/Gizmodo_Media_Group_Logo_360x_ee0ebb4d-e73b-4795-8ea7-700aad79456e.png?v=1580975307">
+        </div>
+      </div>
+      <div class="logo-container timeContainer tw-mx-3 tw-mt-3 sm:tw-mx-0 sm:tw-mt-0">
+        <div class="timeContainer-content">
+          {% if request.locale.iso_code == 'en' %}
+            Named One of<br>TIME's Best<br>Inventions 
+          {% elsif request.locale.iso_code == 'fr' %}
+            L’une des<br>meilleures inventions<br>selon TIME
+          {% endif %}
+        </div>
+      </div>
+      <div class="bustleContainer tw-mx-3 tw-mt-3 sm:tw-mx-0 sm:tw-mt-0">
+        <div class="bustleContainer-content">
+        {% if request.locale.iso_code == 'en' %}
+          <span class="big-quote">"</span>These super pantyhose have been tested and proven to be wearable up to 50 times. Regular brands usually give you two or three wears before you are forced to toss 'em.<span class="big-quote">"</span> 
+        {% elsif request.locale.iso_code == 'fr' %}
+          <span class="big-quote">"</span>Ces super collants ont été testés et prouvés qu’ils pouvaient être portés jusqu’à 50 fois. Les marques ordinaires vous donnent généralement deux ou trois utilisations avant que vous ne soyez obligé de les jeter.<span class="big-quote">"</span> 
+        {% endif %}
+        </div>
+        <div class="bustleContainer-bustle">
+          <img 
+            class="img" 
+            loading="lazy"
+            src ="https://cdn.shopify.com/s/files/1/0316/1119/1435/files/Bustle_logo.svg_360x_b58b6477-2a0f-4ee0-a68f-80575b8a86d1.png?v=1580975307">
+        </div>
+      </div>
+  </div>
+</section>

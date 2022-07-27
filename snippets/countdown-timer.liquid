@@ -1,0 +1,74 @@
+<script>
+function calculateEstDateTime(offset) {
+    // get current local time in milliseconds
+    var date = new Date();
+    var localTime = date.getTime();
+ 
+    // get local timezone offset and convert to milliseconds
+    var localOffset = date.getTimezoneOffset() * 60000;
+ 
+    // obtain the UTC time in milliseconds
+    var utc = localTime + localOffset;
+
+    var newDateTime = utc + (3600000 * offset);
+    var convertedDateTime = new Date(newDateTime);
+    return convertedDateTime;
+}
+
+const CountdownTimer = (() => {
+
+  let nextMidnight = new Date();
+
+  //get the userTimeZone to match against 2H EST
+  var estTime = calculateEstDateTime(-4).getHours();
+  
+  //setEnd time based on time EST before and after 2h
+  nextMidnight.setHours(9,0,0,0);
+  const getRemainingTime = () => {
+    let now = calculateEstDateTime(-4);
+    
+    let time = (nextMidnight.getTime() - now.getTime())/1000;
+    if(time < 0) {
+      nextMidnight = new Date();
+      nextMidnight.setHours(33,0,0,0);
+      return getRemainingTime();
+    } 
+    return time;
+  }
+  
+  const parseTime = (time) => {
+    const hours = Math.floor(time/3600);
+    let rest = time-(hours*3600);
+    const minutes = Math.floor(rest/60);
+    rest = rest-(minutes*60);
+    const seconds = Math.floor(rest);
+    const milliseconds = (rest-seconds)*1000;
+
+    return [hours, minutes, seconds, milliseconds];
+  };
+  
+  const formatTime = (parsedTime) => {
+    return '<span class="hours">' + parsedTime[0] +'</span><span class="hSep"> HRS : </span><span class="minutes">' + ("0" + parsedTime[1]).slice(-2) + '</span><span class="mSep"> MINS : </span><span class="seconds">' + ("0" + parsedTime[2]).slice(-2) + '</span><span class="sSep"> SECS</span>';
+  };
+  
+  let timeout;
+  
+  return (el) => {
+    if(!timeout) {
+      const refresh = () => {
+        const parsedTime = parseTime(getRemainingTime());
+        const formattedTimes = formatTime(parsedTime);
+        el.innerHTML = formattedTimes;
+        setTimeout(() => {
+          refresh();
+        }, parsedTime[3]);
+      };
+      refresh();
+      
+    }
+    else el.innerHTML = formatTime(parseTime(getRemainingTime()));
+  };
+
+})();
+CountdownTimer(document.getElementById('fgwp-timer'));
+</script>

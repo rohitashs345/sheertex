@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "svelte.css",
+  "sources": [
+    "Header.svelte"
+  ],
+  "sourcesContent": [
+    "<style>\n  .test {\n    color: red;\n  }\n</style>\n\n<div class=\"test tw-font-bold\">Testing 1 2 3</div>\n"
+  ],
+  "names": [],
+  "mappings": "AACE,KAAK,cAAC,CAAC,AACL,KAAK,CAAE,GAAG,AACZ,CAAC"
+}

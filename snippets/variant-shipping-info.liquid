@@ -1,0 +1,52 @@
+<style>
+.variant-shipping-info {
+  font-family: Agrandir Narrow;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0.4px;
+  text-align: center;
+  color: #0000009a;
+  width: 78%;
+  padding: 8px 0 8px;
+  background-color: #f7eee3a5;
+  float: right;
+  margin-bottom: 1rem;
+}
+
+@media(max-width: 768px) {
+  .variant-shipping-info {
+	  width: 100%;
+  }
+}
+</style>
+
+<div class="variant-shipping-info" style="display: none;"></div>
+
+{% capture 'meta_data' %}
+  {% for variant in product.variants %}
+    {{variant.id}}:{{ variant.metafields.shipping.text | json }}{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+{% endcapture %}
+
+<script>
+const currentVariant = {{ product.selected_variant | json}};  // get the currently selected before variant is changed. 
+const currentVariantId = currentVariant ? currentVariant.id : null;
+const metaData = { {{ meta_data }} };
+
+//update shipping info on each variant change without reloading the page
+const variantShippingInfo = (id) => {
+  if (!id) {
+    return;
+  }
+
+	var selector = document.querySelector('.variant-shipping-info');
+	if (metaData[id]) {
+	  selector.style.display = 'block';
+	  selector.innerHTML = metaData[id];
+	}
+	else {
+	 selector.style.display = 'none';
+	}
+}
+variantShippingInfo(currentVariantId);
+</script>

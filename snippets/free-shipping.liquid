@@ -1,0 +1,38 @@
+{% if settings.show_shipping_info %}
+  {% for currency in shop.enabled_currencies %}
+    {% if currency.iso_code == cart.currency.iso_code %}
+      {% if currency.iso_code == 'CAD'%}
+        <div class="font-medium tw-uppercase tw-text-center tw-clear-both">
+          {{ settings.free_shipping_fee_CAD }}
+        </div>
+      {%endif%}
+      {% if currency.iso_code == 'USD'%}
+        <div class="font-medium tw-uppercase tw-text-center tw-clear-both">
+          {{ settings.free_shipping_fee_USD }}
+        </div>
+      {%endif%}
+      {% if currency.iso_code == 'GBP'%}
+        {% assign product = all_products[settings.gbp_promo_product] %}
+        <div class="font-medium tw-uppercase tw-text-center tw-clear-both">
+          {{ settings.free_shipping_fee_GBP }}
+          {% if settings.show_gbp_product %}
+            <a href="{{product.url}}">
+              Shop Our {{ product.title }}
+            </a>
+          {% endif %}
+        </div>
+      {%endif%}
+      {% if currency.iso_code == 'EUR'%}
+        {% assign product = all_products[settings.eur_promo_product] %}
+        <div class="font-medium tw-uppercase tw-text-center tw-clear-both">
+          {{ settings.free_shipping_fee_EUR }}
+          {% if settings.show_eur_product %}
+            <a href="{{product.url}}">
+              Shop Our {{ product.title }}
+            </a>
+          {% endif %}
+        </div>
+      {%endif%}
+    {%endif%}
+  {%endfor%}
+{%endif%}

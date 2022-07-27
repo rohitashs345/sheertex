@@ -1,0 +1,132 @@
+<style>
+  .__menu-item__1eiXl {
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    font-size: .75rem;
+    font-family: Agrandir,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";    
+    font-weight: 500;
+    margin: 0;        
+    padding: 0;
+  }
+
+  .__menu-item__1eiXl:hover {
+    background-color: rgb(221, 255, 152);          
+  }
+
+/* The container <div> - needed to position the dropdown content */
+.__dropdown__1rXSJ {   
+  display: flex;
+  flex-wrap: nowrap;
+  flex-flow: row;
+  align-items: center;
+  height: 100%;
+  margin-right: 32px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.__dropdown-content__oDq95 {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 100vw;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  left: 0;    
+  top: 100%;
+  border-top: 1px solid #dddde0;
+}
+
+/* Show the dropdown menu on hover */
+.__dropdown__1rXSJ:hover .__dropdown-content__oDq95 {
+  display: block;
+}
+
+.__dropdown__1rXSJ:hover .__menu-item__1eiXl {
+    background-color: rgb(221, 255, 152);        
+}
+
+.__banner__CioRY {
+  font-family: 'Agrandir';
+  font-weight: 500;
+  letter-spacing: 1.2pt;  
+  line-height: 1.5;
+  text-transform: uppercase;
+  padding-top: 15px;
+}
+
+.__banner-image__32-C6 {
+  width: 472px;
+  height: 288px;    
+  display: block;  
+  object-fit: cover;
+}
+
+.__image-header__1lJIz {
+  padding-top: 15px;
+  font-family: 'Agrandir';
+  font-weight: 400;
+  letter-spacing: 1.2pt;
+  text-transform: uppercase;
+  max-width: 230px;
+}
+
+.__image-header__1lJIz:hover {
+  font-weight: 500;
+}
+
+.__category-image__1UqFy {
+  width: 230px;
+  height: 288px;
+  display: block;  
+  object-fit: cover;
+}
+</style>
+
+{% assign menu = linklists[block.settings.menu] %}
+
+{% if menu.links.size > 0 %}
+<div class="__dropdown__1rXSJ">
+    <button class="tw-mr-4 __menu-item__1eiXl" type="button" onclick="window.open('{{ block.settings.menu_button_link }}',  '_self')">{{ menu.title }}</button>            
+    <div class="tw-px-8 tw-pt-6 tw-pb-14 __dropdown-content__oDq95">
+      <div class="tw-flex tw-flex-row tw-items-start tw-justify-start">    
+        {% for level1 in menu.links %}          
+          {% if forloop.first == true %}
+          {% include 'header-navigation-menu-desktop-col', menu: level1, highlightLastItem: true, showRightBorder: true  %}          
+          {% else %}
+          {% include 'header-navigation-menu-desktop-col', menu: level1, highlightLastItem: false, showRightBorder: false  %}          
+          {% endif %}
+        {% endfor %}         
+        {% if block.settings.image_1 %}
+        <div class="tw-overflow-x-scroll tw-flex tw-justify-around tw-items-end {% if block.settings.menu_button_link  contains 'all' %} tw-w-full {% endif %}">
+          <div style="max-width: 350px; " class="{% unless block.settings.menu_button_link  contains 'all' %} tw-pl-12 {% endunless %} tw-pr-2 tw-pb-6 tw-whitespace-normal tw-cursor-pointer" onclick="window.open('{{block.settings.image_1_url}}',  '_self')">
+            <div class="tw-flex tw-flex-col">
+              <img loading="lazy" src="{{block.settings.image_1 | img_url: 'x500' }}" class="__category-image__1UqFy">
+              <a href="{{block.settings.image_1_url}}" class="__image-header__1lJIz">{{block.settings.image_1_label}}</a>         
+            </div>
+          </div>
+          {% endif %}
+          {% if block.settings.image_2 %}
+          <div style="max-width: 350px;" class="tw-px-2 tw-pb-6 tw-whitespace-normal tw-cursor-pointer" onclick="window.open('{{block.settings.image_2_url}}',  '_self')">
+            <div class="tw-flex tw-flex-col">
+              <img loading="lazy" src="{{block.settings.image_2 | img_url: 'x500' }}" class="__category-image__1UqFy">
+              <a href="{{block.settings.image_2_url}}" class="__image-header__1lJIz">{{block.settings.image_2_label}}</a>         
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        {% unless block.settings.menu_button_link  contains 'all' %}                                               
+          <div class="tw-flex-grow tw-flex tw-justify-end">
+            <div class="tw-cursor-pointer" onclick="window.open('{{ block.settings.cta_url }}',  '_self')">            
+              <img src="{{block.settings.cta_image | img_url: 'x1000' }}" class="__banner-image__32-C6">                        
+              <div class="tw-flex tw-flex-row tw-justify-between tw-items-center __banner__CioRY">
+                <span class="tw-whitespace-normal">{{block.settings.cta_text}}</span>
+                <a href="{{block.settings.cta_url}}" class="tw-ml-2 tw-underline">{{block.settings.cta_button}}</a>
+              </div>
+            </div>
+          </div> 
+        {% endunless %}                                              
+      </div>
+    </div>   
+</div>  
+{% endif %}

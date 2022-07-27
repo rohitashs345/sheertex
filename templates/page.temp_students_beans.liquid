@@ -1,0 +1,8 @@
+
+<section class="tw-p-6">
+    {% if cart.currency.iso_code == "CAD" %}
+    <iframe style="width: 100%; height: 1100px; border: none; overflow-x: hidden;" scrolling="no" src="https://sheertex-ca.connect.studentbeans.com/ca"></iframe>
+      {% elsif cart.currency.iso_code == "USD" %}
+      <iframe style="width: 100%; height: 1100px; border: none; overflow-x: hidden;" scrolling="no" src="https://sheertex-us.connect.studentbeans.com/us"></iframe>
+      {% endif %}
+</section>

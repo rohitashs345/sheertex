@@ -1,0 +1,40 @@
+
+<style>
+  
+.secure-check{
+	text-align: right;
+  margin-top: 10px;
+}
+
+.secure-check p{
+	margin-bottom: 5px;
+}
+
+.secure-check img{
+	width: 300px;
+}
+
+div.payment-icons {
+	display: flex;
+	justify-content: flex-end;
+	flex-wrap: wrap;
+}
+
+div.payment-icons div.icon--payment {
+	margin-left: 5px;
+}
+
+</style>
+
+<div class="secure-check">
+	<p>Guaranteed safe and secure checkout!</p>
+	{% unless shop.enabled_payment_types == empty %}
+		<div class="payment-icons">
+			{% for type in shop.enabled_payment_types %}
+				<div class="icon--payment">
+					{{ type | payment_type_svg_tag: class:'icon icon--full-color' }}
+				</div>
+			{% endfor %}
+		</div>
+	{% endunless %}
+</div>

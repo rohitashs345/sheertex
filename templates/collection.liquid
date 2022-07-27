@@ -1,0 +1,19 @@
+{% section 'collection-template' %}
+
+{% unless collection.handle == 'best-sellers' or collection.handle == 'all' or collection.handle == 'todays-deals' %}
+	<div class="tw-hidden">{% section 'featured-collection' %}</div>
+{% endunless %}
+
+{% if collection.handle == 'todays-deals' %}
+	<div class="todays-deal-feat-sec">
+		{% section 'shop-customer-fav' %}
+	</div>
+{% endif %}
+
+{% section 'collection-our-story' %}
+
+{% if collection.handle == 'todays-deals' %}
+	{% section 'hp-ca-us-vs-them' %}
+{% else %}
+	{% section 'hp-ca-footer-categories' %}
+{% endif %}

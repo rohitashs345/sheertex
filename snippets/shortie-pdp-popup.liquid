@@ -1,0 +1,11 @@
+{{ 'shortie-pdp-popup.scss.css' | asset_url | stylesheet_tag }}
+
+{% if product.handle contains "no-sweat-6-shortie" %}
+<!-- Mobile Layout -->
+{% include 'shortie-pdp-popup-mobile' %}
+<!-- Desktop Layout -->
+{% include 'shortie-pdp-popup-desktop' %}
+{% else %}
+{% endif %}
+
+

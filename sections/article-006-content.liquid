@@ -1,0 +1,251 @@
+<section class="tw-text-center sm:tw-py-12 msm:tw-py-8 tw-w-full">
+    <p class="tw-rounded-3xl tw-mx-auto sm:tw-w-2/12 msm:tw-w-1/3 tw-bg-orange-300 tw-text-xs tw-font-sans tw-leading-normal tw-font-medium tw-uppercase tw-tracking-heading tw-py-2 tw-mb-0">
+        {{ 'sections.article-006-content.article_type_html' | t}}
+    </p>
+    <p class="tw-mx-auto tw-font-serif sm:tw-text-8xl msm:tw-text-4xl tw-leading-tight sm:tw-py-6 msm:tw-pt-5 msm:tw-pb-3 msm:tw-px-2 tw-mb-0">
+        {{ 'sections.article-006-content.article_title_html' | t}}
+    </p>
+    <p class="tw-mx-auto tw-font-serif sm:tw-px-40 msm:tw-px-6 sm:tw-text-3-5-xl tw-leading-normal sm:tw-pb-5 msm:tw-pb-2 tw-mb-0">
+        {{ 'sections.article-006-content.article_subtitle_html' | t}}
+    </p>
+    <p class="tw-mx-auto tw-font-sans tw-font-bold tw-uppercase tw-text-base tw-leading-normal msm:tw-text-sm sm:tw-pt-5 msm:tw-py-2 tw-mb-0">
+        {{ 'sections.article-006-content.article_author_html' | t}}
+    </p>
+    <p class="tw-mx-auto tw-font-narrow tw-text-base tw-leading-normal msm:tw-text-sm tw-mb-0">
+        {{ 'sections.article-006-content.article_date_html' | t}}
+    </p>
+</section>
+
+<section class="tw-flex tw-flex-col tw-justify-items-center tw-items-center tw-justify-center tw-relative">
+    <img src="{{ 'Lab_Article006_img1_Desktop.jpg' | asset_img_url: 'master' }}" class="msm:tw-hidden" alt="temp">
+    <img src="{{ 'Lab_Article006_img1_Mobile.jpg' | asset_img_url: 'master' }}" class="sm:tw-hidden" alt="temp">
+    {% assign product = all_products['chillwave-classic-sheer-tights'] %}
+    <div class=" tw-absolute tw-mx-auto tw-inset-x-0 tw-bottom-0 sm:tw-max-w-xl tw-justify-items-center">
+        <div class="tw-grid msm:tw-flex-col sm:tw-grid-cols-2 sm:tw-justify-between tw-mx-auto sm:tw-max-w-md msm:tw-mx-20 tw-pt-4 tw-pb-8 tw-border-0 tw-border-t tw-border-solid tw-border-white msm:tw-hidden">
+            <div class="tw-m-auto">
+                <p class="tw-font-bold tw-font-sans tw-text-light tw-text-base tw-tracking-wider tw-mb-0 tw-uppercase tw-text-white">
+                    {{ 'sections.article-006-content.article_new_html' | t}}
+                </p>
+                <p class="tw-font-serif tw-font-medium tw-text-lg tw-mb-0 tw-text-white">
+                    {{ product.title }}
+                </p>
+                <p class="tw-font-bold tw-font-sans tw-text-light tw-text-base sm:tw-mb-0 tw-tracking-wider tw-uppercase tw-text-white">
+                    {{ product.price | money }}
+                </p>
+            </div>
+            <a class="tw-border-0 tw-border tw-border-solid tw-border-black tw-rounded-3xl tw-m-auto tw-w-full tw-py-2 tw-bg-green-200 tw-mx-auto tw-text-sm tw-font-sans tw-leading-normal tw-text-center tw-font-medium tw-uppercase tw-tracking-heading" href="{{ product.url }}">
+                {{ 'sections.article-006-content.article_a1_html' | t}}
+            </a>
+        </div>
+    </div>
+    <div class="tw-grid msm:tw-flex-col sm:tw-grid-cols-2 sm:tw-justify-between tw-mx-auto sm:tw-max-w-md msm:tw-mx-20 tw-pt-4 tw-pb-8 tw-border-0 tw-border-t tw-border-solid tw-border-white sm:tw-hidden">
+            <div class="tw-m-auto">
+                <p class="tw-font-bold tw-font-sans tw-text-light tw-text-base tw-tracking-wider tw-mb-0 tw-uppercase tw-text-white">
+                    {{ 'sections.article-006-content.article_new_html' | t}}
+                </p>
+                <p class="tw-font-serif tw-font-medium tw-text-lg tw-mb-0 tw-text-black">
+                    {{ product.title }}
+                </p>
+                <p class="tw-font-bold tw-font-sans tw-text-light tw-text-base sm:tw-mb-0 tw-tracking-wider tw-uppercase tw-text-black">
+                    {{ product.price | money }}
+                </p>
+            </div>
+            <a class="tw-border-0 tw-border tw-border-solid tw-border-black tw-rounded-3xl tw-m-auto tw-w-full tw-py-2 tw-bg-white tw-mx-auto tw-text-sm tw-font-sans tw-leading-normal tw-text-center tw-font-medium tw-uppercase tw-tracking-heading" href="{{ product.url }}">
+                {{ 'sections.article-006-content.article_a1_html' | t}}
+            </a>
+    </div>
+</section>
+
+<section class="tw-py-10 sm:tw-px-8 tw-grid sm:tw-grid-cols-2 msm:tw-grid-cols-1 tw-gap-3">
+    <div class="msm:tw-px-6">
+        <img src="{{ 'Lab_Article006_img2_Desktop.jpg' | asset_img_url: 'master' }}" class="tw-rounded-3xl" alt="temp">
+    </div>
+    <div class="tw-flex tw-rounded-3xl tw-bg-safeSpaceBG tw-items-center tw-justify-items-center tw-text-center msm:tw-mx-6 msm:tw-h-96 msm:tw-px-6">
+        <div class="tw-m-auto tw-text-center tw-max-w-lg">
+            <p class="tw-m-auto tw-text-lg msm:tw-text-xs tw-font-sans tw-leading-normal tw-text-center tw-mb-2 tw-font-bold tw-text-white">
+                {{ 'sections.article-006-content.article_p1_html' | t}}
+            </p>
+            <p class="tw-mx-auto tw-font-serif tw-leading-tight msm:tw-max-w-sm tw-text-5-5xl msm:tw-text-3xl tw-text-center msm:tw-px-6 tw-mb-2 tw-text-white">
+                {{ 'sections.article-006-content.article_p2_html' | t}}
+            </p>
+            <p class="tw-mx-auto tw-font-narrow tw-text-2xl tw-leading-normal tw-text-center tw-mb-2 tw-text-white">
+                {{ 'sections.article-006-content.article_p3_html' | t}}
+            </p>
+            <a class="tw-text-center tw-leading-normal tw-font-sans tw-uppercase tw-text-white" href="https://www.sheertex.com/collections/new-arrivals">
+                {{ 'sections.article-006-content.article_a2_html' | t}}
+            </a>
+        </div>
+    </div>
+    <div class="tw-flex tw-rounded-3xl tw-bg-safeSpaceBG tw-items-center tw-justify-items-center tw-text-center msm:tw-mx-6 msm:tw-h-96 msm:tw-px-6">
+        <div class="tw-m-auto tw-text-center tw-max-w-lg">
+            <p class="tw-m-auto tw-text-lg msm:tw-text-xs tw-font-sans tw-leading-normal tw-text-center tw-mb-2 tw-font-bold tw-text-white">
+                {{ 'sections.article-006-content.article_p4_html' | t}}
+            </p>
+            <p class="tw-mx-auto tw-font-serif tw-leading-tight msm:tw-max-w-sm tw-text-5-5xl msm:tw-text-3xl tw-text-center msm:tw-px-6 tw-mb-2 tw-text-white">
+                {{ 'sections.article-006-content.article_p5_html' | t}}
+            </p>
+            <p class="tw-mx-auto tw-font-narrow tw-text-2xl tw-leading-normal tw-text-center tw-mb-2 tw-text-white">
+                {{ 'sections.article-006-content.article_p6_html' | t}}
+            </p>
+            <a class="tw-text-center tw-leading-normal tw-font-sans tw-uppercase tw-text-white" href="https://www.sheertex.com/collections/new-arrivals">
+                {{ 'sections.article-006-content.article_a2_html' | t}}
+            </a>
+        </div>
+    </div>
+    <div class="msm:tw-px-6">
+        <img src="{{ 'Lab_Article006_img3_Desktop.jpg' | asset_img_url: 'master' }}" class="tw-rounded-3xl" alt="temp">
+    </div>
+    <div class="msm:tw-px-6">
+        <img src="{{ 'Lab_Article006_img4_Desktop.jpg' | asset_img_url: 'master' }}" class="tw-rounded-3xl" alt="temp">
+    </div>
+    <div class="tw-flex tw-rounded-3xl tw-bg-safeSpaceBG tw-items-center tw-justify-items-center tw-text-center msm:tw-mx-6 msm:tw-h-96 msm:tw-px-6">
+        <div class="tw-m-auto tw-text-center tw-max-w-lg">
+            <p class="tw-m-auto tw-text-lg msm:tw-text-xs tw-font-sans tw-leading-normal tw-text-center tw-mb-2 tw-font-bold tw-text-white">
+                {{ 'sections.article-006-content.article_p7_html' | t}}
+            </p>
+            <p class="tw-mx-auto tw-font-serif tw-leading-tight msm:tw-max-w-sm tw-text-5-5xl msm:tw-text-3xl tw-text-center tw-mb-2 msm:tw-px-6 tw-text-white">
+                {{ 'sections.article-006-content.article_p8_html' | t}}
+            </p>
+            <p class="tw-mx-auto tw-font-narrow tw-text-2xl tw-leading-normal tw-text-center tw-mb-2 tw-text-white">
+                {{ 'sections.article-006-content.article_p9_html' | t}}
+            </p>
+            <a class="tw-text-center tw-leading-normal tw-font-sans tw-uppercase tw-text-white" href="https://www.sheertex.com/collections/new-arrivals">
+                {{ 'sections.article-006-content.article_a2_html' | t}}
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="tw-max-w-8xl tw-text-center tw-py-10">
+    <p class="tw-font-sans tw-font-bold tw-mx-auto tw-uppercase msm:tw-text-sm">
+        {{ 'sections.article-006-content.article_p10_html' | t}}
+    </p>
+    <p class="tw-font-serif tw-text-5-5xl msm:tw-text-2xl tw-mx-auto">
+        {{ 'sections.article-006-content.article_p11_html' | t}}
+    </p>
+    <a href="https://www.sheertex.com/collections/new-arrivals" class="tw-font-sans tw-mx-auto tw-uppercase msm:tw-text-xs">
+        {{ 'sections.article-006-content.article_a2_html' | t}}
+    </a>
+</section>
+
+<section class="tw-pt-10 sm:tw-px-8 tw-grid sm:tw-grid-cols-2 msm:tw-grid-cols-1 tw-gap-3">
+    <div class="msm:tw-px-6">
+        <img src="{{ 'Lab_Article006_img5_Desktop.jpg' | asset_img_url: 'master' }}" class="tw-rounded-3xl" alt="temp">
+    </div>
+    <div class="msm:tw-px-6">
+        <img src="{{ 'Lab_Article006_img6_Desktop.jpg' | asset_img_url: 'master' }}" class="tw-rounded-3xl" alt="temp">
+        {% assign product = all_products['diamond-sheer-tights'] %}
+        <div class="tw-grid tw-grid-cols-2 sm:tw-justify-between tw-justify-start tw-items-center msm:tw-pt-2 sm:tw-w-3/4">
+                <div class="tw-my-auto">
+                    <p class="tw-font-bold tw-leading-6 tw-font-sans tw-text-light tw-text-sm tw-tracking-wider tw-uppercase tw--mb-1">
+                        {{ 'sections.article-006-content.article_new_html' | t}}
+                    </p>
+                    <p class="tw-font-serif tw-font-medium tw-leading-6 tw-text-sm tw--mb-1">
+                        {{ product.title }}
+                    </p>
+                    <p class="tw-font-bold tw-leading-6 tw-font-sans tw-text-light tw-text-sm tw-tracking-wider tw-uppercase tw--mb-1">
+                        {{ product.price | money }}
+                    </p>
+                </div>
+                <a class="tw-border-0 tw-border tw-my-auto tw-w-full tw-border-solid tw-border-black tw-rounded-3xl tw-py-3 tw-bg-green-200 tw-mx-auto tw-text-xxs tw-font-sans tw-leading-normal tw-text-center tw-font-medium tw-uppercase tw-tracking-heading" href="{{ product.url }}">
+                    {{ 'sections.article-006-content.article_a1_html' | t}}
+                </a>
+        </div>
+    </div>
+</section>
+
+<section class="tw-pt-10 sm:tw-px-8 tw-grid sm:tw-grid-cols-2 msm:tw-grid-cols-1 tw-gap-3">
+    <div class="msm:tw-px-6">
+        <img src="{{ 'Lab_Article006_img7_Desktop.jpg' | asset_img_url: 'master' }}" class="tw-rounded-3xl" alt="temp">
+    </div>
+    <div class="msm:tw-px-6">
+        <img src="{{ 'Lab_Article006_img8_Desktop.jpg' | asset_img_url: 'master' }}" class="tw-rounded-3xl" alt="temp">
+        {% assign product = all_products['fine-ribbed-sheer-tights'] %}
+        <div class="tw-grid tw-grid-cols-2 sm:tw-justify-between tw-justify-start tw-items-center msm:tw-pt-2 sm:tw-w-3/4">
+                <div class="tw-my-auto">
+                    <p class="tw-font-serif tw-font-medium tw-leading-6 tw-text-sm tw--mb-1">
+                        {{ product.title }}
+                    </p>
+                    <p class="tw-font-bold tw-leading-6 tw-font-sans tw-text-light tw-text-sm tw-tracking-wider tw-uppercase tw--mb-1">
+                        {{ product.price | money }}
+                    </p>
+                </div>
+                <a class="tw-border-0 tw-border tw-my-auto tw-w-full tw-border-solid tw-border-black tw-rounded-3xl tw-py-3 tw-bg-green-200 tw-mx-auto tw-text-xxs tw-font-sans tw-leading-normal tw-text-center tw-font-medium tw-uppercase tw-tracking-heading" href="{{ product.url }}">
+                    {{ 'sections.article-006-content.article_a1_html' | t}}
+                </a>
+        </div>
+    </div>
+</section>
+
+<section class="tw-pt-10 tw-pb-16 sm:tw-px-8 tw-grid sm:tw-grid-cols-2 msm:tw-grid-cols-1 tw-gap-3">
+    <div class="msm:tw-px-6">
+        <img src="{{ 'Lab_Article006_img9_Desktop.jpg' | asset_img_url: 'master' }}" class="tw-rounded-3xl" alt="temp">
+    </div>
+    <div class="msm:tw-px-6">
+        <img src="{{ 'Lab_Article006_img10_Desktop.jpg' | asset_img_url: 'master' }}" class="tw-rounded-3xl" alt="temp">
+        {% assign product = all_products['shaping-sheer-tights-1'] %}
+        <div class="tw-grid tw-grid-cols-2 sm:tw-justify-between tw-justify-start tw-items-center msm:tw-pt-2 sm:tw-w-3/4">
+                <div class="tw-my-auto">
+                    <p class="tw-font-serif tw-font-medium tw-leading-6 tw-text-sm tw--mb-1">
+                        {{ product.title }}
+                    </p>
+                    <p class="tw-font-bold tw-leading-6 tw-font-sans tw-text-light tw-text-sm tw-tracking-wider tw-uppercase tw--mb-1">
+                        {{ product.price | money }}
+                    </p>
+                </div>
+                <a class="tw-border-0 tw-border tw-my-auto tw-w-full tw-border-solid tw-border-black tw-rounded-3xl tw-py-3 tw-bg-green-200 tw-mx-auto tw-text-xxs tw-font-sans tw-leading-normal tw-text-center tw-font-medium tw-uppercase tw-tracking-heading" href="{{ product.url }}">
+                    {{ 'sections.article-006-content.article_a1_html' | t}}
+                </a>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Magazine Article 006",
+  "locales": {
+    "en": {
+        "article_type_html": "article",
+        "article_title_html": "Safe Space",
+        "article_subtitle_html": "Creating a safe space starts with feeling comfortable in your mind, body, and wardrobe. Practice the ultimate form of self-care by slipping into tights that allow you to embrace the most tender version of yourself. After all, there's strength in softness.",
+        "article_author_html": "staff contributor",
+        "article_date_html": "February 10, 2022",
+        "article_new_html": "NEW!",
+        "article_p1_html": "001",
+        "article_p2_html": "Discover The World Of Resilience",
+        "article_p3_html": "Stay safe with our resilient Sheertex Knit Technology, woven with one of the world's strongest fibers.",
+        "article_p4_html": "002",
+        "article_p5_html": "Find Your Color Match",
+        "article_p6_html": "Discover the perfect hue to keep yourself cool, calm, and collected.",
+        "article_p7_html": "003",
+        "article_p8_html": "Create Your Safe Space",
+        "article_p9_html": "You're the master of design when it comes to curating your safe space. What does yours look like? ",
+        "article_p10_html": "safe space",
+        "article_p11_html": "Practice the ultimate form of self-care by slipping into tights that allow you to embrace the most tender version of yourself",
+        "article_a1_html": "shop now",
+        "article_a2_html": "shop the new collection &rAarr;"
+    },
+    "fr": {
+        "article_type_html": "article",
+        "article_title_html": "Safe Space",
+        "article_subtitle_html": "Creating a safe space starts with feeling comfortable in your mind, body, and wardrobe. Practice the ultimate form of self-care by slipping into tights that allow you to embrace the most tender version of yourself. After all, there's strength in softness.",
+        "article_author_html": "Contributeur interne",
+        "article_date_html": "February 10, 2022",
+        "article_new_html": "NEW!",
+        "article_p1_html": "001",
+        "article_p2_html": "Discover The World Of Resilience",
+        "article_p3_html": "Stay safe with our resilient Sheertex Knit Technology, woven with one of the world's strongest fibers.",
+        "article_p4_html": "002",
+        "article_p5_html": "Find Your Color Match",
+        "article_p6_html": "Discover the perfect hue to keep yourself cool, calm, and collected.",
+        "article_p7_html": "003",
+        "article_p8_html": "Create Your Safe Space",
+        "article_p9_html": "You're the master of design when it comes to curating your safe space. What does yours look like? ",
+        "article_p10_html": "safe space",
+        "article_p11_html": "Practice the ultimate form of self-care by slipping into tights that allow you to embrace the most tender version of yourself",
+        "article_a1_html": "shop now",
+        "article_a2_html": "shop the new collection &rAarr;"
+    }
+  }
+}
+{% endschema %}

@@ -1,0 +1,10 @@
+{% comment %}
+  Your home page is build up of sections, the code for each living in
+  the sections/ director.
+{% endcomment %}
+
+{% include 'style-tags', template: 'index' %}
+
+{{ content_for_index }}
+
+{% include 'script-tags', template: 'index' %}

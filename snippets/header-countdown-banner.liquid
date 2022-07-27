@@ -1,0 +1,54 @@
+<style>
+    .__one__3SDHv,.__two__3eYaL,.__three__2GZb7 {
+        font-size: 1rem;
+        line-height: 1.5;
+        font-weight: 500;
+        font-family: 'Agrandir,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"';
+    }
+    .__one__3SDHv {
+        opacity: 0;
+        -webkit-animation: __dot__2P8yg 1s infinite;
+        -webkit-animation-delay: 0.0s;
+        animation: __dot__2P8yg 1s infinite;
+        animation-delay: 0.0s;
+    }
+
+    .__two__3eYaL {
+        opacity: 0;
+        -webkit-animation: __dot__2P8yg 1s infinite;
+        -webkit-animation-delay: 0.1s;
+        animation: __dot__2P8yg 1s infinite;
+        animation-delay: 0.1s;
+    }
+
+    .__three__2GZb7 {
+        opacity: 0;
+        -webkit-animation: __dot__2P8yg 1s infinite;
+        -webkit-animation-delay: 0.2s;
+        animation: __dot__2P8yg 1s infinite;
+        animation-delay: 0.2s;
+    }
+
+    @-webkit-keyframes __dot__2P8yg {
+        0% { opacity: 1; }
+        50% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
+    @keyframes __dot__2P8yg {
+        0% { opacity: 1; }
+        50% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+</style>
+<a class="tw-w-full tw-bg-black tw-px-4 tw-py-1 tw-flex tw-flex-col tw-items-center tw-justify-center tw-cursor-pointer" href="{{ block.settings.url }}">
+  <span class="tw-text-white tw-font-semibold tw-font-sans tw-leading-normal tw-text-tiny" style="font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Open Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif !important;">
+    {{ block.settings.banners_text }}
+  </span>
+  
+  {% if block.settings.flash_sale %}
+    <span class="tw-text-green-200 tw-font-medium tw-font-sans tw-leading-normal tw-text-base" data-svelte="flash-sale-countdown" data-schedule="{{block.settings.flash_sale_schedule}}" "="">  
+            <span class="__one__3SDHv">.</span><span class="__two__3eYaL">.</span><span class="__three__2GZb7">.</span>  
+        </span> 
+  {% endif %}  
+</a>

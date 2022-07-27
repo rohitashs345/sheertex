@@ -1,0 +1,1103 @@
+{% include 'style-tags', template: 'page.sheertex-our-story' %}
+
+<style type="text/css">
+  img,
+  video {
+    display: inline-block;
+  }
+
+  .our-story-section-heading {
+    font-family: Agrandir, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+      'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.67px;
+    text-align: center;
+    line-height: 1.4;
+    font-size: 1.25rem;
+  }
+
+  .hero-unbreakable__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .hero-unbreakable__grid-image {
+    width: auto;
+    grid-row-start: 1;
+  }
+  .hero-unbreakable__grid-image-container {
+    width: 100%;
+  }
+
+  .hero-unbreakable__text-section {
+    padding-top: 4rem;
+    padding-bottom: 2.5rem;
+    text-align: center;
+    display: flex;
+  }
+
+  .hero-unbreakable__text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    position: relative;
+  }
+
+  .hero-unbreakable__text-item {
+    font-family: Matiere;
+    font-size: 2rem;
+    line-height: 1.125;
+    text-align: center;
+    max-width: 24rem;
+    letter-spacing: 0.15px;
+    font-weight: 300;
+    padding-bottom: 1.5rem;
+    margin: 0;
+  }
+
+  .hero-unbreakable__text-item-secondary {
+    line-height: '0.8125rem';
+    letter-spacing: 1.29px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: Agrandir, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+      'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    font-weight: 500;
+    padding-bottom: 2.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* TIMELINE */
+
+  .hero-timeline {
+    padding-top: 4rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    text-align: center;
+    font-size: 0;
+    background-image: linear-gradient(
+      to bottom,
+      #ffffff 0%,
+      #ffffff 33%,
+      #f7eee3 38%,
+      #f7eee3 61%,
+      #e8e8f2 66%
+    );
+  }
+
+  .hero-timeline__text-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 24rem;
+  }
+
+  .hero-timeline__heading {
+    margin-bottom: 1rem;
+  }
+
+  .hero-timeline__text {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 0.3px;
+    font-weight: 300;
+  }
+
+  .hero-timeline__item-container {
+    position: relative;
+    text-align: left;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-timeline__item-line {
+    width: 100%;
+    height: 20.25rem;
+  }
+
+  .hero-timeline__item-line > div {
+    width: 50%;
+    border-right-width: 1px;
+    --border-opacity: 1;
+    border-color: #000;
+    border-style: solid;
+    display: inline-block;
+    height: inherit;
+  }
+
+  .hero-timeline__item-date {
+    position: absolute;
+    left: 50%;
+    bottom: 1rem;
+  }
+
+  .hero-timeline__item-date-text {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: 1.29px;
+    text-transform: uppercase;
+    font-weight: 300;
+    display: block;
+    padding-left: 1rem;
+  }
+  .hero-timeline__item-date-underline {
+    height: 1px;
+    background-color: black;
+  }
+
+  .hero-timeline__item-image-container {
+    margin-bottom: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    max-width: 19.6875rem;
+  }
+
+  .hero-timeline__item-image-container img {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-timeline__item-image {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .timeline-image-landscape {
+    max-width: 19.6875rem;
+  }
+
+  .timeline-image-secondary {
+    position: relative;
+    top: -12.4rem;
+    max-width: 10.875rem;
+  }
+
+  .timeline-image-desktop {
+    display: none !important;
+  }
+
+  .hero-timeline__blockquote-container {
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 32.25rem;
+    padding: 0;
+  }
+
+  .hero-timeline__blockquote-heading {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    line-height: 1.125;
+    font-family: Matiere, Georgia, Cambria, 'Times New Roman', Times, serif;
+    font-weight: 300;
+  }
+
+  .not-italic {
+    font-style: normal;
+  }
+
+  .hero-timeline__blockquote-subheading {
+    font-size: 0.75rem;
+    line-height: 0.8125rem;
+    letter-spacing: 1.29px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-family: Agrandir, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+      'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  }
+
+  /* VALUES */
+
+  .hero-values {
+    margin-top: -2rem;
+  }
+
+  .hero-values__list {
+    --bg-opacity: 1;
+    background-color: rgba(232, 232, 242, var(--bg-opacity));
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  .hero-values__list-container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    max-width: 87.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
+  .hero-values__list-item {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .hero-values__list-item-text {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: 1.29px;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-family: Agrandir Narrow, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+      Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+      'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+      'Noto Color Emoji';
+  }
+
+  /*   SHOP HERO */
+
+  .shop-hero {
+    background-image: url({{'bg-sustainability.jpg'|asset_url}});
+    background-size: cover;
+    background-position: 50% 50%;
+    height: 50.25rem;
+    align-content: center;
+    opacity: 1;
+    visibility: inherit;
+
+    display: grid;
+    text-align: center;
+  }
+
+  .shop-hero__heading {
+    color: rgba(221, 255, 152, 1);
+    padding-bottom: 2.3125rem;
+    max-width: 20rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .shop-hero__cta {
+    text-transform: uppercase;
+    margin: auto;
+    background-color: rgba(221, 255, 152, 1);
+    border: 1px solid rgba(221, 255, 152, 1);
+    width: 18rem;
+    cursor: pointer;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-size: 0.75rem;
+    letter-spacing: 1.29px;
+    font-weight: 500;
+    font-family: Agrandir, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+      'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  }
+
+  .shop-hero__cta:hover {
+    text-decoration: underline;
+    border: 1px solid black;
+    background-color: #ffffff;
+  }
+
+  /*   SUSTAINABILITY */
+
+  .hero-sustainability {
+    background-color: rgba(247, 238, 227, 1);
+    padding: 5.8rem 2rem 4rem;
+  }
+
+  .hero-sustainability__heading {
+    text-transform: uppercase;
+    font-family: Agrandir, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+      'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    font-weight: 700;
+    max-width: 26.5625rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    margin-bottom: 2.5rem;
+    letter-spacing: 1.67px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .sustainability-card {
+    max-width: 52.8125rem;
+    padding-bottom: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .sustainability-card__blurb {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .sustainability-card__heading {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    max-width: 21rem;
+
+    font-size: 2rem;
+    line-height: 1.125;
+    font-family: Matiere, Georgia, Cambria, 'Times New Roman', Times, serif;
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+  }
+
+  .sustainability-card-image {
+    background-size: cover;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    width: 15.25rem;
+    height: 20.3125rem;
+    margin-bottom: 1.75rem;
+    padding: 1.625rem 1.875rem 0 1.5625rem;
+  }
+
+  .sustainability-card-image__text {
+    font-family: Agrandir Narrow, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+      Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+      'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+      'Noto Color Emoji';
+    font-weight: 300;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: 1.29px;
+    text-transform: uppercase;
+    padding-top: 0.3rem;
+    margin: 0;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+  }
+
+  .sustainability-card-image__text--last {
+    border-top: none;
+  }
+
+  .sustainability-card__text {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    max-width: 21rem;
+
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 0.3px;
+    font-family: Agrandir Narrow, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+      Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+      'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+      'Noto Color Emoji';
+    font-weight: 300;
+  }
+
+  /*   QUALITY */
+
+  .hero-quality {
+    background-color: rgba(212, 190, 177, 1);
+    padding-top: 6rem;
+  }
+
+  .hero-quality__grid {
+    display: grid;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    grid-template-rows: repeat(3, auto);
+  }
+
+  .hero-quality__grid-header {
+    grid-row-start: 1;
+
+    text-align: center;
+    padding-bottom: 3rem;
+    max-width: 20rem;
+    margin: 0 auto;
+  }
+
+  .hero-quality__grid-breakdown {
+    grid-row-start: 2;
+  }
+
+  .hero-quality__grid-blurb {
+    max-width: 20.6rem;
+    text-align: center;
+    grid-row-start: 3;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1rem;
+    line-height: 1.5;
+    padding-bottom: 5rem;
+    padding-top: 3rem;
+  }
+
+  .grid-breakdown {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    font-family: Agrandir, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+      'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    line-height: 0.8125rem;
+    letter-spacing: 1.29px;
+  }
+
+  .grid-breakdown__col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 0.4375rem;
+    margin-right: 0.4375rem;
+  }
+
+  .grid-breakdown__header {
+    padding-bottom: 0.6rem;
+    text-align: center;
+  }
+
+  .grid-breakdown__block {
+    max-width: 10rem;
+    text-align: center;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .grid-breakdown__block--white {
+    background-color: white;
+  }
+
+  .grid-breakdown__block--clear-white {
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+
+  .grid-breakdown__block--transparent-white {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .grid-breakdown__block--has-margin-bottom {
+    margin-bottom: 0.25rem;
+  }
+
+  .grid-breakdown__block--3 {
+    height: 3rem;
+  }
+
+  .grid-breakdown__block--3point5 {
+    height: 3.5rem;
+  }
+
+  .grid-breakdown__block--10 {
+    height: 10rem;
+  }
+
+  .grid-breakdown__block--14 {
+    height: 14rem;
+  }
+
+  .grid-breakdown__block--20 {
+    height: 20rem;
+  }
+
+  /*   BUZZ */
+
+  .hero-buzz {
+  }
+
+  .hero-buzz__heading {
+    padding-top: 6rem;
+    padding-bottom: 2.5rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-buzz__press {
+    margin-bottom: 6rem;
+  }
+
+  .hero-buzz__grid {
+    display: grid;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 28rem;
+    grid: 1fr / 1fr;
+    justify-items: center;
+    grid-column-gap: 3rem;
+    column-gap: 3rem;
+    grid-row-gap: 2rem;
+    row-gap: 2rem;
+  }
+
+  .hero-buzz__grid-item {
+    background-color: rgba(232, 232, 242, 1);
+    display: grid;
+
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    min-height: 18.875rem;
+    margin: 0;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    text-align: center;
+  }
+
+  .hero-buzz__grid-item-logo {
+    width: 50%;
+    padding-bottom: 1.25rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-buzz__grid-item-headline {
+    font-size: 2rem;
+    line-height: 1.125;
+    font-weight: 300;
+    font-family: Matiere, Georgia, Cambria, 'Times New Roman', Times, serif;
+  }
+
+  .hero-buzz__grid-item-text {
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 0.3px;
+    font-weight: 300;
+  }
+
+  /* PRESS */
+
+  .hero-press {
+    position: relative;
+  }
+
+  .hero-press__container {
+    position: relative;
+    padding-bottom: 8rem;
+  }
+
+  .hero-press__container-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    background-color: #fff;
+  }
+
+  .hero-press__image-container {
+    width: auto;
+    grid-row-start: 1;
+  }
+
+  .hero-press__text-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    padding-top: 2.8rem;
+  }
+  .hero-press__text-heading {
+    font-family: Matiere, Georgia, Cambria, 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    line-height: 1.125;
+    padding-bottom: 1.25rem;
+    font-weight: 300;
+  }
+
+  .hero-press__text-email {
+    margin-left: auto;
+    margin-right: auto;
+    text-decoration: underline;
+    text-align: center;
+    padding-bottom: 0.25rem;
+    font-size: 0.75rem;
+    line-height: 0.8125rem;
+    letter-spacing: 1.29px;
+    text-transform: uppercase;
+    font-family: Agrandir, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+      'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    font-weight: 500;
+  }
+
+  .hero-press__gif {
+    position: absolute;
+    top: 10%;
+    bottom: auto;
+    left: 48%;
+    width: 7.6875rem;
+  }
+
+  /* TEAM */
+
+  .hero-team {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 2rem;
+    max-width: 45rem;
+  }
+
+  .hero-team__heading {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+  }
+
+  .hero-team__text {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    max-width: 39rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .hero-team__text-span {
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 0.3px;
+  }
+
+  .hero-team__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 19rem);
+    grid-gap: 24px;
+    justify-content: center;
+  }
+
+  .hero-team__card-container {
+    position: relative;
+    margin-top: -7rem;
+  }
+
+  .hero-team__card {
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    width: 19rem;
+    justify-items: right;
+    margin-bottom: 2rem;
+  }
+
+  .hero-team__card-text {
+    text-align: left;
+    background-color: #ddff98;
+    padding: 1.0625rem 1.25rem 1.5rem;
+    width: 14.3125rem;
+    min-height: 11.5rem;
+  }
+
+  .hero-team__card-header {
+    padding-bottom: 1.4rem;
+    font-size: 1.75rem;
+    margin: 0;
+  }
+
+  .hero-team__card-label {
+    font-weight: 300;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: 1.29px;
+    text-transform: uppercase;
+    display: block;
+    padding-top: 0.44rem;
+  }
+
+  .border-black {
+    border-color: black;
+    margin: 0;
+  }
+
+  /*   RESPONSIVE */
+
+  @media screen and (min-width: 1024px) {
+    .hero-buzz__grid {
+      max-width: 72.5rem;
+      grid: 1fr / 1fr 1fr 1fr;
+    }
+  }
+  @media screen and (min-width: 84.5em) {
+    .hero-team {
+      max-width: 93rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-unbreakable__grid {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    .hero-unbreakable__grid-image {
+      grid-row-start: 2;
+    }
+
+    .hero-press__container-grid {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    .hero-press__gif {
+      bottom: 14.5rem;
+      left: 2rem;
+      top: auto;
+    }
+
+    .hero-values__list-item {
+      width: 33%;
+    }
+
+    .timeline-image-secondary {
+      top: -1.5rem;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .hero-values__list-item {
+      width: 50%;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-unbreakable__text-item {
+      padding-bottom: 1.25rem;
+    }
+
+    .hero-unbreakable__text-item-secondary {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .hero-timeline__item-image-container {
+      margin-bottom: 3rem;
+      display: flex;
+      max-width: 32.75rem;
+    }
+
+    .timeline-image-landscape {
+      max-width: 32.75rem;
+    }
+
+    .timeline-image-desktop {
+      display: inline-block !important;
+    }
+
+    .timeline-image-1 .timeline-image-3 .timeline-image-6 {
+      z-index: 10;
+    }
+
+    .timeline-image-2 {
+      position: absolute;
+      top: -1.5rem;
+      left: -16rem;
+      max-width: 18rem;
+      z-index: 1;
+    }
+
+    .timeline-image-4 {
+      position: absolute;
+      top: 4rem;
+      left: 34.2rem;
+      max-width: 18.375rem;
+      z-index: 20;
+    }
+
+    .timeline-image-5 {
+      position: absolute;
+      top: 2rem;
+      left: -16.7rem;
+      max-width: 15.375rem;
+    }
+
+    .timeline-image-7 {
+      position: absolute;
+      top: 2rem;
+      left: -17.5rem;
+      max-width: 14.5rem;
+      z-index: 20;
+    }
+
+    .timeline-image-8 {
+      position: absolute;
+      top: 6rem;
+      left: 35.7rem;
+      max-width: 11.5625rem;
+    }
+
+    .sustainability-card-image {
+      width: 100%;
+      height: 27.25rem;
+      margin-bottom: 0;
+    }
+
+    .sustainability-card-image__text {
+      max-width: 11.6875rem;
+    }
+
+    .sustainability-card__blurb {
+      background-color: white;
+    }
+
+    .hero-quality__grid {
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 1rem;
+    }
+
+    .hero-quality__grid-header {
+      grid-column-start: 1;
+      margin-top: 5.3rem;
+      text-align: center;
+      padding-bottom: 0;
+    }
+
+    .hero-quality__grid-breakdown {
+      grid-row-start: 1;
+      grid-column-start: 2;
+      grid-row-end: 4;
+    }
+
+    .hero-quality__grid-blurb {
+      max-width: 24rem;
+      grid-row-start: 2;
+      grid-column-start: 1;
+      padding-top: 1rem;
+      padding-bottom: 0;
+    }
+
+    .grid-breakdown {
+      padding-bottom: 6rem;
+    }
+
+    .grid-breakdown__col {
+      margin-left: 0.55rem;
+      margin-right: 0.55rem;
+    }
+
+    .grid-breakdown__block {
+      width: 11.5rem;
+      max-width: none;
+    }
+
+    .sus-card-grid {
+      display: grid;
+      grid-template-columns: 327px 1fr;
+    }
+
+    .sus-card-grid-right {
+      display: grid;
+      padding: 2rem;
+      display: grid;
+      align-content: center;
+      background-color: #fff;
+    }
+
+    .hero-unbreakable__text-section {
+      padding-top: 0;
+    }
+
+    .hero-press__container {
+      padding-bottom: 5.8rem;
+    }
+
+    .hero-values__list {
+      padding-bottom: 8rem;
+    }
+  }
+</style>
+
+<section class="tw-flex tw-flex-col tw-justify-items-center tw-items-center tw-justify-center tw-relative">
+    <img src="{{ 'Desktop_Slider_Sustainably Made.png' | asset_img_url: 'master' }}" class="msm:tw-hidden" alt="temp">
+    <img src="{{ 'Mobile_Slider_Sustainably Made.png' | asset_img_url: 'master' }}" class="sm:tw-hidden tw-w-full" alt="temp">
+    <p class="tw-absolute tw-mx-auto tw-text-5xl tw-font-serif tw-leading-tight tw-mb-0 tw-text-black tw-top-8 tw-text-center sm:tw-hidden">
+        Goodbye Disposable Tights
+    </p>
+    <div class="tw-absolute tw-mx-auto sm:tw-my-auto lg:tw--mt-24 sm:tw-left-12 msm:tw-inset-x-0 msm:tw-bottom-10 msm:tw-mx-16 sm:tw-max-w-xl tw-justify-items-center">
+        <p class="tw-mx-auto tw-text-5xl mlg:tw-text-3xl tw-font-serif tw-leading-tight tw-mb-0 tw-text-black msm:tw-hidden">
+            Goodbye Disposable Tights
+        </p>
+        <p class="tw-text-lg msm:tw-text-base tw-font-narrow tw-leading-tight tw-font-light msm:tw-leading-7 sm:tw-py-4 tw-max-w-md tw-text-black">
+            Help us keep tights out of landfills. Ethically manufactured in Montreal, Canada, and offered in 7 inclusive sizes, it's finally time to make the switch to Sheertex.
+        </p>
+        <div class="tw-flex tw-flex-col sm:tw-justify-between sm:tw-max-w-md sm:tw-py-4 tw-border-0 tw-border-t tw-border-solid tw-border-black">
+            <div class="sm:tw-my-auto msm:tw-py-1">
+                <p class="tw-font-serif tw-font-medium sm:tw-my-auto tw-text-xl msm:tw-text-base tw-mb-0 tw-text-black">
+                    Classic Sheer Tights
+                </p>
+                <p class="tw-font-bold tw-font-sans sm:tw-my-auto tw-text-light tw-text-sm tw-tracking-wider tw-uppercase tw-text-black">
+                    {% assign product = collections['warm-tights'].products[1] %}
+                    <span class="tw-text-base">{{ product.price  | money }}</span>
+                </p>
+            </div>
+        </div>
+        <div class="tw-flex tw-flex-col sm:tw-justify-between sm:tw-max-w-md sm:tw-py-4 tw-border-0 tw-border-t tw-border-solid tw-border-black">
+            <div class="sm:tw-my-auto msm:tw-py-1">
+                <p class="tw-font-serif tw-font-medium sm:tw-my-auto sm:tw-pt-2 tw-text-xl msm:tw-text-base tw-mb-0 tw-text-black">
+                    Shaping Sheer Tights
+                </p>
+                <p class="tw-font-bold tw-font-sans sm:tw-my-auto tw-text-light tw-text-sm tw-tracking-wider tw-uppercase tw-text-black">
+                    {% assign product = collections['warm-tights'].products[2] %}
+                    <span class="tw-text-base">{{ product.price  | money }}</span>
+                </p>
+            </div>
+        </div>
+        <div class="tw-flex tw-flex-col sm:tw-justify-between sm:tw-max-w-md sm:tw-pt-4 tw-border-0 tw-border-t tw-border-solid tw-border-black sm:tw-pb-2">
+            <div class="sm:tw-my-auto msm:tw-py-1">
+                <p class="tw-font-serif tw-font-medium sm:tw-my-auto sm:tw-pt-2 tw-text-xl msm:tw-text-base tw-mb-0 tw-text-black">
+                    Semi-Opaque Sheer Tights
+                </p>
+                <p class="tw-font-bold tw-font-sans sm:tw-my-auto tw-text-light tw-text-sm tw-tracking-wider tw-uppercase tw-text-black">
+                    {% assign product = collections['warm-tights'].products[0] %}
+                    <span class="tw-text-base">{{ product.price  | money }}</span>
+                </p>
+            </div>
+        </div>
+        <div class="sm:tw-my-auto msm:tw-mx-auto sm:tw-pt-8">
+            <a class="tw-border-0 tw-border tw-border-solid tw-border-black tw-rounded-3xl tw-px-32 mlg:tw-px-20 tw-py-3 tw-max-w-xs tw-bg-green-200 tw-mx-auto tw-text-sm tw-font-sans tw-leading-normal tw-text-center tw-font-medium tw-uppercase tw-tracking-heading" href="https://www.sheertex.com/collections/all">
+                SHOP ALL
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="tw-flex tw-justify-items-center tw-items-center tw-py-16 mmd:tw-py-8" style="background-image: linear-gradient(to top, #e8e8f2, #e8e8f2);">
+    <div class="page-width md:tw-flex mmd:tw-grid md:tw-grid-cols-4 mmd:tw-grid-cols-2 md:tw-space-x-16 mmd:tw-space-8 tw-mx-auto">
+        <div class="tw-flex tw-items-center tw-justify-center tw-flex-col mmd:tw-mx-4">
+            <img src="{{ 'freeship.svg' | asset_url }}" class="msm:tw-w-12 sm:tw-w-16" alt="shipping-icon">
+            <p class="tw-text-xs sm:tw-text-sm tw-font-sans tw-uppercase tw-leading-tight tw-text-center tw-tracking-wide tw-font-bold tw-py-4 tw-mb-0">
+                free shipping
+            </p>
+            <p class="tw-text-xs sm:tw-text-sm tw-font-narrow tw-leading-tight tw-text-center tw-tracking-wide tw-max-w-xs">
+                Free standard shipping<span class="msm:tw-hidden"><br></span> included on orders over <span data-currency="">$100</span>.               
+            </p>
+        </div>
+        <div class="tw-flex tw-items-center tw-justify-center tw-flex-col mmd:tw-mx-4">
+            <img src="{{ '90day.svg' | asset_url }}" class="msm:tw-w-12 sm:tw-w-16" alt="guarantee-icon">
+            <p class="tw-text-xs sm:tw-text-sm tw-font-sans tw-uppercase tw-leading-tight tw-text-center tw-tracking-wide tw-font-bold tw-py-4 tw-mb-0">
+                90-day guarantee              
+            </p>
+            <p class="tw-text-xs sm:tw-text-sm tw-font-narrow tw-leading-tight tw-text-center tw-tracking-wide tw-max-w-xs">
+                Covers any damage that<span class="msm:tw-hidden"><br></span> renders your tights unwearable.            
+            </p>                
+        </div>
+        <div class="tw-flex tw-items-center tw-justify-center tw-flex-col mmd:tw-mx-4">
+            <img src="{{ 'strength.svg' | asset_url }}" class="msm:tw-w-12 sm:tw-w-16" alt="strength-icon">
+            <p class="tw-text-xs sm:tw-text-sm tw-font-sans tw-uppercase tw-leading-tight tw-text-center tw-tracking-wide tw-font-bold tw-py-4 tw-mb-0">
+                strength-tested              
+            </p>
+            <p class="tw-text-xs sm:tw-text-sm tw-font-narrow tw-leading-tight tw-text-center tw-tracking-wide tw-max-w-xs">
+                Feels just like other tights.<br>&nbsp;            
+            </p>
+        </div>
+        <div class="tw-flex tw-items-center tw-justify-center tw-flex-col mmd:tw-mx-4">
+            <img src="{{ '5-star-d.svg' | asset_url }}" class="msm:tw-w-12 sm:tw-w-16" alt="strength-icon">
+            <p class="tw-text-xs sm:tw-text-sm tw-font-sans tw-uppercase tw-leading-tight tw-text-center tw-tracking-wide tw-font-bold tw-py-4 tw-mb-0">
+                Thousands of 5-star reviews          
+            </p>
+            <p class="tw-text-xs sm:tw-text-sm tw-font-narrow tw-leading-tight tw-text-center tw-tracking-wide tw-max-w-xs">
+                Don't just take our word for it. Read what<span class="msm:tw-hidden"><br></span> thousands of customers have to say.          
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="tw-pt-16">
+    <p class="msm:tw-text-2xl sm:tw-text-4xl tw-font-serif tw-leading-tight tw-font-light tw-tracking-normal tw-text-center">
+        Which is the right style for me?
+    </p>
+    {% render 'temp-inclusive-tights-sec' %}
+</section>
+
+<section class="hero-sustainability">
+    <div class="tw-container tw-mx-auto tw-px-4">
+      <div class="hero-sustainability__wrapper">
+        <h2 class="hero-sustainability__heading">
+            Sustainability is woven through our entire business
+        </h2>
+  
+        <div class="sustainability-card">
+          <div class="sus-card-grid">
+            <header class="sustainability-card-image" style="background-image:url({{ 'tightspile_2x.jpg' | asset_url }})">
+              <h2 class="sustainability-card-image__text">01</h2>
+              <h2 class="sustainability-card-image__text sustainability-card-image__text--last">
+              Durability
+              </h2>
+            </header>
+            <div class="sus-card-grid-right">
+              <div class="sustainability-card__blurb">
+                <h3 class="sustainability-card__heading">
+                    Throwing away disposable tights, for good
+                </h3>
+                <p class="sustainability-card__text">
+                    Over 2 billion pairs of pantyhose are thrown away each year. Tights shouldn’t be trash, so we’re replacing them with a strong and long-lasting knit that can be reworn, again and again.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- /sustainability-card -->
+  
+        <div class="sustainability-card">
+          <div class="sus-card-grid">
+            <header class="sustainability-card-image" style="background-image:url({{
+                'second-chances_2x.jpg' | asset_url
+              }})">
+              <h2 class="sustainability-card-image__text">02</h2>
+              <h2 class="sustainability-card-image__text sustainability-card-image__text--last">
+              Second Chances
+              </h2>
+            </header>
+            <div class="sus-card-grid-right">
+              <div class="sustainability-card__blurb tw-flex tw-flex-col tw-justify-items-center">
+                <h3 class="sustainability-card__heading">
+                    Meet Our Second Chances Collection
+                </h3>
+                <p class="sustainability-card__text">
+                    We use the extra material from our production process to make new products like masks, headbands, scrunchies, and underwear. This collection is still growing—so stay tuned for more upcycled products to come.
+                </p>
+                  <a class="tw-rounded-3xl tw-px-24 msm:tw-px-8 tw-py-3 tw-my-8 tw-max-w-sm tw-bg-green-200 tw-flex tw-mx-auto tw-text-xs tw-font-sans tw-leading-normal tw-font-medium tw-uppercase tw-tracking-heading" href="https://www.sheertex.com/collections/accessories">
+                    Shop Accessories
+                  </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /sustainability-card -->
+      </div>
+    </div>
+  </section>
+
+<section class="page-width tw-text-center tw-pt-16">
+    <p class="tw-mx-auto tw-font-serif tw-text-6xl msm:tw-text-3xl sm:tw-px-20">
+        This is not a drill
+    </p>
+    <p class="tw-mx-auto tw-font-sans tw-text-3xl msm:tw-text-2xl sm:tw-px-20 tw-mb-0">
+        We're the only tights company using some of the strongest fibers in the world. Believe it. 
+        Our patent pending knit doesn't exist anywhere else on the market. We invented it, we make it, you'll love it. 
+    </p>
+</section>
+
+{% section 'hp-ca-us-vs-them' %}
+
+{% section 'featured-collection' %}

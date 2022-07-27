@@ -1,0 +1,41 @@
+<style>
+.collection-our-story {
+  width: 100%;
+  padding: 2% 10% 2% 10%;
+  text-align: center;
+  border-bottom: 1px solid #D9D9D9;
+}
+</style>
+
+{% assign story = collection.metafields.story %}
+
+{% if story.description != "false"%}
+  <div class="collection-our-story">
+    {% if story.description %}
+      <p>{{story.description}}</p>
+    {% elsif request.locale.iso_code == 'en' %}
+        <p>Hey there, it’s nice to meet you! Since you made it this far, you might be wondering:
+        “Ultra-strong tights? How has no one done this before?!“. Well, we did it. Our founder,
+        Katherine Homuth, had the wild idea of taking some of the strongest fibers in the world
+        (typically used in climbing equipment) and using them to create equally durable tights.
+        It turns out that it worked better than she ever imagined, and Sheertex was born.
+        We started shipping products 18 months ago out of a 2,000 square foot garage.
+        Today, we’ve been named one of TIME’s Best Inventions, have a team that’s over 170 strong,
+        and are operating out of Canada’s largest hosiery factory. Every year, over 2 billion pairs of
+        pantyhose end up in landfills after only 1-2 wears. With Sheertex™ Knit Technology,
+        we’re on a mission to change that. Say goodbye to disposable, and hello to tights that actually last.</p>
+    {% elsif request.locale.iso_code == 'fr' %} 
+        <div class="tw-max-w-4xl tw-mx-auto tw-text-center"><p>Salut, et bienvenue parmi nous! À ce point-ci, vous vous posez peut-être cette question :
+          Des collants ultrarésistants? Pourquoi personne n’y avait pensé auparavant?
+          Et bien, nous l’avons fait. Notre fondatrice, Katherine Homuth, a eu l’idée folle de confectionner des collants
+          à partir de fibres parmi les plus résistantes du monde, généralement utilisées pour fabriquer de l’équipement d’escalade. Ce fut un succès,
+          encore plus grand que dans ses rêves. Sheertex était née. Nous avons commencé à expédier des produits il y a 18 mois,
+          à partir d’un garage de 610 pieds carrés. Aujourd’hui, nos collants figurent parmi les meilleures inventions selon TIME,
+          nous avons une équipe de plus de 170 personnes et fabriquons nos produits dans la plus grande usine de bas et collants au Canada. 
+          Chaque année, plus de deux milliards de collants se retrouvent dans les sites d’enfouissement après avoir été portés une ou deux fois seulement. 
+          Grâce à la technologie de tricot Sheertex™, nous sommes en voie de changer les choses. Dites au revoir aux bas jetables et bonjour aux bas véritablement durables.
+        </p>
+        </div>
+    {% endif %}
+  </div>
+{% endif %}

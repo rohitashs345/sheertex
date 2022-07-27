@@ -1,0 +1,53 @@
+<style>
+  .yotpo .standalone-bottomline .star-clickable{
+  	display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  .plp-rating .text-m{
+    font-family: Agrandir Narrow !important;
+    font-size: 13px !important;
+    font-weight: normal !important;
+    font-stretch: normal !important;
+    font-style: normal !important;
+    letter-spacing: 0.31px !important;
+    text-align: left !important;
+    color: black !important;
+    padding-left: 3px !important;
+    padding-top: 3px !important;
+  }
+
+ .yotpo .standalone-bottomline .star-clickable {
+  	text-decoration: none;
+  }
+  
+  .plp-rating .yotpo a {
+  	color: rgba(0, 0, 0, 0.5) !important;
+    text-decoration: none !important;
+  }	
+  
+  .yotpo.bottomLine .yotpo-bottomline .yotpo-icon-star {
+  	font-size: 14px !important;
+  }
+
+  .yotpo.bottomLine .yotpo-bottomline .yotpo-icon-empty-star {
+    font-size: 14px !important;
+  }
+
+  .yotpo.bottomLine .yotpo-bottomline .yotpo-icon-half-star {
+  	font-size: 14px !important;
+  }
+</style>
+
+<div class="plp-rating yotpo bottomLine"
+    data-appkey="adHUgZ44BbeiOCY10qaUDqvvZbshC3XsPNl48aLn"
+    data-domain="{{shop.permanent_domain | escape }}"
+    data-product-id="{{ product.id }}"
+    data-product-models="{{ product.id }}"
+    data-name="{{ product.title | escape }}"
+    data-url="{{ shop.url }}{{ product.url }}"
+    data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
+    data-description="{{ product.description | escape }}"
+    data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
+</div>

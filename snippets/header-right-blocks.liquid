@@ -1,0 +1,24 @@
+<style>
+  a.__link-item__1ksXf {
+    letter-spacing: 0;    
+    line-height: 1.2;    
+    padding: 5px 10px;
+    font-family: Matiere,ui-serif,Georgia,Cambria,"Times New Roman",Times,serif;
+    cursor: pointer;
+    font-size: 1.3em;
+  }
+
+  a.__link-item__1ksXf:hover {
+    text-decoration: underline;
+  }
+
+</style>
+ 
+<div class="tw-hidden lg:tw-flex tw-items-сenter tw-justify-center tw-whitespace-nowrap tw-flex-grow">
+   {% for block in blocks %}
+   {% case block.type %}
+   {% when 'menu-link' %}
+      <a href="{{block.settings.url}}" class="__link-item__1ksXf">{{block.settings.label}}</a>            
+   {% endcase %}
+   {% endfor %}          
+</div>        

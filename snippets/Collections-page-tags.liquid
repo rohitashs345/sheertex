@@ -1,0 +1,51 @@
+{% if request.locale.iso_code == 'en' %}
+  {% assign plpSticker = product.metafields.sticker.data %}
+{% elsif request.locale.iso_code == 'fr' %}
+  {% assign plpSticker = product.metafields.sticker.data-fr %}
+{% endif %}
+
+{% if product.tags contains  'sticker_low_stock' %}
+  <div class="plp-meta-sticker tw-uppercase" style="color: black; background-color: #DDFF98; width: 6rem;">
+    <p>Low Stock</p>
+  </div>
+{% elsif product.tags contains  'sticker_new' %}
+  <div class="plp-meta-sticker tw-uppercase" style="color: black; background-color: #DDFF98; width: 4rem;">
+    <p>New!</p>
+  </div>
+{% elsif product.tags contains  'sticker_best_seller' %}
+  <div class="plp-meta-sticker tw-uppercase" style="color: black; background-color: #DDFF98; width: 7rem;">
+    <p>Best Seller</p>
+  </div>
+{% elsif product.tags contains  'sticker_todaysdeal' %}
+  <div class="plp-meta-sticker tw-uppercase" style="color: white; background-color: #FC4242; width: 8rem;">
+    <p>Today's Deal</p>
+  </div>
+{% elsif plpSticker.text %}
+    <div class="plp-meta-sticker tw-uppercase" style="color: {{ plpSticker.color }}; background-color: {{ plpSticker.backgroundColor }}; width: {{ plpSticker.width }};">
+      <p id="ab-test-plpPriceSticker">{{ plpSticker.text }}</p>
+    </div>
+{% endif %}
+
+
+<style>
+.plp-meta-sticker {
+  padding: 6px 9px;
+  text-align: center;
+  height: 28px;
+  display: inline-block;
+  margin-left: 10px;
+  margin-top: 2px;
+  position: absolute;
+  bottom: 10px;  
+  border-radius: 30px;
+}
+
+.plp-meta-sticker p{
+  font-family: Agrandir;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.104rem;
+  font-size: 0.6rem;
+  line-height: 2;
+}
+</style>

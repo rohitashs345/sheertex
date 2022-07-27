@@ -1,0 +1,7 @@
+<img class="lazyload {{ className }}"
+  data-src="{{ src | asset_url }}"
+  data-sizes="auto"
+  alt="{{ alt | escape }}">
+<noscript>
+	<img class="lazyloaded {{ className }}" src="{{ image | img_url: src |asset_url }}" alt="{{ alt | escape }}">
+</noscript>

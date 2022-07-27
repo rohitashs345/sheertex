@@ -1,0 +1,109 @@
+{%- assign available_variant = product.selected_or_first_available_variant -%}
+{% if product.has_only_default_variant %}
+  {%- assign current_variant = product.selected_or_first_available_variant -%}
+{% else %}  
+  {% if product.options_by_name['Size'] == null and product.options_by_name['Taille'] == null %}
+    {%- assign current_variant = product.selected_or_first_available_variant -%}     
+  {% elsif product.options_by_name['Size'].values.size == 1 or product.options_by_name['Taille'].values.size == 1 %}
+    {%- assign current_variant = product.selected_or_first_available_variant -%}     
+  {% else %}
+    {%- assign current_variant = product.selected_variant -%}
+  {%- endif -%}
+{%- endif -%}
+
+{% comment %}
+If current_variant is not defined then user need to select a product options, 
+we will show Google a first available variant
+If current_variant is defined then we'll show Google it's properties
+{% endcomment %}
+{%- if current_variant -%}
+  {%- assign seo_variant = current_variant -%}  
+{%- else -%}
+  {%- assign seo_variant = available_variant -%}  
+{%- endif -%}
+
+{%- assign days_price_valid_until = 10 | times: 86400 -%}
+{%- assign gtin_option = 'gtin' -%}
+{%- assign is_barcode_available = false -%}
+{%- if current_variant.barcode != blank -%}
+  {%- assign is_barcode_available = true -%}
+  {%- assign gtin_string_length = current_variant.barcode | size -%}
+  {%- if gtin_string_length == 8 or gtin_string_length == 12 or gtin_string_length == 13 or gtin_string_length == 14 -%}
+    {%- assign is_valid_gtin_length = true -%}
+    {%- assign gtin_option = gtin_option | append: gtin_string_length -%}
+  {%- endif -%}
+{%- endif -%}
+
+<script type="application/ld+json">    
+  {
+    "@context": "http://schema.org",
+    "@type": "Product",
+    "offers": {
+      "@type": "Offer",
+      "availability":"https://schema.org/{% if seo_variant.available %}InStock{% else %}OutOfStock{% endif %}",
+      "price": "{{ seo_variant.price | divided_by: 100.00 }}",
+      "priceCurrency": "{{ cart.currency.iso_code }}",
+      "priceValidUntil": "{{ 'now' | date: '%s' | plus: days_price_valid_until | date: '%Y-%m-%d'}}",
+      "url": "{{ shop.url }}{{ product.url }}?variant={{ seo_variant.id }}"
+    },    
+    "brand": {
+      "@type": "Brand",
+      "name": "Sheertex"
+    },
+    "sku": {{ seo_variant.sku | json }},
+    "name": {{ product.title | json }},
+    "description": {{ product.description | strip_html | json }},
+    "category": "",
+    "url": "{{ shop.url }}{{ product.url }}?variant={{ seo_variant.id }}",
+    {%- if is_barcode_available and is_valid_gtin_length %}
+      "{{gtin_option}}": {{ seo_variant.barcode | json }},
+      "productId": {{ seo_variant.barcode | json }},
+    {%- elsif is_barcode_available %}
+      "mpn": {{ seo_variant.barcode | json }},
+      "productId": {{ seo_variant.barcode | json }},
+    {%- endif -%}       
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": "14"
+    },          
+    {% if product.featured_image.src %}
+      "image": {
+        "@type": "ImageObject",
+        "url": "https:{{ product.featured_image.src | img_url: '1024x1024' }}",
+        "image": "https:{{ product.featured_image.src | img_url: '1024x1024' }}",
+        "name": {{ product.title | json }},
+        "width": 1024,
+        "height": 1024
+      }
+    {% else %}
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://cdn.shopify.com/s/files/1/0114/4120/9408/products/20200727-PDP-Size-XS-Day-1-136Edit-copysmall_1024x1024.jpg?v=1617064230",
+        "image": "https://cdn.shopify.com/s/files/1/0114/4120/9408/products/20200727-PDP-Size-XS-Day-1-136Edit-copysmall_1024x1024.jpg?v=1617064230",
+        "name": {{ product.title | json }},
+        "width": 1024,
+        "height": 1024
+      }
+    {% endif %}
+  }
+</script>
+
+{%- assign product_thumb_size = '180x' -%}
+{%- assign product_zoom_size = '1800x1800' -%}
+{%- assign product_image_size = '620x' -%}
+
+{% case image_container_width %}
+  {% when 'small' %}
+    {%- assign product_image_width = 'medium-up--two-fifths' -%}
+    {%- assign product_description_width = 'medium-up--three-fifths' -%}
+    {%- assign product_image_size = '480x' -%}
+  {% when 'medium' %}
+    {%- assign product_image_width = 'medium-up--one-half' -%}
+    {%- assign product_description_width = 'medium-up--one-half' -%}
+    {%- assign product_image_size = '620x' -%}
+  {% when 'large' %}
+    {%- assign product_image_width = 'medium-up--three-fifths' -%}
+    {%- assign product_description_width = 'medium-up--two-fifths' -%}
+    {%- assign product_image_size = '740x' -%}
+{% endcase %}

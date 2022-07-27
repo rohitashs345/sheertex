@@ -1,0 +1,83 @@
+<style>
+.site-header__countdown-banner {
+  position: relative;
+  background-color: #e8e8f2;
+  text-align: center;
+  padding: 0.6rem 0.5rem 0.5rem;
+  font-family: 'Agrandir';
+  font-weight: 500;
+  font-size: .75rem;
+  line-height: 0.8125rem;
+  display: block;
+  letter-spacing: 1.29px;
+  z-index: 29;
+}
+
+.site-header__countdown-banner.is-visible {
+  display: block;
+}
+
+.site-header__countdown-banner span {
+  margin-top: 2px;
+  vertical-align: middle;
+}
+
+.site-header__countdown-banner span b {
+  position: absolute;
+  padding-left: 5px;
+}
+
+.site-header__countdown-banner img {
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+@media screen and (max-width: 640px) {
+  .site-header__countdown-banner {
+    padding-top: 0.8rem;
+  }
+  .countdown-banner__text {
+    line-height: 1.3;
+  }
+  .countdown__container {
+    max-width: 18rem;
+    margin-left: 0rem;
+    margin: 0 auto !important;
+  }
+}
+</style>
+
+<div class="site-header__countdown-banner">
+  <div class="countdown__container">
+    <span class="countdown-banner__text tw-uppercase">P.S. Add to cart for a surprise gift<b id="site-header__countdown-banner__countdown"></b></span>
+  </div>
+</div>
+
+<script>
+function getDateStats(time) {
+    const days = Math.floor(time / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((time % (1000 * 60)) / 1000);
+    return `${hours}h ${minutes}m ${seconds}s`;
+}
+
+function updateCountdownOutput(saleEndTimestamp) {
+    const saleTimeRemaining = saleEndTimestamp - Date.now();
+    if (saleTimeRemaining > 0) {
+        const timeRemainingString = getDateStats(saleTimeRemaining);
+        document.querySelector(".site-header__countdown-banner").classList.add("is-visible");
+        document.getElementById("site-header__countdown-banner__countdown").textContent = timeRemainingString;
+        setTimeout(function() {
+            updateCountdownOutput(saleEndTimestamp);
+        }, 1000);
+    } else {
+        document.querySelector(".site-header__countdown-banner").classList.remove("is-visible");
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const saleEndTimestamp = 1606798799000;
+    updateCountdownOutput(saleEndTimestamp);
+});
+</script>

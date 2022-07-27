@@ -1,0 +1,77 @@
+<script>
+(function(jQuery) {
+  jQuery(document).on("page:load", function() {
+    try {
+      var checkoutItems = [
+        {% for item in checkout.line_items %}
+          {
+            id: '{{ item.product_id }}',
+            variantId: '{{ item.variant_id }}',
+            compareAtPrice: '{{item.variant.compare_at_price | times: item.quantity | money}}',
+            onSale: ({{item.variant.compare_at_price}} > {{item.variant.price}})
+          },
+        {% endfor %}
+      ];
+      checkoutItems
+      	// For each checkout line item, filter out items not on sale
+      	.filter(function (item) { return item.onSale; })
+      	.forEach(function (item) {
+          // Get price row node for sale item
+          var itemPriceSection = document.querySelector('[data-variant-id="'+item.variantId+'"] > .product__price');
+  
+          if (itemPriceSection) {
+            // Create compareAtPrice DOM node and style, and add to DOM
+            var placeholder = document.createElement('span');
+            placeholder.innerHTML = item.compareAtPrice;
+  
+            var compareAtPriceEl = placeholder.firstChild;
+            if (compareAtPriceEl && compareAtPriceEl.setAttribute) {
+              compareAtPriceEl.setAttribute('style', 'text-decoration: line-through; margin-right: 5px;');            
+              window.jQuery(itemPriceSection).prepend(compareAtPriceEl);
+            }
+  
+            // Highlight sale price node
+            var itemPriceEl = itemPriceSection.querySelector('.order-summary__emphasis');
+            if (itemPriceEl) {
+              itemPriceEl.setAttribute('style', 'color: red;');
+            }
+          }
+      	});
+      // Compute total saved value across all line items
+      {% assign compareAtPriceTotal = 0 %}
+      {% for item in checkout.line_items %}
+      	{% assign compareAtPrice = item.variant.compare_at_price | times: item.quantity %}
+        {% if (item.properties._igLineItemDiscount == "0" or item.properties._igLineItemDiscount == blank or item.properties._igLineItemDiscount == nil) %}
+    	    {% assign compareAtPriceTotal = compareAtPriceTotal | plus: compareAtPrice %}
+        {% endif %}
+     
+      {% endfor %}
+      {% assign totalSaved = compareAtPriceTotal | minus: checkout.line_items_subtotal_price  %}
+  
+  
+      // Construct and add You saved DOM node under Subtotal
+      var rawTotalSaved = {{ totalSaved }};
+      var totalSavedPrice = '{{totalSaved | money}}';
+     
+      var subtotalRowEl = document.querySelector('.total-line--subtotal');
+      var youSavedEl = document.createElement('tr');
+      youSavedEl.setAttribute('class', 'total-line')
+      youSavedEl.innerHTML = '<th class="total-line__name" scope="row">You saved</th>';
+      youSavedEl.innerHTML += '<td class="total-line__price">'+totalSavedPrice+'</td>';
+  
+      var compareAtPriceEl = youSavedEl.querySelector('.total-line__price').firstChild;
+      if (compareAtPriceEl && compareAtPriceEl.setAttribute) {        
+        compareAtPriceEl.innerHTML = '-' + compareAtPriceEl.innerHTML;
+        compareAtPriceEl.setAttribute('style', 'color: red;');        
+      }
+  
+      if(rawTotalSaved > 0) {
+        window.jQuery(youSavedEl).insertAfter(subtotalRowEl);
+      }
+    }
+    catch(e) {
+      console.log('Error', e);
+    }
+  });
+})(Checkout.jQuery);
+</script>

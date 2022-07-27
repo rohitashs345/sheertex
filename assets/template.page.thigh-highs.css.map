@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///page.thigh-highs.css"],"names":[],"mappings":"AAAA,yCACE,uCACE,YAAa,CACb,sBACF,CACF,C","file":"template.page.thigh-highs.css","sourcesContent":["@media only screen and (min-width: 600px) {\n  #CollectionSection-1578424553651 .grid {\n    display: flex;\n    justify-content: center;\n  }\n}\n"],"sourceRoot":""}

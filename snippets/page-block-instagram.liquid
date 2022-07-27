@@ -1,0 +1,37 @@
+{% assign count = section.settings.count | times: 5 %}
+
+{% if section.settings.divider %}<div class="section--divider">{% endif %}
+
+<div data-section-id="{{ section.id }}" data-section-type="instagram" class="instagram-section">
+  <div class="page-width">
+
+    {% if section.settings.title != blank %}
+      <header class="section-header">
+        <h2 class="section-header__title">{{ section.settings.title }}</h2>
+      </header>
+    {% endif %}
+
+    <div class="instagram-feed-wrap instagram-feed-wrap--{{ section.settings.count }}">
+      <div class="instagram-feed-wrap__reflow-fix"></div>
+      {% if section.settings.client_id != blank %}
+        <div
+          id="Instafeed-{{section.id}}"
+          class="grid grid--uniform grid--no-gutters instagram-holder"
+          data-user-id="{{ section.settings.client_id | split: '.' | first }}"
+          data-client-id="{{ section.settings.client_id | strip }}"
+          data-count="{{ count }}"></div>
+      {% else %}
+        <div class="grid grid--uniform grid--no-gutters">
+          {% for i in (1..count) %}
+            <div class="grid__item small--one-half medium-up--one-fifth">
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+  </div>
+</div>
+
+{% if section.settings.divider %}</div>{% endif %}

@@ -1,0 +1,117 @@
+<script>
+  var translated = [];  
+var getTranslationFor = function(key) {
+
+	{%- capture customs -%}{%- render 'ly-get-customs' -%}{%- endcapture -%}
+	{%- assign customs = customs | split : '[ly_custom]' -%}
+
+	{% for custom in customs %}
+	{%- assign used_custom = custom | split: '[ly_custom_split]' -%}
+	{%- assign src = used_custom | first -%}
+	{% assign src = src | replace: '"', 'ly_dq' %}
+	{% assign src = src | replace: "'", 'ly_sq' %}
+	{% assign src = '#ly_cu' | append: src %}
+	{%- assign dst = used_custom | last -%}
+	{%- if dst -%}
+    	if(key.replace('"', 'ly_dq').replace("'", 'ly_sq').trim() == '{{ src | strip_newlines }}') {
+   	return '{{ dst | replace: "\", "\\\" | replace: "'", "\\'" | strip_newlines }}';
+	}
+	{%- endif -%}
+	{% endfor %}
+  	 
+	return key;
+  };
+
+  var translateHtml = function(id, replace) {
+  	var element = $(id);
+	var content = element.html();
+	if(content) {
+  	var translation = getTranslationFor(content);
+  	if(content != translation) {
+    	element.html(translation);
+  	}
+	}
+  }
+
+  var translatePlaceholder = function(id) {
+  	var element = $(id);
+	var content = element.attr('placeholder');
+	if(content) {
+  	var translation = getTranslationFor(content);
+  	if(content != translation) {
+    	element.attr('placeholder', translation);
+  	}
+	}
+  }
+
+  var translateValue = function(id) {
+  	var element = $(id);
+	var content = element.val();
+	if(content) {
+  	var translation = getTranslationFor(content);
+  	if(content != translation) {
+    	element.val(translation);
+  	}
+	}
+  }
+ 
+  $(function() {
+	$('body').bind('DOMSubtreeModified', function() {
+ 	translateHtml('.spr-badge-caption');
+  	translateHtml('.spr-header-title');
+  	translateHtml('.spr-summary-caption');
+  	translateHtml('.spr-summary-actions-newreview');
+  	translateHtml('.spr-form-title');
+  	translateHtml('.spr-body-of-review');
+  	translateHtml('.spr-form-message');
+  	translateHtml('.spr-based-on-text');
+  	translateHtml('.spr-review-reportreview');
+  	translateValue('.spr-button.spr-button-primary.button.button-primary.btn.btn-primary');
+
+  	var elements = $('.spr-reviews-text');
+  	for(var i = 0; i < elements.length; i++) {
+    	var element = $(elements[i]);
+    	var content = element.html();
+    	if(content) {
+      	var translation = getTranslationFor(content);
+      	if(content != translation) {
+        	element.html(translation);
+      	}
+    	}
+  	}
+  	var elements = $('.spr-review-text');
+  	for(var i = 0; i < elements.length; i++) {
+    	var element = $(elements[i]);
+    	var content = element.html();
+    	if(content) {
+      	var translation = getTranslationFor(content);
+      	if(content != translation) {
+        	element.html(translation);
+      	}
+    	}
+  	}
+  	var elements = $('.spr-form-label');
+  	for(var i = 0; i < elements.length; i++) {
+    	var element = $(elements[i]);
+    	var content = element.html();
+    	if(content) {
+      	var translation = getTranslationFor(content);
+      	if(content != translation) {
+        	element.html(translation);
+      	}
+    	}
+  	}
+  	var elements = $('.spr-form-input');
+  	for(var i = 0; i < elements.length; i++) {
+    	var element = $(elements[i]);
+    	var content = element.attr('placeholder');
+    	if(content) {
+      	var translation = getTranslationFor(content);
+      	if(content != translation) {
+        	element.attr('placeholder', translation);
+      	}
+    	}
+  	}
+	});
+  });
+</script>

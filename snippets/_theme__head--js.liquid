@@ -1,0 +1,128 @@
+<!-- Google Optimizer -->
+<script src="https://www.googleoptimize.com/optimize.js?id=OPT-WN2DQ2H"></script>
+<!-- End Google Optimizer -->
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TPDV3NN');</script>
+<!-- End Google Tag Manager -->
+
+<!-- Global site tag (gtag.js) - Google Ads: 622761184 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-622761184"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-622761184');
+</script>
+
+<!-- Hotjar Tracking Code for https://www.sheertex.com/ -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:2716395,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+{% include 'LittledataLayer' %}
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+
+  window.theme = window.theme || {};
+  theme.strings = {
+    addToCart: {{ 'products.product.add_to_cart' | t | json }},
+    soldOut: {{ 'products.product.sold_out' | t | json }},
+    unavailable: {{ 'products.product.unavailable' | t | json }},
+    stockLabel: {{ 'products.product.stock_label' | t: count: '[count]' | json }},
+    customInventoryLabel: {{ 'products.product.custom_inventory_label' | t: count: '[count]' | json }},
+    willNotShipUntil: {{ 'products.product.will_not_ship_until' | t: date: '[date]' | json }},
+    willBeInStockAfter: {{ 'products.product.will_be_in_stock_after' | t: date: '[date]' | json }},
+    waitingForStock: {{ 'products.product.waiting_for_stock' | t | json }},
+    cartSavings: {{ 'cart.general.savings_html' | t: savings: '[savings]' | json }},
+    cartEmpty: {{ 'cart.general.empty' | t | json }},
+    cartTermsConfirmation: {{ 'cart.general.terms_confirm' | t | json }}
+  };
+  theme.settings = {
+    dynamicVariantsEnable: true,
+    dynamicVariantType: {{ settings.variant_type | json }},
+    cartType: {{ settings.cart_type | json }},
+    currenciesEnabled: {{ settings.enable_currencies | json }},
+    nativeMultiCurrency: {{ shop.enabled_currencies.size }} > 1 ? true : false,
+    moneyFormat: {{ shop.money_format | json }},    
+    inventoryThreshold: {{ settings.inventory_threshold | times: 1 }},
+    quickView: {{ settings.quick_shop_enable }},
+    themeName: 'Motion',
+    themeVersion: "4.5.1"
+  };
+</script>
+
+<script src="{{ 'vendor-scripts-v8.js' | asset_url | split: '?' | first }}"></script>
+<script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+
+{%- if request.page_type contains 'customers/' -%}
+  <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{%- if shop.permanent_domain == 'sheertexdev.myshopify.com' %}
+  <script src='http://localhost:35729/livereload.js?snipver=1'></script>
+{%- endif -%}
+
+<script>
+  function sxDeferScript(src, attrs, onload) {
+    window.jQuery(document).ready(function() {
+      sxScript(src, attrs, onload)
+    })
+  }
+
+  function sxScript(src, attrs, onload) {
+    if (onload === undefined && typeof attrs === 'function') {
+      onload = attrs;
+      attrs = {};
+    }
+    var script = document.createElement('script');
+    script.onload = onload;
+    script.defer = true;
+    script.src = src;
+    for (var a in attrs) {
+      if (attrs.hasOwnProperty(a)) {
+        script.setAttribute(a, attrs[a]);
+      }
+    }
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  function sxCss(src) {
+    var style = document.createElement('link');
+    style.rel = "stylesheet"
+    style.type = "text/css";
+    style.href = src;
+    document.getElementsByTagName('head')[0].appendChild(style);
+  }
+</script>
+
+<script>
+  var yotpoIsReady = false;
+    (function checkForYotpo() {
+        setTimeout(function() {
+            if (typeof yotpo !== "undefined") {
+                if (yotpo.initialized === true) {
+                    yotpoIsReady = true;
+                    yotpo.refreshWidgets();
+                }
+            } else {
+                console.log('Checking for Yotpo...');
+            }
+            if (yotpoIsReady === false) checkForYotpo();
+        }, 250);
+    })();
+
+</script>

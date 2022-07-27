@@ -1,0 +1,39 @@
+<section class="tw-flex tw-py-9 tw-h-36 tw-mb-6 tw-justify-items-center tw-items-center tw-text-center tw-bg-cover tw-w-full tw-relative" style="background-image: url({{ 'Desktop - Plain red banner.png' | asset_url }}); height: 200px;">
+    <div class="tw-text-center tw-m-auto">
+        <p class="tw-mx-auto tw-text-5xl mmd:tw-text-4xl tw-font-sans tw-text-center tw-mb-0 tw-text-white">
+            {{ section.settings.clearance_sale_top }}
+        </p>
+        <p class="tw-mx-auto tw-text-2xl tw-font-sans tw-text-center tw-mb-0 tw-text-white">
+            {{ section.settings.clearance_sale_bottom }}
+        </p>
+    </div>
+</section>
+
+{% comment %}<section class="tw-py-9 tw-h-36 tw-mb-6 tw-justify-items-center tw-items-center tw-text-center tw-bg-cover tw-w-full tw-relative" style="background-image: url({{ 'BG_gradientandtape3x.png' | asset_url }}); height: 144px;">
+    <div class="tw-left-5 tw-absolute tw-inset-y-0">
+        <p class="tw-mx-auto tw-text-5xl mmd:tw-text-2xl tw-font-sans tw-text-left mmd:tw-mb-0">
+            {{ section.settings.warehouse_sale_top }}
+        </p>
+        <p class="tw-mx-auto tw-text-2xl tw-font-sans tw-text-left md:tw-hidden">
+            {{ section.settings.warehouse_sale_bottom }}
+        </p>
+    </div>
+    <div class="tw-right-5 tw-absolute tw-inset-y-0">
+        <p class="tw-text-right tw-mx-auto tw-text-5xl tw-font-sans mmd:tw-hidden">
+            {{ section.settings.warehouse_sale_bottom }}
+        </p>
+    </div>
+</section>
+
+
+
+<section class="sm:tw-py-2">
+    {% if request.locale.iso_code == 'en' %}
+    <img src="{{ 'Desktop - EN - 042222.png' | asset_img_url: 'master' }}" class="msm:tw-hidden tw-w-full" alt="temp">
+    <img src="{{ 'Mobile - EN - 042222.png' | asset_img_url: 'master' }}" class="sm:tw-hidden tw-w-full" alt="temp">
+    {% elsif request.locale.iso_code == 'fr' %}
+    <img src="{{ 'Desktop - FR - 042222.png' | asset_img_url: 'master' }}" class="msm:tw-hidden tw-w-full" alt="temp">
+    <img src="{{ 'Mobile - FR - 042222.png' | asset_img_url: 'master' }}" class="sm:tw-hidden tw-w-full" alt="temp">
+    {% endif %}
+</section>
+{% endcomment %}

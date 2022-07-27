@@ -1,0 +1,66 @@
+{% if section.settings.d_blackfriday_mp4 %}
+<a href="{{section.settings.blackfriday_link }}">
+  <div class="msm:tw-hidden"> 
+    <video width="100%" loop="" muted="" autoplay="" playsinline="" poster="{{ section.settings.d_blackfriday_poster }}"> 
+      <source src="{{ section.settings.d_blackfriday_webm }}" type="video/webm"> 
+      <source src="{{ section.settings.d_blackfriday_mp4 }}" type="video/mp4"> 
+    </video> 
+  </div>
+
+  <div class="sm:tw-hidden"> 
+    <video width="100%" loop="" muted="" autoplay="" playsinline="" poster="{{ section.settings.m_blackfriday_poster }}"> 
+      <source src="{{ section.settings.m_blackfriday_webm }}" type="video/webm"> 
+      <source src="{{ section.settings.m_blackfriday_mp4 }}" type="video/mp4"> 
+    </video> 
+  </div>
+</a>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Black Friday Video",
+    "presets": [
+      {
+        "name": "Black Friday Video",
+        "category": "Promotional"
+      }
+    ],
+    "settings": [
+      {
+        "type": "url",
+        "id": "blackfriday_link",
+        "label": "Link to shop button"
+      },
+      {
+        "type": "url",
+        "id": "d_blackfriday_mp4",
+        "label": "Desktop BF Sale mp4 url"
+      },
+      {
+        "type": "url",
+        "id": "d_blackfriday_webm",
+        "label": "Desktop BF Sale webm"
+      },
+      {
+        "type": "url",
+        "id": "d_blackfriday_poster",
+        "label": "Desktop BF Sale poster"
+      }, 
+      {
+        "type": "url",
+        "id": "m_blackfriday_mp4",
+        "label": "Mobile BF Sale mp4 url"
+      },
+      {
+        "type": "url",
+        "id": "m_blackfriday_webm",
+        "label": "Mobile BF Sale webm"
+      },
+      {
+        "type": "url",
+        "id": "m_blackfriday_poster",
+        "label": "Mobile BF Sale poster"
+      }
+    ]
+  }
+{% endschema %}

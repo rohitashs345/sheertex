@@ -1,0 +1,71 @@
+<div id="PerformancePressSection" data-section-id="{{ section.id }}" data-section-type="what-the-press-section">
+  <div class="tw-text-center tw-py-16 msm:tw-py-12 tw-w-full tw-text-center mlg:tw-px-0 __hp-press-container__3ueg6">
+    <div class="tw-container tw-mx-auto">
+    <div class="gizmodoBustleContainer tw-w-full mlg:tw-mx-0">
+      <a href="https://www.sheertex.com/pages/reviews" class="logo-container timeContainer tw-mx-3 tw-p-0 tw-mt-3 sm:tw-mx-0 sm:tw-mt-0 __timeContainer__3ohjN">
+        <div class="timeContainer-content">
+          {{ section.settings.testimonial_2 }}
+        </div>
+      </a>
+    </div>
+    <div class="tw-grid sm:tw-grid-cols-6 msm:tw-grid-rows-2 msm:tw-grid-cols-3 tw-gap-6 sm:tw-container tw-mx-auto tw-py-16 msm:tw-py-12 tw-align-items-center">
+      <a href="https://www.sheertex.com/pages/reviews"><img class="tw-w-20 sm:tw-pt-2" src="{{ 'instyle-logo.svg' | asset_url }}" alt="press-svg1"></a>
+      <a href="https://www.sheertex.com/pages/reviews"><img class="tw-w-20 sm:tw-pt-2" src="{{ 'vogue-logo.svg' | asset_url }}" alt="press-svg1"></a>
+      <a href="https://www.sheertex.com/pages/reviews"><img class="tw-w-20 msm:tw-row-start-2 sm:tw-pt-2" src="{{ 'elle-logo.svg' | asset_url }}" alt="press-svg1"></a>
+      <a href="https://www.sheertex.com/pages/reviews"><img class="tw-w-16" src="{{ 'cnn-logo.svg' | asset_url }}" alt="press-svg1"></a>
+      <a href="https://www.sheertex.com/pages/reviews"><img class="tw-w-20 tw-pt-2" src="{{ 'buzzfeed-logo.svg' | asset_url }}" alt="press-svg1"></a>
+      <a href="https://www.sheertex.com/pages/reviews"><img class="msm:tw-pt-2" src="{{ 'gobe-logo.svg' | asset_url }}" alt="press-svg1"></a>
+    </div>
+    <p class="tw-font-sans tw-uppercase tw-text-xs sm:tw-text-sm tw-leading-normal tw-text-center tw-tracking-mini-heading tw-font-bold">Don’t just take our word for it <span class="tw-px-1 sm:tw-px-4 tw-font-bold">|</span><a href="https://www.sheertex.com/pages/reviews" class="tw-underline tw-font-medium">read press</a></p>
+    </div>
+  </div>
+</div>
+<style>
+
+  .__hp-press-container__3ueg6 {
+    background-image: linear-gradient(to bottom, #f1e7db, #e7ded7);
+  }
+
+  .__section-header__3vRKN {
+    font-family: 'Agrandir';
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.104rem;
+    font-weight: 500;
+  }
+  .__gizmodoContainer__1gLuv, .__timeContainer__3ohjN, .__bustleContainer__3mxe1 {
+    background: transparent;
+  }
+</style>
+{% schema %}
+  {
+    "name": "Performance press section",
+    "class": "what-the-press",
+    "settings": [
+      {
+        "type": "html",
+        "id": "testimonial_1",
+        "label": "testimonial text 1",
+        "default": "You can stretch and twist the Sheertex as much as you like and they won't break. You'd have to be the Hulk to tear a hole through these things."
+      },
+      {
+        "type": "html",
+        "id": "testimonial_2",
+        "label": "testimonial text 2",
+        "default": "Named One of<br>TIME's Best Inventions "
+      },
+      {
+        "type": "html",
+        "id": "testimonial_3",
+        "label": "testimonial text 3",
+        "default": "...outlast any pair of tights ever — great for, say, pet owners or the accident-prone."
+      }
+    ],
+    "presets": [
+      {
+        "name": "Performance press section",
+        "category": "Advanced layout"
+      }
+    ]
+  }
+{% endschema %}

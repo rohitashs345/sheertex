@@ -1,0 +1,162 @@
+<style>
+/* The container <div> - needed to position the dropdown content */
+.__dropdown__2weFd {   
+  display: flex;
+  flex-wrap: nowrap;
+  flex-flow: row;
+  align-items: center;
+  height: 100%;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.__dropdown-content__173e4 {
+  display: none;
+  position: absolute;
+  background-color: white;  
+  width: 100vw;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  left: 0;    
+  top: 100%;
+  border-top: 1px solid #CCCCCC;
+  max-height: calc(var(--vh, 1vh) * 100 - 150px);
+  overflow-y: auto;
+}
+
+.__caret__1g-0O {
+  width: 14px;
+  height: 14px;  
+}
+
+.__title__-aCRQ {
+  font-family: Agrandir;
+  font-weight: medium;
+  letter-spacing: 1.56px;
+  line-height: 1.2;
+}
+
+.__subtitle__1LLSO {
+   font-family: Matiere;
+   font-size: 24px;
+   letter-spacing: 0;
+   line-height: 1.2;
+   font-weight: 300;
+}
+
+.__menu-item__pOnV0 {
+  font-family: Agrandir;
+  font-weight: normal;
+  letter-spacing: 1.56px;
+  line-height: 1.5;
+}
+
+[data-name=mobile-menu].menu-opened {
+  display: block;
+}
+
+.opened [data-name=caret] {
+  transform: rotate(180deg); 
+}
+
+.opened [data-name=menu-content] {
+  display: flex;
+}
+
+.menu-opened [data-name=open-menu-button] {
+  display: none;
+}
+
+.menu-opened [data-name=close-menu-button] {
+  display: block;
+}
+
+</style>
+<script>
+  function toggleMenu(menuTrigger) {    
+    const menuContentElement = document.querySelector('[data-name=mobile-menu]');
+
+    if (menuContentElement.classList.contains('menu-opened')) {
+      document.body.style.overflow = 'auto';
+    } else {      
+      document.body.style.overflow = 'hidden';
+    } 
+    
+    menuContentElement.classList.toggle('menu-opened');
+    menuTrigger.classList.toggle('menu-opened');
+  }
+</script>
+
+<div class="__dropdown__2weFd">
+   <a class="tw-mr-2 tw-w-6" onclick="toggleMenu(this)">
+      <img data-name="open-menu-button" class="tw-mt-2" loading="eager" width="25" height="16" src="https://cdn.shopify.com/s/files/1/0114/4120/9408/t/177/assets/Hamburger-menu.svg?v=1172915541407629834" alt="menu">  
+      <span data-name="close-menu-button" class="tw-hidden tw-mt-2 tw-cursor-pointer tw-text-2xl">&#10005;</span>    
+    </a>    
+    <div data-name="mobile-menu" class="__dropdown-content__173e4">      
+      {% assign menu = linklists[block.settings.menu] %}
+      {% if menu.links.size > 0 %}       
+          <div class="tw-flex tw-flex-col">
+          {% for level1 in menu.links %}
+            {% if level1.links.size == 0 %}
+            <div class="tw-flex tw-justify-between tw-w-full tw-border-0 tw-border-t tw-border-solid tw-border-gray-300">
+                <a class="tw-uppercase tw-py-4 tw-font-medium tw-ml-4 __title__-aCRQ" href="{{ level1.url }}">{{ level1.title }}</a>
+                {% if level1.title == 'Shop All' or level1.title == 'Magasinez' %}
+                  <div class="tw-mr-4">{% include 'header-language-switcher' %}</div>
+                {% endif %}
+            </div>              
+            {% else %}
+              <div class="tw-py-4 tw-w-full tw-border-0 tw-border-t tw-border-solid tw-border-gray-300 tw-flex tw-flex-col" onclick="this.classList.toggle('opened')">
+                <div class="tw-uppercase tw-font-medium tw-w-full tw-flex tw-justify-between tw-whitespace-normal">
+                  <span class="tw-pl-4 __title__-aCRQ">{{ level1.title }}</span>
+                  {% if level1.title != 'Deal of the day' %}
+                    <span class="tw-mr-4 __caret__1g-0O" data-name="caret">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.0 14.0" height="14.0px" width="14.0px" style="position: absolute;">
+                        <path d="M2 5.5 L7.0 10.5 L12.0 5.5" fill="transparent" stroke="#000000" stroke-width="1px"></path>
+                      </svg>
+                    </span>
+                  {% endif %}
+                </div>
+                <div class="tw-flex tw-flex-col tw-hidden tw-mt-4 tw-whitespace-normal" data-name="menu-content">
+                {% for level2 in level1.links %}
+                  {% if level2.links.size > 0 %}
+                    <a class="tw-py-2">
+                      <div class="tw-ml-4 tw-font-serif tw-text-xl __subtitle__1LLSO">{{ level2.title }}</div>
+                    </a>
+                  {% else %}
+                    <a class="tw-uppercase tw-py-1" href="{{ level2.url }}">
+                      <div class="tw-ml-4 tw-my-2 __menu-item__pOnV0">{{ level2.title }}</div>
+                    </a>
+                  {% endif %}
+                  <div class="tw-flex tw-flex-col">
+                    {% for level3 in level2.links %}
+                      <a class="tw-uppercase tw-py-1" href="{{ level3.url }}">
+                        <div class="tw-ml-4 tw-my-2 __menu-item__pOnV0">{{ level3.title }}</div>
+                      </a>
+                    {% endfor %}
+                  </div>
+                {% endfor %}
+                </div>
+              </div>    
+            {% endif %}                                  
+          {% endfor %}
+          </div>                 
+      {% endif %}   
+      <div class="tw-w-full tw-flex tw-flex-col tw-items-center tw-p-4 tw-cursor-pointer tw-border-0 tw-border-t tw-border-solid tw-border-gray-300" onclick="window.open('{{block.settings.cta_url}}',  '_self')">        
+        {%- assign img = block.settings.cta_image -%}
+        <img loading="lazy" class="tw-object-cover tw-w-full" style="max-height: 200px;" srcset="{{ img | img_url: '625x' }} 625w,
+                  {{ img | img_url: '750x' }} 750w,
+                  {{ img | img_url: '880x' }} 880w,
+                  {{ img | img_url: '1150x' }} 1150w,
+                  {{ img | img_url: '1400x' }} 1400w,
+                  {{ img | img_url: '1600x' }} 1600w,
+                  {{ img | img_url: '3200x' }} 3200w" sizes="(max-width: 639px) 625px, (max-width: 750px) 750px, (max-width: 1023px) 880px, (max-width: 1279px) 1150px, (max-width: 1535px) 1400px, 1600px" alt="Nav promo image">        
+        <a class="tw-w-full tw-flex tw-justify-between tw-items-center tw-py-6" href="{{block.settings.cta_url}}">
+          <div class="tw-uppercase tw-font-medium tw-text-xs __title__-aCRQ" style="width: 50%;">
+            {{block.settings.cta_text}}
+          </div>
+          <div>   
+            <img class="tw-border tw-border-black tw-border-solid tw-border-gray-500 tw-rounded-full tw-p-2 tw-ml-2" src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/arrow-right.svg?v=1602849460" alt="arrow"> 
+          </div>        
+        </a>
+      </div>   
+    </div>   
+</div>  

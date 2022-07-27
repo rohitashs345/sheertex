@@ -1,0 +1,121 @@
+<section class="tw-container tw-mx-auto tw-relative tw-mb-4 sm:tw-mb-8">
+  <div class="shortie-main-container tw-grid md:tw-grid-cols-2 mmd:tw-grid-rows-2">
+    <a href="{{section.settings.link}}">
+        {%- assign img = section.settings.image -%} 
+        {% if img %}
+            <img class="tw-w-full tw-h-full" loading="lazy" srcset="{{ img | img_url: '650x' }}, {{ img | img_url: '464x' }}, {{ img | img_url: '240x' }}, {{ img | img_url: '928x' }}" alt="model wearing sheertex tights">
+        {% else %}
+            <img class="tw-w-full tw-h-full" loading="lazy" src="{{ 'thigh-highs-au.png' | asset_url }}" alt="model wearing sheertex tights">
+        {% endif %}
+    </a>
+    <div class="shortie-gradient-container tw-flex tw-flex-col tw-items-center tw-justify-center msm:tw--mt-2">
+      <div class="tw-mx-auto tw-text-center tw-max-w-xs">
+          <div class="shortie-intro tw-pb-4 tw-uppercase tw-text-center">{{ section.settings.header }}</div>
+          <div class="shortie-tilte tw-font-serif tw-pb-4 msm:tw-text-lg tw-text-center">{{ section.settings.product_name }}</div>
+          <div class="shortie-body tw-pb-8 sm:tw-pb-10 msm:tw-px-8 tw-text-center">
+            {{ section.settings.product_description }}           
+          </div>
+          <a href="{{section.settings.link}}" class="shortie-cta tw-uppercase tw-py-4 tw-px-12 sm:tw-px-16 tw-rounded-3xl tw-bg-white tw-text-center"> 
+            {{ section.settings.button_label }}            
+          </a>
+      </div>
+    </div>
+  </div>
+  {% if section.settings.icon_svg != blank %}
+      <img class="tw-absolute tw-top-1.5 msm:tw-left-8 lg:tw-top-10 md:tw-right-10 lg:tw-right-16" loading="lazy" src="{{ section.settings.icon_svg }}" alt="best sellers svg">
+  {% else %}
+      <img class="tw-absolute tw-top-1.5 msm:tw-left-8 lg:tw-top-10 md:tw-right-10 lg:tw-right-16" loading="lazy" src="{{ 'best-seller.svg' | asset_url }}" alt="best sellers svg">
+  {% endif %}
+</section>
+
+<style>
+.shortie-gradient-container{
+  background-image: linear-gradient(to bottom, #f7eee3, #ddff98);
+}
+
+.shortie-intro{
+  font-family: Agrandir;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 3;
+  letter-spacing: 1.2px;
+}
+
+.shortie-tilte{
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 1.2; 
+}
+
+@media (max-width: 640px) {
+  .shortie-intro{
+    line-height: 0.7;
+  }
+  .shortie-tilte{
+    font-size: 18px;
+  }
+}
+
+.shortie-body {
+  font-family: Agrandir Narrow;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0.4px;
+}
+
+.shortie-cta{
+  font-family: Agrandir;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: 1.29px;
+}
+</style>
+
+{% schema %}
+
+{
+  "name": "Introducing new product",  
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Featured Image on left"
+    }, {
+      "type": "text",
+      "id": "header",
+      "label": "Product header",
+      "default": "Discover"
+    }, {
+      "type": "text",
+      "id": "product_name",
+      "label": "Product name",
+      "default": "Thigh Highs"
+    }, {
+      "type": "textarea",
+      "id": "product_description",
+      "label": "Description text of the product",
+      "default": "Summer days are on the horizon – the perfect time for these flirty sheers.<br>Go on, show a little leg."
+    }, {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "SHOP NOW"
+    }, {
+      "type": "url",
+      "id": "link",
+      "label": "Link to product"
+    }, {
+      "type": "text",
+      "id": "icon_svg",
+      "label": "Icons svg link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Intorducing New Product Section",
+      "category": "Sheertex"
+    }
+  ]
+}
+{% endschema %}

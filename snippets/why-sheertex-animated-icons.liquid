@@ -1,0 +1,67 @@
+<style>
+@media (max-width: 640px) {
+  .__test-gif-cards__1bcMF {
+    min-width: 80%;
+    margin: 0 auto;
+  }
+}
+.__testkit-gifs__2CGAj{
+  width: 150px;
+  height: 150px;
+}
+.__testkit-gif-horseshoe__35Bpg {
+  width: 110px;
+  height: 110px;
+}
+.__test-gif-cards__1bcMF {
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.__testkit-gif-clover__2hN2F {
+  width: 120px;
+  height: 120px;
+}
+
+.__test-animated-gifs-container__uou8m::-webkit-scrollbar {
+  display: none;
+}
+.__testkit-testimonial-container__11WMP::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .__testkit-testimonal-video__3H9xK {
+    max-width: 95vw;
+    margin: 0 auto;
+  }
+
+  .__testkit-gif-horseshoe__35Bpg {
+    width: 150px;
+    height: 150px;
+  }
+}
+</style>
+
+<div class="tw-uppercase tw-mb-6 tw-font-bold tw-text-sm msm:tw-text-xs tw-tracking-mini-heading tw-text-center tw-font-sans tw-font-heading tw-pt-12">Why Sheertex?</div>
+{% if product.handle !="test-kit" %}
+    <div class="tw-mb-6 tw--mt-2 tw-font-serif msm:tw-text-2xl msm:tw-px-4 sm:tw-text-4xl tw-font-light tw-tracking-normal tw-text-center tw-font-sans tw-font-heading">The World’s Most Resilient Tights</div>
+{% endif %}
+
+<section class="tw-flex tw-container tw-mx-auto tw-overflow-x-scroll __test-animated-gifs-container__uou8m">
+  <a href="https://www.sheertex.com/pages/knit" class="tw-flex tw-flex-col tw-items-center tw-justify-center __test-gif-cards__1bcMF">
+    <img class="tw-mx-auto __testkit-gif-horseshoe__35Bpg" src="{{ 'horseshoe-test.gif' | asset_url }}" loading="lazy">
+    <div class="tw-uppercase tw-mb-6 tw-font-bold tw-text-center tw-font-sans tw-font-heading tw-pt-4">10x stronger than steel</div>
+    <p class="text-center">Made using one of the world’s strongest polymers, our tights are guaranteed to last.</p>
+  </a>
+  <a href="https://www.sheertex.com/pages/knit" class="tw-flex tw-flex-col tw-items-center tw-justify-center __test-gif-cards__1bcMF">
+    <img tw-mx-auto="" tw--mb-8"="" src="{{ 'goldfish-test.gif' | asset_url }}" loading="lazy" class="__testkit-gifs__2CGAj">
+    <div class="tw-uppercase tw-mb-6 tw-font-bold tw-text-center tw-font-sans tw-font-heading">Magical properties</div>
+    <p class="text-center">Antimicrobial, water resistant,cooling, quick-dry and machine washable.</p>
+  </a>
+  <a href="https://www.sheertex.com/pages/knit" class="tw-flex tw-flex-col tw-items-center tw-justify-center __test-gif-cards__1bcMF">
+    <img tw-mx-auto"="" src="{{ 'clover-test.gif' | asset_url }}" loading="lazy" class="__testkit-gifs__2CGAj __testkit-gif-clover__2hN2F">
+    <div class="tw-uppercase tw-mb-6 tw-font-bold tw-text-center tw-font-sans tw-font-heading sm:tw-pt-4">Sustainably made for all</div>
+    <p class="text-center">Designed and made-to-last responsibly in Canada, with inclusive sizing up to 3XL.</p>
+  </a>
+</section>

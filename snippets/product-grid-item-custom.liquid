@@ -1,0 +1,64 @@
+<!-- medium-up--one-half -->
+{% assign custom_grid_item_width = grid_item_width %}
+{% if block.item_double_width == true %}
+  {% assign custom_grid_item_width = 'medium-up--one-half' %}
+{% endif %}
+<div class="grid__item grid-product {{ custom_grid_item_width }} 
+            grid-product__has-quick-shop"
+     data-aos="row-of-{{ per_row }}">
+  {%- assign fixed_aspect_ratio = false -%}
+  {% unless settings.product_grid_image_size == 'natural' %}
+    {%- assign fixed_aspect_ratio = true -%}
+  {% endunless %}
+
+  <div class="grid-product__content custom">
+  {% if block.custom_img_link != blank%}
+    <a href="{{ block.custom_img_link }}">
+  {% endif %}
+    <div class="grid-product__image-mask">
+      {% if fixed_aspect_ratio %}
+        <div
+          class="grid__image-ratio grid__image-ratio--{{ settings.product_grid_image_size }}"
+          loading="lazy"
+          bgset="{% include 'bgset', image: block.image %}"
+        </div>
+      {% else %}
+        <div class="image-wrap"
+          style="{% unless block.settings.image_align %}height: 92%;{% endunless %}">
+          {% if request.locale.iso_code == 'en' %}
+            {%- assign img = block.image -%}
+          {% elsif request.locale.iso_code == 'fr' %}
+            {%- assign img = block.image-fr -%}
+          {% endif %}
+          <img class="grid-product__image hey1"
+              loading="lazy"
+              srcset="{{ img | img_url: '350x' }} 350w,
+                      {{ img | img_url: '600x' }} 600w,
+                      {{ img | img_url: '1200x' }} 1200w"
+              sizes="(max-width: 825px) 350px, 600px"
+              alt="{{ block.image.alt | escape }}">
+        </div>
+      {% endif %}
+    </div>
+  {% if block.custom_img_link != blank%}
+    </a>
+  {% endif %}
+    <div class="grid-product__meta">
+        {% if block.title != blank %}
+        <div class="grid-product__title">{{ block.title }}</div>
+        {% endif %}
+        {% if block.description != blank %}
+        <div class="grid-product__description">{{ block.description }}</div>
+        {% endif %}
+    </div>
+    {% if block.link_text != blank and block.link != blank %}
+      <div class="grid-product__cta">
+        <a href ="{{ block.link }}">
+          <button type="button" class="btn btn--full btn--no-animate">
+            {{ block.link_text }}
+          </button>
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<section class="tw-bg-labBlue">
+
+    <span class="tw-text-center tw-w-full tw-py-8">
+        <p class="tw-rounded-3xl tw-mx-auto sm:tw-w-1/3 msm:tw-w-3/4 tw-bg-green-200 tw-text-6xl msm:tw-text-3xl tw-font-serif tw-leading-tight tw-font-medium tw-tracking-heading">
+            {{ 'sections.experimentsLP-content.elp_html' | t}}
+        </p>
+    </span>
+
+    <section class="page-width tw-px-4 tw-grid sm:tw-grid-cols-4 msm:tw-grid-cols-1 tw-gap-4 tw-pb-16">
+        <div class="sm:tw-col-span-2 sm:tw-col-start-2">
+            <a href="https://www.sheertex.com/blogs/experiments/sheertex-lab"><img src="{{ 'lablanding3.png' | asset_img_url: 'master' }}" class="tw-mx-auto tw-w-full" alt="temp"></a>
+            <div class="tw-flex tw-h-full tw-w-full">
+                <div class="tw-mx-auto tw-text-center msm:tw-pt-4 tw-w-full">
+                    <p class="tw-rounded-3xl tw-mx-auto tw-mt-4 sm:tw-w-1/3 msm:tw-w-1/2 tw-bg-green-200 tw-text-xs tw-font-sans tw-leading-normal tw-font-medium tw-uppercase tw-tracking-heading tw-py-1">
+                    {{ 'sections.experimentsLP-content.elp_article1_type_html' | t}}
+                    </p>
+                    <p class="tw-text-center tw-text-4xl msm:tw-text-2xl tw-font-serif tw-leading-tight tw-font-light tw-tracking-normal tw-max-w-md tw-mx-auto">
+                        {{ 'sections.experimentsLP-content.elp_article1_title_html' | t}}
+                    </p>
+                    <p class="tw-mx-auto tw-max-w-sm">
+                        {{ 'sections.experimentsLP-content.elp_article1_subtitle_html' | t}}
+                    </p>
+                    <a href="https://www.sheertex.com/blogs/experiments/sheertex-lab" class="tw-pb-2 tw-uppercase tw-font-sans tw-text-xs tw-tracking-widest tw-font-medium">
+                        {{ 'sections.experimentsLP-content.elp_readmore_html' | t}}&rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+{% schema %}
+{
+  "name": "Magazine Experiments LP",
+  "locales": {
+    "en": {
+        "elp_html": "Experiments",
+        "elp_readmore_html": "Read More ",
+        "elp_article1_type_html": "experiments",
+        "elp_article1_title_html": "Putting Resilience To The Test",
+        "elp_article1_subtitle_html": "Our tights are the most resilient in the world. Made with a polymer 10x stronger than steel, they are designed to stand up to just about anything life can throw at them."
+    },
+    "fr": {
+        "elp_html": "Experiments",
+        "elp_readmore_html": "Lire la suite ",
+        "elp_article1_type_html": "experiments",
+        "elp_article1_title_html": "Mettre la résilience à l'épreuve",
+        "elp_article1_subtitle_html": "Nos collants sont les plus résistants du monde. Fabriqués avec un polymère 10 fois plus résistant que l'acier, ils sont conçus pour résister à tout ce que la vie peut leur faire subir."
+    }
+  }
+}
+{% endschema %}

@@ -1,0 +1,393 @@
+<div id="essentialModal" class="essentialModalBackground">
+    <span class="closeEssential cursor" onclick="closeEssentialModal()">&times;</span>
+
+    <div class="essentialModalContent">
+
+        <div class="essentialSlide">
+            <div class="tw-flex tw-flex-col tw-justify-items-center tw-items-center tw-justify-center">
+                <img src="{{ 'Essential_LP_Slider_slide2.jpg' | asset_img_url: 'master' }}" class="msm:tw-hidden" alt="temp">
+                <img src="{{ 'Mobile_Essential_LP_Slider_slide2.jpg' | asset_img_url: 'master' }}" class="sm:tw-hidden" alt="temp">
+                <div class="tw-m-auto tw-absolute">
+                    <p class="tw-m-auto tw-text-lg mlg:tw-text-xs tw-font-sans tw-uppercase tw-leading-tight tw-text-center tw-font-light tw-tracking-heading tw-font-bold tw-text-white">
+                        A word from our Ceo
+                    </p>
+                    <p class="tw-m-auto tw-text-lg mlg:tw-text-xs mlg:tw-leading-5 tw-leading-7 tw-font-light tw-text-white mlg:tw-max-w-xs tw-max-w-3xl">
+                        <br>“I founded Sheertex in 2017 with the simple goal of solving the problem of disposable tights
+                        for
+                        everyone. This is what led us to create the World's Most Resilient Tights.<br><br>
+                        Today, thanks to the breakthroughs we've made in the commercial scaling of our manufacturing,
+                        automation, software, and sourcing, we are thrilled to announce that the moment we've been
+                        working so
+                        hard towards has arrived.<br><br>
+                        <span class="mlg:tw-hidden">
+                            "We've worked hard to make way for our most affordable tights ever." At just 
+                            At just 
+                            {% assign product = all_products['essential-sheer-tights'] %}
+                            {{ product.price  | money }}, our new Essential
+                            Sheer Tights boasts all of the resilience you love from our Best-Selling Sheer Tights, including
+                            a
+                            30-day no-rip guarantee.
+                            We've also stripped the packaging down to its bare essentials, all in an effort to offer you the
+                            best
+                            possible product at the best possible price.<br><br>
+                            This is a huge step towards replacing disposable hosiery, for good. We are incredibly grateful
+                            to those
+                            who have supported us along this journey and we are beyond excited to welcome you into this new
+                            era.”
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="essentialSlide">
+            <div class="tw-flex tw-flex-col tw-justify-items-center tw-items-center tw-justify-center">
+                <img src="{{ 'Essential_LP_Slider_slide2.jpg' | asset_img_url: 'master' }}" class="msm:tw-hidden" alt="temp">
+                <img src="{{ 'Mobile_Essential_LP_Slider_slide3.jpg' | asset_img_url: 'master' }}" class="sm:tw-hidden" alt="temp">
+                <div class="tw-m-auto tw-absolute">
+                    <p class="tw-m-auto tw-text-lg msm:tw-text-xs sm:tw-leading-8 tw-font-light tw-text-white msm:tw-max-w-xs tw-max-w-xl">
+                        "We've worked hard to make way for our most affordable tights ever." At just At just 
+                        {% assign product = all_products['essential-sheer-tights'] %}
+                        {{ product.price  | money }}, our new Essential
+                        Sheer Tights boasts all of the resilience you love from our Best-Selling Sheer Tights, including
+                        a
+                        30-day no-rip guarantee.
+                        We've also stripped the packaging down to its bare essentials, all in an effort to offer you the
+                        best
+                        possible product at the best possible price.<br><br>
+                        This is a huge step towards replacing disposable hosiery, for good. We are incredibly grateful
+                        to those
+                        who have supported us along this journey and we are beyond excited to welcome you into this new
+                        era.”
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <span class="lg:tw-hidden">
+        <a class="prevEssentialSlide" onclick="plusEssentialSlides(-1)">&#10094;</a>
+        <a class="nextEssentialSlide" onclick="plusEssentialSlides(1)">&#10095;</a>
+    </span>
+</div>
+
+<section class="tw-flex tw-flex-col tw-justify-items-center tw-items-center tw-justify-center tw-relative">
+    <img src="{{ 'Desktop_Essential_LP_Header_B_2x_new.jpg' | asset_img_url: 'master' }}" class="msm:tw-hidden" alt="temp">
+    <img src="{{ 'Mobile_Essential_LP_Header_B_2x_new.jpg' | asset_img_url: 'master' }}" class="sm:tw-hidden" alt="temp">
+    <div class="tw-text-center tw-absolute tw-m-auto lg:tw-pb-10 tw-justify-items-center tw-items-center tw-justify-center">
+        <p class="tw-m-auto tw-text-6xl msm:tw-text-3xl tw-font-serif tw-leading-tight tw-text-center tw-font-light msm:tw-max-w-sm tw-text-white">
+            This. Changes. Everything
+        </p>
+    </div>
+    <div class=" tw-absolute tw-mx-auto tw-inset-x-0 tw-bottom-0 sm:tw-max-w-xl tw-justify-items-center">
+        <div class="tw-flex msm:tw-flex-col sm:tw-grid-cols-2 sm:tw-justify-between tw-mx-auto sm:tw-max-w-md msm:tw-mx-20 tw-pt-4 tw-pb-8 tw-border-0 tw-border-t tw-border-solid tw-border-white">
+            <div class="msm:tw-m-auto sm:tw-my-auto">
+                <p class="tw-font-bold tw-font-sans msm:tw-justify-start sm:tw-my-auto msm:tw-place-self-start tw-text-light tw-text-base tw-tracking-wider tw-mb-0 tw-uppercase tw-text-white">
+                    NEW!
+                </p>
+                <p class="tw-font-serif tw-font-medium sm:tw-my-auto tw-text-lg tw-mb-0 tw-text-white">
+                    Essential Sheer Tights
+                </p>
+                <p class="tw-font-bold tw-leading-6 tw-font-sans tw-text-light tw-text-xs tw-tracking-wider tw-uppercase tw--mb-1 tw-text-white">
+                    {% assign product = all_products['essential-sheer-tights'] %}
+                    {{ product.price  | money }}
+                </p>
+            </div>
+            <div class="msm:tw-m-auto sm:tw-my-auto msm:tw-pt-6">
+                <a class="tw-border-0 tw-border tw-border-solid tw-border-black tw-mb-0 tw-rounded-3xl tw-px-12 msm:tw-px-16 tw-py-3 tw-max-w-xs tw-bg-green-200 tw-mx-auto tw-text-xxs tw-font-sans tw-leading-normal tw-text-center tw-font-medium tw-uppercase tw-tracking-heading" href="#ess-product-form">
+                    SHOP NOW
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% comment %}
+<section class="tw-bg-sidekickBG tw-pb-10 tw-justify-items-center tw-items-center">
+    <a href="#ess-product-form">
+        <img src="{{ 'Desktop_Essential_LP_Header_2x.jpg' | asset_img_url: 'master' }}" class="msm:tw-hidden" alt="temp">
+        <img src="{{ 'Mobile_Essential_LP_Header_2x.jpg' | asset_img_url: 'master' }}" class="sm:tw-hidden" alt="temp">
+        <div class="tw-m-auto tw-text-center">
+            <p class="tw-m-auto tw-text-6xl msm:tw-text-3xl tw-font-serif tw-leading-tight tw-text-center tw-font-light tw-mb-0 msm:tw-max-w-sm">
+                This. Changes. Everything
+            </p>
+        </div>
+        <div class="tw-mx-auto tw-max-w-sm tw-justify-items-center tw-items-center">
+            <hr class="hr--small msm:tw-my-2 tw-mx-auto" style="border-bottom: 1px solid black;">
+            <div class="tw-flex msm:tw-flex-col sm:tw-grid-cols-2 sm:tw-justify-between tw-justify-center tw-items-center">
+                <div class="msm:tw-m-auto sm:tw-my-auto">
+                    <p class="tw-font-bold tw-leading-6 tw-font-sans tw-text-light tw-text-xs tw-tracking-wider tw-uppercase tw--mb-1">
+                        NEW!
+                    </p>
+                    <p class="tw-font-serif tw-font-medium tw-leading-6 tw-text-xs tw--mb-1">
+                        Essential Sheer Tights
+                    </p>
+                    <p class="tw-font-bold tw-leading-6 tw-font-sans tw-text-light tw-text-xs tw-tracking-wider tw-uppercase tw--mb-1">
+                        {% assign product = collections['essential-semi-opaque-classics-lp-backend'].products[0] %}
+                        {{ product.price  | money }}
+                    </p>
+                </div>
+                <div class="msm:tw-m-auto sm:tw-my-auto msm:tw-pt-6">
+                    <a class="tw-border-0 tw-border tw-border-solid tw-border-black tw-mb-0 tw-rounded-3xl tw-px-12 msm:tw-px-16 tw-py-3 tw-max-w-xs tw-bg-green-200 tw-mx-auto tw-text-xxs tw-font-sans tw-leading-normal tw-text-center tw-font-medium tw-uppercase tw-tracking-heading" href="#ess-product-form">
+                        SHOP NOW
+                    </a>
+                </div>
+            </div>
+        </div>
+    </a>
+</section>
+{% endcomment %}
+
+<section id="ess-product-form">
+    <p class="tw-text-4xl msm:tw-text-3xl tw-font-serif tw-leading-tight tw-font-light tw-tracking-normal tw-text-center tw-pt-8">
+        Your new go-to. At just 
+        {% assign product = all_products['essential-sheer-tights'] %}
+        {{ product.price  | money }}
+    </p>
+    {% section 'product-essential-template' %}
+</section>
+
+<section class="tw-justify-items-center tw-items-center md:tw-px-36 md:tw-pb-12">
+    <img src="{{ 'Desktop-LP-Essential_Features_2x.jpg' | asset_img_url: 'master' }}" class="mmd:tw-hidden tw-mx-auto" alt="temp">
+    <img src="{{ 'Mobile-LP-Essential_Features_2x.jpg' | asset_img_url: 'master' }}" class="md:tw-hidden" alt="temp">
+</section>
+
+<section class="tw-bg-sidekickBG tw-py-16">
+    <p class="msm:tw-text-2xl sm:tw-text-4xl tw-font-serif tw-leading-tight tw-font-light tw-tracking-normal tw-text-center">
+        Which tights are right for you?
+    </p>
+    {% render 'temp-essential-classics-sec' %}
+</section>
+
+<section class="tw-bg-sidekickBG">
+    <div class="tw-flex tw-flex-col tw-justify-items-center tw-items-center tw-justify-center">
+        <img src="{{ 'Essential_LP_Slider_slide1.jpg' | asset_img_url: 'master' }}" class="mmd:tw-hidden" alt="temp">
+        <img src="{{ 'Mobile_Essential_LP_Slider_slide1.jpg' | asset_img_url: 'master' }}" class="md:tw-hidden" alt="temp">
+        <div class="page-width tw-m-auto tw-absolute tw-justify-items-center tw-items-center">
+            <p class="tw-m-auto tw-text-7xl mlg:tw-text-3xl tw-font-serif tw-leading-tight tw-text-center tw-font-light tw-mb-0 tw-tracking-normal tw-text-white tw-max-w-4xl msm:tw-max-w-md">
+                "We've worked hard to make way for our most affordable tights ever."
+            </p>
+            <p class="tw-cursor-pointer tw-text-base tw-text-center tw-underline tw-mb-2 sm:tw-mt-8 msm:tw-mt-4 tw-uppercase msm:tw-text-xs tw-font-sans tw-leading-tight tw-font-light tw-tracking-heading tw-text-white" onclick="openEssentialModal()">
+                read more
+            </p>
+            <div class="tw-mx-auto tw-max-w-md tw-flex tw-grid-cols-2 tw-space-x-1 tw-justify-center tw-space-x-4 tw-items-center tw-pt-4">
+                <div class="tw-my-auto mlg:tw-w-1/6 lg:tw-w-1/4">
+                    <img src="{{ 'Essential_LP_Kat_Pic.png' | asset_img_url: 'master' }}" class="" alt="temp">
+                </div>
+                <div>
+                    <p class="tw-text-base msm:tw-text-xs tw-font-narrow tw-leading-tight tw-font-light tw-mb-0 tw-tracking-normal tw-text-white">
+                        Katherine Homuth.<br> FOUNDER AND CEO, SHEERTEX
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="tw-flex tw-flex-col tw-justify-center tw-items-center tw-bg-sidekickBG tw-py-12">
+    <p class="page-width tw-py-4 mlg:tw-text-2xl mlg:tw-px-2 tw-mx-auto tw-text-6xl tw-font-serif tw-leading-tight tw-font-light tw-tracking-normal tw-text-center tw-text-black sm:tw-pb-12">
+        We've cut our margin on Essentials to directly disrupt and replace disposable hosiery for good.
+    </p>
+    <img src="{{ 'Desktop_compare_chart.png' | asset_img_url: 'master' }}" class="msm:tw-hidden tw-w-1/2" alt="temp">
+    <img src="{{ 'Mobile_compare_chart.png' | asset_img_url: 'master' }}" class="sm:tw-hidden tw-px-4" alt="temp">
+</section>
+
+<section class="tw-flex tw-flex-col tw-justify-center tw-items-center">
+    <img src="{{ 'Essential_LP_Factory.jpg' | asset_img_url: 'master' }}" class="msm:tw-hidden" alt="temp">
+    <img src="{{ 'Mobile_Essential_LP_Factory.jpg' | asset_img_url: 'master' }}" class="sm:tw-hidden" alt="temp">
+    <div class="tw-absolute">
+        <p class="mlg:tw-text-2xl mlg:tw-px-2 tw-mx-auto tw-text-6xl tw-font-serif tw-leading-tight tw-font-light tw-tracking-normal tw-text-center tw-text-white msm:tw-max-w-sm sm:tw-max-w-4xl">
+            What else makes Essentials different than our Classic Tights?
+        </p>
+        <div class="tw-flex tw-grid-cols-3 sm:tw-justify-between sm:tw-space-x-16 tw-justify-items-center tw-justify-center tw-px-12 mmd:tw-px-2">
+            <div>
+                <p class="tw-font-sans tw-mx-auto tw-text-3xl mlg:tw-text-xs tw-text-center sm:tw-pt-4 tw-mb-0 tw-text-white">
+                    01
+                </p>
+                <p class="tw-uppercase tw-font-sans tw-mx-auto tw-text-xl mlg:tw-text-xs tw-text-center msm:tw-py-1 sm:tw-py-4 tw-mb-0 tw-text-white tw-font-bold">
+                    automation<span class="sm:tw-hidden"><br>&nbsp;</span>
+                </p>
+                <p class="tw-max-w-xs msm:tw-leading-4 tw-font-narrow tw-mx-auto tw-text-3xl mlg:tw-text-xs tw-text-center tw-mb-0 tw-text-white">
+                    We replaced hand-sewing with our more efficient fully-automated process.
+                </p>
+            </div>
+            <div>
+                <p class="tw-font-sans tw-mx-auto tw-text-3xl mlg:tw-text-xs tw-text-center sm:tw-pt-4 tw-mb-0 tw-text-white">
+                    02
+                </p>
+                <p class="tw-uppercase tw-font-sans tw-mx-auto tw-text-xl mlg:tw-text-xs tw-text-center msm:tw-py-1 sm:tw-py-4 tw-mb-0 tw-text-white tw-font-bold">
+                    minimal packaging
+                </p>
+                <p class="tw-max-w-xs msm:tw-leading-4 tw-font-narrow tw-mx-auto tw-text-3xl mlg:tw-text-xs tw-text-center tw-mb-0 tw-text-white">
+                    We stripped down the packaging to offer you the best possible value for the price.
+                </p>
+            </div>
+            <div>
+                <p class="tw-font-sans tw-mx-auto tw-text-3xl mlg:tw-text-xs tw-text-center sm:tw-pt-4 tw-mb-0 tw-text-white">
+                    03
+                </p>
+                <p class="tw-uppercase tw-font-sans tw-mx-auto tw-text-xl mlg:tw-text-xs tw-text-center msm:tw-py-1 sm:tw-py-4 tw-mb-0 tw-text-white tw-font-bold">
+                    30 vs 90-day guarantee
+                </p>
+                <p class="tw-max-w-xs msm:tw-leading-4 tw-font-narrow tw-mx-auto tw-text-3xl mlg:tw-text-xs tw-text-center tw-mb-0 tw-text-white">
+                    We offer a 30-day guarantee, rather than the 90 days that come with our other products.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% style %}
+
+/* overlay background */
+.essentialModalBackground {
+display: none;
+position: fixed;
+z-index: 100000;
+padding-top: 100px;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+overflow: auto;
+background: rgba(0,0,0,.6);
+}
+
+/* overlay content */
+.essentialModalContent {
+position: relative;
+margin: auto;
+padding: 0;
+width: 90%;
+max-width: 1200px;
+background: rgba(0,0,0,.6);
+}
+
+/* close button */
+.closeEssential {
+position: absolute;
+top: 10px;
+right: 30px;
+font-size: 55px;
+font-weight: bold;
+color: white;
+}
+
+.closeEssential:hover,
+.closeEssential:focus {
+color: #999;
+text-decoration: none;
+cursor: pointer;
+}
+
+.essentialSlide {
+display: none;
+}
+
+.cursor {
+cursor: pointer;
+}
+
+/* buttons */
+.prevEssentialSlide,
+.nextEssentialSlide {
+cursor: pointer;
+position: absolute;
+top: 50%;
+width: auto;
+padding: 16px;
+margin-top: -50px;
+color: white;
+font-weight: bold;
+font-size: 50px;
+transition: 0.6s ease;
+border-radius: 0 3px 3px 0;
+user-select: none;
+-webkit-user-select: none;
+}
+
+@media (max-width: 639px) {
+.prevEssentialSlide,
+.nextEssentialSlide {
+cursor: pointer;
+position: absolute;
+top: 75%;
+width: auto;
+padding: 16px;
+margin-top: -50px;
+color: white;
+font-weight: bold;
+font-size: 50px;
+transition: 0.6s ease;
+border-radius: 0 3px 3px 0;
+user-select: none;
+-webkit-user-select: none;
+}
+}
+
+/* position next button to the right */
+.nextEssentialSlide {
+right: 0;
+border-radius: 3px 0 0 3px;
+}
+
+/* button hover */
+.prevEssentialSlide:hover,
+.nextEssentialSlide:hover {
+background-color: rgba(0, 0, 0, 0.6);
+}
+
+img {
+}
+
+.demo {
+opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+opacity: 1;
+}
+{% endstyle %}
+
+<script type="text/javascript">
+
+    function openEssentialModal() {
+        document.getElementById("essentialModal").style.display = "block";
+    }
+
+    function closeEssentialModal() {
+        document.getElementById("essentialModal").style.display = "none";
+    }
+
+    var slideIndex = 1;
+    showEssentialSlides(slideIndex);
+
+    function plusEssentialSlides(n) {
+        showEssentialSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showEssentialSlides(slideIndex = n);
+    }
+
+    function showEssentialSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("essentialSlide");
+        var dots = document.getElementsByClassName("demo");
+        var captionText = document.getElementById("caption");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        captionText.innerHTML = dots[slideIndex - 1].alt;
+    }
+
+</script>

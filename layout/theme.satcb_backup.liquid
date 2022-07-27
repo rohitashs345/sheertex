@@ -1,0 +1,141 @@
+{% comment %}ly_liquid_scripts_begin{% endcomment %}{% capture ly_liquid_content %}{% comment %}ly_liquid_scripts_end{% endcomment %}
+
+<!doctype html>
+<html class="no-js" lang="{{ shop.locale }}">
+<head>
+  {% include 'sentry-top-of-page' %}
+  {% comment %} load HEAD js asap, e.g. for analytics tags {% endcomment %}
+  {% include '_theme__head--js' %}
+  <meta name="google-site-verification" content="HSd57L7znJPp62dJe19jfAo3hsPrUaQeGrDZWS4wfJc" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="{{ settings.color_button }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="preconnect" href="https://geolocation-db.com">
+  <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com">
+  <meta name="format-detection" content="telephone=no">
+
+  {%- if settings.favicon -%}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />
+  {%- endif -%}
+
+  {% include 'seo-title' %}
+  <title>{{ seo_title }}</title>
+
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+
+  {% include 'social-meta-tags' %}
+
+  {% include '_theme__head--css' %}
+
+  {{ 'sheertex-bundle.css' | asset_url | stylesheet_tag }}
+
+  {% render 'treedify' %}{{ content_for_header }}
+  
+  {% render 'vwo-smart-code' %}
+
+{%- assign yotpo_offload_content = shop.metafields.yotpo.yotpo_offload_content %}
+{%- assign time_now = 'now' | date: '%s' %}
+{%- assign yotpo_live_time = shop.metafields.yotpo.yotpo_live | date: '%s' %}
+{%- assign diffSeconds = time_now | minus: yotpo_live_time %}
+{%- if yotpo_offload_content == 'yes' and diffSeconds < 86400 -%}
+{{ 'yotpo-full-css.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+{% render 'eu-cookie-consent-script' %}
+
+  {% render 'shogun-head' %}
+
+  {% include 'friendbuy' %}
+</head>
+
+<body class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if settings.enable_currencies %} currencies-enabled{% endif %}" data-transitions="{{ settings.animate_page_transitions }}">
+  <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+
+  <div id="PageContainer" class="page-container">    
+    <div class="transition-body">            
+      <div class='tw-sticky tw-top-0 tw-z-30'>
+        {% section 'header' %}
+      </div>
+      <main class="main-content" id="MainContent">
+        {{ content_for_layout }}
+	    <noscript class="endOfLayoutContentX" type="text/mark"></noscript>{% render 'treedify_script' %}
+      </main>
+
+      {% section 'footer' %}
+    </div>
+  </div>
+  
+  {% unless request.path contains 'subscribe' %}
+      {% section 'newsletter-popup' %}
+  {% endunless %}
+
+
+  {%- if settings.enable_currencies -%}
+    {%- include 'currency-modal' -%}
+  {%- endif -%}
+
+  {% comment %}
+    Custom markup for slider arrows using theme icons
+  {% endcomment %}
+  <div class="hide">
+    <button id="prevArrowTemplate" class="slick-prev" aria-label="{{ 'general.pagination.previous' | t }}" type="button">
+      <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-left" viewBox="0 0 284.49 498.98"><path d="M249.49 0a35 35 0 0 1 24.75 59.75L84.49 249.49l189.75 189.74a35.002 35.002 0 1 1-49.5 49.5L10.25 274.24a35 35 0 0 1 0-49.5L224.74 10.25A34.89 34.89 0 0 1 249.49 0z"/></svg>
+      <span class="icon__fallback-text">{{ 'general.pagination.previous' | t }}</span>
+    </button>
+    <button id="nextArrowTemplate" class="slick-next" aria-label="{{ 'general.pagination.next' | t }}" type="button">
+      <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-chevron-right" viewBox="0 0 284.49 498.98"><path d="M35 498.98a35 35 0 0 1-24.75-59.75l189.74-189.74L10.25 59.75a35.002 35.002 0 0 1 49.5-49.5l214.49 214.49a35 35 0 0 1 0 49.5L59.75 488.73A34.89 34.89 0 0 1 35 498.98z"/></svg>
+      <span class="icon__fallback-text">{{ 'general.pagination.next' | t }}</span>
+    </button>
+  </div>
+  {% include 'video-modal' %}
+  {% include 'photoswipe-template' %}
+  {% comment %} load remaining js assets {% endcomment %}
+  {% include '_theme__body--js' %}
+  {% include 'geo-modal' %}
+  {% include 'denier-modal' %}
+
+{% comment %}ly_liquid_scripts_begin{% endcomment %}{% endcapture %}{% render 'ly-liquid-scripts' content: ly_liquid_content %}{% comment %}ly_liquid_scripts_end{% endcomment %}{% comment %}ly_core_scripts_begin{% endcomment %}{% render 'ly-core-scripts' %}{% comment %}ly_core_scripts_end{% endcomment %}{% comment %}ly_switcher_factory_begin{% endcomment %}{% render 'ly-switcher-factory' %}{% comment %}ly_switcher_factory_end{% endcomment %}</body>
+</html>
+
+<!-- Begin Shopify-Afterpay JavaScript Snippet (v1.0.9) -->
+<script type="text/javascript" defer="defer">
+  // Overrides:
+  // var afterpay_min = 0.04;            // As per your Afterpay contract.
+  // var afterpay_max = 2000.00;         // As per your Afterpay contract.
+  // var afterpay_cbt_enabled = false;   // As per your Afterpay contract; change to true to display Cross-Border Trade artwork (for AU/NZ).
+  var afterpay_logo_theme = 'black'; // Can be 'colour', 'black' or 'white'.
+  var afterpay_product_selector = '#product-price-selector';
+  // var afterpay_cart_integration_enabled = true;
+  // var afterpay_cart_static_selector = '#cart-subtotal-selector';
+
+  // Non-editable fields:
+  var afterpay_shop_currency = {{ shop.currency | json }};
+  var afterpay_cart_currency = {{ cart.currency.iso_code | json }};
+  var afterpay_shop_money_format = {{ shop.money_format | json }};
+  var afterpay_shop_permanent_domain = {{ shop.permanent_domain | json }};
+  var afterpay_theme_name = {{ theme.name | json }};
+  var afterpay_product = {{ product | json }};
+  var afterpay_current_variant = {{ product.selected_or_first_available_variant | json }};
+  var afterpay_cart_total_price = {{ cart.total_price | json }};
+  var afterpay_js_snippet_version = '1.0.9';
+</script>
+<script
+  type="text/javascript"
+  src="https://static.afterpay.com/shopify-afterpay-javascript.js"
+  defer="defer"
+></script>
+
+
+<script>
+  window.jQuery.noConflict();   
+</script>
+
+<script src="https://cdn.attn.tv/sheertex/dtag.js"></script>
+
+{% render 'svelte-context-generator' %}
+{{ 'svelte-bundle.js' |  asset_url | script_tag }}
+{{ 'svelte-bundle.css' | asset_url | stylesheet_tag }}
+{% include 'sentry-end-of-page' %}

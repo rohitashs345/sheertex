@@ -1,0 +1,255 @@
+<section class="tw-py-4 tw-mb-8 tw-justify-items-center">
+    <div class="md:tw-max-w-7xl tw-mx-auto tw-flex md:tw-grid-cols-3">
+        <section class="tw-flex tw-overflow-x-scroll tw-hide-scroll-bar mmd:tw-px-4 md:tw-px-28">
+            <section class="tw-flex tw-flex-nowrap tw-flex-row mmd:tw-space-x-2 md:tw-space-x-6">
+                {% for product in collections['essential-classics'].products %}
+                {% assign essData = product.metafields.essential-guide.data %}
+                {% if request.locale.iso_code == 'en' %}
+                    {% assign essSticker = product.metafields.sticker.data %}
+                {% elsif request.locale.iso_code == 'fr' %}
+                    {% assign essSticker = product.metafields.sticker.data-fr %}
+                {% endif %}
+                <div class="tw-inline-block msm:tw-w-36 tw-py-2">
+                    <a href="{{product.url}}">
+                        <div class="ess1-img-block tw-text-center">
+                            <div class="tw-relative">
+                                {% if page.url == "/pages/women-tights" and product.handle == 'essential-sheer-tights' %}
+                                    <img class="grid-product__image" loading="lazy" src="{{ '030922_PG_Essentials_1.png' | asset_url }}" alt="{{ product.featured_image.alt | escape }}">
+                                {% elsif page.url == "/pages/women-tights" and product.handle == 'classic-sheer-tights' %}
+                                    <img class="grid-product__image" loading="lazy" src="{{ '030922_PG_Classics_1.png' | asset_url }}" alt="{{ product.featured_image.alt | escape }}">
+                                {% elsif page.url == "/pages/women-tights" and product.handle == 'shaping-sheer-tights-1' %}
+                                    <img class="grid-product__image" loading="lazy" src="{{ '030922_PG_Shaping_1.png' | asset_url }}" alt="{{ product.featured_image.alt | escape }}">
+                                {% else %}
+                                    <img class="grid-product__image" loading="lazy" src="{{ product.featured_image | img_url: '400x534' }}" alt="{{ product.featured_image.alt | escape }}">
+                                {% endif %}
+                                <div class="ess-meta-sticker tw-left-0" style="color: {{ essSticker.color }}; background-color: {{ essSticker.backgroundColor }}; width: {{ essSticker.width }};">
+                                    <p>{{ essSticker.text }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="tw-max-w-sm tw-items-center tw-justify-center">
+                        <p class="tw-font-serif tw-leading-tight tw-font-light tw-tracking-normal msm:tw-text-xs sm:tw-text-xl tw-my-2">
+                            {{ product.title }}
+                        </p>
+                        <div class="lg:tw-flex mlg:tw-grid mlg:tw-grid-cols-1 lg:tw-grid-cols-2 tw-justify-between tw-items-center tw-mb-4 tw-py-3">
+                            <div class="tw-my-auto mlg:tw-pb-4">
+                                {% comment %}
+                                {% if product.handle == 'essential-sheer-tights' %}
+                                    <p class="tw-font-narrow tw-leading-tight msm:tw-text-xxs sm:tw-text-sm tw--mb-1">
+                                        <span class="msm:tw-text-sm sm:tw-text-base tw-line-through"><span data-currency="">$59</span></span>
+                                        <span class="msm:tw-text-sm sm:tw-text-lg tw-text-red">{{ product.price  | money }}</span>
+                                    </p>
+                                {% else %}
+                                    <p class="tw-font-narrow tw-leading-tight msm:tw-text-xxs sm:tw-text-sm tw--mb-1">
+                                        <span class="msm:tw-text-sm sm:tw-text-base tw-line-through"><span data-currency="">$99</span></span>
+                                        <span class="msm:tw-text-sm sm:tw-text-lg tw-text-red">{{ product.price  | money }}</span>
+                                    </p>
+                                {% endif %}
+                                {% endcomment %}
+                                <p class="tw-font-narrow tw-leading-tight msm:tw-text-xxs sm:tw-text-sm tw--mb-1">
+                                    {% if product.handle == 'essential-sheer-tights' %} Only 
+                                        <span class="msm:tw-text-xs sm:tw-text-sm">{{ product.price  | money }}</span>
+                                    {% else %}
+                                        <span class="tw-font-narrow tw-leading-tight msm:tw-text-xxs sm:tw-text-sm tw--mb-1">
+                                            <span class="msm:tw-text-sm sm:tw-text-lg">{{ product.price  | money }}</span>
+                                        </span>
+                                    {% endif %}
+                                    {% if essData.value %}
+                                    <span class="sm:tw-hidden">&nbsp;&nbsp;&nbsp;Value <span class="msm:tw-text-xs sm:tw-text-sm"><span data-currency="">{{ essData.value }}</span></span></span>
+                                    {% endif %}
+                                </p>
+                                {% if essData.value %}
+                                    <p class="tw-font-narrow tw-leading-tight msm:tw-text-xxs sm:tw-text-xs tw--mb-1 msm:tw-hidden">
+                                        Value <span class="msm:tw-text-xs sm:tw-text-sm"><span data-currency="">{{ essData.value }}</span></span>
+                                    </p>
+                                {% else %}
+                                    <p class="tw--mb-1 msm:tw-hidden">
+                                        <span class="msm:tw-text-xs sm:tw-text-sm">&nbsp;</span>
+                                    </p>
+                                {% endif %}
+                            </div>
+                            <div class="tw-my-auto">
+                            {% if request.locale.iso_code == 'en' %}
+                                <a class="tw-mb-0 tw-rounded-3xl tw-px-12 mlg:tw-px-6 tw-py-3 tw-max-w-md tw-bg-green-200 tw-m-auto tw-text-xs tw-font-sans tw-font-medium tw-leading-normal tw-text-center tw-uppercase tw-tracking-heading" href="{{product.url}}">
+                                    SHOP NOW
+                                </a>    
+                            {% elsif request.locale.iso_code == 'fr' %}
+                            <a class="tw-mb-0 tw-rounded-3xl tw-px-12 mlg:tw-px-6 tw-py-3 tw-max-w-md tw-bg-green-200 tw-m-auto tw-text-xs tw-font-sans tw-font-medium tw-leading-normal tw-text-center tw-uppercase tw-tracking-heading" href="{{product.url}}">
+                                Magasinez
+                                </a> 
+                            {% endif %}
+                            </div>
+                        </div>
+
+                        {% if request.locale.iso_code == 'en' %}
+                        {% if essData.prop1 %}
+                        <hr class="hr--small tw-border-0 tw-border-b tw-border-solid tw-border-black tw-my-3">
+                        <p class="tw-font-narrow tw-leading-tight msm:tw-text-xs sm:tw-text-sm tw--mb-1">
+                            {{ essData.prop1 }}
+                        </p>
+                        <hr class="hr--small tw-border-0 tw-border-b tw-border-solid tw-border-black tw-my-3">
+                        {% endif %}
+                        {% if essData.prop2 %}
+                        <p class="tw-font-narrow tw-leading-tight msm:tw-text-xs sm:tw-text-sm tw--mb-1">
+                            {{ essData.prop2 }}
+                        </p>
+                        <hr class="hr--small tw-border-0 tw-border-b tw-border-solid tw-border-black tw-my-3">
+                        {% endif %}
+                        {% if essData.prop3 %}
+                        <p class="tw-font-narrow tw-leading-tight msm:tw-text-xs sm:tw-text-sm tw--mb-1">
+                            {{ essData.prop3 }}
+                        </p>
+                        <hr class="hr--small tw-border-0 tw-border-b tw-border-solid tw-border-black tw-my-3">
+                        {% endif %}
+                        {% if essData.prop4 %}
+                        <p class="tw-font-narrow tw-leading-tight msm:tw-text-xs sm:tw-text-sm tw--mb-1">
+                            {{ essData.prop4 }}
+                        </p>
+                        <hr class="hr--small tw-border-0 tw-border-b tw-border-solid tw-border-black tw-my-3">
+                        {% endif %}
+                        {% if essData.prop5 %}
+                        <p class="tw-font-narrow tw-leading-tight msm:tw-text-xs sm:tw-text-sm tw--mb-1">
+                            {{ essData.prop5 }}
+                        </p>
+                        <hr class="hr--small tw-border-0 tw-border-b tw-border-solid tw-border-black tw-my-3">
+                        {% endif %}
+                        {% if essData.prop6 %}
+                        <p class="tw-font-narrow tw-leading-tight msm:tw-text-xs sm:tw-text-sm tw--mb-1">
+                            {{ essData.prop6 }}
+                        </p>
+                        <hr class="hr--small tw-border-0 tw-border-b tw-border-solid tw-border-black tw-my-3">
+                        {% endif %}
+
+                        {% elsif request.locale.iso_code == 'fr' %}
+                        {% if essData.prop1fr %}
+                        <hr class="hr--small tw-border-0 tw-border-b tw-border-solid tw-border-black tw-my-3">
+                        <p class="tw-font-narrow tw-leading-tight msm:tw-text-xs sm:tw-text-sm tw--mb-1">
+                            {{ essData.prop1fr }}
+                        </p>
+                        <hr class="hr--small tw-border-0 tw-border-b tw-border-solid tw-border-black tw-my-3">
+                        {% endif %}
+                        {% if essData.prop2fr %}
+                        <p class="tw-font-narrow tw-leading-tight msm:tw-text-xs sm:tw-text-sm tw--mb-1">
+                            {{ essData.prop2fr }}
+                        </p>
+                        <hr class="hr--small tw-border-0 tw-border-b tw-border-solid tw-border-black tw-my-3">
+                        {% endif %}
+                        {% if essData.prop3fr %}
+                        <p class="tw-font-narrow tw-leading-tight msm:tw-text-xs sm:tw-text-sm tw--mb-1">
+                            {{ essData.prop3fr }}
+                        </p>
+                        <hr class="hr--small tw-border-0 tw-border-b tw-border-solid tw-border-black tw-my-3">
+                        {% endif %}
+                        {% if essData.prop4fr %}
+                        <p class="tw-font-narrow tw-leading-tight msm:tw-text-xs sm:tw-text-sm tw--mb-1">
+                            {{ essData.prop4fr }}
+                        </p>
+                        <hr class="hr--small tw-border-0 tw-border-b tw-border-solid tw-border-black tw-my-3">
+                        {% endif %}
+                        {% if essData.prop5fr %}
+                        <p class="tw-font-narrow tw-leading-tight msm:tw-text-xs sm:tw-text-sm tw--mb-1">
+                            {{ essData.prop5fr }}
+                        </p>
+                        <hr class="hr--small tw-border-0 tw-border-b tw-border-solid tw-border-black tw-my-3">
+                        {% endif %}
+                        {% if essData.prop6fr %}
+                        <p class="tw-font-narrow tw-leading-tight msm:tw-text-xs sm:tw-text-sm tw--mb-1">
+                            {{ essData.prop6fr }}
+                        </p>
+                        <hr class="hr--small tw-border-0 tw-border-b tw-border-solid tw-border-black tw-my-3">
+                        {% endif %}
+                        {% endif %}
+
+                        
+
+
+                        <p class="tw-font-narrow tw-font-bold tw-leading-tight tw-pb-2 msm:tw-text-xs sm:tw-text-sm tw--mb-1">
+                            {% if product.handle == 'essential-sheer-tights' %}
+                                    <a href="https://www.sheertex.com/pages/essential-sheer-tights">
+                                        Learn More&nbsp;&rarr;
+                                    </a>
+                                {% elsif product.handle == 'classic-sheer-tights' %}
+                                    <a href="https://www.sheertex.com/pages/classic-sheer-tights">
+                                        Learn More&nbsp;&rarr;
+                                    </a>
+                            {% endif %}
+                        </p>
+                        {% if product.handle != 'essential-sheer-tights' %}
+                            <div class="plp-rating yotpo bottomLine" data-appkey="adHUgZ44BbeiOCY10qaUDqvvZbshC3XsPNl48aLn" data-domain="{{shop.permanent_domain | escape }}" data-product-id="{{ product.id }}" data-product-models="{{ product.id }}" data-name="{{ product.title | escape }}" data-url="{{ shop.url }}{{ product.url }}" data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}" data-description="{{ product.description | escape }}" data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}  
+            </section>
+        </section> 
+    </div>
+</section>
+
+<style>
+.ess-meta-sticker{
+    padding: 6px 9px;
+    text-align: center;
+    height: 28px;
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 2px;
+    position: absolute;
+    top: 8px;
+}
+.ess-meta-sticker p{
+  font-family: Agrandir;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.104rem;
+  font-size: 0.6rem;
+  line-height: 2;
+}
+@media only screen and (max-width: 1200px) { 
+  .ess-meta-sticker {
+    bottom: 10px;
+    top: unset;
+  }
+}
+
+.yotpo .standalone-bottomline .star-clickable{
+  	display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+.plp-rating .text-m{
+    font-family: Agrandir Narrow !important;
+    font-size: 13px !important;
+    font-weight: normal !important;
+    font-stretch: normal !important;
+    font-style: normal !important;
+    letter-spacing: 0.31px !important;
+    text-align: left !important;
+    color: black !important;
+    padding-left: 3px !important;
+    padding-top: 3px !important;
+}
+
+.yotpo .standalone-bottomline .star-clickable {
+    text-decoration: none;
+}
+
+.plp-rating .yotpo a {
+    color: rgba(0, 0, 0, 0.5) !important;
+    text-decoration: none !important;
+}	
+
+.yotpo.bottomLine .yotpo-bottomline .yotpo-icon-star {
+    font-size: 14px !important;
+}
+
+.yotpo.bottomLine .yotpo-bottomline .yotpo-icon-empty-star {
+    font-size: 14px !important;
+}
+
+.yotpo.bottomLine .yotpo-bottomline .yotpo-icon-half-star {
+    font-size: 14px !important;
+}
+</style>

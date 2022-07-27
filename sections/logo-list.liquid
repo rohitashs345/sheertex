@@ -1,0 +1,112 @@
+{% style %}
+.logo-bar--{{ section.id }} {
+  opacity: {{ section.settings.logo_opacity | divided_by: 100.0 }};
+}
+{% endstyle %}
+
+{% if section.settings.divider %}<div class="section--divider">{% endif %}
+
+<div class="page-width" data-aos="logo__animation">
+  <div class="gizmodoBustleContainer">
+      <div class="gizmodoContainer tw-mx-3 sm:tw-mx-0">
+         <div class="gizmodoContainer-content">
+           <span class="big-quote">“</span>You can stretch and twist the Sheertex as much as you like and they won't break. You'd have to be the Hulk to tear a hole through these things.<span class="big-quote">”</span>
+         </div>
+         <div class="gizmodoContainer-gizmodo">
+          <img 
+            class="img"
+            loading="lazy" 
+            src ="https://cdn.shopify.com/s/files/1/0316/1119/1435/files/Gizmodo_Media_Group_Logo_360x_ee0ebb4d-e73b-4795-8ea7-700aad79456e.png?v=1580975307"></div>
+      </div>
+      <div class="logo-container timeContainer tw-mx-3 tw-mt-3 sm:tw-mx-0 sm:tw-mt-0">
+         <div class="timeContainer-content">
+           Named One of<br>TIME's Best<br>Inventions 
+         </div>
+      </div>
+      <div class="bustleContainer tw-mx-3 tw-mt-3 sm:tw-mx-0 sm:tw-mt-0">
+         <div class="bustleContainer-content">
+           <span class="big-quote">“</span>These super pantyhose have been tested and proven to be wearable up to 50 times. Regular brands usually give you two or three wears before you are forced to toss 'em.<span class="big-quote">”</span> 
+         </div>
+         <div class="bustleContainer-bustle">
+           <img 
+            class="img"
+            loading="lazy" 
+            src ="https://cdn.shopify.com/s/files/1/0316/1119/1435/files/Bustle_logo.svg_360x_b58b6477-2a0f-4ee0-a68f-80575b8a86d1.png?v=1580975307">
+         </div>
+      </div>
+	</div>
+</div>
+
+
+{% if section.settings.divider %}</div>{% endif %}
+
+
+{% schema %}
+  {
+    "name": "Logo list",
+    "class": "index-section",
+    "max_blocks": 10,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      },
+      {
+        "type": "range",
+        "id": "logo_opacity",
+        "label": "Logo opacity",
+        "default": 76,
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "%"
+      },
+      {
+        "type": "checkbox",
+        "id": "divider",
+        "label": "Show section divider",
+        "default": false
+      }
+    ],
+    "blocks": [
+      {
+        "type": "logo_image",
+        "name": "Logo",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link",
+            "info": "Optional"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Logo list",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "logo_image"
+          },
+          {
+            "type": "logo_image"
+          },
+          {
+            "type": "logo_image"
+          },
+          {
+            "type": "logo_image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

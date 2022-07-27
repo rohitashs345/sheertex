@@ -1,0 +1,235 @@
+<div class="upsell-title tw-font-serif tw-mt-12 tw-mb-4 tw-underline">
+  {% if request.locale.iso_code == 'en' %}
+    You might also like:
+  {% elsif request.locale.iso_code == 'fr' %}
+    Vous pourriez aussi aimer:
+  {% endif %} 
+</div>
+<div class="product-recommendations__list" data-base-url="{{ routes.product_recommendations_url }}" data-product-id="{{ product.id }}"></div>
+
+<script>
+  (function() {
+    function escapeHtml(unsafe) {
+      return ('' + unsafe)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+     }
+
+
+
+    // Find the container that will hold the recommendations
+    var list = document.querySelector(".product-recommendations__list");
+    // Get the base URL for translated product recommendations
+    var baseUrl = list.dataset.baseUrl;
+    // Get the product ID to equest the product recommendations
+    var productId = list.dataset.productId;
+    // Create an AJAX request
+    var request = new XMLHttpRequest();
+
+    request.open(
+      "GET",
+      baseUrl + ".json?product_id=" + productId + "&limit=2"
+    );
+
+    request.onload = function() {
+      if (request.status === 404 || request.status === 422) {
+        return hideRecommendationsSection();
+      }
+
+      var products = JSON.parse(request.response).products;
+
+      if (products.length === 0) {
+        return hideRecommendationsSection();
+      }
+
+      // wait for theme.Currency to be available
+      let timerId;
+      timerId = window.setInterval(() => {    
+      if (theme.Currency && theme.Currency.formatMoney && timerId) {
+        // Append product recommendations to the DOM.
+        list.innerHTML = products.map(function(product) { return renderProduct(product) }).join("");
+        clearInterval(timerId);      
+      }
+      }, 500);        
+    };
+
+    request.onerror = function() {
+      hideRecommendationsSection();
+    };
+
+    // Send AJAX request
+    request.send();
+
+    function hideRecommendationsSection() {
+      list.style.display = "none";
+    }
+
+    function renderProduct(product) {
+      var upsellDiscount = '';
+      product.tags.forEach(tag => {
+        if (tag.includes('upsell-up-to-30%')) {
+          upsellDiscount = '30%';
+        }
+        if (tag.includes('upsell-up-to-25%')) {
+          upsellDiscount = '25%';
+        }
+      });
+      var ctaText = '';
+      {% if request.locale.iso_code == 'en' %}
+        ctaText = 'Shop Now';
+      {% elsif request.locale.iso_code == 'fr' %}
+        ctaText = 'Magasinez';
+      {% endif %}
+      var productData = {
+        id: escapeHtml(product.id),
+        url: escapeHtml(product.url),
+        price: theme.Currency.formatMoney(product.price),
+        title: escapeHtml(product.title),
+        image: escapeHtml(product.featured_image),
+        discountTag: escapeHtml(upsellDiscount ? upsellDiscount: ''),
+        cta: escapeHtml(ctaText),
+      }
+
+      return [
+        '<div class="tw-flex tw-flex-row upsell-container tw-mb-4">',
+          '<a href="' + productData.url + '" class="upsell-product-anchor tw-relative">',
+            '<img class="upsell-product-img tw-block" loading="lazy" src="' + productData.image + '" alt="'+ productData.title +'"/>',
+            '<div id="upsell-discount-sticker" class="tw-absolute tw-flex tw-items-center tw-justify-center">'+ productData.discountTag+'</div>',
+          '</a>',
+          '<div class="tw-flex tw-items-start tw-justify-between tw-flex-col tw-my-4 tw-ml-5">',
+            '<a href="' + productData.url + '"> ',
+              '<p class="upsell-product-title tw-font-serif">' + productData.title + '</p>',
+            '</a>',
+            '<div class="pdp-upsell-price igPrice" data-product-id="'+ productData.id + '">'+productData.price+'</div>',
+            '<div class="plp-rating upsell-rating yotpo bottomLine" data-appkey="adHUgZ44BbeiOCY10qaUDqvvZbshC3XsPNl48aLn" data-domain="{{shop.permanent_domain | escape }}" data-product-id="' + productData.id + '" data-product-models="' + productData.id + '" data-name="' + productData.title + '" data-url="{{ shop.url }}{{ product.url }}" data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}"> </div>',
+            '<a href="'+productData.url+'"> ',
+              '<button id="product-upsell-quick-add">',
+                  '<span class="upsell-product__label tw-uppercase tw-w-full tw-text-center">'+productData.cta+'</span>',
+              '</button>',
+            '</a>',
+          '</div>',
+        '</div>'
+      ].join("");
+    }
+  })()
+</script>
+
+<style>
+  .upsell-title{
+    font-size: 1.25rem;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.8;
+    letter-spacing: normal;
+  }
+
+  .upsell-product-title{
+    font-size: 1rem;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+  }
+
+  .upsell-container{
+    border: solid 0.8px #949494;
+  }
+
+  .upsell-product-img {
+    min-width: 8.625rem;
+    max-width: 8.625rem;
+  }
+  
+  .pdp-upsell-price {
+    font-family: Agrandir Narrow;
+    font-size: 14px;
+    letter-spacing: 0.46px;
+  }
+
+  #product-upsell-quick-add {
+    margin-top: 0.875rem;
+    width: 12.5rem;
+    height: 2.5rem;
+    border: solid 0.8px #949494;
+    background-color: #fff;
+    position: none;
+    opacity: 1;
+    transform: none;
+    transition: none;
+    position: unset;
+    border-radius: 1.5rem;
+  }
+
+  #product-upsell-quick-add .upsell-product__label{
+    font-family: Agrandir;
+    font-size: .75rem;
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: 1.29px;
+    text-align: center;
+    color: black;
+  }
+
+  #product-upsell-quick-add:hover {
+    background-color: #ddff98;
+  }
+
+  #upsell-discount-sticker{
+    width: 3rem;
+    height: 3rem;
+    bottom: .8rem;
+    left: 6px;
+    border-radius: 50%;
+    background-color: #ddff98;
+    font-family: Agrandir;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.6px;
+  }
+
+  #upsell-discount-sticker:empty {
+    display: none !important;
+  }
+
+  .upsell-rating .text-m {
+    color: #00000080 !important;
+  }
+
+  @media screen and (max-width: 940px) and (min-width: 760px) {
+    #product-upsell-quick-add {
+      max-width: 8rem;
+    }
+    .upsell-rating {
+      max-width: 9rem !important;
+      margin-left: -5px !important;
+    }
+  }
+
+  @media screen and (max-width: 760px) and (min-width: 590px) {
+    #product-upsell-quick-add {
+      max-width: 8rem;
+    }
+    .upsell-product-anchor {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    #product-upsell-quick-add {
+      max-width: 8rem;
+      height: 3rem;
+    }
+    .upsell-product-anchor {
+      max-width: 8.4rem;
+    }
+    .upsell-rating {
+      margin-top: 0.5rem !important;
+    }
+  }
+  </style>

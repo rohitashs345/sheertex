@@ -1,0 +1,1599 @@
+{% include 'style-tags', template: 'page.sheertex-our-story' %}
+
+<style type="text/css">
+  img,
+  video {
+    display: inline-block;
+  }
+
+  .our-story-section-heading {
+    font-family: Agrandir, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+      'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.67px;
+    text-align: center;
+    line-height: 1.4;
+    font-size: 1.25rem;
+  }
+
+  .hero-unbreakable__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .hero-unbreakable__grid-image {
+    width: auto;
+    grid-row-start: 1;
+  }
+  .hero-unbreakable__grid-image-container {
+    width: 100%;
+  }
+
+  .hero-unbreakable__text-section {
+    padding-top: 4rem;
+    padding-bottom: 2.5rem;
+    text-align: center;
+    display: flex;
+  }
+
+  .hero-unbreakable__text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    position: relative;
+  }
+
+  .hero-unbreakable__text-item {
+    font-family: Matiere;
+    font-size: 2rem;
+    line-height: 1.125;
+    text-align: center;
+    max-width: 24rem;
+    letter-spacing: 0.15px;
+    font-weight: 300;
+    padding-bottom: 1.5rem;
+    margin: 0;
+  }
+
+  .hero-unbreakable__text-item-secondary {
+    line-height: '0.8125rem';
+    letter-spacing: 1.29px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: Agrandir, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+      'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    font-weight: 500;
+    padding-bottom: 2.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* TIMELINE */
+
+  .hero-timeline {
+    padding-top: 4rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    text-align: center;
+    font-size: 0;
+    background-image: linear-gradient(
+      to bottom,
+      #ffffff 0%,
+      #ffffff 33%,
+      #f7eee3 38%,
+      #f7eee3 61%,
+      #e8e8f2 66%
+    );
+  }
+
+  .hero-timeline__text-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 24rem;
+  }
+
+  .hero-timeline__heading {
+    margin-bottom: 1rem;
+  }
+
+  .hero-timeline__text {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 0.3px;
+    font-weight: 300;
+  }
+
+  .hero-timeline__item-container {
+    position: relative;
+    text-align: left;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-timeline__item-line {
+    width: 100%;
+    height: 20.25rem;
+  }
+
+  .hero-timeline__item-line > div {
+    width: 50%;
+    border-right-width: 1px;
+    --border-opacity: 1;
+    border-color: #000;
+    border-style: solid;
+    display: inline-block;
+    height: inherit;
+  }
+
+  .hero-timeline__item-date {
+    position: absolute;
+    left: 50%;
+    bottom: 1rem;
+  }
+
+  .hero-timeline__item-date-text {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: 1.29px;
+    text-transform: uppercase;
+    font-weight: 300;
+    display: block;
+    padding-left: 1rem;
+  }
+  .hero-timeline__item-date-underline {
+    height: 1px;
+    background-color: black;
+  }
+
+  .hero-timeline__item-image-container {
+    margin-bottom: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    max-width: 19.6875rem;
+  }
+
+  .hero-timeline__item-image-container img {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-timeline__item-image {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .timeline-image-landscape {
+    max-width: 19.6875rem;
+  }
+
+  .timeline-image-secondary {
+    position: relative;
+    top: -12.4rem;
+    max-width: 10.875rem;
+  }
+
+  .timeline-image-desktop {
+    display: none !important;
+  }
+
+  .hero-timeline__blockquote-container {
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 32.25rem;
+    padding: 0;
+  }
+
+  .hero-timeline__blockquote-heading {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    line-height: 1.125;
+    font-family: Matiere, Georgia, Cambria, 'Times New Roman', Times, serif;
+    font-weight: 300;
+  }
+
+  .not-italic {
+    font-style: normal;
+  }
+
+  .hero-timeline__blockquote-subheading {
+    font-size: 0.75rem;
+    line-height: 0.8125rem;
+    letter-spacing: 1.29px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-family: Agrandir, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+      'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  }
+
+  /* VALUES */
+
+  .hero-values {
+    margin-top: -2rem;
+  }
+
+  .hero-values__list {
+    --bg-opacity: 1;
+    background-color: rgba(232, 232, 242, var(--bg-opacity));
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  .hero-values__list-container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    max-width: 87.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
+  .hero-values__list-item {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .hero-values__list-item-text {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: 1.29px;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-family: Agrandir Narrow, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+      Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+      'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+      'Noto Color Emoji';
+  }
+
+  /*   SHOP HERO */
+
+  .shop-hero {
+    background-image: url({{'bg-sustainability.jpg'|asset_url}});
+    background-size: cover;
+    background-position: 50% 50%;
+    height: 50.25rem;
+    align-content: center;
+    opacity: 1;
+    visibility: inherit;
+
+    display: grid;
+    text-align: center;
+  }
+
+  .shop-hero__heading {
+    color: rgba(221, 255, 152, 1);
+    padding-bottom: 2.3125rem;
+    max-width: 20rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .shop-hero__cta {
+    text-transform: uppercase;
+    margin: auto;
+    background-color: rgba(221, 255, 152, 1);
+    border: 1px solid rgba(221, 255, 152, 1);
+    width: 18rem;
+    cursor: pointer;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-size: 0.75rem;
+    letter-spacing: 1.29px;
+    font-weight: 500;
+    font-family: Agrandir, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+      'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  }
+
+  .shop-hero__cta:hover {
+    text-decoration: underline;
+    border: 1px solid black;
+    background-color: #ffffff;
+  }
+
+  /*   SUSTAINABILITY */
+
+  .hero-sustainability {
+    background-color: rgba(247, 238, 227, 1);
+    padding: 5.8rem 2rem 4rem;
+  }
+
+  .hero-sustainability__heading {
+    text-transform: uppercase;
+    font-family: Agrandir, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+      'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    font-weight: 700;
+    max-width: 26.5625rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    margin-bottom: 2.5rem;
+    letter-spacing: 1.67px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .sustainability-card {
+    max-width: 52.8125rem;
+    padding-bottom: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .sustainability-card__blurb {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .sustainability-card__heading {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    max-width: 21rem;
+
+    font-size: 2rem;
+    line-height: 1.125;
+    font-family: Matiere, Georgia, Cambria, 'Times New Roman', Times, serif;
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+  }
+
+  .sustainability-card-image {
+    background-size: cover;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    width: 15.25rem;
+    height: 20.3125rem;
+    margin-bottom: 1.75rem;
+    padding: 1.625rem 1.875rem 0 1.5625rem;
+  }
+
+  .sustainability-card-image__text {
+    font-family: Agrandir Narrow, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+      Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+      'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+      'Noto Color Emoji';
+    font-weight: 300;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: 1.29px;
+    text-transform: uppercase;
+    padding-top: 0.3rem;
+    margin: 0;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+  }
+
+  .sustainability-card-image__text--last {
+    border-top: none;
+  }
+
+  .sustainability-card__text {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    max-width: 21rem;
+
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 0.3px;
+    font-family: Agrandir Narrow, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+      Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+      'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+      'Noto Color Emoji';
+    font-weight: 300;
+  }
+
+  /*   QUALITY */
+
+  .hero-quality {
+    background-color: rgba(212, 190, 177, 1);
+    padding-top: 6rem;
+  }
+
+  .hero-quality__grid {
+    display: grid;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    grid-template-rows: repeat(3, auto);
+  }
+
+  .hero-quality__grid-header {
+    grid-row-start: 1;
+
+    text-align: center;
+    padding-bottom: 3rem;
+    max-width: 20rem;
+    margin: 0 auto;
+  }
+
+  .hero-quality__grid-breakdown {
+    grid-row-start: 2;
+  }
+
+  .hero-quality__grid-blurb {
+    max-width: 20.6rem;
+    text-align: center;
+    grid-row-start: 3;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1rem;
+    line-height: 1.5;
+    padding-bottom: 5rem;
+    padding-top: 3rem;
+  }
+
+  .grid-breakdown {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    font-family: Agrandir, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+      'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    line-height: 0.8125rem;
+    letter-spacing: 1.29px;
+  }
+
+  .grid-breakdown__col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 0.4375rem;
+    margin-right: 0.4375rem;
+  }
+
+  .grid-breakdown__header {
+    padding-bottom: 0.6rem;
+    text-align: center;
+  }
+
+  .grid-breakdown__block {
+    max-width: 10rem;
+    text-align: center;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .grid-breakdown__block--white {
+    background-color: white;
+  }
+
+  .grid-breakdown__block--clear-white {
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+
+  .grid-breakdown__block--transparent-white {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .grid-breakdown__block--has-margin-bottom {
+    margin-bottom: 0.25rem;
+  }
+
+  .grid-breakdown__block--3 {
+    height: 3rem;
+  }
+
+  .grid-breakdown__block--3point5 {
+    height: 3.5rem;
+  }
+
+  .grid-breakdown__block--10 {
+    height: 10rem;
+  }
+
+  .grid-breakdown__block--14 {
+    height: 14rem;
+  }
+
+  .grid-breakdown__block--20 {
+    height: 20rem;
+  }
+
+  /*   BUZZ */
+
+  .hero-buzz {
+  }
+
+  .hero-buzz__heading {
+    padding-top: 6rem;
+    padding-bottom: 2.5rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-buzz__press {
+    margin-bottom: 6rem;
+  }
+
+  .hero-buzz__grid {
+    display: grid;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 28rem;
+    grid: 1fr / 1fr;
+    justify-items: center;
+    grid-column-gap: 3rem;
+    column-gap: 3rem;
+    grid-row-gap: 2rem;
+    row-gap: 2rem;
+  }
+
+  .hero-buzz__grid-item {
+    background-color: rgba(232, 232, 242, 1);
+    display: grid;
+
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    min-height: 18.875rem;
+    margin: 0;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    text-align: center;
+  }
+
+  .hero-buzz__grid-item-logo {
+    width: 50%;
+    padding-bottom: 1.25rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-buzz__grid-item-headline {
+    font-size: 2rem;
+    line-height: 1.125;
+    font-weight: 300;
+    font-family: Matiere, Georgia, Cambria, 'Times New Roman', Times, serif;
+  }
+
+  .hero-buzz__grid-item-text {
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 0.3px;
+    font-weight: 300;
+  }
+
+  /* PRESS */
+
+  .hero-press {
+    position: relative;
+  }
+
+  .hero-press__container {
+    position: relative;
+    padding-bottom: 8rem;
+  }
+
+  .hero-press__container-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    background-color: #fff;
+  }
+
+  .hero-press__image-container {
+    width: auto;
+    grid-row-start: 1;
+  }
+
+  .hero-press__text-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    padding-top: 2.8rem;
+  }
+  .hero-press__text-heading {
+    font-family: Matiere, Georgia, Cambria, 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    line-height: 1.125;
+    padding-bottom: 1.25rem;
+    font-weight: 300;
+  }
+
+  .hero-press__text-email {
+    margin-left: auto;
+    margin-right: auto;
+    text-decoration: underline;
+    text-align: center;
+    padding-bottom: 0.25rem;
+    font-size: 0.75rem;
+    line-height: 0.8125rem;
+    letter-spacing: 1.29px;
+    text-transform: uppercase;
+    font-family: Agrandir, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+      'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    font-weight: 500;
+  }
+
+  .hero-press__gif {
+    position: absolute;
+    top: 10%;
+    bottom: auto;
+    left: 48%;
+    width: 7.6875rem;
+  }
+
+  /* TEAM */
+
+  .hero-team {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 2rem;
+    max-width: 45rem;
+  }
+
+  .hero-team__heading {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+  }
+
+  .hero-team__text {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    max-width: 39rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .hero-team__text-span {
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 0.3px;
+  }
+
+  .hero-team__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 19rem);
+    grid-gap: 24px;
+    justify-content: center;
+  }
+
+  .hero-team__card-container {
+    position: relative;
+    margin-top: -7rem;
+  }
+
+  .hero-team__card {
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    width: 19rem;
+    justify-items: right;
+    margin-bottom: 2rem;
+  }
+
+  .hero-team__card-text {
+    text-align: left;
+    background-color: #ddff98;
+    padding: 1.0625rem 1.25rem 1.5rem;
+    width: 14.3125rem;
+    min-height: 11.5rem;
+  }
+
+  .hero-team__card-header {
+    padding-bottom: 1.4rem;
+    font-size: 1.75rem;
+    margin: 0;
+  }
+
+  .hero-team__card-label {
+    font-weight: 300;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: 1.29px;
+    text-transform: uppercase;
+    display: block;
+    padding-top: 0.44rem;
+  }
+
+  .border-black {
+    border-color: black;
+    margin: 0;
+  }
+
+  /*   RESPONSIVE */
+
+  @media screen and (min-width: 1024px) {
+    .hero-buzz__grid {
+      max-width: 72.5rem;
+      grid: 1fr / 1fr 1fr 1fr;
+    }
+  }
+  @media screen and (min-width: 84.5em) {
+    .hero-team {
+      max-width: 93rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-unbreakable__grid {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    .hero-unbreakable__grid-image {
+      grid-row-start: 2;
+    }
+
+    .hero-press__container-grid {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    .hero-press__gif {
+      bottom: 14.5rem;
+      left: 2rem;
+      top: auto;
+    }
+
+    .hero-values__list-item {
+      width: 33%;
+    }
+
+    .timeline-image-secondary {
+      top: -1.5rem;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .hero-values__list-item {
+      width: 50%;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-unbreakable__text-item {
+      padding-bottom: 1.25rem;
+    }
+
+    .hero-unbreakable__text-item-secondary {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .hero-timeline__item-image-container {
+      margin-bottom: 3rem;
+      display: flex;
+      max-width: 32.75rem;
+    }
+
+    .timeline-image-landscape {
+      max-width: 32.75rem;
+    }
+
+    .timeline-image-desktop {
+      display: inline-block !important;
+    }
+
+    .timeline-image-1 .timeline-image-3 .timeline-image-6 {
+      z-index: 10;
+    }
+
+    .timeline-image-2 {
+      position: absolute;
+      top: -1.5rem;
+      left: -16rem;
+      max-width: 18rem;
+      z-index: 1;
+    }
+
+    .timeline-image-4 {
+      position: absolute;
+      top: 4rem;
+      left: 34.2rem;
+      max-width: 18.375rem;
+      z-index: 20;
+    }
+
+    .timeline-image-5 {
+      position: absolute;
+      top: 2rem;
+      left: -16.7rem;
+      max-width: 15.375rem;
+    }
+
+    .timeline-image-7 {
+      position: absolute;
+      top: 2rem;
+      left: -17.5rem;
+      max-width: 14.5rem;
+      z-index: 20;
+    }
+
+    .timeline-image-8 {
+      position: absolute;
+      top: 6rem;
+      left: 35.7rem;
+      max-width: 11.5625rem;
+    }
+
+    .sustainability-card-image {
+      width: 100%;
+      height: 27.25rem;
+      margin-bottom: 0;
+    }
+
+    .sustainability-card-image__text {
+      max-width: 11.6875rem;
+    }
+
+    .sustainability-card__blurb {
+      background-color: white;
+    }
+
+    .hero-quality__grid {
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 1rem;
+    }
+
+    .hero-quality__grid-header {
+      grid-column-start: 1;
+      margin-top: 5.3rem;
+      text-align: center;
+      padding-bottom: 0;
+    }
+
+    .hero-quality__grid-breakdown {
+      grid-row-start: 1;
+      grid-column-start: 2;
+      grid-row-end: 4;
+    }
+
+    .hero-quality__grid-blurb {
+      max-width: 24rem;
+      grid-row-start: 2;
+      grid-column-start: 1;
+      padding-top: 1rem;
+      padding-bottom: 0;
+    }
+
+    .grid-breakdown {
+      padding-bottom: 6rem;
+    }
+
+    .grid-breakdown__col {
+      margin-left: 0.55rem;
+      margin-right: 0.55rem;
+    }
+
+    .grid-breakdown__block {
+      width: 11.5rem;
+      max-width: none;
+    }
+
+    .sus-card-grid {
+      display: grid;
+      grid-template-columns: 327px 1fr;
+    }
+
+    .sus-card-grid-right {
+      display: grid;
+      padding: 2rem;
+      display: grid;
+      align-content: center;
+      background-color: #fff;
+    }
+
+    .hero-unbreakable__text-section {
+      padding-top: 0;
+    }
+
+    .hero-press__container {
+      padding-bottom: 5.8rem;
+    }
+
+    .hero-values__list {
+      padding-bottom: 8rem;
+    }
+  }
+</style>
+
+<section>
+  <div class="hero-unbreakable__grid">
+    <div class="hero-unbreakable__grid-image">
+      <div class="hero-unbreakable__grid-image-container">
+        {%- assign img = "hero_2x.jpg" -%}
+        <img 
+          loading="lazy"
+          srcset="{{ img | asset_img_url: '375x' }} 375w,
+                  {{ img | asset_img_url: '600x' }} 600w,
+                  {{ img | asset_img_url: '760x' }} 760w,
+                  {{ img | asset_img_url: '850x' }} 850w,
+                  {{ img | asset_img_url: '1200x' }} 1200w,
+                  {{ img | asset_img_url: '1700x' }} 1700w"
+          sizes="(max-width: 390px) 375px, (max-width: 770px) 760px, (max-width: 1200px) 600px, (max-width: 1700px) 850px, 1200px"
+          alt="Katherine Homuth">
+      </div>
+    </div>
+    <div class="hero-unbreakable__text-section">
+      <div class="hero-unbreakable__text-container">
+        <h1 class="hero-unbreakable__text-item">
+            {{ 'sections.page-sheertex-our-story.title_html' | t}}
+        </h1>
+        <h5 class="hero-unbreakable__text-item-secondary">
+          {{ 'sections.page-sheertex-our-story.ceo_label' | t}}
+        </h5>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero-timeline">
+  <div class="hero-timeline__text-container">
+    <h2 class="hero-timeline__heading our-story-section-heading">
+        {{ 'sections.page-sheertex-our-story.history_title' | t}}
+    </h2>
+  </div>
+
+  <div class="hero-timeline__item-container">
+    <div class="hero-timeline__item-line">
+      <div></div>
+    </div>
+    <div class="hero-timeline__item-date">
+      <div>
+        <span class="hero-timeline__item-date-text">{{ 'sections.page-sheertex-our-story.step_1_date' | t}}</span>
+      </div>
+      <div class="hero-timeline__item-date-underline"></div>
+    </div>
+  </div>
+  <div class="hero-timeline__item-image-container">
+    <div
+      class="hero-timeline__item-image timeline-image-landscape timeline-image-1"
+    >
+      {%- assign img = "timeline-1@2x.jpg" -%}
+      <img 
+        loading="lazy"
+        srcset="{{ img | asset_img_url: '315x' }} 315w,
+                {{ img | asset_img_url: '524x' }} 524w,
+                {{ img | asset_img_url: '1048x' }} 1048w"
+        sizes="(max-width: 767px) 315px, 524px"
+        alt="Tights">
+    </div>
+    <div
+      class="hero-timeline__item-image timeline-image-secondary timeline-image-2"
+    >
+      {%- assign img = "timeline-2@2x.jpg" -%}
+      <img 
+        loading="lazy"
+        srcset="{{ img | asset_img_url: '174x' }} 174w,
+                {{ img | asset_img_url: '288x' }} 288w,
+                {{ img | asset_img_url: '576x' }} 576w"
+        sizes="(max-width: 767px) 174px, 288px"
+        alt="Katherine">
+    </div>
+  </div>
+
+  <div class="hero-timeline__text-container">
+    <h2 class="hero-timeline__heading our-story-section-heading">
+        {{ 'sections.page-sheertex-our-story.step_1_title' | t}}
+    </h2>
+    <p class="hero-timeline__text">
+        {{ 'sections.page-sheertex-our-story.step_1_description_html' | t}}
+    </p>
+    <a class="tw-rounded-3xl tw-px-24 msm:tw-px-8 tw-my-4 tw-py-3 tw-max-w-xs tw-bg-green-200 tw-mx-auto tw-text-xs tw-font-sans tw-leading-normal tw-text-center tw-font-medium tw-uppercase tw-tracking-heading"
+        href="https://www.sheertex.com/collections/all">
+        {{ 'sections.page-sheertex-our-story.cta_button_text' | t}}
+    </a>
+    <br>&nbsp;
+  </div>
+  <div class="hero-timeline__item-container">
+    <div class="hero-timeline__item-line">
+      <div></div>
+    </div>
+    <div class="hero-timeline__item-date">
+      <div>
+        <span class="hero-timeline__item-date-text">{{ 'sections.page-sheertex-our-story.step_2_date' | t}}</span>
+      </div>
+      <div class="hero-timeline__item-date-underline"></div>
+    </div>
+  </div>
+  <div class="hero-timeline__item-image-container">
+    <div
+      class="hero-timeline__item-image timeline-image-landscape timeline-image-3"
+    >
+      {%- assign img = "timeline-3@2x.jpg" -%}
+      <img 
+        loading="lazy"
+        srcset="{{ img | asset_img_url: '315x' }} 315w,
+                {{ img | asset_img_url: '524x' }} 524w,
+                {{ img | asset_img_url: '1048x' }} 1048w"
+        sizes="(max-width: 767px) 315px, 524px"
+        alt="Tights">
+    </div>
+    <div
+      class="hero-timeline__item-image timeline-image-secondary timeline-image-4"
+    >
+      {%- assign img = "timeline-4@2x.jpg" -%}
+      <img 
+        loading="lazy"
+        srcset="{{ img | asset_img_url: '174x' }} 174w,
+                {{ img | asset_img_url: '294x' }} 294w,
+                {{ img | asset_img_url: '588x' }} 588w"
+        sizes="(max-width: 767px) 174px, 294px"
+        alt="Office Workers">
+    </div>
+    <div
+      class="hero-timeline__item-image timeline-image-desktop timeline-image-5"
+    >
+      {%- assign img = "timeline-5@2x.jpg" -%}
+      <img 
+        loading="lazy"
+        srcset="{{ img | asset_img_url: '246x' }} 246w,
+                {{ img | asset_img_url: '492x' }} 492w"
+        sizes="246px"
+        alt="Sewing Machine">
+    </div>
+  </div>
+
+  <div class="hero-timeline__text-container">
+    <h2 class="hero-timeline__heading our-story-section-heading">
+        {{ 'sections.page-sheertex-our-story.step_2_title' | t}}
+    </h2>
+    <p class="hero-timeline__text">
+        {{ 'sections.page-sheertex-our-story.step_2_description_html' | t}}
+    </p>
+  </div>
+  <div class="hero-timeline__item-container">
+    <div class="hero-timeline__item-line">
+      <div></div>
+    </div>
+    <div class="hero-timeline__item-date">
+      <div>
+        <span class="hero-timeline__item-date-text">{{ 'sections.page-sheertex-our-story.step_3_date' | t}}</span>
+      </div>
+      <div class="hero-timeline__item-date-underline"></div>
+    </div>
+  </div>
+  <div class="hero-timeline__item-image-container">
+    <div
+      class="hero-timeline__item-image timeline-image-landscape timeline-image-6"
+    >
+      {%- assign img = "timeline-6@2x.jpg" -%}
+      <img 
+        loading="lazy"
+        srcset="{{ img | asset_img_url: '315x' }} 315w,
+                {{ img | asset_img_url: '524x' }} 524w,
+                {{ img | asset_img_url: '1048x' }} 1048w"
+        sizes="(max-width: 767px) 315px, 524px"
+        alt="People Outdoors">
+    </div>
+    <div
+      class="hero-timeline__item-image timeline-image-secondary timeline-image-7"
+    >
+      {%- assign img = "timeline-7@2x.jpg" -%}
+      <img 
+        loading="lazy"
+        srcset="{{ img | asset_img_url: '174x' }} 174w,
+                {{ img | asset_img_url: '232x' }} 232w,
+                {{ img | asset_img_url: '464x' }} 464w"
+        sizes="(max-width: 767px) 174px, 232px"
+        alt="People Walking in the Street">
+    </div>
+    <div
+      class="hero-timeline__item-image timeline-image-desktop timeline-image-8"
+    >
+      {%- assign img = "timeline-8@2x.jpg" -%}
+      <img 
+        loading="lazy"
+        srcset="{{ img | asset_img_url: '185x' }} 185w,
+                {{ img | asset_img_url: '370x' }} 370w"
+        sizes="185px"
+        alt="Lady Sitting Down">
+    </div>
+  </div>
+
+  <div class="hero-timeline__text-container">
+    <h2 class="hero-timeline__heading our-story-section-heading">
+        {{ 'sections.page-sheertex-our-story.step_3_title' | t}}
+    </h2>
+    <p class="hero-timeline__text">
+        {{ 'sections.page-sheertex-our-story.step_3_description_html' | t}}
+    </p>
+  </div>
+  <div class="hero-timeline__item-container">
+    <div class="hero-timeline__item-line">
+      <div></div>
+    </div>
+  </div>
+  <blockquote class="hero-timeline__blockquote-container">
+    <h2 class="hero-timeline__blockquote-heading">
+        {{ 'sections.page-sheertex-our-story.history_end_title_html' | t}}
+    </h2>
+    <cite class="not-italic">
+      <span class="hero-timeline__blockquote-subheading tw-pb-6">
+        {{ 'sections.page-sheertex-our-story.ceo_label' | t}}
+      </span>
+    </cite>
+  </blockquote>
+</section>
+
+<style type="text/css"></style>
+
+<section class="tw-flex tw-flex-col tw-justify-items-center tw-bg-purple-200">
+<a class="tw-rounded-3xl tw-px-32 msm:tw-px-8 tw-py-3 tw-mt-6 tw-max-w-xl tw-bg-green-200 tw-mx-auto tw-text-center tw-text-xs tw-font-sans tw-leading-normal tw-font-medium tw-uppercase tw-tracking-heading"
+    href="https://www.sheertex.com/blogs/experiments/sheertex-lab">
+    {{ 'sections.page-sheertex-our-story.sheertex_labs' | t}}
+  </a>
+</section>
+  
+<section class="hero-values">
+  <div class="hero-values__list">
+    <div class="hero-values__list-container">
+      <div class="hero-values__list-item">
+        {%- assign img = "goldfish-bglilac.gif" -%}
+        <img 
+          class="tw-w-full"
+          loading="lazy"
+          srcset="{{ img | asset_img_url: '280x' }} 280w,
+                  {{ img | asset_img_url: '560x' }} 560w"
+          sizes="280px"
+          alt="gif">
+        <h3 class="hero-values__list-item-text">
+            {{ 'sections.page-sheertex-our-story.feature_1_html' | t}}
+        </h3>
+      </div>
+      <div class="hero-values__list-item">
+        {%- assign img = "clover-bglilac.gif" -%}
+        <img 
+          class="tw-w-full"
+          loading="lazy"
+          srcset="{{ img | asset_img_url: '280x' }} 280w,
+                  {{ img | asset_img_url: '560x' }} 560w"
+          sizes="280px"
+          alt="gif">
+        <h3 class="hero-values__list-item-text">
+            {{ 'sections.page-sheertex-our-story.feature_2_html' | t}}
+        </h3>
+      </div>
+      <div class="hero-values__list-item">
+        {%- assign img = "horseshoe-bglilac.gif" -%}
+        <img 
+          class="tw-w-full"
+          loading="lazy"
+          srcset="{{ img | asset_img_url: '280x' }} 280w,
+                  {{ img | asset_img_url: '560x' }} 560w"
+          sizes="280px"
+          alt="gif">
+        <h3 class="hero-values__list-item-text">
+            {{ 'sections.page-sheertex-our-story.feature_3_html' | t}}
+        </h3>
+      </div>
+      <div class="hero-values__list-item">
+        {%- assign img = "crossedfingers-bglilac.gif" -%}
+        <img 
+          class="tw-w-full"
+          loading="lazy"
+          srcset="{{ img | asset_img_url: '280x' }} 280w,
+                  {{ img | asset_img_url: '560x' }} 560w"
+          sizes="280px"
+          alt="gif">
+        <h3 class="hero-values__list-item-text">
+            {{ 'sections.page-sheertex-our-story.feature_4_html' | t}}
+        </h3>
+      </div>
+      <div class="hero-values__list-item">
+        {%- assign img = "rainbow-bglilac.gif" -%}
+        <img 
+          class="tw-w-full"
+          loading="lazy"
+          srcset="{{ img | asset_img_url: '280x' }} 280w,
+                  {{ img | asset_img_url: '560x' }} 560w"
+          sizes="280px"
+          alt="gif">
+        <h3 class="hero-values__list-item-text">{{ 'sections.page-sheertex-our-story.feature_5_html' | t}}</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="shop-hero">
+  <h1 class="our-story-section-heading shop-hero__heading">
+    {{ 'sections.page-sheertex-our-story.cta_text' | t}}
+  </h1>
+  <a class="tw-rounded-3xl tw-px-32 msm:tw-px-8 tw-my-4 tw-py-3 tw-max-w-sm tw-bg-green-200 tw-mx-auto tw-text-xs tw-font-sans tw-leading-normal tw-text-center tw-font-medium tw-uppercase tw-tracking-heading"
+        href="https://www.sheertex.com/collections/all">
+        {{ 'sections.page-sheertex-our-story.cta_button_text' | t}}
+    </a>
+</section>
+
+<section class="hero-sustainability">
+  <div class="tw-container tw-mx-auto tw-px-4">
+    <div class="hero-sustainability__wrapper">
+      <h2 class="hero-sustainability__heading">
+        {{ 'sections.page-sheertex-our-story.sustainability_title_html' | t}}
+      </h2>
+
+      <div class="sustainability-card">
+        <div class="sus-card-grid">
+          <header
+            class="sustainability-card-image"
+            style="background-image:url({{ 'tightspile_2x.jpg' | asset_url }})"
+          >
+            <h2 class="sustainability-card-image__text">01</h2>
+            <h2
+              class="sustainability-card-image__text sustainability-card-image__text--last"
+            >
+            {{ 'sections.page-sheertex-our-story.sustainability_feature_1_name' | t}}
+            </h2>
+          </header>
+          <div class="sus-card-grid-right">
+            <div class="sustainability-card__blurb">
+              <h3 class="sustainability-card__heading">
+                {{ 'sections.page-sheertex-our-story.sustainability_feature_1_title' | t}}
+              </h3>
+              <p class="sustainability-card__text">
+                {{ 'sections.page-sheertex-our-story.sustainability_feature_1_description_html' | t}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- /sustainability-card -->
+
+      <div class="sustainability-card">
+        <div class="sus-card-grid">
+          <header
+            class="sustainability-card-image"
+            style="background-image:url({{
+              'second-chances_2x.jpg' | asset_url
+            }})"
+          >
+            <h2 class="sustainability-card-image__text">02</h2>
+            <h2
+              class="sustainability-card-image__text sustainability-card-image__text--last"
+            >
+            {{ 'sections.page-sheertex-our-story.sustainability_feature_2_name' | t}}
+            </h2>
+          </header>
+          <div class="sus-card-grid-right">
+            <div class="sustainability-card__blurb tw-flex tw-flex-col tw-justify-items-center">
+              <h3 class="sustainability-card__heading">
+                {{ 'sections.page-sheertex-our-story.sustainability_feature_2_title' | t}}
+              </h3>
+              <p class="sustainability-card__text">
+                {{ 'sections.page-sheertex-our-story.sustainability_feature_2_description_html' | t}}
+              </p>
+                <a class="tw-rounded-3xl tw-px-24 msm:tw-px-8 tw-py-3 tw-my-8 tw-max-w-sm tw-bg-green-200 tw-flex tw-mx-auto tw-text-xs tw-font-sans tw-leading-normal tw-font-medium tw-uppercase tw-tracking-heading"
+                  href="https://www.sheertex.com/collections/accessories">
+                  {{ 'sections.page-sheertex-our-story.shop_accessories' | t}}
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /sustainability-card -->
+    </div>
+  </div>
+</section>
+
+<section class="hero-quality">
+  <div class="hero-quality__grid">
+    <h2 class="hero-quality__grid-header our-story-section-heading">
+        {{ 'sections.page-sheertex-our-story.price_title' | t}}
+    </h2>
+    <div class="hero-quality__grid-breakdown">
+      <div class="grid-breakdown">
+        <div class="grid-breakdown__col">
+          <span class="grid-breakdown__header">Sheertex</span>
+          <div
+            class="grid-breakdown__block grid-breakdown__block--white grid-breakdown__block--10 grid-breakdown__block--has-margin-bottom"
+          >
+            <span>{{ 'sections.page-sheertex-our-story.markup' | t}}</span>
+          </div>
+          <div
+            class="grid-breakdown__block grid-breakdown__block--clear-white grid-breakdown__block--3 grid-breakdown__block--has-margin-bottom"
+          >
+            <span>{{ 'sections.page-sheertex-our-story.other_costs' | t}}</span>
+          </div>
+          <div
+            class="grid-breakdown__block grid-breakdown__block--transparent-white grid-breakdown__block--14"
+          >
+            <span>{{ 'sections.page-sheertex-our-story.cost_of_materials' | t}}</span>
+          </div>
+        </div>
+        <div class="grid-breakdown__col">
+          <span class="grid-breakdown__header">{{ 'sections.page-sheertex-our-story.department_store' | t}}</span>
+          <div
+            class="grid-breakdown__block grid-breakdown__block--white grid-breakdown__block--20 grid-breakdown__block--has-margin-bottom"
+          >
+            <span>{{ 'sections.page-sheertex-our-story.markup' | t}}</span>
+          </div>
+          <div
+            class="grid-breakdown__block grid-breakdown__block--clear-white grid-breakdown__block--3point5 grid-breakdown__block--has-margin-bottom"
+          >
+            <span>{{ 'sections.page-sheertex-our-story.other_costs' | t}}</span>
+          </div>
+          <div
+            class="grid-breakdown__block grid-breakdown__block--transparent-white grid-breakdown__block--3point5"
+          >
+            <span>{{ 'sections.page-sheertex-our-story.cost_of_materials' | t}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="hero-quality__grid-blurb">
+        {{ 'sections.page-sheertex-our-story.price_description_html' | t}}
+    </p>
+  </div>
+</section>
+
+<section class="hero-buzz">
+  <h2 class="hero-buzz__heading our-story-section-heading">
+    {{ 'sections.page-sheertex-our-story.press_say_title' | t}}
+  </h2>
+  <div class="hero-buzz__press">
+    <div class="hero-buzz__grid">
+      <div class="hero-buzz__grid-item">
+        <div>
+          <p class="hero-buzz__grid-item-logo">
+            <img 
+              loading="lazy"
+              src="{{ "Gizmodo.svg" | asset_url }}
+              alt="Gizmodo"> 
+          </p>
+          <p class="hero-buzz__grid-item-text">
+            {{ 'sections.page-sheertex-our-story.gizmodo_html' | t}}
+          </p>
+          <a href="https://gizmodo.com/we-destroyed-the-unbreakable-pantyhose-but-they-still-1832734259" target="_blank">
+            {{ 'sections.page-sheertex-our-story.read_more' | t}} &rarr;
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-buzz__grid-item">
+        <p class="hero-buzz__grid-item-headline">
+            {{ 'sections.page-sheertex-our-story.times_html' | t}}
+        </p>
+        <a href="https://time.com/collection/best-inventions-2018/5454315/sheerly-genius-pantyhose/" target="_blank">
+          {{ 'sections.page-sheertex-our-story.read_more' | t}} &rarr;
+        </a>
+      </div>
+
+      <div class="hero-buzz__grid-item">
+        <div>
+          <div class="hero-buzz__grid-item-logo">
+            <img 
+              loading="lazy"
+              src="{{ "Bustle.svg" | asset_url }}
+              alt="Bustle"> 
+          </div>
+          <p class="hero-buzz__grid-item-text">
+            {{ 'sections.page-sheertex-our-story.bustle_html' | t}}
+          </p>
+          <a href="https://www.bustle.com/p/sheerly-genius-pantyhose-are-made-of-bulletproof-material-seriously-indestructible-8145164" target="_blank">
+            {{ 'sections.page-sheertex-our-story.read_more' | t}} &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero-press">
+  <div class="hero-press__container">
+    <div class="hero-press__container-grid">
+      <div class="hero-press__image-container">
+        {%- assign img = "press@2x.jpg" -%}
+        <img 
+          loading="lazy"
+          srcset="{{ img | asset_img_url: '385x' }} 385w,
+                  {{ img | asset_img_url: '572x' }} 572w,
+                  {{ img | asset_img_url: '750x' }} 750w,
+                  {{ img | asset_img_url: '900x' }} 900w,
+                  {{ img | asset_img_url: '1800x' }} 1800w"
+          sizes="(max-width: 400px) 385px, (max-width: 767px) 750px, (max-width: 1150px) 572px, 900px"
+          alt="Press image">
+      </div>
+      <div class="hero-press__text-container">
+        <span class="hero-press__text-heading">{{ 'sections.page-sheertex-our-story.get_in_touch' | t}}</span>
+        <a href="mailto: hello@sheertex.com">
+          <span class="hero-press__text-email">Hello@Sheertex.com</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  {% if request.locale.iso_code == 'en' %}
+  <div class="hero-press__gif">
+    {%- assign img = "fly-day-ahead.gif" -%}
+    <img 
+      loading="lazy"
+      srcset="{{ img | asset_img_url: '123x' }} 123w,
+              {{ img | asset_img_url: '246x' }} 246w"
+      sizes="123px"
+      alt="Fly Day Ahead">
+  </div>
+  {% endif %}
+</section>
+
+<section class="hero-team tw-hidden">
+  <h2 class="hero-team__heading our-story-section-heading">
+    Meet Our Talented Close-Knit Team
+  </h2>
+  <div class="tw-container tw-mx-auto">
+    <p class="hero-team__text">
+      <span class="hero-team__text-span">
+        We employ over 150 individuals at our in-house facility in Montreal,
+        Canada. From manufacturing to marketing, finance to fulfilment, we do
+        everything under one roof as a close-knit team. Here are a few of our
+        kick-ass Sheertexers. Don&apos;t worry, this section gets updated
+        regularly!
+      </span>
+    </p>
+  </div>
+
+  <div class="hero-team__grid">
+    <div class="hero-team__card">
+      {%- assign img = "hillaryp.jpg" -%}
+      <img 
+        loading="lazy"
+        srcset="{{ img | asset_img_url: '304x' }} 304w,
+                {{ img | asset_img_url: '608x' }} 608w"
+        sizes="304px"
+        alt="Team member photo">
+      <div class="hero-team__card-container">
+        <aside class="hero-team__card-text">
+          <h2 class="hero-team__card-header">Hillary P.</h2>
+          <hr class="border-black" />
+          <span class="hero-team__card-label">Researcher</span>
+          <hr class="border-black" />
+          <span class="hero-team__card-label">Research and Development</span>
+          <hr class="border-black" />
+        </aside>
+      </div>
+    </div>
+
+    <div class="hero-team__card">
+      {%- assign img = "jayw.jpg" -%}
+      <img 
+        loading="lazy"
+        srcset="{{ img | asset_img_url: '304x' }} 304w,
+                {{ img | asset_img_url: '608x' }} 608w"
+        sizes="304px"
+        alt="Team member photo">
+      <div class="hero-team__card-container">
+        <aside class="hero-team__card-text">
+          <h2 class="hero-team__card-header">Jay W.</h2>
+          <hr class="border-black" />
+          <span class="hero-team__card-label">Procurement Coordinator</span>
+          <hr class="border-black" />
+          <span class="hero-team__card-label">Procurement</span>
+          <hr class="border-black" />
+        </aside>
+      </div>
+    </div>
+
+    <div class="hero-team__card">
+      {%- assign img = "channap.jpg" -%}
+      <img 
+        loading="lazy"
+        srcset="{{ img | asset_img_url: '304x' }} 304w,
+                {{ img | asset_img_url: '608x' }} 608w"
+        sizes="304px"
+        alt="Team member photo">
+      <div class="hero-team__card-container">
+        <aside class="hero-team__card-text">
+          <h2 class="hero-team__card-header">Channa P.</h2>
+          <hr class="border-black" />
+          <span class="hero-team__card-label">Machine Operator</span>
+          <hr class="border-black" />
+          <span class="hero-team__card-label">Production</span>
+          <hr class="border-black" />
+        </aside>
+      </div>
+    </div>
+
+    <div class="hero-team__card">
+      {%- assign img = "nitabenp.jpg" -%}
+      <img 
+        loading="lazy"
+        srcset="{{ img | asset_img_url: '304x' }} 304w,
+                {{ img | asset_img_url: '608x' }} 608w"
+        sizes="304px"
+        alt="Team member photo">
+      <div class="hero-team__card-container">
+        <aside class="hero-team__card-text">
+          <h2 class="hero-team__card-header">Nitaben P.</h2>
+          <hr class="border-black" />
+          <span class="hero-team__card-label">Product Handler</span>
+          <hr class="border-black" />
+          <span class="hero-team__card-label">Fulfillment</span>
+          <hr class="border-black" />
+        </aside>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% include 'script-tags', template: 'page.sheertex-our-story' %}
+
+{% schema %}
+{
+  "name": "Our Story Section",
+  "locales": {
+    "en": {
+      "title_html": "\"Everyone said ultra-resilient tights would be impossible, but we knew we could make our own luck.\"",
+      "ceo_label": "KATHERINE HOMUTH, FOUNDER & CEO",
+      "history_title": "How We Got To Guaranteed Good Luck",
+      "step_1_date": "January 2017",
+      "step_1_title": "Tights Were Trash, Until Now",
+      "step_1_description_html": "Humans have walked on the moon—so why did tights still break at the first sign of bad luck? Founder Katherine Homuth was fed up with old-fashioned, disposable hosiery, so she set out to make the toughest, luckiest tights in the world.",
+      "step_2_date": "August 2019",
+      "step_2_title": "It Took Sheer Grit And The Toughest Materials, But We Did The Impossible",
+      "step_2_description_html": "With a lot of hard work and innovation, Katherine and her team created a miracle knit, a proprietary manufacturing process, and took over the largest hosiery factory in Montreal, Canada, where the entire team is based today.",
+      "step_3_date": "Today",
+      "step_3_title": "We wound up with the strongest knit in the world, and our luck is just beginning",
+      "step_3_description_html": "Our Sheertex knit is the foundation of all of our products, and we’re finding more and more ways to create stylish, ultra-durable uses for it.",
+      "history_end_title_html": "“Believe the impossible. We did, and that's how we got here. Count on us for products engineered for better odds.”",
+      "feature_1_html": "Water Resistant, Cooling,<br />and Quick-Drying",
+      "feature_2_html": "Ethically Made<br />In Montreal",
+      "feature_3_html": "Made strong by<br />Sheertex® Knit Technology",
+      "feature_4_html": "Feels just like real tights",
+      "feature_5_html": "Made for everyone",
+      "cta_text": "See Our Strength For Yourself",
+      "cta_button_text": "Shop All",
+      "sustainability_title_html": "Sustainability is woven through our entire business",
+      "sustainability_feature_1_name": "Durability",
+      "sustainability_feature_1_title": "Throwing away disposable tights, for good",
+      "sustainability_feature_1_description_html": "Over 2 billion pairs of pantyhose are thrown away each year. Tights shouldn’t be trash, so we’re replacing them with a strong and long-lasting knit that can be reworn, again and again.",
+      "sustainability_feature_2_name": "Second Chances",
+      "sustainability_feature_2_title": "Meet Our Second Chances Collection",
+      "sustainability_feature_2_description_html": "We use the extra material from our production process to make new products like masks, headbands, scrunchies, and underwear. This collection is still growing—so stay tuned for more upcycled products to come.",
+      "price_title": "Our Pricing is Bound to Our Quality",
+      "price_description_html": " We're the first hosiery company to be using fiber this strong to make tights. This fiber is traditionally used for climbing equipment and in other more heavy duty ways, and getting it thin enough for pantyhose doesn't come easy. Our prices reflect the cost of our materials directly<br> — no scams or crazy markups.",
+      "markup": "Markup",
+      "other_costs": "Other Costs",
+      "cost_of_materials": "Cost Of Materials",
+      "department_store": "Department Store",
+      "press_say_title": "Our Hard-Earned Luck Has Everyone Talking",
+      "gizmodo_html": "“You can stretch and twist the Sheertex as much as you like and they won't break. You'd have to be the Hulk to tear a hole through these things.”",
+      "times_html": "Named One of TIME's Best Inventions",
+      "bustle_html": "“These super pantyhose have been tested and proven to be wearable up to 50 times. Regular brands usually give you two or three wears before you are forced to toss 'em.”",
+      "get_in_touch": "Get In Touch",
+      "sheertex_labs": "See Sheertex Labs",
+      "shop_accessories": "Shop Accessories",
+      "read_more": "Read More"
+    }
+  }
+}
+
+{% endschema %}

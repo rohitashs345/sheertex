@@ -1,0 +1,48 @@
+<div id="ImageOverlapSection" data-section-id="{{ section.id }}" data-section-type="Image-overlap-text-section" class="tw-flex md:tw-px-16 tw-my-16">
+  {%- assign img = section.settings.image -%}
+  <img loading="lazy" class="tw-w-full tw-h-80 tw-object-cover" srcset="{{ img | img_url: '625x' }} 625w,
+            {{ img | img_url: '750x' }} 750w,
+            {{ img | img_url: '880x' }} 880w,
+            {{ img | img_url: '1150x' }} 1150w,
+            {{ img | img_url: '1400x' }} 1400w,
+            {{ img | img_url: '1600x' }} 1600w,
+            {{ img | img_url: '3200x' }} 3200w" sizes="(max-width: 639px) 625px, (max-width: 750px) 750px, (max-width: 1023px) 880px, (max-width: 1279px) 1150px, (max-width: 1535px) 1400px, 1600px" alt="">
+  <div class="tw-bg-green-200 tw-p-4 tw-ml-8 tw-mt-20 __text-wrapper__33pJA">
+    <p class="tw-pb-8 tw-font-serif">
+      {{ section.settings.title }}
+    </p>
+    <a href="/collections/all" class="tw-uppercase tw-underline tw-font-medium tw-tracking-wider">
+      {{ section.settings.description }}
+    </a>
+  </div>
+</div>
+<style>
+  .__text-wrapper__33pJA {
+    position: absolute;
+  }
+  .__text-wrapper__33pJA p{
+    font-size: 30px;
+  }
+</style>
+{% schema %}
+  {
+    "name": "Image overlap Text",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "description",
+        "label": "Description"
+      }
+    ]
+  }
+{% endschema %}

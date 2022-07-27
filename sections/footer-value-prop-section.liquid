@@ -1,0 +1,156 @@
+<section class="msm:tw-hidden" style="background-image: linear-gradient(to top, #e8e8f2, #e8e8f2);">
+    <div class="tw-container tw-mx-auto tw-grid sm:tw-grid-cols-3 msm:tw-grid-rows-3 tw-gap-4 tw-py-16 msm:tw-py-12">
+        <div class="tw-flex tw-items-center tw-justify-center tw-flex-col">
+            <img width="48px" height="48px" src="{{ 'shipping-footer.svg' | asset_url }}" class="tw-w-12" alt="shipping-icon">
+            <p class="tw-text-xs sm:tw-text-sm tw-font-sans tw-uppercase tw-leading-tight tw-text-center tw-tracking-wide tw-font-bold tw-py-4 tw-mb-0">
+                {{ section.settings.free_shipping_title }}
+            </p>
+            <p class="tw-text-xs sm:tw-text-sm tw-font-narrow tw-leading-tight tw-text-center tw-tracking-wide tw-max-w-xs">
+                {{ section.settings.free_shipping_descr_html }}                
+            </p>
+        </div>
+        <div class="tw-flex tw-items-center tw-justify-center tw-flex-col">
+            <img width="48px" height="48px" src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/guarantee-footer-01.svg?v=1635013663" class="tw-w-12" alt="guarantee-icon">
+            {% assign found = false %}
+            {% for c in collections['clearance'].products %}
+            {% if c.handle == product.handle %}
+                {% assign found = true %}
+            {% endif %}
+            {% endfor %}
+            {% if found == false or collection.handle != 'clearance' %}
+                <p class="tw-text-xs sm:tw-text-sm tw-font-sans tw-uppercase tw-leading-tight tw-text-center tw-tracking-wide tw-font-bold tw-py-4 tw-mb-0">
+                    {{ section.settings.guarantee_title }}                
+                </p>
+                <p class="tw-text-xs sm:tw-text-sm tw-font-narrow tw-leading-tight tw-text-center tw-tracking-wide tw-max-w-xs">
+                    {{ section.settings.guarantee_descr_html }}                
+                </p>
+            {% else %}   
+                <p class="tw-text-xs sm:tw-text-sm tw-font-sans tw-uppercase tw-leading-tight tw-text-center tw-tracking-wide tw-font-bold tw-py-4 tw-mb-0">
+                    30-DAY GUARANTEE                
+                </p>
+                <p class="tw-text-xs sm:tw-text-sm tw-font-narrow tw-leading-tight tw-text-center tw-tracking-wide tw-max-w-xs">
+                    You’re covered for the first 30 days upon receiving your order (exclusions apply).               
+                </p>
+            {% endif %}               
+        </div>
+        <div class="tw-flex tw-items-center tw-justify-center tw-flex-col">
+            <img width="48px" height="48px" src="{{ 'strength-footer.svg' | asset_url }}" class="tw-w-12" alt="strength-icon">
+            <p class="tw-text-xs sm:tw-text-sm tw-font-sans tw-uppercase tw-leading-tight tw-text-center tw-tracking-wide tw-font-bold tw-py-4 tw-mb-0">
+                {{ section.settings.strength_title }}                
+            </p>
+            <p class="tw-text-xs sm:tw-text-sm tw-font-narrow tw-leading-tight tw-text-center tw-tracking-wide tw-max-w-xs">
+                {{ section.settings.strength_descr_html }}                
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="sm:tw-hidden tw-py-12">
+    <section class="tw-container tw-mx-auto tw-flex msm:tw-align-start tw-items-center tw-justify-center">
+        <div class="tw-flex tw-overflow-x-scroll tw-hide-scroll-bar">
+            <div class="tw-flex tw-flex-nowrap tw-flex-row">
+                <div class="tw-inline-block msm:tw-w-3/5 tw-px-4">
+                    <div class="tw-flex tw-items-center tw-justify-center tw-flex-col">
+                        <img width="48px" height="48px" src="{{ 'shipping-footer.svg' | asset_url }}" class="tw-w-12" alt="shipping-icon">
+                        <p class="tw-text-xs sm:tw-text-sm tw-font-sans tw-uppercase tw-leading-tight tw-text-center tw-tracking-wide tw-font-bold tw-py-4 tw-mb-0">
+                            {{ section.settings.free_shipping_title }}
+                        </p>
+                        <p class="tw-text-xs sm:tw-text-sm tw-font-narrow tw-leading-tight tw-text-center tw-tracking-wide tw-max-w-xs">
+                            {{ section.settings.free_shipping_descr_html }}                
+                        </p>
+                    </div>
+                </div>
+                <div class="tw-inline-block msm:tw-w-3/5 tw-px-4">
+                    <div class="tw-flex tw-items-center tw-justify-center tw-flex-col">
+                        <img width="48px" height="48px" src="{{ 'strength-footer.svg' | asset_url }}" class="tw-w-12" alt="strength-icon">
+                        <p class="tw-text-xs sm:tw-text-sm tw-font-sans tw-uppercase tw-leading-tight tw-text-center tw-tracking-wide tw-font-bold tw-py-4 tw-mb-0">
+                            {{ section.settings.strength_title }}                
+                        </p>
+                        <p class="tw-text-xs sm:tw-text-sm tw-font-narrow tw-leading-tight tw-text-center tw-tracking-wide tw-max-w-xs">
+                            {{ section.settings.strength_descr_html }}                
+                        </p>
+                    </div>
+                </div>
+                <div class="tw-inline-block msm:tw-w-3/5 tw-px-4">
+                    <div class="tw-flex tw-items-center tw-justify-center tw-flex-col">
+                        <img width="48px" height="48px" src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/guarantee-footer-01.svg?v=1635013663" class="tw-w-12" alt="guarantee-icon">
+                        {% assign found = false %}
+                        {% for c in collections['clearance'].products %}
+                        {% if c.handle == product.handle %}
+                            {% assign found = true %}
+                        {% endif %}
+                        {% endfor %}
+                        {% if found == false or collection.handle != 'clearance' %}
+                            <p class="tw-text-xs sm:tw-text-sm tw-font-sans tw-uppercase tw-leading-tight tw-text-center tw-tracking-wide tw-font-bold tw-py-4 tw-mb-0">
+                                {{ section.settings.guarantee_title }}                
+                            </p>
+                            <p class="tw-text-xs sm:tw-text-sm tw-font-narrow tw-leading-tight tw-text-center tw-tracking-wide tw-max-w-xs">
+                                {{ section.settings.guarantee_descr_html }}                
+                            </p>     
+                        {% else %}   
+                            <p class="tw-text-xs sm:tw-text-sm tw-font-sans tw-uppercase tw-leading-tight tw-text-center tw-tracking-wide tw-font-bold tw-py-4 tw-mb-0">
+                                30-DAY GUARANTEE                            
+                            </p>
+                            <p class="tw-text-xs sm:tw-text-sm tw-font-narrow tw-leading-tight tw-text-center tw-tracking-wide tw-max-w-xs">
+                                You’re covered for the first 30 days upon receiving your order (exclusions apply).                
+                            </p>  
+                        {% endif %}                 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+
+
+{% schema %}
+{
+  "name": "Footer Value Prop",
+  "settings": [
+  {
+      "type": "text",
+      "id": "free_shipping_title",
+      "label": "1-st value title",
+      "default": "Free shipping"
+  },
+  {
+      "type": "html",
+      "id": "free_shipping_descr_html",
+      "label": "1-st value description",
+      "default": "Free standard shipping included<br> on all orders"
+  },
+  {
+      "type": "text",
+      "id": "guarantee_title",
+      "label": "2-nd value title",
+      "default": "30-DAY GUARANTEE"
+  },
+  {
+      "type": "html",
+      "id": "guarantee_descr_html",
+      "label": "2-nd value description",
+      "default": "Covers any damage that renders<br>your tights unwearable"
+  },
+  {
+      "type": "text",
+      "id": "strength_title",
+      "label": "3-rd value title",
+      "default": "Strength tested"
+  },
+  {
+      "type": "text",
+      "id": "strength_descr_html",
+      "label": "3-rd value description",
+      "default": "Feels just like real tights"
+  }
+  ], 
+  "presets": [
+    {
+      "name": "Footer Value Proposition Section",
+      "category": "Sheertex Inc"
+    }
+  ]
+}
+
+{% endschema %}

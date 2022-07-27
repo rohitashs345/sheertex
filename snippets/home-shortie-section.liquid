@@ -1,0 +1,78 @@
+<section class="tw-container tw-mx-auto tw-relative tw-mb-4 sm:tw-mb-8">
+    <div class="shortie-main-container tw-grid md:tw-grid-cols-2 mmd:tw-grid-rows-2">
+        <img class="tw-w-full" loading="lazy" src="{{ 'hp-duos.png' | asset_img_url: '650x'}}">
+        <div class="shortie-gradient-container tw-flex tw-flex-col tw-items-center tw-justify-center">
+            <div class="tw-mx-auto tw-text-center tw-max-w-xs">
+                {% if request.locale.iso_code == 'en' %}
+                    <div class="shortie-intro tw-pb-4 tw-uppercase tw-text-center">Limited Time</div>
+                    <div class="shortie-tilte tw-pb-4 msm:tw-text-lg tw-text-center">Bundle your favorite tights and save</div>
+                    <div class="shortie-body tw-pb-8 sm:tw-pb-10 tw-px-4 msm:tw-px-10 tw-text-center">
+                        Add any 2 tights to your order and save 10%. The choice is yours. <br>Use the coupon <span class="tw-font-bold">MIXMATCHDUO</span>
+                    </div>
+                    <a class="shortie-cta tw-rounded-3xl tw-uppercase tw-py-4 tw-px-12 sm:tw-px-16 tw-bg-white tw-text-center" href="https://sheertex.com/discount/MIXMATCHDUO?redirect=/collections/all">
+                        Shop Now
+                    </a>
+                {% elsif request.locale.iso_code == 'fr' %}
+                    <div class="shortie-intro tw-pb-4 tw-uppercase tw-text-center">Pour un Temps Limité</div>
+                    <div class="shortie-tilte tw-pb-4 msm:tw-text-lg tw-text-center">Combinez vos collants préférés et économisez</div>
+                    <div class="shortie-body tw-pb-8 sm:tw-pb-10 msm:tw-px-8 tw-text-center">
+                        Ajoutez 2 collants à votre commande et économisez 10%. Le choix est le vôtre. Utilisez le coupon <span class="tw-font-bold">MIXMATCHDUO</span>
+                    </div>
+                    <a class="shortie-cta tw-rounded-3xl tw-uppercase tw-py-4 tw-px-12 sm:tw-px-16 tw-bg-white tw-text-center" href="https://sheertex.com/discount/MIXMATCHDUO?redirect=/fr/collections/all">
+                        Magasinez
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% if request.locale.iso_code == 'en' %}
+        <img class="tw-absolute tw-top-1.5 msm:tw-left-8 lg:tw-top-10 md:tw-right-10 lg:tw-right-16" loading="lazy" src="{{ 'best-seller.svg' | asset_url }}">
+    {% else %}
+        <img class="tw-w-20 tw-absolute tw-top-1.5 msm:tw-left-8 lg:tw-top-10 md:tw-right-10 lg:tw-right-16" loading="lazy" src="{{ 'plus-populaire.svg' | asset_url }}">
+    {% endif %}
+</section>
+
+<style>
+    .shortie-gradient-container {
+        background-image: linear-gradient(to bottom, #f7eee3, #ddff98);
+    }
+
+    .shortie-intro {
+        font-family: Agrandir;
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 3;
+        letter-spacing: 1.2px;
+    }
+
+    .shortie-tilte {
+        font-family: Matiere S;
+        font-size: 28px;
+        font-weight: 300;
+        line-height: 1.2;
+    }
+
+    @media(max-width: 640px) {
+        .shortie-intro {
+            line-height: 0.7;
+        }
+        .shortie-tilte {
+            font-size: 18px;
+        }
+    }
+
+    .shortie-body {
+        font-family: Agrandir Narrow;
+        font-size: 14px;
+        line-height: 1.5;
+        letter-spacing: 0.4px;
+    }
+
+    .shortie-cta {
+        font-family: Agrandir;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1.08;
+        letter-spacing: 1.29px;
+    }
+</style>

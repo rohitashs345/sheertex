@@ -1,0 +1,41 @@
+<div class="tw-grid tw-grid-cols-5 tw-gap-2 tw-mt-8 msm:tw-mt-6">
+  <div class="tw-flex tw-items-center tw-flex-col">
+    <img class="tw-w-16 msm:tw-w-10" src="{{ settings.value_icon1 }}" alt="pdp value icon1">
+    <p class="tw-pt-4 tw-text-center tw-font-sans tw-text-xs msm:tw-text-xxs tw-tracking-wide tw-leading-normal tw-uppercase">{{ settings.value_icon1_title }}
+  </p></div>
+  <div class="tw-flex tw-items-center tw-flex-col">
+    <img class="tw-w-16 msm:tw-w-10" src="{{ settings.value_icon2 }}" alt="pdp value icon2">
+    <p class="tw-pt-4 tw-text-center tw-font-sans tw-text-xs msm:tw-text-xxs tw-tracking-wide tw-leading-normal tw-uppercase">{{ settings.value_icon2_title }}
+  </p></div>
+  <div class="tw-flex tw-items-center tw-flex-col">
+    <img class="tw-w-16 msm:tw-w-10" src="{{ settings.value_icon3 }}" alt="pdp value icon3">
+    <p class="tw-pt-4 tw-text-center tw-font-sans tw-text-xs msm:tw-text-xxs tw-tracking-wide tw-leading-normal tw-uppercase">{{ settings.value_icon3_title }}
+  </p></div>
+
+    {% assign found = false %}
+    {% for c in collections['clearance'].products %}
+      {% if c.handle == product.handle %}
+        {% assign found = true %}
+      {% endif %}
+    {% endfor %}
+    {% if found == false %}
+      <div class="tw-flex tw-items-center tw-flex-col">
+        <img class="tw-w-16 msm:tw-w-10" src="{{ settings.value_icon4 }}" alt="pdp value icon4">
+        {% if product.title contains "Essential" %}
+        <p class="tw-pt-4 tw-text-center tw-font-sans tw-text-xs msm:tw-text-xxs tw-tracking-wide tw-leading-normal tw-uppercase">30-day Guarantee</p>
+          {% else %}
+        <p class="tw-pt-4 tw-text-center tw-font-sans tw-text-xs msm:tw-text-xxs tw-tracking-wide tw-leading-normal tw-uppercase">{{ settings.value_icon4_title }}</p>
+        {% endif %}
+      </div>
+    {% else %}
+      <div class="tw-flex tw-items-center tw-flex-col">
+        <img class="tw-w-16 msm:tw-w-10" src="{{ settings.value_icon4 }}" alt="pdp value icon4">
+        <p class="tw-pt-4 tw-text-center tw-font-sans tw-text-xs msm:tw-text-xxs tw-tracking-wide tw-leading-normal tw-uppercase">{{ settings.value_icon6_title }}
+      </p></div>
+    {% endif %}
+
+  <div class="tw-flex tw-items-center tw-flex-col">
+    <img class="tw-w-16 msm:tw-w-10" src="{{ settings.value_icon5 }}" alt="pdp value icon5">
+    <p class="tw-pt-4 tw-text-center tw-font-sans tw-text-xs msm:tw-text-xxs tw-tracking-wide tw-leading-normal tw-uppercase">{{ settings.value_icon5_title }}
+  </p></div>
+</div>

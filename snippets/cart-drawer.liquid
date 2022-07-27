@@ -1,0 +1,19 @@
+{% if settings.cart_type == 'drawer' %}
+<div id="CartDrawer" class="drawer drawer--right drawer--has-fixed-footer">
+  <div class="drawer__fixed-header">
+    <div class="drawer__header appear-animation appear-delay-1">
+      <!-- Adding Shop options to Cart  when empty -->
+      <div class="arrow-right js-drawer-close">
+        <img width="14" height="12" src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/back.png?v=1658427886"
+          alt="arrow left" />
+        <span class="tw-uppercase tw-text-xs tw-tracking-tighter tw-font-sans tw-underline">continue
+          shopping</span>
+      </div>
+      <div class="drawer__header_title" style="text-align: right !important">{{ 'cart.general.title' | t }}</div>
+    </div>
+  </div>
+  <div class="drawer__inner">
+    <div id="CartContainer" class="drawer__cart"></div>
+  </div>
+</div>
+{% endif %}

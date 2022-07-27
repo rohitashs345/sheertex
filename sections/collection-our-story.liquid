@@ -1,0 +1,54 @@
+<div class="tw-w-full tw-flex tw-flex-col tw-items-center tw-justify-center tw-p-6">
+  <h2 class='tw-text-center tw-text-3xl tw-leading-normal'>{{ section.settings.title_html }}</h2>
+  <p class='tw-max-w-6xl tw-mx-auto tw-text-center tw-text-sm'>        
+      {{ section.settings.paragraph_1 }}
+  </p>   
+  <p class='tw-max-w-6xl tw-mx-auto tw-text-center tw-text-lg'>
+    {{ section.settings.paragraph_2 }}
+  </p>
+  <a href="{% include 'utils-placeholder-if-empty', value: section.settings.cta_link, placeholder: '/pages/our-story' %}" class='tw-uppercase tw-underline tw-text-sm tw-text-gray-500'>{{ section.settings.cta_text }}</a>
+</div>    
+
+{% schema %}
+{
+  "name": "Our Story PLP Section",
+  "settings": [
+    {
+      "type": "html",
+      "id": "title_html",      
+      "label": "Title",
+      "default": "Will my tights really make it through the day?<br/>The answer is yes&#8212;the hype is real."
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph_1",
+      "label": "First Paragraph",
+      "default": "“Ultra-strong tights? How has no one done this before?!“. Well, we did it. Our founder, Katherine Homuth, had the wild idea of taking some of the strongest fibers in the world (typically used in climbing equipment) and using them to create equally durable tights. It turns out that it worked better than she ever imagined, and Sheertex was born. Named one of TIME’s Best Inventions, have a team that’s over 170 strong, and are operating out of Canada’s largest hosiery factory."
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph_2",
+      "label": "Second Paragraph",
+      "default": "Every year, over 2 billion pairs of pantyhose end up in landfills after only 1-2 wears. With Sheertex Knit Technology, we're on a mission to change that. Say goodbye to disposable, and hello to tights that actually last."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Discover how we did it"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA link"
+    }
+  ],   
+  "presets": [
+    {
+      "name": "Our Story PLP Section",
+      "category": "Sheertex Inc"
+    }
+  ]
+}
+
+{% endschema %}

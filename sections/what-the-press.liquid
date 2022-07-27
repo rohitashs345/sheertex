@@ -1,0 +1,491 @@
+<div id="WhatThePressSection" data-section-id="{{ section.id }}" data-section-type="what-the-press-section" class="__section-content__3lzvZ">
+  <div class="page-width page-content tw-text-center mlg:tw-px-0">
+    <p class="__section-header__1P9MB">
+    {% if request.locale.iso_code == 'en' %}
+      what the press has to say
+    {% elsif request.locale.iso_code == 'fr' %}
+      CE QU’EN DIT LA PRESSE
+    {% endif %}
+    </p>
+    <div class="gizmodoBustleContainer tw-w-full mlg:tw-mx-0">
+        <div class="gizmodoContainer tw-mx-3 sm:tw-mx-0 __gizmodoContainer__3JLRs">
+          <div class="gizmodoContainer-content">
+            <span class="big-quote">"</span>
+              {% if request.locale.iso_code == 'en' %}
+                You can stretch and twist the Sheertex as much as you like and they won't break. You'd have to be the Hulk to tear a hole through these things.
+              {% elsif request.locale.iso_code == 'fr' %}
+                Vous pouvez étirer et tordre les collants Sheertex autant que vous le souhaitez et ils ne se déchireront pas. Il faudrait être Hulk pour faire un trou dedans.
+              {% endif %}
+            <span class="big-quote">"</span>
+          </div>
+          <div class="gizmodoContainer-gizmodo">
+            <img class="img" loading="lazy" src="https://cdn.shopify.com/s/files/1/0316/1119/1435/files/Gizmodo_Media_Group_Logo_360x_ee0ebb4d-e73b-4795-8ea7-700aad79456e.png?v=1580975307">
+          </div>
+        </div>
+        <div class="logo-container timeContainer tw-mx-3 tw-mt-3 sm:tw-mx-0 sm:tw-mt-0 __timeContainer__nOER4">
+          <div class="timeContainer-content">
+            {% if request.locale.iso_code == 'en' %}
+              Named One of<br>TIME's Best<br>Inventions 
+            {% elsif request.locale.iso_code == 'fr' %}
+              L’une des<br>meilleures inventions<br>selon TIME
+            {% endif %}
+          </div>
+        </div>
+        <div class="bustleContainer tw-mx-3 tw-mt-3 sm:tw-mx-0 sm:tw-mt-0 __bustleContainer__1zpsx">
+          <div class="bustleContainer-content">
+          {% if request.locale.iso_code == 'en' %}
+            <span class="big-quote">"</span>...outlast any pair of tights ever — great for, say, pet owners or the accident-prone.<span class="big-quote">"</span> 
+          {% elsif request.locale.iso_code == 'fr' %}
+            <span class="big-quote">"</span>...durent plus longtemps que n'importe quelle paire de collants - parfait pour, disons, les propriétaires d'animaux ou les personnes sujettes aux accidents.<span class="big-quote">"</span> 
+          {% endif %}
+          </div>
+          <div class="bustleContainer-bustle tw-mt-4">
+            <img class="img" loading="lazy" src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/vogue-png-logo-2.png?v=1629820326">
+          </div>
+        </div>
+    </div>
+    <div class="tw-flex mlg:tw-overflow-x-scroll tw-pt-6 __image-wrapper__2p9CR">
+      <div class="mlg:tw-ml-4 __card__3ACfM">
+        {%- assign img_url = section.settings.first_image | img_url: '360x360' -%}
+        <img src="{{ img_url }}" loading="lazy">
+        <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/INSTAGRAM_1.svg?v=1603823710" class="__insta-icon__3jo-a">
+        <a href="{{ all_products[section.settings.first_product].url }}" class="__overlay__3b7DT">
+          <div class="__product-info__2iSf9">
+            <p class="__product-title__q2Yt4">{{ all_products[section.settings.first_product].title }}</p>
+            <p class="__shop-now__2sTpo">Shop Now</p>
+            <p class="__intsta-name__3rMKz">{{ section.settings.first_id }}</p>
+          </div>
+        </a>
+      </div>
+      <div class="__card__3ACfM">
+        {%- assign img_url = section.settings.second_image | img_url: '360x360' -%}
+        <img src="{{ img_url }}" loading="lazy">
+        <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/INSTAGRAM_1.svg?v=1603823710" class="__insta-icon__3jo-a">
+        <a href="{{ all_products[section.settings.second_product].url }}" class="__overlay__3b7DT">
+          <div class="__product-info__2iSf9">
+            <p class="__product-title__q2Yt4">{{ all_products[section.settings.second_product].title }}</p>
+            <p class="__shop-now__2sTpo">Shop Now</p>
+            <p class="__intsta-name__3rMKz">{{ section.settings.second_id }}</p>
+          </div>
+        </a>
+      </div>
+      <div class="__card__3ACfM">
+        {%- assign img_url = section.settings.third_image | img_url: '360x360' -%}
+        <img src="{{ img_url }}" loading="lazy">
+        <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/INSTAGRAM_1.svg?v=1603823710" class="__insta-icon__3jo-a">
+        <a href="{{ all_products[section.settings.third_product].url }}" class="__overlay__3b7DT">
+          <div class="__product-info__2iSf9">
+            <p class="__product-title__q2Yt4">{{ all_products[section.settings.third_product].title }}</p>
+            <p class="__shop-now__2sTpo">Shop Now</p>
+            <p class="__intsta-name__3rMKz">{{ section.settings.third_id }}</p>
+          </div>
+        </a>
+      </div>
+      <div class="mlg:tw-pr-4 __card__3ACfM">
+        {%- assign img_url = section.settings.fourth_image | img_url: '360x360' -%}
+        <img src="{{ img_url }}" loading="lazy">
+        <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/INSTAGRAM_1.svg?v=1603823710" class="__insta-icon__3jo-a">
+        <a href="{{ all_products[section.settings.fourth_product].url }}" class="__overlay__3b7DT">
+          <div class="__product-info__2iSf9">
+            <p class="__product-title__q2Yt4">{{ all_products[section.settings.fourth_product].title }}</p>
+            <p class="__shop-now__2sTpo">Shop Now</p>
+            <p class="__intsta-name__3rMKz">{{ section.settings.fourth_id }}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <p class="msm:tw-px-4 __review-header__2z7t3">
+      {% if request.locale.iso_code == 'en' %}
+        With thousands of 5 star reviews<br>(and counting)
+      {% elsif request.locale.iso_code == 'fr' %}
+        DES MILLIERS D’ÉVALUATIONS CINQ ÉTOILES<br>(ET ÇA CONTINUE!)
+      {% endif %}
+    </p>
+    <div class="msm:tw-px-4 __review-card__e6Arh">
+      <img src="{{ '5-star.svg' | asset_url }}" loading="lazy" height="11px">
+      <p class="tw-mx-auto __review__3FOHA">"
+        {% if request.locale.iso_code == 'en' %}
+          They look and feel great along with giving you confidence to dash into the garden, walking the dogs,
+          messing with the cat without fear of snags and tears! No more having to stash an extra pair for an emergency!"
+        {% elsif request.locale.iso_code == 'fr' %}
+          Ils sont beaux et agréables à porter et vous permettent de vous aventurer dans le jardin,
+          de promener le chien ou de vous occuper de votre chat sans craindre les accrocs et les déchirures!
+          Vous n'aurez plus à garder une paire supplémentaire en cas d'urgence!
+        {% endif %}
+      </p>
+      <p class="__review-name__14tsD">— Kim R.</p>
+    </div>
+
+    {% if section.settings.enable_video %}
+      <div class="tw-flex mmd:tw-overflow-x-scroll __video-wrapper__2B9m1">
+        <div class="__card__3ACfM __video__2Esq9">
+          <video class="tw-w-full tw-h-full" src="{{ section.settings.first_video }}" loading="lazy" loop="" muted="" playsinline="" autoplay=""></video>
+          <a href="{{ all_products[section.settings.first_tiktok_product].url }}" class="__overlay__3b7DT">
+            <div class="__product-info__2iSf9">
+              <p class="__product-title__q2Yt4">{{ all_products[section.settings.first_tiktok_product].title }}</p>
+              <p class="__shop-now__2sTpo">Shop Now</p>
+              <p>{{ section.settings.first_tiktok_id }}</p>
+            </div>
+          </a>
+          <div class="tw-absolute tw-bottom-0 tw-text-right tw-text-white __tiktok-info__MTXzu">
+            <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Group_5_2x_6063cb1d-170f-4631-97f9-7cf6550b3e5b.png?v=1605288213">
+            <p>{{ section.settings.first_tiktok_id }}</p>
+          </div>
+        </div>
+        <div class="__card__3ACfM __video__2Esq9">
+          <video class="tw-w-full tw-h-full" src="{{ section.settings.second_video }}" loading="lazy" loop="" muted="" playsinline="" autoplay=""></video>
+          <a href="{{ all_products[section.settings.second_tiktok_product].url }}" class="__overlay__3b7DT">
+            <div class="__product-info__2iSf9">
+              <p class="__product-title__q2Yt4">{{ all_products[section.settings.second_tiktok_product].title }}</p>
+              <p class="__shop-now__2sTpo">Shop Now</p>
+              <p>{{ section.settings.second_tiktok_id }}</p>
+            </div>
+          </a>
+          <div class="tw-absolute tw-bottom-0 tw-text-right tw-text-white __tiktok-info__MTXzu">
+            <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Group_5_2x_6063cb1d-170f-4631-97f9-7cf6550b3e5b.png?v=1605288213">
+            <p>{{ section.settings.second_tiktok_id }}</p>
+          </div>
+        </div>
+        <div class="__card__3ACfM __video__2Esq9">
+          <video class="tw-w-full tw-h-full" src="{{ section.settings.third_video }}" loading="lazy" loop="" muted="" playsinline="" autoplay=""></video>
+          <a href="{{ all_products[section.settings.third_tiktok_product].url }}" class="__overlay__3b7DT">
+            <div class="__product-info__2iSf9">
+              <p class="__product-title__q2Yt4">{{ all_products[section.settings.third_tiktok_product].title }}</p>
+              <p class="__shop-now__2sTpo">Shop Now</p>
+              <p>{{ section.settings.third_tiktok_id }}</p>
+            </div>
+          </a>
+          <div class="tw-absolute tw-bottom-0 tw-text-right tw-text-white __tiktok-info__MTXzu">
+            <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Group_5_2x_6063cb1d-170f-4631-97f9-7cf6550b3e5b.png?v=1605288213">
+            <p>{{ section.settings.third_tiktok_id }}</p>
+          </div>
+        </div>
+        <div class="__card__3ACfM __video__2Esq9">
+          <video class="tw-w-full tw-h-full" loading="lazy" src="{{ section.settings.fourth_video }}" loop="" muted="" playsinline="" autoplay=""></video>
+          <a href="{{ all_products[section.settings.fourth_tiktok_product].url }}" class="__overlay__3b7DT">
+            <div class="__product-info__2iSf9">
+              <p class="__product-title__q2Yt4">{{ all_products[section.settings.fourth_tiktok_product].title }}</p>
+              <p class="__shop-now__2sTpo">Shop Now</p>
+              <p>{{ section.settings.fourth_tiktok_id }}</p>
+            </div>
+          </a>
+          <div class="tw-absolute tw-bottom-0 tw-text-right tw-text-white __tiktok-info__MTXzu">
+            <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Group_5_2x_6063cb1d-170f-4631-97f9-7cf6550b3e5b.png?v=1605288213">
+            <p>{{ section.settings.fourth_tiktok_id }}</p>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+<style>
+  .__section-content__3lzvZ {
+    background: linear-gradient(180deg, rgba(247,238,227,1) 0%, rgba(232,232,242,1) 100%);
+  }
+  .__section-header__1P9MB {
+    font-family: 'Agrandir';
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.104rem;
+    font-weight: 500;
+  }
+  .__gizmodoContainer__3JLRs, .__timeContainer__nOER4, .__bustleContainer__1zpsx {
+    background: transparent;
+  }
+  .__image-wrapper__2p9CR, .__video-wrapper__2B9m1 {
+    scroll-snap-type: x mandatory;
+  }
+  .__card__3ACfM {
+    min-width: 235px;
+    margin-right: 8px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: center;
+  }
+  @media only screen and (max-width: 1023px) {
+    .__card__3ACfM:last-child {
+      min-width: calc(235px + 1rem);
+    }
+  }
+  .__card__3ACfM:hover>.__overlay__3b7DT {
+    width: 100%;
+    height: 100%;
+    content: '';
+    background: rgba(83, 83, 83, 0.6);
+    position: absolute;
+    top: 0;
+    transition: .5s ease;
+  }
+  .__card__3ACfM>video {
+    object-fit: cover;
+  }
+  .__tiktok-info__MTXzu {
+    right: 10px;
+  }
+  .__product-info__2iSf9 {
+    display: none;
+  }
+  .__card__3ACfM:hover .__product-info__2iSf9 {
+    display: block;
+    position: absolute;
+    color: white;
+    bottom: 20px;
+    width: 100%;
+  }
+  .__card__3ACfM.__video__2Esq9 .__product-info__2iSf9 {
+    top: 40%;
+  }
+  .__card__3ACfM:hover>.__tiktok-info__MTXzu {
+    display: none;
+  }
+  .__insta-icon__3jo-a {
+    position: absolute;
+    top: 8px;
+    left: 1.5rem;
+  }
+  .__card__3ACfM:hover>.__insta-icon__3jo-a {
+    display: none;
+  }
+  .__product-title__q2Yt4 {
+    font-family: 'Matiere';
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  .__product-info__2iSf9 .__shop-now__2sTpo {
+    font-family: 'Agrandir';
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.104rem;
+    font-weight: 500;
+    text-decoration: underline;
+    color: white;
+    margin-bottom: 75px;
+    display: block;
+  }
+  .__intsta-name__3rMKz {
+    font-size: 12px;
+    font-family: 'Agrandir Narrow';
+  }
+  .__review-header__2z7t3 {
+    font-family: 'Agrandir';
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.104rem;
+    font-weight: bold;
+    margin-top: 75px;
+    margin-bottom: 20px;
+  }
+  .__internet-answer__uQUVs {
+    max-width: 400px;
+    margin: 0 auto;
+    font-family: 'Agrandir Narrow';
+    font-size: 14px;
+    margin-bottom: 25px;
+  }
+  .__review-card__e6Arh {
+    margin-top: 50px;
+  }
+  .__review__3FOHA {
+    max-width:700px;
+    font-size: 28px;
+    margin-top: 20px;
+    font-family: 'Matiere';
+  }
+  .__review-button__3S0W4 {
+    font-family: 'Agrandir';
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.104rem;
+    font-weight: 500;
+  }
+  .__review-button__3S0W4:hover {
+    text-decoration: underline;
+    border: 1px solid black;
+  }
+  .__review-name__14tsD {
+    font-family: 'Agrandir';
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.104rem;
+    font-weight: 500;
+  }
+  .__video-wrapper__2B9m1 {
+    margin-top: 80px;
+  }
+</style>
+{% schema %}
+  {
+    "name": "What The Press Section",
+    "class": "what-the-press",
+    "settings": [
+      {
+        "type": "header",
+        "content": "First Instgram Card"
+      },
+      {
+        "type": "image_picker",
+        "id": "first_image",
+        "label": "First Image"
+      },
+      {
+        "type": "product",
+        "id": "first_product",
+        "label": "First Product"
+      },
+      {
+        "type": "text",
+        "id": "first_id",
+        "label": "First Instgram ID"
+      },
+      {
+        "type": "header",
+        "content": "Second Instgram Card"
+      },
+      {
+        "type": "image_picker",
+        "id": "second_image",
+        "label": "Second Image"
+      },
+      {
+        "type": "product",
+        "id": "second_product",
+        "label": "Second Product"
+      },
+      {
+        "type": "text",
+        "id": "second_id",
+        "label": "Second Instgram ID"
+      },
+      {
+        "type": "header",
+        "content": "Third Instgram Card"
+      },
+      {
+        "type": "image_picker",
+        "id": "third_image",
+        "label": "Third Image"
+      },
+      {
+        "type": "product",
+        "id": "third_product",
+        "label": "Third Product"
+      },
+      {
+        "type": "text",
+        "id": "third_id",
+        "label": "Third Instgram ID"
+      },
+      {
+        "type": "header",
+        "content": "Fourth Instgram Card"
+      },
+      {
+        "type": "image_picker",
+        "id": "fourth_image",
+        "label": "Fourth Image"
+      },
+      {
+        "type": "product",
+        "id": "fourth_product",
+        "label": "Fourth Product"
+      },
+      {
+        "type": "text",
+        "id": "fourth_id",
+        "label": "Fourth Instgram ID"
+      },
+      {
+        "type": "header",
+        "content": "First Tiktok Card"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_video",
+        "label": "Enable Video",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "first_video",
+        "label": "First Video"
+      },
+      {
+        "type": "product",
+        "id": "first_tiktok_product",
+        "label": "First Tiktok Product"
+      },
+      {
+        "type": "text",
+        "id": "first_tiktok_id",
+        "label": "First Tiktok ID"
+      },
+      {
+        "type": "header",
+        "content": "Second Tiktok Card"
+      },
+      {
+        "type": "text",
+        "id": "second_video",
+        "label": "Second Tiktok video"
+      },
+      {
+        "type": "product",
+        "id": "second_tiktok_product",
+        "label": "Second Product"
+      },
+      {
+        "type": "text",
+        "id": "second_tiktok_id",
+        "label": "Second Tiktok ID"
+      },
+      {
+        "type": "header",
+        "content": "Third Tiktok Card"
+      },
+      {
+        "type": "text",
+        "id": "third_video",
+        "label": "Third video"
+      },
+      {
+        "type": "product",
+        "id": "third_tiktok_product",
+        "label": "Third Product"
+      },
+      {
+        "type": "text",
+        "id": "third_tiktok_id",
+        "label": "Third Tiktok ID"
+      },
+      {
+        "type": "header",
+        "content": "Fourth Tiktok Card"
+      },
+      {
+        "type": "text",
+        "id": "fourth_video",
+        "label": "Fourth video"
+      },
+      {
+        "type": "product",
+        "id": "fourth_tiktok_product",
+        "label": "Fourth Product"
+      },
+      {
+        "type": "text",
+        "id": "fourth_tiktok_id",
+        "label": "Fourth Tiktok ID"
+      }
+    ],
+    "presets": [
+      {
+        "name": "What the press section",
+        "category": "Advanced layout"
+      }
+    ]
+  }
+{% endschema %}

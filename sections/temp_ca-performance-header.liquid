@@ -1,0 +1,190 @@
+<style>
+    .temp-fall-hero-sec {
+      height: 75vh;
+    }
+    .tw-temp-au-socks-hero-img {
+      background-image: url('{{ section.settings.image_desktop | img_url: 'master' }}');
+    }
+    @media (max-width: 640px) {
+      .temp_hero-title {
+        font-size: 3rem;
+      }
+    
+      .temp-fall-hero-sec {
+        height: 60vh;
+      }
+      .tw-temp-au-socks-hero-img {
+        background-image: url('{{ section.settings.image_mobile | img_url: 'master' }}');
+      }
+    }
+  
+    .temp_hero-title {
+      font-size: 3.25rem;
+    }
+    
+    .sparkle-hover-animation__sparkle-set-one {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+    }
+    .sparkle-hover-animation__sparkle-set-two {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+    }
+    .sparkle-hover-animation__sparkle-set-one::after {
+      content: '';
+      position: absolute;
+      right: 20px;
+      top: 1px;
+      width: 9px;
+      height: 9px;
+      background-image: url(https://cdn.shopify.com/s/files/1/0114/4120/9408/files/sparkle-icon-green.svg?v=1626975893);
+      background-size: 9px 9px;
+    }
+    .sparkle-hover-animation__sparkle-set-one::before {
+      content: '';
+      position: absolute;
+      left: 1px;
+      top: .5rem;
+      width: 9px;
+      height: 9px;
+      background-image: url(https://cdn.shopify.com/s/files/1/0114/4120/9408/files/sparkle-icon-white_1.svg?v=1626975894);
+      background-size: 9px 9px;
+    }
+    .sparkle-hover-animation__sparkle-set-two::after {
+      content: '';
+      position: absolute;
+      right: 3px;
+      top: .9rem;
+      width: 9px;
+      height: 9px;
+      background-image: url(https://cdn.shopify.com/s/files/1/0114/4120/9408/files/sparkle-icon-white_1.svg?v=1626975894);
+      background-size: 9px 9px;
+    }
+    .sparkle-hover-animation__sparkle-set-two::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 1px;
+      width: 9px;
+      height: 9px;
+      background-image: url(https://cdn.shopify.com/s/files/1/0114/4120/9408/files/sparkle-icon-green.svg?v=1626975893);
+      background-size: 9px 9px;
+    }
+    .sparkle-hover-animation__sparkle-set-one::before {
+      animation: sparkleBottomLeft 1s .1s infinite;
+      z-index: 1;
+    }
+    .sparkle-hover-animation__sparkle-set-one::after {
+      animation: sparkleTopRight 1s .1s infinite;
+      z-index: 1;
+    }
+    .sparkle-hover-animation__sparkle-set-two::after {
+      animation: sparkleBottomRight 1s .25s infinite;
+      z-index: 1;
+    }
+    .sparkle-hover-animation__sparkle-set-two::before {
+      animation: sparkleTopLeft 1s .25s infinite;
+      z-index: 1;
+    }
+  </style>
+  
+  <div class="tw-bg-cover tw-temp-au-socks-hero-img temp-fall-hero-sec tw-bg-no-repeat tw-bg-center hero-image image-height">
+    <div class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-h-full tw-text-center">
+      {% if section.settings.title != blank %}
+      <button class="relative tw-tracking-widest tw-uppercase tw-text-center tw-font-medium tw-leading-4 tw-text-sm tw-text-medium tw-font-sans tw-text-white sparkle-hover-animation">
+        <span class="sparkle-hover-animation__sparkle-set-one"></span>
+        <span class="sparkle-hover-animation__sparkle-set-two"></span>
+        {{section.settings.title}}
+      </button>
+      {% endif %}
+      {% if section.settings.sub_title1 != blank %}
+          <p class="temp_hero-title tw-pt-4 tw-font-serif tw-text-white tw-text-center tw-font-light tw-text-4xl msm:tw-text-3xl">
+          {{section.settings.sub_title1}}
+          </p>
+      {% endif %}
+      {% if section.settings.sub_title2 != blank %}
+      <div class="tw-leading-normal msm:tw-px-4 tw-text-center tw-tracking-normal tw-font-narrow tw-text-white tw-text-2xl msm:tw-text-base">
+        {{section.settings.sub_title2}}
+      </div>
+      {% endif %}
+      <a href="{{section.settings.link}}" class="tw-mt-8 tw-border tw-border-black tw-bg-green-200 tw-rounded-3xl tw-border-solid tw-uppercase tw-font-medium tw-font-sans tw-font-normal tw-py-3 tw-px-16 md:tw-px-20 tw-text-xs tw-cursor-pointer tw-tracking-heading">
+          <span class="active:tw-text-white">{{section.settings.link_text}}</span>
+      </a>
+      {% if section.settings.disclaimer_text != blank %}
+        <div class="tw-max-w-md tw-font-narrow tw-text-center tw-font-light tw-tracking-normal tw-text-xs tw-pt-8 msm:tw-pt-4">
+          {{section.settings.disclaimer_text}}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  
+  
+  {% schema %}
+    {
+      "name": "BTO Fall Promo Hero",
+      "presets": [
+        {
+          "name": "BTO Fall Promo Hero",
+          "category": "Promotional"
+        }
+      ],
+      "settings": [
+        {
+          "type": "html",
+          "id": "title",
+          "label": "Main hero title",
+          "default": "Title for Hero Banner."
+        },
+        {
+          "type": "html",
+          "id": "sub_title1",
+          "label": "Heading line 1"
+        },
+        {
+          "type": "html",
+          "id": "sub_title2",
+          "label": "Heading line 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_desktop",
+          "label": "Image for desktop"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Image for mobile"
+        },
+        {
+          "type": "header",
+          "content": "CTA Settings"
+        }, 
+        {
+          "type": "html",
+          "id": "link_text",
+          "label": "Button text",
+          "default": "Shop all"
+        }, 
+        {
+          "type": "text",
+          "id": "link",
+          "label": "Button link",
+          "default": "https://www.sheertex.com/collections/all"
+        },
+        {
+          "type": "html",
+          "id": "disclaimer_text",
+          "label": "Disclaimer text",
+          "default": "Shop all"
+        }
+      ]
+    }
+  {% endschema %}

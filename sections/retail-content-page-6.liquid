@@ -1,0 +1,136 @@
+{%- capture contentForQuerystring -%}{{ content_for_header }}{%- endcapture -%}
+{%- assign page_url = contentForQuerystring | split:'"pageurl":"' | last | split:'"' | first | split:'.myshopify.com' | last |   replace:'\/','/' |    replace:'%20',' ' |    replace:'\u0026','&'  -%}
+{%- assign param_page = '' -%}
+{%- for i in (1..1) -%}
+	{%- unless page_url contains "?" -%}{% break %}{%- endunless -%}
+	{%- assign query_string = page_url | split:'?' | last -%}
+	{%- assign qry_parts= query_string | split:'&' -%}
+	{%- for part in qry_parts -%}
+		{%- assign key_and_value = part | split:'=' -%}
+		{%- if key_and_value.size > 1 -%}
+			{% if key_and_value[0] == 'lot' %}
+				{%- assign param_page = key_and_value[1] -%}
+			{% endif%}
+		{%- endif -%}
+	{%- endfor -%}
+{%- endfor -%}
+{%- assign product = all_products[section.settings.featured_product] -%}
+
+{% if section.settings.divider %}<div class="section--divider">{% endif %}
+
+<div id="ProductSection-{{ section.id }}"
+  data-section-id="{{ section.id }}"
+  data-section-type="product"
+  class="sm:tw--mt-12"
+  {% if settings.product_zoom_enable %}
+    data-image-zoom="true"
+  {% endif %}
+  {% if settings.inventory_enable %}
+    data-inventory="true"
+  {% endif %}
+  {% if settings.inventory_transfers_enable %}
+    data-incoming-inventory="true"
+  {% endif %}>
+
+  {% include 'product-template-variables' %}
+
+  <div class="page-width">
+    <div class="grid">
+      <div class="grid__item medium-up--one-half">
+        {% include 'product-images', section_id: section.id, thumbnail_position: section.settings.thumbnail_position, thumbnail_arrows: section.settings.thumbnail_arrows %}
+      </div>
+
+      <div class="grid__item medium-up--one-half">
+        <div class="product-single__meta">
+
+          <div class="hero__subtitle h1 product-single__title product__title collection-description msm:tw-text-2xl msm:tw-mb-4">
+            {% unless product.empty? %}
+              {{ product.title }}
+            {% else %}
+              {{ 'home_page.onboarding.product_title' | t }}
+            {% endunless %}
+          </div>         
+          <div class="product-single__description rte">
+            {% if section.settings.show_description %}
+              {% unless product.empty? %}
+                {{ product.description }}
+              {% else %}
+                {{ 'home_page.onboarding.product_description' | t }}
+              {% endunless %}
+            {% else %}
+              <p><a href="{{ product.url }}">{{ 'general.accessibility.learn_more' | t }}</a></p>
+            {% endif %}
+          </div>
+          <img class="tw--ml-4" src="{{ section.settings.size_chart_image }}" alt="size-chart-image" />
+          <h1 class="h2 product-single__title mt-4 tw-font-serif tw-font-400">
+            Lot Number: {{ param_page }}
+          </h1>
+          <p class="msm:tw-mt-4">{{ section.settings.need_help_text }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="hr--large tw-max-w-7xl msm:tw-max-w-sm" style="height: 1px; border: 0; border-top: 1px solid #1c1d1d;">
+
+<div class="yotpo-bottom">
+{% include 'yotpo-reviews-widget' %}
+</div>
+{% include 'page-block-test-carousel' %}
+{% schema %}
+  {
+    "name": "Featured product",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "product",
+        "id": "featured_product",
+        "label": "Product"
+      },
+      {
+        "type": "text",
+        "id": "size_chart_image",
+        "label": "Size Chart Image link"
+      },
+      {
+        "type": "textarea",
+        "id": "need_help_text",
+        "label": "Copy below Lot number(Need help & contact info)"
+      },
+      {
+        "type": "select",
+        "id": "thumbnail_position",
+        "label": "Thumbnail position",
+        "default": "beside",
+        "options": [
+          {
+            "value": "beside",
+            "label": "Next to image"
+          },
+          {
+            "value": "below",
+            "label": "Below image"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "thumbnail_arrows",
+        "label": "Show thumbnail arrows"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_description",
+        "label": "Show description",
+        "default": true
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured product",
+        "category": "Product"
+      }
+    ]
+  }
+{% endschema %}

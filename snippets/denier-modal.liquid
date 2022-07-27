@@ -1,0 +1,345 @@
+{{ 'denier-modal.scss.css' | asset_url | stylesheet_tag }}
+<div id="denier-modal" class="modal modal--solid">
+  <div class="modal__inner">
+    <div class="text-center modal__centered page-width">
+      <div class="modal__centered-content">
+        <div class="modal-content">
+          <button type="button" class="modal__close js-modal-close text-link">
+            <img alt="close-icon" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9Ii43NSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48Y2lyY2xlIHN0cm9rZS1vcGFjaXR5PSIuMzA0IiBjeD0iMTUiIGN5PSIxNSIgcj0iMTQuNjI1Ii8+PHBhdGggZD0iTTggOGwxMy44ODUgMTMuODg1TTggMjEuODg1TDIxLjg4NSA4IiBzdHJva2UtbGluZWNhcD0ic3F1YXJlIi8+PC9nPjwvc3ZnPg==">
+            <span class="icon__fallback-text">{{
+              'general.accessibility.close_modal' | t | json
+            }}</span>
+          </button>
+          <div class="pb-3 modal-header">
+            <span>
+              {% if request.locale.iso_code == 'en' %}
+                Sheertex Sheerness Scale
+              {% elsif request.locale.iso_code == 'fr' %}
+                Échelle de transparence Sheertex
+              {% endif %}
+            </span> 
+          </div>
+          {% comment %}
+          <span class="denier-description">
+          {% if request.locale.iso_code == 'en' %}
+            Denier measures the thickness of fabric fibers. As denier count goes up, so do opacity and strength, and vice versa.
+          {% elsif request.locale.iso_code == 'fr' %}
+            Le denier mesure l'épaisseur des fibres du tissu. À mesure que le nombre de deniers augmente, l'opacité et la force augmentent, et vice versa.
+          {% endif %}
+          </span>
+          {% endcomment %}
+          <div
+            class="grid grid-cols-1 mx-5 md:grid-cols-2 md:col-gap-20 sm:mx-15"
+          >
+            <div
+              class="row-start-1 pt-8 md:pt-14 skin-tone-carousel"
+              data-testid="skin-tone-carousel"
+            >
+              <div class="flex items-center justify-center sm:pb-4">
+                <span class="label-text">
+                  {% if request.locale.iso_code == 'en' %}
+                    Select a Skin Tone
+                  {% elsif request.locale.iso_code == 'fr' %}
+                    SÉLECTIONNEZ UN TON DE PEAU
+                  {% endif %}                  
+                </span>
+              </div> 
+              <div class="mb-3 skin-tone-labels sm:mx-4">
+                {% if request.locale.iso_code == 'en' %}
+                  <span class="w-1/3 text-center label-text" data-value="0">Light</span>
+                  <span class="w-1/3 text-center label-text" data-value="1">Medium</span>
+                  <span class="w-1/3 text-center label-text" data-value="2">Dark</span>
+                {% elsif request.locale.iso_code == 'fr' %}
+                  <span class="w-1/3 text-center label-text" data-value="0">Clair</span>
+                  <span class="w-1/3 text-center label-text" data-value="1">Moyen</span>
+                  <span class="w-1/3 text-center label-text" data-value="2">Foncé</span> 
+                {% endif %}
+              </div>
+              <div class="">
+                <input
+                  id="denier-skin-tone-input"
+                  type="range"
+                  min="0"
+                  max="2"
+                  step="1"
+                  class="mb-8 ml-6 denier-slider"
+                  data-testid="skin-tone-input"
+                  value="0"
+                />
+              </div>
+              <div class="">
+                <div class="">
+                  <div class="">
+                    <div class="slick-slider slick-initialized" dir="ltr">
+                      <div class="slick-list">
+                        <div
+                          class="slick-track skintone-track"
+                        >
+                          <div
+                            data-index="0"
+                            class="slick-slide slick-active slick-current"
+                            tabindex="-1"
+                            aria-hidden="false"
+                          >
+                            <div>
+                              <picture
+                                >
+                                <img
+                                  alt="ultrasheer light"
+                                  tabindex="-1"
+                                  data-denier="0"
+                                  class="ultrasheer light"
+                                  loading="lazy"
+                                  src="{{ 'ultrasheer-light-426ef7ed94e0513793d40118fec8a782.jpg' | asset_url }}"
+                                  style="width: 100%; display: inline-block"
+                                />
+                                <img
+                                  alt="sheer light"
+                                  tabindex="-1"
+                                  data-denier="1"
+                                  class="sheer light"
+                                  loading="lazy"
+                                  src="{{ 'sheer-light-86607f42363c2d334fbfc2f0548de8a7.jpg.webp' | asset_url }}"
+                                  style="width: 100%; display: none"
+                                />
+                                <img
+                                  alt="opaque light"
+                                  tabindex="-1"
+                                  data-denier="2"
+                                  class="opaque light"
+                                  loading="lazy"
+                                  src="{{ 'opaque-light-5d938627fdd9f2bd2ae3d943d27a0361.jpg.webp' | asset_url }}"
+                                  style="width: 100%; display: none"
+                                />
+                              </picture>
+                            </div>
+                          </div>
+                          <div
+                            data-index="1"
+                            class="slick-slide"
+                            tabindex="-1"
+                            aria-hidden="true"
+                          >
+                            <div>
+                              <picture
+                                >
+                                <img
+                                  alt="ultrasheer medium"
+                                  tabindex="-1"
+                                  data-denier="0"
+                                  class="ultrasheer medium"
+                                  loading="lazy"
+                                  src="{{ 'ultrasheer-medium-d4b719e09bebc6258152e23ecdbaa3b5.jpg.webp' | asset_url }}"
+                                  style="width: 100%; display: inline-block"
+                                />
+                                <img
+                                  alt="sheer medium"
+                                  tabindex="-1"
+                                  data-denier="1"
+                                  class="sheer medium"
+                                  loading="lazy"
+                                  src="{{ 'sheer-medium-14f864468da8baa7dbaed77e25471b47.jpg.webp' | asset_url }}"
+                                  style="width: 100%; display: none"
+                                />
+                                <img
+                                  alt="opaque medium"
+                                  tabindex="-1"
+                                  data-denier="2"
+                                  class="opaque medium"
+                                  loading="lazy"
+                                  src="{{ 'opaque-medium-4683d2020dd4c868f9eb476c9257262a.jpg.webp' | asset_url }}"
+                                  style="width: 100%; display: none"
+                                />
+                              </picture>
+                            </div>
+                          </div>
+                          <div
+                            data-index="2"
+                            class="slick-slide"
+                            tabindex="-1"
+                            aria-hidden="true"
+                          >
+                            <div>
+                              <picture
+                                >
+                                <img
+                                  alt="ultrasheer dark"
+                                  tabindex="-1"
+                                  data-denier="0"
+                                  class="ultrasheer dark"
+                                  loading="lazy"
+                                  src="{{ 'ultrasheer-dark-42210e4effc8278afe165fa689dd30a6.jpg.webp' | asset_url }}"
+                                  style="width: 100%; display: inline-block"
+                              />
+                              <img
+                                  alt="sheer dark"
+                                  tabindex="-1"
+                                  data-denier="1"
+                                  class="sheer dark"
+                                  loading="lazy"
+                                  src="{{ 'sheer-dark-ab5915c735ec66f759d0070adf0ae5e3.jpg.webp' | asset_url }}"
+                                  style="width: 100%; display: none"
+                              />
+                              <img
+                                  alt="opaque dark"
+                                  tabindex="-1"
+                                  data-denier="2"
+                                  class="opaque dark"
+                                  loading="lazy"
+                                  src="{{ 'opaque-dark-337a2959ecf9d03277a3c05711ed75e8.jpg.webp' | asset_url }}"
+                                  style="width: 100%; display: none"
+                              />
+                              </picture>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="relative denier-carousel" data-testid="denier-carousel">
+              <div class="flex items-center justify-center pb-3 sm:pb-4">
+                <span class="label-text">
+                {% if request.locale.iso_code == 'en' %}
+                  See the Difference
+                {% elsif request.locale.iso_code == 'fr' %}
+                  VOIR LA DIFFÉRENCE
+                {% endif %}
+                </span>
+              </div>
+              <div class="">
+                <input
+                  id="denier-range-input"
+                  type="range"
+                  min="0"
+                  max="2"
+                  step="1"
+                  class="mb-8 ml-6 denier-slider denier-slider-with-thumb"
+                  data-testid="denier-input"
+                  value="0"
+                />
+              </div>
+              <div
+                class="denier-labels mb-9 sm:mb-12 sm:mx-4"
+              >
+                {% if request.locale.iso_code == 'en' %}
+                  <span class="w-1/3 text-center label-text" data-value="0">ultrasheer</span>
+                  <span class="w-1/3 text-center label-text" data-value="1">sheer</span>
+                  <span class="w-1/3 text-center label-text" data-value="2">semi-opaque</span>
+                {% elsif request.locale.iso_code == 'fr' %}
+                  <span class="w-1/3 text-center label-text" data-value="0">ultradiaphane</span>
+                  <span class="w-1/3 text-center label-text" data-value="1">Diaphane</span>
+                  <span class="w-1/3 text-center label-text" data-value="2">Semi-Opaque</span>
+                {% endif %}
+              </div>
+              <div class="">
+                <div class="">
+                  <div class="">
+                    <div class="slick-slider slick-initialized" dir="ltr">
+                      <div class="slick-list">
+                        <div
+                          class="slick-track denier-track"
+                        >
+                          <div
+                            data-index="0"
+                            class="slick-slide slick-active slick-current"
+                            tabindex="-1"
+                            aria-hidden="false"
+                          >
+                            <div>
+                              <div class="denier-description-container">
+                                {% comment %}
+                                <div class="picture-container">
+                                  <img 
+                                    alt="Ultrasheer" 
+                                    class="ls-is-cached"
+                                    loading="lazy" 
+                                    src="{{ 'denier_15-30.svg' | asset_url }}">
+                                </div>
+                                <div class="description">
+                                {% if request.locale.iso_code == 'en' %}
+                                  <span class="pb-2 label-text">15 denier</span>
+                                  <span class="">Practically see-through. Tattoos will be visible.</span>
+                                {% elsif request.locale.iso_code == 'fr' %}
+                                  <span class="pb-2 label-text">15 deniers</span>
+                                  <span class="">Pratiquement transparent. Les tatouages ​​seront visibles.</span>
+                                {% endif %}
+                                </div>
+                                {% endcomment %}
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            data-index="1"
+                            class="slick-slide"
+                            tabindex="-1"
+                            aria-hidden="true"
+                          >
+                            <div>
+                              <div class="denier-description-container">
+                                {% comment %}
+                                <div class="picture-container">
+                                  <img 
+                                    alt="Sheer" 
+                                    class="ls-is-cached"
+                                    loading="lazy" 
+                                    src="{{ 'denier_30-65.svg' | asset_url }}">
+                                </div>
+                                <div class="description">
+                                {% if request.locale.iso_code == 'en' %}
+                                  <span class="pb-2 label-text">30 denier</span>
+                                  <span class="">Semi see-through. Tattoos will be Visible</span>
+                                {% elsif request.locale.iso_code == 'fr' %}
+                                  <span class="pb-2 label-text">15 deniers</span>
+                                  <span class="">Semi-transparent. Les tatouages ​​seront visibles.</span>
+                                {% endif %}
+                                </div>
+                                {% endcomment %}
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            data-index="2"
+                            class="slick-slide"
+                            tabindex="-1"
+                            aria-hidden="true"
+                          >
+                            <div>
+                              <div class="denier-description-container">
+                                {% comment %}
+                                <div class="picture-container">
+                                    <img 
+                                      alt="Opaque" 
+                                      class="ls-is-cached" 
+                                      loading="lazy"
+                                      src="{{ 'denier_80-100.svg' | asset_url }}">
+                                </div>
+                                <div class="description">
+                                {% if request.locale.iso_code == 'en' %}
+                                  <span class="pb-2 label-text">80 denier</span>
+                                  <span class="">Nearly opaque. Tattoos are only visible when up close or if the knit is stretched out.</span>
+                                {% elsif request.locale.iso_code == 'fr' %}
+                                  <span class="pb-2 label-text">15 deniers</span>
+                                  <span class="">Presque opaque. Les tatouages ​​ne sont visibles que de près ou si le tricot est étiré.</span>
+                                {% endif %}
+                                </div>
+                                {% endcomment %}
+                              </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

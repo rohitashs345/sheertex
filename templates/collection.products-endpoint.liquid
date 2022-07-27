@@ -1,0 +1,67 @@
+{% comment %} Please don’t update this content {% endcomment %}
+
+{% layout none %}
+{% paginate collection.products by 50 %}
+  {
+    "products":
+      [
+        {% for product in collection.products %}
+          {
+            "id":{{ product.id }},
+            "position":{{ forloop.index }},
+            "metafields":[
+              
+              {% comment %}
+                Single Metafield
+              {% endcomment %}
+              {% assign v_data = product.metafields.sticker["data"] %}
+              {% if v_data != blank %}
+                {
+                  "namespace": "sticker",
+                  "key": "data",
+                  "value": {{ v_data | json }}
+                },
+              {% endif %}
+        
+              {% comment %}
+                Single Metafield
+              {% endcomment %}
+              {% assign v_data-fr = product.metafields.sticker["data-fr"] %}
+              {% if v_data-fr != blank %}
+                {
+                  "namespace": "sticker",
+                  "key": "data-fr",
+                  "value": {{ v_data-fr | json }}
+                },
+              {% endif %}
+        
+              {% comment %}
+                Single Metafield
+              {% endcomment %}
+              {% assign v_reviews_average = product.metafields.yotpo["reviews_average"] %}
+              {% if v_reviews_average != blank %}
+                {
+                  "namespace": "yotpo",
+                  "key": "reviews_average",
+                  "value": {{ v_reviews_average | json }}
+                },
+              {% endif %}
+        
+              {% comment %}
+                Single Metafield
+              {% endcomment %}
+              {% assign v_reviews_count = product.metafields.yotpo["reviews_count"] %}
+              {% if v_reviews_count != blank %}
+                {
+                  "namespace": "yotpo",
+                  "key": "reviews_count",
+                  "value": {{ v_reviews_count | json }}
+                },
+              {% endif %}
+        
+            ]
+          },
+        {% endfor %}
+      ]
+  }
+{% endpaginate %}

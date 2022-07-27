@@ -1,0 +1,385 @@
+<div id="WhatThePressSection" data-section-id="{{ section.id }}" data-section-type="what-the-press-section" class="tw-mt-4 sm:tw-mt-8">
+    <div class="page-width page-content tw-text-center mlg:tw-px-0 tw-mb-6 msm:tw-pt-0">
+    <p class="tw-font-sans tw-text-center tw-tracking-mini-heading tw-leading-loose tw-font-bold tw-uppercase tw-text-sm msm:tw-text-xs tw-mb-0">{{ section.settings.shop_feed }}</p>
+    <p class="tw-text-3xl tw-pb-6 tw-font-serif tw-text-center tw-font-light">{{ section.settings.life_sheertex }}</p>
+    <div class="tw-flex mlg:tw-overflow-x-scroll __image-wrapper__3V8KL">
+      <div class="mlg:tw-ml-4 __card__3Ci5l">
+        {%- assign img_url = section.settings.first_image | img_url: '360x360' -%}
+        <img src="{{ img_url }}" loading="lazy">
+        <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/INSTAGRAM_1.svg?v=1603823710" class="__insta-icon__1Lov4">
+        <a href="{{ all_products[section.settings.first_product].url }}" class="__overlay__3qqDR">
+          <div class="__product-info__3lq9D">
+            <p class="__product-title__1iIEq">{{ all_products[section.settings.first_product].title }}</p>
+            <p class="__shop-now__2oTQx">{{ section.settings.shop_now }}</p>
+            <p class="__intsta-name__2RhGQ">{{ section.settings.first_id }}</p>
+          </div>
+        </a>
+      </div>
+      <div class="__card__3Ci5l">
+        {%- assign img_url = section.settings.second_image | img_url: '360x360' -%}
+        <img src="{{ img_url }}" loading="lazy">
+        <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/INSTAGRAM_1.svg?v=1603823710" class="__insta-icon__1Lov4">
+        <a href="{{ all_products[section.settings.second_product].url }}" class="__overlay__3qqDR">
+          <div class="__product-info__3lq9D">
+            <p class="__product-title__1iIEq">{{ all_products[section.settings.second_product].title }}</p>
+            <p class="__shop-now__2oTQx">{{ section.settings.shop_now }}</p>
+            <p class="__intsta-name__2RhGQ">{{ section.settings.second_id }}</p>
+          </div>
+        </a>
+      </div>
+      <div class="__card__3Ci5l">
+        {%- assign img_url = section.settings.third_image | img_url: '360x360' -%}
+        <img src="{{ img_url }}" loading="lazy">
+        <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/INSTAGRAM_1.svg?v=1603823710" class="__insta-icon__1Lov4">
+        <a href="{{ all_products[section.settings.third_product].url }}" class="__overlay__3qqDR">
+          <div class="__product-info__3lq9D">
+            <p class="__product-title__1iIEq">{{ all_products[section.settings.third_product].title }}</p>
+            <p class="__shop-now__2oTQx">{{ section.settings.shop_now }}</p>
+            <p class="__intsta-name__2RhGQ">{{ section.settings.third_id }}</p>
+          </div>
+        </a>
+      </div>
+      <div class="mlg:tw-pr-4 __card__3Ci5l">
+        {%- assign img_url = section.settings.fourth_image | img_url: '360x360' -%}
+        <img src="{{ img_url }}" loading="lazy">
+        <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/INSTAGRAM_1.svg?v=1603823710" class="__insta-icon__1Lov4">
+        <a href="{{ all_products[section.settings.fourth_product].url }}" class="__overlay__3qqDR">
+          <div class="__product-info__3lq9D">
+            <p class="__product-title__1iIEq">{{ all_products[section.settings.fourth_product].title }}</p>
+            <p class="__shop-now__2oTQx">{{ section.settings.shop_now }}</p>
+            <p class="__intsta-name__2RhGQ">{{ section.settings.fourth_id }}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    </div>
+  <div class="tw-text-center tw-pt-16 msm:tw-pt-12 tw-w-full mlg:tw-px-0 __hp-press-container__2Udom">
+    <div class="tw-container tw-mx-auto">
+      {% if request.locale.iso_code == 'en' %}
+      <p class="tw-font-sans tw-uppercase tw-text-xs sm:tw-text-sm tw-leading-normal tw-text-center tw-tracking-mini-heading tw-font-bold">Don’t just take our word for it <span class="tw-px-1 sm:tw-px-4 tw-font-bold">|</span><a href="https://www.sheertex.com/pages/reviews" class="tw-underline tw-font-medium">read reviews</a></p>
+      {% elsif request.locale.iso_code == 'fr' %}
+      <p class="tw-font-sans tw-uppercase tw-text-xs sm:tw-text-sm tw-leading-normal tw-text-center tw-tracking-mini-heading tw-font-bold">NE NOUS CROYEZ PAS SUR PAROLE <span class="tw-px-1 sm:tw-px-4 tw-font-bold">|</span><a href="https://www.sheertex.com/pages/reviews" class="tw-underline tw-font-medium">Lire les Avis</a></p>
+      {% endif %} 
+
+    <div class="gizmodoBustleContainer tw-w-full mlg:tw-mx-0">
+        <a href="https://www.vogue.com/slideshow/best-sheer-black-tights" target="_blank" class="bustleContainer tw-mx-3 tw-mt-3 sm:tw-mx-0 sm:tw-mt-0 __bustleContainer__1EvP1">
+          <div class="bustleContainer-content">
+            <span class="big-quote">"</span>
+            {{ section.settings.testimonial_3 }}
+            <span class="big-quote">"</span>
+          </div>
+          <div class="bustleContainer-bustle sm:tw-mt-4">
+            <img class="img" loading="lazy" src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/vogue-png-logo-2.png?v=1629820326">
+          </div>
+        </a>
+        <a href="https://time.com/collection/best-inventions-2018/5454315/sheerly-genius-pantyhose/" target="_blank" class="logo-container timeContainer tw-mx-3 tw-p-0 tw-mt-3 sm:tw-mx-0 sm:tw-mt-0 __timeContainer__2dZL4">
+          <div class="timeContainer-content">
+            {{ section.settings.testimonial_2 }}
+          </div>
+        </a>
+        <a href="https://gizmodo.com/we-destroyed-the-unbreakable-pantyhose-but-they-still-1832734259" target="_blank" class="gizmodoContainer tw-mx-3 sm:tw-mx-0 __gizmodoContainer__3yNho">
+          <div class="gizmodoContainer-content">
+            <span class="big-quote">"</span>
+              {{ section.settings.testimonial_1 }}
+            <span class="big-quote">"</span>
+          </div>
+          <div class="gizmodoContainer-gizmodo">
+            <img class="img" loading="lazy" src="https://cdn.shopify.com/s/files/1/0316/1119/1435/files/Gizmodo_Media_Group_Logo_360x_ee0ebb4d-e73b-4795-8ea7-700aad79456e.png?v=1580975307">
+          </div>
+        </a>
+    </div>
+    <div class="tw-grid sm:tw-grid-cols-7 msm:tw-grid-rows-2 msm:tw-grid-cols-2 tw-gap-6 sm:tw-container tw-mx-auto tw-py-16 msm:tw-pt-12 tw-align-items-center">
+      <a href="https://www.instyle.com/shopping/sheertex-no-sweat-shorties-review" target="_blank">
+        <img loading="lazy" height="40px" width="90px" class="tw-w-20 tw-pt-2" src="{{ 'instyle-logo.svg' | asset_url }}" alt="press-svg1">
+      </a>
+      <a href="https://www.vogue.com/slideshow/best-sheer-black-tights" target="_blank">
+        <img loading="lazy" height="40px" width="90px" class="tw-w-20 tw-pt-2" src="{{ 'vogue-logo.svg' | asset_url }}" alt="press-svg1">
+      </a>
+      <a href="https://www.ellecanada.com/fashion/shopping/3-brands-making-sustainable-hosiery" target="_blank">
+        <img loading="lazy" height="40px" width="90px" class="tw-w-20 tw-pt-2 msm:tw-pt-4" src="{{ 'elle-logo.svg' | asset_url }}" alt="press-svg1">
+      </a>
+      <a href="https://www.cnn.com/2021/03/03/cnn-underscored/sheertex-tights-review/index.html" target="_blank">
+        <img loading="lazy" height="40px" width="90px" class="tw-w-16 tw-pt-2 msm:tw-pt-4" src="{{ 'cnn-logo.svg' | asset_url }}" alt="press-svg1">
+      </a>
+      <a href="https://www.buzzfeed.com/aliceprendergast/sheertex-tights-review" target="_blank">
+        <img loading="lazy" height="40px" width="90px" class="tw-w-20 tw-pt-2 msm:tw-pt-4" src="{{ 'buzzfeed-logo.svg' | asset_url }}" alt="press-svg1">
+      </a>
+      <a href="https://www.theglobeandmail.com/business/article-unbreakable-pantyhose-startup-sheertex-overcomes-disruptions-in-quest/" target="_blank">
+        <img loading="lazy" height="40px" width="90px" class="tw-w-24 tw-pt-2 msm:tw-pt-4" src="{{ 'gobe-logo.svg' | asset_url }}" alt="press-svg1">
+      </a>
+      <a href="https://www.harpersbazaar.com/fashion/trends/g37763029/best-tights/" target="_blank">
+        <img loading="lazy" height="27px" width="96px" class="tw-w-24 tw-pt-2 msm:tw-hidden" src="{{ 'Harpers_Bazaar_logo_logotype.png' | asset_url }}" alt="press-svg1">
+      </a>
+    </div>
+    <a href="https://www.harpersbazaar.com/fashion/trends/g37763029/best-tights/" target="_blank">
+      <img loading="lazy" height="70px" width="96px" class="tw-w-24 tw--mt-8 sm:tw-hidden tw-pb-12" src="{{ 'Harpers_Bazaar_logo_logotype.png' | asset_url }}" alt="press-svg1">
+    </a>
+    </div>
+  </div>
+</div>
+<style>
+
+  .__hp-press-container__2Udom {
+    background-image: linear-gradient(to bottom, #f1e7db, #e7ded7);
+  }
+
+  .__section-header__1qpJi {
+    font-family: 'Agrandir';
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.104rem;
+    font-weight: 500;
+  }
+  .__gizmodoContainer__3yNho, .__timeContainer__2dZL4, .__bustleContainer__1EvP1 {
+    background: transparent;
+  }
+  .__image-wrapper__3V8KL, .__video-wrapper__1RGXV {
+    scroll-snap-type: x mandatory;
+  }
+  .__card__3Ci5l {
+    min-width: 235px;
+    margin-right: 8px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: center;
+  }
+  @media only screen and (max-width: 1023px) {
+    .__card__3Ci5l:last-child {
+      min-width: calc(235px + 1rem);
+    }
+  }
+  .__card__3Ci5l:hover>.__overlay__3qqDR {
+    width: 100%;
+    height: 100%;
+    content: '';
+    background: rgba(83, 83, 83, 0.6);
+    position: absolute;
+    top: 0;
+    transition: .5s ease;
+  }
+  .__card__3Ci5l>video {
+    object-fit: cover;
+  }
+  .__tiktok-info__FjLLH {
+    right: 10px;
+  }
+  .__product-info__3lq9D {
+    display: none;
+  }
+  .__card__3Ci5l:hover .__product-info__3lq9D {
+    display: block;
+    position: absolute;
+    color: white;
+    bottom: 20px;
+    width: 100%;
+  }
+  .__card__3Ci5l.__video__3rAmH .__product-info__3lq9D {
+    top: 40%;
+  }
+  .__card__3Ci5l:hover>.__tiktok-info__FjLLH {
+    display: none;
+  }
+  .__insta-icon__1Lov4 {
+    position: absolute;
+    top: 8px;
+    left: 1.5rem;
+  }
+  .__card__3Ci5l:hover>.__insta-icon__1Lov4 {
+    display: none;
+  }
+  .__product-title__1iIEq {
+    font-family: 'Matiere';
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  .__product-info__3lq9D .__shop-now__2oTQx {
+    font-family: 'Agrandir';
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.104rem;
+    font-weight: 500;
+    text-decoration: underline;
+    color: white;
+    margin-bottom: 75px;
+    display: block;
+  }
+  .__intsta-name__2RhGQ {
+    font-size: 12px;
+    font-family: 'Agrandir Narrow';
+  }
+  .__review-header__3nDow {
+    font-family: 'Agrandir';
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.104rem;
+    font-weight: bold;
+    margin-top: 75px;
+    margin-bottom: 20px;
+  }
+  .__internet-answer__1OZOs {
+    max-width: 400px;
+    margin: 0 auto;
+    font-family: 'Agrandir Narrow';
+    font-size: 14px;
+    margin-bottom: 25px;
+  }
+  .__review-card__5-je4 {
+    margin-top: 50px;
+  }
+  .__review__2PRqW {
+    max-width:700px;
+    font-size: 28px;
+    margin-top: 20px;
+    font-family: 'Matiere';
+  }
+  .__review-button__30MF3 {
+    font-family: 'Agrandir';
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.104rem;
+    font-weight: 500;
+  }
+  .__review-button__30MF3:hover {
+    text-decoration: underline;
+    border: 1px solid black;
+  }
+  .__review-name__2g3ay {
+    font-family: 'Agrandir';
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.104rem;
+    font-weight: 500;
+  }
+  .__video-wrapper__1RGXV {
+    margin-top: 80px;
+  }
+</style>
+{% schema %}
+  {
+    "name": "HP What The Press Section",
+    "class": "what-the-press",
+    "settings": [
+      {
+        "type": "header",
+        "content": "First Instgram Card"
+      },
+      {
+        "type": "image_picker",
+        "id": "first_image",
+        "label": "First Image"
+      },
+      {
+        "type": "product",
+        "id": "first_product",
+        "label": "First Product"
+      },
+      {
+        "type": "text",
+        "id": "first_id",
+        "label": "First Instgram ID"
+      },
+      {
+        "type": "header",
+        "content": "Second Instgram Card"
+      },
+      {
+        "type": "image_picker",
+        "id": "second_image",
+        "label": "Second Image"
+      },
+      {
+        "type": "product",
+        "id": "second_product",
+        "label": "Second Product"
+      },
+      {
+        "type": "text",
+        "id": "second_id",
+        "label": "Second Instgram ID"
+      },
+      {
+        "type": "header",
+        "content": "Third Instgram Card"
+      },
+      {
+        "type": "image_picker",
+        "id": "third_image",
+        "label": "Third Image"
+      },
+      {
+        "type": "product",
+        "id": "third_product",
+        "label": "Third Product"
+      },
+      {
+        "type": "text",
+        "id": "third_id",
+        "label": "Third Instgram ID"
+      },
+      {
+        "type": "header",
+        "content": "Fourth Instgram Card"
+      },
+      {
+        "type": "image_picker",
+        "id": "fourth_image",
+        "label": "Fourth Image"
+      },
+      {
+        "type": "product",
+        "id": "fourth_product",
+        "label": "Fourth Product"
+      },
+      {
+        "type": "text",
+        "id": "fourth_id",
+        "label": "Fourth Instgram ID"
+      },
+      {
+        "type": "text",
+        "id": "shop_now",
+        "label": "Shop Now",
+        "default": "Shop Now"
+      },
+      {
+        "type": "text",
+        "id": "life_sheertex",
+        "label": "#LifeInSheertex",
+        "default": "#LifeInSheertex"
+      },
+      {
+        "type": "text",
+        "id": "shop_feed",
+        "label": "Shop the Feed",
+        "default": "Shop the Feed"
+      },
+      {
+        "type": "html",
+        "id": "testimonial_1",
+        "label": "testimonial text 1",
+        "default": "You can stretch and twist the Sheertex as much as you like and they won't break. You'd have to be the Hulk to tear a hole through these things."
+      },
+      {
+        "type": "html",
+        "id": "testimonial_2",
+        "label": "testimonial text 2",
+        "default": "Named One of<br>TIME's Best Inventions "
+      },
+      {
+        "type": "html",
+        "id": "testimonial_3",
+        "label": "testimonial text 3",
+        "default": "...outlast any pair of tights ever — great for, say, pet owners or the accident-prone."
+      }
+    ],
+    "presets": [
+      {
+        "name": "HP What the press section",
+        "category": "Advanced layout"
+      }
+    ]
+  }
+{% endschema %}

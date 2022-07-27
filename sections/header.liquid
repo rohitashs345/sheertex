@@ -1,0 +1,433 @@
+{% include 'cart-drawer' %}
+{% for block in section.blocks %}
+{% case block.type %}
+{% when 'main_banner' %}
+  <div data-svelte="main_banner"></div>
+{% when 'secondary_banner' %}
+  <div data-svelte="secondary_banner"></div>
+{% when 'navigation_and_search' %}
+  <div data-svelte='search-data'></div>
+{% when 'countdown_banner' %}
+  {% include 'header-countdown-banner', block: block %}   
+{% when 'animated_title' %}
+  {% include 'header-title-animation', block: block %}   
+{% endcase %}
+{% endfor %}       
+{% if section.settings.show_geolocation_popup %}
+    <div data-svelte="geolocation-popup" data-domain="{{ shop.domain }}"></div>
+{% endif %}
+<div data-section-id="{{ section.id }}" data-section-type="header-section">
+    <header class="site-header tw-w-full tw-border-0 tw-border-b tw-border-solid tw-border-gray-200 tw-relative">
+        <div class="page-width">
+            <div class="header-layout" data-logo-align="center" data-svelte="navigation">
+                <div class="header-item header-item--left header-item--navigation">
+                    {% include 'header-left-blocks', blocks: section.blocks %}               
+                </div>
+                <div class="header-item header-item--logo">
+                    {% include 'header-logo-block' %}
+                </div>
+                <div class="header-item header-item--icons">
+                    {% include 'header-right-blocks', blocks: section.blocks %}       
+                    {% include 'header-icons', blocks: section.blocks %}
+                </div>
+            </div>
+        </div>
+    </header>
+</div>
+
+{% comment %}
+{% include 'header-scroll-to-top' %}   
+{% endcomment %}
+<script>
+  /* This script should be executed after the markup is generated */
+  (function payloadGenerator() {
+    
+    {% for block in section.blocks %}
+    {% case block.type %}
+    {% when 'main_banner' %}
+      const mainBannerSettings = {{block.settings | json }}          
+    {% when 'secondary_banner' %}
+      const secondaryBannerSettings = {{block.settings | json }}      
+    {% when 'navigation_and_search' %}
+      const searchSettings = {{block.settings | json }}      
+      {% assign search_popular_product_1 = block.settings.search_popular_product_1 %}  
+      {% assign search_popular_product_2 = block.settings.search_popular_product_2 %}  
+      {% assign search_popular_product_3 = block.settings.search_popular_product_3 %}  
+      {% assign search_popular_product_4 = block.settings.search_popular_product_4 %}     
+    {% endcase %}
+    {% endfor %} 
+  
+    const currency = "{{ cart.currency.iso_code }}";    
+    const locale = "{{ request.locale.iso_code }}";
+
+    const main_banner = document.querySelector("[data-svelte=main_banner]");
+    if (main_banner && mainBannerSettings) {
+      mainBannerSettings['currency'] = currency;      
+      main_banner.setAttribute('data-svelte-payload', JSON.stringify(mainBannerSettings));
+    }    
+
+    const secondary_banner = document.querySelector("[data-svelte=secondary_banner]");
+    if (secondary_banner && secondaryBannerSettings) {
+      secondaryBannerSettings['currency'] = currency;
+      secondary_banner.setAttribute('data-svelte-payload', JSON.stringify(secondaryBannerSettings));
+    }
+
+    const searchDataTarget = document.querySelector("[data-svelte=search-data]");
+    if (searchDataTarget && searchSettings) {      
+      const search_popular_products = [
+        {% render 'utils-product-to-json', name: search_popular_product_1 %},
+        {% render 'utils-product-to-json', name: search_popular_product_2 %},
+        {% render 'utils-product-to-json', name: search_popular_product_3 %},
+        {% render 'utils-product-to-json', name: search_popular_product_4 %},
+      ];
+            
+      searchSettings['locale'] = locale;      
+      searchSettings['search_popular_products'] = search_popular_products;
+      searchDataTarget.setAttribute('data-svelte-payload', JSON.stringify(searchSettings));
+    }
+  })();
+
+</script>
+
+{% schema %}
+
+{
+  "name": "Header and menus",
+  "settings": [{
+      "type": "checkbox",
+      "id": "show_geolocation_popup",
+      "label": "Show geolocation popup",
+      "default": false
+  }],   
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo"
+        }
+      ]
+    }, {
+      "type": "deal_of_the_day",
+      "name": "Deal of the day",
+      "settings": [
+        {
+          "type": "text",
+          "id": "deal_menu_title",
+          "label": "Deal menu title"
+        },
+        {
+          "type": "url",
+          "id": "deal_menu_link",
+          "label": "Deal menu link"
+        }
+      ]
+    }, {
+      "type": "main_banner",
+      "name": "Main Banner",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Banners aren't updated in theme editor. Save the changes & use theme preview to see the changes"
+        }, {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color",
+          "default": "#ddff98"
+        }, {
+          "type": "paragraph",
+          "content": "You can specify several banners with different text for each currency. Also you can set countdown timer, #timer(YYYY-MM-DD HH:mm) will be replaced with countdown (time is PST). Here is a sample example of two banners:"
+        }, {
+          "type": "paragraph",
+          "content": "<div><p>Special promo, $50 off!</p><p data-currency=\"cad\">Special promo, CAD 60 off!</p></div><div><p>Limited free shipping! #time(2021-05-10 00:00)</p></div>"
+        }, {
+          "type": "html",
+          "id": "banners_text",
+          "label": "Banner(s) Text",
+          "default": "<div><p>Hello world!</p></div>"
+        }, {
+          "type": "range",
+          "id": "rotation_interval",
+          "min": 0,
+          "max": 60,
+          "step": 5,
+          "unit": "sec",
+          "label": "Auto rotate interval (sec)",
+          "default": 5,
+          "info": "Set 0 to disable auto rotation"
+        }, {
+          "type": "html",
+          "id": "banners_eu_uk_text",
+          "label": "Banner EU/UK Text"
+        }, {
+          "type": "url",
+          "id": "banners_eu_uk_link_url",
+          "label": "Banner EU/UK link"
+        }
+      ]
+    }, {
+      "type": "secondary_banner",
+      "name": "Secondary Banner",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Banners aren't updated in theme editor. Save the changes & use theme preview to see the changes"
+        }, {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color",
+          "default": "#ddff98"
+        }, {
+          "type": "paragraph",
+          "content": "You can specify several banners with different text for each currency. Also you can set countdown timer, #timer(YYYY-MM-DD HH:mm) will be replaced with countdown. Here is a sample example of two banners:"
+        }, {
+          "type": "paragraph",
+          "content": "<div><p>Special promo, $50 off!</p><p data-currency=\"cad\">Special promo, CAD 60 off!</p></div><div><p>Limited free shipping! #time(2021-05-10 00:00)</p></div>"
+        }, {
+          "type": "html",
+          "id": "banners_text",
+          "label": "Banner(s) Text",
+          "default": "<div><p>Hello world!</p></div>"
+        }, {
+          "type": "range",
+          "id": "rotation_interval",
+          "min": 0,
+          "max": 60,
+          "step": 5,
+          "unit": "sec",
+          "label": "Auto rotate interval (sec)",
+          "default": 5,
+          "info": "Set 0 to disable auto rotation"
+        }
+      ]
+    },
+    {
+      "type": "countdown_banner",
+      "name": "Countdown Banner",
+      "limit": 1,
+      "settings": [
+       {
+          "type": "html",
+          "id": "banners_text",
+          "label": "Banner Copyright",
+          "default": "HURRY! TODAY&apos;S DEAL ENDS IN"
+        },       
+        {
+          "type": "checkbox",
+          "id": "flash_sale",
+          "label": "Activate automated flash sale countdown",
+          "info": "Flash sale countdown will be based on schedule defined below",
+          "default": false
+        },
+        {
+            "type": "text",
+            "id": "flash_sale_schedule",
+            "label": "Flash Sale Schedule",
+            "info": "Define countdown hours splitted by (,). 1 - 1am, 15 - 3pm",
+            "default": "9,15,21"
+        },
+        {
+            "type": "url",
+            "id": "url",
+            "label": "URL"
+        }
+      ]
+    },
+    {
+      "type": "animated_title",
+      "name": "Animated Title",
+      "limit": 1,
+      "settings": [
+       {
+          "type": "text",
+          "id": "title_text",
+          "label": "Title Text",
+          "default": "  Save up to 50% off - Sheertex.com  "
+        }     
+      ]
+    },
+    {
+      "type": "navigation-menu",
+      "name": "Left Side Menu (Dsktp)",
+      "limit": 4,
+      "settings": [      
+        {
+            "type": "link_list", 
+            "id": "menu",
+            "label": "Menu"                        
+        },   
+        {
+          "type": "url",
+          "id": "menu_button_link",
+          "label": "Menu Link",
+          "info": "Link will open when user click on menu item"
+        },     
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "First Image"
+        },
+        {
+          "type": "text",
+          "id": "image_1_label",
+          "label": "First Image Label"
+        },
+        {
+          "type": "url",
+          "id": "image_1_url",
+          "label": "First Image Url"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Second Image"
+        },
+        {
+          "type": "text",
+          "id": "image_2_label",
+          "label": "Second Image Label"
+        },
+        {
+          "type": "url",
+          "id": "image_2_url",
+          "label": "Second Image Url"
+        },
+        {
+            "type": "image_picker",
+            "id": "cta_image",
+            "label": "CTA image"
+        },
+        {
+            "type": "text",
+            "id": "cta_text",
+            "label": "CTA text",
+            "default": "SAVE 15%"
+        },
+        {
+            "type": "url",
+            "id": "cta_url",
+            "label": "CTA url"
+        },
+        {
+            "type": "text",
+            "id": "cta_button",
+            "label": "CTA button text",
+            "default": "Shop All"
+        }
+      ]
+    },
+    {
+      "type": "navigation-menu-mobile",
+      "name": "Mobile Menu",
+      "limit": 1,
+      "settings": [      
+        {
+            "type": "link_list", 
+            "id": "menu",
+            "label": "Menu"                        
+        },               
+        {
+            "type": "image_picker",
+            "id": "cta_image",
+            "label": "CTA image"
+        },
+        {
+            "type": "text",
+            "id": "cta_text",
+            "label": "CTA text",
+            "default": "SAVE 15%"
+        },
+        {
+            "type": "url",
+            "id": "cta_url",
+            "label": "CTA url"
+        },
+        {
+            "type": "text",
+            "id": "cta_button",
+            "label": "CTA button text",
+            "default": "Shop new arrivals"
+        }
+      ]
+    },
+    {
+      "type": "menu-link",
+      "name": "Right Side Links (Dsktp)",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Our Knit"       
+        }, 
+        {
+          "type": "url",
+          "id": "url",
+          "label": "URL"            
+        }
+      ]
+    },   
+    {
+      "type": "navigation_and_search",
+      "name": "Search",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "search_query_placeholder",
+          "label": "Search query placeholder",
+          "default": "Search for products"
+        }, {
+          "type": "text",
+          "id": "search_clear_button",
+          "label": "Clear Button Text",
+          "default": "Clear"
+        }, {
+          "type": "text",
+          "id": "search_popular_queries_title",
+          "label": "Popular Queries Title",
+          "default": "Most Popular Searches"
+        }, {
+          "type": "text",
+          "id": "search_popular_products_title",
+          "label": "Popular Products Title",
+          "default": "Most Popular Products"
+        }, {
+          "type": "text",
+          "id": "search_popular_queries_list",
+          "label": "Popular Queries List",
+          "default": "classic;tights;thigh highs;shaping;semi-opaque;sheer",
+          "info": "Type in list of popular search queries divided by semicolon (;)"
+        }, {
+          "type": "product",
+          "id": "search_popular_product_1",
+          "label": "Popular product 1"
+        }, {
+          "type": "product",
+          "id": "search_popular_product_2",
+          "label": "Popular product 2"
+        }, {
+          "type": "product",
+          "id": "search_popular_product_3",
+          "label": "Popular product 3"
+        }, {
+          "type": "product",
+          "id": "search_popular_product_4",
+          "label": "Popular product 4"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "settings": {}
+  }
+}
+
+{% endschema %}

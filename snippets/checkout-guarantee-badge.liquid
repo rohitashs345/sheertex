@@ -1,0 +1,85 @@
+<style>
+  .floating {
+    width: 130px;
+  }
+
+  .why {
+    display: flex;
+    position: absolute;
+    padding-top: 30px;
+    justify-content: center;
+    width: 411px;
+  }
+
+  .wyustit {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  .wyustit:before {
+    border-top: 1px solid #dfdfdf;
+    content: "";
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
+  }
+
+  @media only screen and (max-device-width: 600px) {
+    .why {
+      position: relative;
+      width: 350px;
+    }
+
+    .wyustit {
+      width: 350px;
+    }
+  }
+
+  /* Overrides for Guarantee + 2 charms */
+
+  .why-body {
+    display: flex;
+    justify-content: space-around;
+    flex: auto;
+    margin-top: 1rem;
+  }
+
+  .why-main-image {
+    width: 50%;
+    margin-right: 2rem;
+    align-self: center;
+  }
+
+  .why {
+    position: relative;
+    padding-top: 0;
+    display: flex;
+    width: auto;
+    flex-direction: column;
+  }
+
+  .charm {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.6rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+  }
+
+  /* End overrides for Guarantee + 2 charms */
+</style>
+
+<script>
+  window.jQuery('.order-summary__section--total-lines').after('<div><div class="wyustit"><span style="background:#fafafa;padding:0 15px">Why choose us?</span></div><div class="why-body"><div class="why-main-image guarantee"><img src=""></div><div class="why"><div class="floating first charm"><img scr=""><small>Sustainably<br>made in Canada</small></div><div class="floating sec charm"><img scr=""/><small>Made strong by<br>Sheertex™ Knit Technology</small></div></div></div>');
+  window.jQuery('.guarantee > img').attr("src", "{{settings.checkout-guarantee-badge}}");
+  window.jQuery('.first > img').attr("src", "https://cdn.shopify.com/s/files/1/0114/4120/9408/files/charmtransparent?v=1602104102");
+  window.jQuery('.sec > img').attr("src", "https://cdn.shopify.com/s/files/1/0114/4120/9408/files/horseshow?v=1602104175");
+</script>
+

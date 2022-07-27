@@ -1,0 +1,93 @@
+<section class="tw-flex tw-flex-col tw-justify-items-center tw-items-center tw-justify-center tw-relative">
+    <img src="{{ 'hero-desktop-warmtights.png' | asset_img_url: 'master' }}" class="msm:tw-hidden" alt="temp">
+    <img src="{{ 'hero-mobile-warmtights.png' | asset_img_url: 'master' }}" class="sm:tw-hidden tw-w-full" alt="temp">
+    <p class="tw-absolute tw-mx-auto tw-text-4xl tw-font-serif tw-leading-tight tw-mb-0 tw-text-black tw-top-8 tw-text-center sm:tw-hidden">
+            Bye Bye, Winter Blues
+    </p>
+    <div class="tw-absolute tw-mx-auto sm:tw-my-auto sm:tw-left-12 msm:tw-inset-x-0 msm:tw-bottom-10 msm:tw-mx-16 sm:tw-max-w-xl tw-justify-items-center">
+        <p class="tw-mx-auto tw-text-5xl tw-font-serif tw-leading-tight tw-mb-0 tw-text-black msm:tw-hidden">
+            Bye Bye,<span class="lg:tw-hidden"><br></span> Winter Blues
+        </p>
+        <p class="tw-text-lg msm:tw-text-base tw-font-narrow tw-leading-tight tw-font-light msm:tw-leading-7 sm:tw-pt-6 sm:tw-pb-6 tw-max-w-xs tw-text-black">
+            Outsmart the elements with the help of the World's Most Resilient Tights. Warm, cozy, and resilient as always, these tights are just what the doctor ordered.
+        </p>
+        <div class="tw-flex tw-flex-col sm:tw-justify-between sm:tw-max-w-md tw-border-0 tw-border-t tw-border-solid tw-border-black">
+            <div class="sm:tw-my-auto msm:tw-py-2">
+                <p class="tw-font-serif tw-font-medium sm:tw-my-auto sm:tw-pt-6 tw-text-2xl msm:tw-text-base tw-mb-0 tw-text-black">
+                    Classic Semi-Opaque Tights
+                </p>
+                <p class="tw-font-bold tw-font-sans sm:tw-my-auto tw-text-light tw-text-base tw-tracking-wider tw-uppercase tw-text-black">
+                    {% assign product = collections['warm-tights'].products.first %}
+                    <span class="tw-text-base">{{ product.price  | money }}</span>
+                </p>
+            </div>
+            <div class="sm:tw-my-auto msm:tw-mx-auto sm:tw-pt-8">
+                <a class="tw-border-0 tw-border tw-border-solid tw-border-black tw-rounded-3xl tw-px-32 mlg:tw-px-20 tw-py-3 tw-max-w-xs tw-bg-green-200 tw-mx-auto tw-text-sm tw-font-sans tw-leading-normal tw-text-center tw-font-medium tw-uppercase tw-tracking-heading" href="https://www.sheertex.com/products/classic-semi-opaque-tights">
+                    SHOP NOW
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="tw-flex tw-justify-items-center tw-items-center tw-py-16 mmd:tw-py-8" style="background-image: linear-gradient(to top, #e8e8f2, #e8e8f2);">
+    <div class="page-width md:tw-flex mmd:tw-grid md:tw-grid-cols-4 mmd:tw-grid-cols-2 md:tw-space-x-16 mmd:tw-space-8 tw-mx-auto">
+        <div class="tw-flex tw-items-center tw-justify-center tw-flex-col mmd:tw-mx-4">
+            <img src="{{ 'freeship.svg' | asset_url }}" class="msm:tw-w-12 sm:tw-w-16" alt="shipping-icon">
+            <p class="tw-text-xs sm:tw-text-sm tw-font-sans tw-uppercase tw-leading-tight tw-text-center tw-tracking-wide tw-font-bold tw-py-4 tw-mb-0">
+                free shipping
+            </p>
+            <p class="tw-text-xs sm:tw-text-sm tw-font-narrow tw-leading-tight tw-text-center tw-tracking-wide tw-max-w-xs">
+                Free standard shipping<span class="msm:tw-hidden"><br></span> included on orders over <span data-currency="">$75</span>.               
+            </p>
+        </div>
+        <div class="tw-flex tw-items-center tw-justify-center tw-flex-col mmd:tw-mx-4">
+            <img src="{{ '90day.svg' | asset_url }}" class="msm:tw-w-12 sm:tw-w-16" alt="guarantee-icon">
+            <p class="tw-text-xs sm:tw-text-sm tw-font-sans tw-uppercase tw-leading-tight tw-text-center tw-tracking-wide tw-font-bold tw-py-4 tw-mb-0">
+                90-day guarantee              
+            </p>
+            <p class="tw-text-xs sm:tw-text-sm tw-font-narrow tw-leading-tight tw-text-center tw-tracking-wide tw-max-w-xs">
+                Covers any damage that<span class="msm:tw-hidden"><br></span> renders your tights unwearable.            
+            </p>                
+        </div>
+        <div class="tw-flex tw-items-center tw-justify-center tw-flex-col mmd:tw-mx-4">
+            <img src="{{ 'strength.svg' | asset_url }}" class="msm:tw-w-12 sm:tw-w-16" alt="strength-icon">
+            <p class="tw-text-xs sm:tw-text-sm tw-font-sans tw-uppercase tw-leading-tight tw-text-center tw-tracking-wide tw-font-bold tw-py-4 tw-mb-0">
+                strength-tested              
+            </p>
+            <p class="tw-text-xs sm:tw-text-sm tw-font-narrow tw-leading-tight tw-text-center tw-tracking-wide tw-max-w-xs">
+                Feels just like other tights.<br>&nbsp;            
+            </p>
+        </div>
+        <div class="tw-flex tw-items-center tw-justify-center tw-flex-col mmd:tw-mx-4">
+            <img src="{{ '5-star-d.svg' | asset_url }}" class="msm:tw-w-12 sm:tw-w-16" alt="strength-icon">
+            <p class="tw-text-xs sm:tw-text-sm tw-font-sans tw-uppercase tw-leading-tight tw-text-center tw-tracking-wide tw-font-bold tw-py-4 tw-mb-0">
+                Thousands of 5-star reviews          
+            </p>
+            <p class="tw-text-xs sm:tw-text-sm tw-font-narrow tw-leading-tight tw-text-center tw-tracking-wide tw-max-w-xs">
+                Don't just take our word for it. Read what<span class="msm:tw-hidden"><br></span> thousands of customers have to say.          
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="tw-pt-16">
+    <p class="msm:tw-text-2xl sm:tw-text-4xl tw-font-serif tw-leading-tight tw-font-light tw-tracking-normal tw-text-center">
+        Which tights are right for you?
+    </p>
+    {% render 'temp-warm-tights-sec' %}
+</section>
+
+<section class="page-width tw-text-center tw-pt-16">
+    <p class="tw-mx-auto tw-font-serif tw-text-6xl msm:tw-text-3xl sm:tw-px-20">
+        This is not a drill
+    </p>
+    <p class="tw-mx-auto tw-font-sans tw-text-3xl msm:tw-text-2xl sm:tw-px-20 tw-mb-0">
+        We're the only tights company using some of the strongest fibers in the world. Believe it. 
+        Our patent pending knit doesn't exist anywhere else on the market. We invented it, we make it, you'll love it. 
+    </p>
+</section>
+
+{% section 'hp-ca-us-vs-them' %}
+
+{% section 'featured-collection' %}

@@ -1,0 +1,64 @@
+<script>
+  {% comment %}
+    DW NOTE: Taken from here, with modifications:
+    https://gist.github.com/MaxMilton/e2338b02b7381fc7bef2ccd96f434201
+
+    The 'sentry-top-of-page.liquid' script will setup a window.onerror handler
+    so errors will be captured, then 'sentry-end-of-page.liquid' will load the
+    Sentry JavaScript and call 'Sentry.captureException' on any of these
+    errors.
+  {% endcomment %}
+
+  (function (window) {
+    'use strict';
+    {% comment %}
+      This will be set by './sentry-end-of-page.liquid', which loads Sentry
+    {% endcomment %}
+    if (typeof window.__sx_sentry_loaded !== 'undefined') return;
+    window.__sx_sentry_loaded = false;
+    window.__sx_sentry_error_queue = [];
+    var queue = window.__sx_sentry_error_queue;
+    window.onerror = function e(message, file, lineNo, columnNo, error) {
+      if (window.__sx_sentry_loaded) return;
+      queue.push([message, file, lineNo, columnNo, error]);
+    };
+
+    {% comment %}
+    /**
+     * Optionally expose the loaded state and error queue globally to push
+     * errors from your app.
+     */
+    // window.sentry.loaded = loaded;
+    // window.sentry.queue = queue;
+
+    /**
+     * raven.js doesn't capture unhandled Promise rejections by default due
+     * to limited compatibility; only Chrome 49+ and some promise libraries
+     * (e.g. core-js, bluebird) are known to trigger this event.
+     */
+    // DW NOTE: commented, since I don't *think* this is helpful
+    //window.onunhandledrejection = function e(error) {
+    //  if (window.__sx_sentry_loaded) return;
+    //  queue.push([
+    //    error.reason.reason || error.reason.message,
+    //    error.type,
+    //    JSON.stringify(error.reason),
+    //  ]);
+    //};
+
+    /**
+     * Optionally also track handled Promise rejections (useful for development
+     * or testing environments). Replace the above onunhandledrejection with:
+     */
+    // window.onunhandledrejection = window.onunhandledrejection =
+    //   function e(error) {
+    //     if (window.__sx_sentry_loaded) return;
+    //     queue.push([
+    //       error.reason.reason || error.reason.message,
+    //       error.type,
+    //       JSON.stringify(error.reason),
+    //     ]);
+    //   };
+    {% endcomment %}
+  }(window, window.__sx_sentry_error_queue));
+</script>

@@ -1,0 +1,299 @@
+<style>
+ @media (max-width: 769px) {
+  #what-were-gifting .grid .grid__item:nth-of-type(5) { order: 6; }
+  #what-were-gifting .grid .grid__item:nth-of-type(6) { order: 5; }
+  #what-were-gifting .grid .grid__item:nth-of-type(7) { order: 8; }
+  #what-were-gifting .grid .grid__item:nth-of-type(8) { order: 7; }
+ }
+
+ .gift-guide-banner-img{
+   background-image: url('https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Desktop.svg?v=1618597945');
+ }
+
+@media screen and (max-width: 640px){ 
+  .gift-guide-banner-img{
+    background-image: url('https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Mobile.svg?v=1618598354');
+  }
+}
+ 
+</style>
+
+{% comment %} This is for the custom Employee card Box items {% endcomment %}
+{% assign collection_custom_class = '' %}
+{% if section.blocks.size > 0 %}
+  {% assign collection_custom_blocks = section.blocks | map: 'settings' | where: 'collection_list', collection.handle %}
+{% endif %}
+{% if collection_custom_blocks and collection_custom_blocks.size > 0 %}
+  {% assign collection_custom_class = 'custom-grid' %}
+{% endif %}
+
+<div
+  id="NewCollectionSection"
+  data-section-id="{{ section.id }}"
+  data-section-type="new-collection-template">
+
+  <div class="collection_header gift-guide-banner-img tw-bg-cover tw-bg-no-repeat tw-bg-center">
+    {% if section.settings.banner_header != blank %}
+      <h1>{{ section.settings.banner_header }}</h1>
+    {% endif %}
+    {% if section.settings.banner_content != blank %}
+      <p>{{ section.settings.banner_content }}</p>
+    {% endif %}
+  </div>
+  <div class="nav_list">
+    <ul>
+      {% for block in section.blocks %}
+        {% if block.settings.collection != blank %}
+          {% if block.settings.collection_title != blank %}
+            <li><a href="#{{ block.settings.collection_title | handle }}">{{ block.settings.collection_title | upcase }}</a></li>
+          {% else %}
+            <li><a href="#{{ collections[block.settings.collection].title | handle }}">{{ collections[block.settings.collection].title | upcase }}</a></li>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="page-width page-content">
+    {% for block in section.blocks %}
+      {% assign collection = collections[block.settings.collection] %}
+      {%- assign per_row = block.settings.per_row -%}
+      {% if block.settings.collection_title != blank %}
+      <div class="collection-block" id="{% if block.settings.collection_title != blank %}{{ block.settings.collection_title | handle }}{% else %}{{ collection.title | handle }}{% endif %}">
+        {% if block.settings.enable_hero %}
+          <div class="collection_hero">
+            <div class="hero-content">
+              <div class="hero-title msm:tw-text-left msm:tw-pl-5">
+                {% if block.settings.collection_title != blank %}
+                  <h2>{{ block.settings.collection_title }}</h2>
+                {% else %}
+                  <h2>{{ collection.title }}</h2>
+                {% endif %}
+              </div>
+              {% if block.settings.hero_content %}
+                <div class="hero-text tw-px-3 md:tw-px-0 msm:tw-text-left msm:tw-pl-5">
+                  <p>{{ block.settings.hero_content }}</p>
+                </div>
+              {% endif %}
+              {% if block.settings.button_text != blank and block.settings.button_url != blank %}
+                <div class="hero-button">
+                  <a href="{{ block.settings.button_url }}" class="btn">{{ block.settings.button_text }}</a>
+                </div>
+              {% endif %}
+            </div>
+            <div class="hero-image">
+              {%- assign img = block.settings.hero_image -%}
+              <img 
+                  loading="lazy"
+                  class="feature-row__image tw-w-full"
+
+                  srcset="{{ img | img_url: '450x' }} 450w,
+                          {{ img | img_url: '600x' }} 600w,
+                          {{ img | img_url: '800x' }} 800w,
+                          {{ img | img_url: '1200x' }} 1200w,
+                          {{ img | img_url: '1600x' }} 1600w"
+                  sizes="(max-width: 780px) 450px, (max-width: 980px) 600px, 800px"
+                  alt="{{ block.settings.hero_image.alt }}">
+            </div>
+          </div>
+        {% else %}
+          <div class="collection_title">
+            {% if block.settings.collection_title != blank %}
+              <h2>{{ block.settings.collection_title }}</h2>
+            {% else %}
+              <h2>{{ collection.title }}</h2>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% unless block.settings.button_text != blank and block.settings.button_url != blank %}
+          <div class="collection_content">
+            <div class="grid grid--uniform">
+              {% assign grid_item_width = 'medium-up--one-third' %}
+
+              {% case per_row %}
+              {% when 1 %}
+                {%- assign grid_item_width = '' -%}
+              {% when 2 %}
+                {%- assign grid_item_width = 'medium-up--one-half' -%}
+              {% when 3 %}
+                {%- assign grid_item_width = 'medium-up--one-third' -%}
+              {% when 4 %}
+                {%- assign grid_item_width = 'medium-up--one-quarter' -%}
+              {% when 5 %}
+                {%- assign grid_item_width = 'medium-up--one-fifth' -%}
+              {% endcase %}
+
+              {% if collection.products.length > block.settings.product_limit %}
+                {% for i in (1..block.settings.product_limit) %}
+                  {% assign product = collection.products[forloop.index0] %}
+                  {% if collection.handle == 'what-were-giving' %}
+                  {% assign index_value = forloop.index0 %}
+
+                  {% for custom_block in collection_custom_blocks %}
+                    {% assign custom_block_position = custom_block.position | plus: 0 %}
+                    {% if index_value == custom_block_position %} 
+                      {% include 'product-grid-employee-card' block: custom_block %}
+                    {% endif %}
+                  {% endfor %}
+                  {% endif %}
+                  {% include 'product-grid-item' %}
+                {% endfor %}
+              {% else %}
+                {% for i in (1..collection.products.length) %}
+                  {% assign product = collection.products[forloop.index0] %}
+                  {% if collection.handle == 'what-were-giving' %}
+                  {% assign index_value = forloop.index0 %}
+
+                  {% for custom_block in collection_custom_blocks %}
+                    {% assign custom_block_position = custom_block.position | plus: 0 %}
+                    {% if index_value == custom_block_position %} 
+                      {% include 'product-grid-employee-card' block: custom_block %}
+                    {% endif %}
+                  {% endfor %}
+                  {% endif %}
+                  {% include 'product-grid-item' %}
+                {% endfor %}
+              {% endif %}
+            </div>
+            {% if collection.products.length > block.settings.product_limit %}
+              <div class="view_all msm:tw-mb-14">
+                <a href="{{ collection.url }}" class="btn">
+                  {% if request.locale.iso_code == 'en' %}
+                    View All
+                  {% elsif request.locale.iso_code == 'fr' %}
+                    VOIR TOUT
+                  {% endif %}
+                </a>
+              </div>
+            {% endif %}
+          </div>
+          <hr class="product-grid__line gift-guide-line tw-hidden msm:tw-block">
+        {% endunless %}
+      </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Gift guide page",
+    "class": "new-collection",
+    "settings": [
+      {
+        "type": "text",
+        "id": "banner_header",
+        "label": "Banner Header"
+      },
+      {
+        "type": "textarea",
+        "id": "banner_content",
+        "label": "Banner Content"
+      }
+    ],
+    "blocks":[
+      {
+        "type": "Collection",
+        "name": "Collection",
+        "settings":[
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          },
+          {
+            "type": "text",
+            "id": "collection_title",
+            "label": "Collection Title"
+          },
+          {
+            "type": "textarea",
+            "id": "hero_content",
+            "label": "Hero content"
+          },
+          {
+            "type": "checkbox",
+            "id": "enable_hero",
+            "label": "Hero Enable",
+            "default": false
+          },
+          {
+            "type": "image_picker",
+            "id": "hero_image",
+            "label": "Hero Image"
+          },
+          {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text"
+          },
+          {
+            "type": "url",
+            "id": "button_url",
+            "label": "Button Link"
+          },
+          {
+            "type": "range",
+            "id": "product_limit",
+            "min": 1,
+            "max": 20,
+            "step": 1,
+            "label": "Product Limit",
+            "default": 4
+          },
+          {
+            "type": "range",
+            "id": "per_row",
+            "label": "Products per row",
+            "default": 4,
+            "min": 1,
+            "max": 5,
+            "step": 1
+          }
+        ]
+       },
+       {
+        "type": "custom_plp_item",
+        "name": "Custom Employee Box",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "collection_list",
+            "label": "Collection Selector",
+            "info": "In which collection should this image box be displayed?"
+          },
+          {
+            "type": "text",
+            "id": "position",
+            "label": "Item Position",
+            "default": "1",
+            "placeholder": "Enter a number",
+            "label": "Position to place the block after nth product"
+          },
+          {
+            "type": "checkbox",
+            "id": "green_box",
+            "label": "green background"
+          },
+          {
+            "type": "checkbox",
+            "id": "gradient_box",
+            "label": "gradient background"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading"
+          },
+          {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description"
+          }
+        ]
+      }
+     ]
+  }
+{% endschema %}
+

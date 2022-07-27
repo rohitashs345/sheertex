@@ -1,0 +1,15 @@
+{% if linklists[block.settings.menu].links.size > 0 %}
+  {% if block.settings.show_footer_title %}
+  <h2 class="footer__title">
+    {{ linklists[block.settings.menu].title }}
+  </h2>
+  {% endif %}
+  <div>
+    <ul class="no-bullets site-footer__linklist">
+      {% for link in linklists[block.settings.menu].links %}
+      {% assign link_url = link.url %}
+      <li><a href="{{ link_url }}">{{ link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}

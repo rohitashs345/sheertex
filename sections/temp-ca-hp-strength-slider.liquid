@@ -1,0 +1,101 @@
+{% style %}
+.swiper-pagination-bullet-active {
+  background: #ddff98 !important;
+}
+.swiper-pagination-bullet {
+  background: #000 !important;
+}
+
+.swiper-pagination-bullets {
+  bottom: 0 !important;
+}
+{% endstyle %}
+
+<section class="tw-w-full tw-pt-16 msm:tw-pt-12" data-cypress="strength-icons">
+  {% if request.design_mode %}
+    <div class="tw-my-32 tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-h-full">
+      <h1 class="tw-text-2xl tw-text-red-700">This section preview is not updated in theme editor</h1>
+      <p>Save the changes & use theme preview to see the changes</p>
+    </div>
+  {% else %}
+  <div>
+    <div class="tw-text-center msm:tw-px-8">
+      <div class="tw-uppercase tw-mb-6 tw-font-bold tw-text-sm msm:tw-text-xs tw-tracking-heading tw-text-center tw-font-sans tw-font-heading tw-pt-6">{{ section.settings.header }}</div>
+      <div class="tw-mb-4 tw--mt-2 tw-font-serif msm:tw-text-2xl sm:tw-text-4xl tw-font-light tw-tracking-normal tw-text-center tw-font-sans tw-font-heading">
+        {{ section.settings.title}}
+      </div>
+    </div>
+    <div data-svelte="strength-icons-slideshow"></div>
+  <div>
+  {% endif %}
+</div></div></section>
+<script>
+  /* This script should be executed after the markup is generated */
+  (function payloadGenerator() {
+    var payload = [
+    {% for block in section.blocks %}
+      {{block.settings | json }}
+      {% unless forloop.last %},{% endunless %}
+    {% endfor %}
+    ];
+    const strengthIconsSlideshowEl = document.querySelector("[data-svelte=strength-icons-slideshow]");
+    if (strengthIconsSlideshowEl) {
+      strengthIconsSlideshowEl.setAttribute('data-svelte-payload', JSON.stringify(payload));
+    }
+  })();
+</script>
+
+{% schema %}
+
+{
+  "name": "HP Strength Icons",
+    "settings": [
+    {
+      "type": "text",
+      "id": "header",
+      "label": "Strength Icons Sec heading",
+       "default": "WHY SHEERTEX?"
+    },
+     {
+      "type": "text",
+      "id": "title",
+      "label": "Strength Icons title",
+      "default": "The World’s Most Resilient Tights"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "strength_icon_svg",
+          "label": "Ainmated Strength Svg Link"          
+        }, {
+          "type": "textarea",
+          "id": "strength_title",
+          "label": "Strength Icon title",
+          "default": "10X STRONGER THAN STEEL"
+        }, {
+          "type": "textarea",
+          "id": "strength_desc",
+          "label": "Strength Icon Description",
+          "default": "Made using one of the world’s strongest polymers, our tights are guaranteed to last."
+        }, {
+          "type": "url",
+          "id": "strength_link",
+          "label": "Strength Icon link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "HP Strength Icons",
+      "category": "Sheertex Inc"
+    }
+  ]
+}
+
+{% endschema %}

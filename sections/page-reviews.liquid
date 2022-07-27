@@ -1,0 +1,228 @@
+<section class="tw-grid msm:tw-grid-rows-2 sm:tw-grid-cols-2 tw-grid-gap-0 tw-mb-8 sm:tw-mb-16">
+  <img class="msm:tw-row-start-2 tw-w-full" src="{{ section.settings.banner_image | img_url: 'x640' }}" alt="banner-image">
+  <div class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-bg-green-200">
+    {% if section.settings.banner_title_1 != blank %}
+      <div class="tw-font-sans w-uppercase tw-text-base tw-font-bold tw-mb-4 __reviews-banner__title1__2--of">
+        {{ section.settings.banner_title_1 }}
+      </div>
+    {% endif %}
+    {% if section.settings.banner_title_2 != blank %}
+      <div class="tw-font-serif tw-text-center __reviews-banner__title2__3-RW8">
+        {{ section.settings.banner_title_2 }}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="tw-container">
+  <div class="tw-flex tw-flex-wrap tw--mx-3 tw-overflow-hidden sm:tw--mx-3 md:tw--mx-3 lg:tw--mx-3 xl:tw--mx-4">
+    {% for block in section.blocks %}
+    {% if block.settings.quote_wide %}
+      <div class="tw-my-12 tw-px-3 tw-w-full tw-overflow-hidden sm:tw-my-3 sm:tw-px-3 md:tw-my-8 md:tw-px-3 lg:tw-my-12 lg:tw-px-3 xl:tw-my-12 xl:tw-px-4 tw-flex tw-items-center tw-justify-center tw-flex-col">
+    {% else %} 
+      <div class="tw-my-12 tw-px-3 tw-w-full tw-overflow-hidden sm:tw-my-3 sm:tw-px-3 md:tw-my-8 md:tw-px-3 lg:tw-my-12 lg:tw-px-3 lg:tw-w-1/2 xl:tw-my-12 xl:tw-px-4 xl:tw-w-1/2 tw-flex tw-items-center tw-justify-center tw-flex-col">
+    {% endif %}
+        {% assign product = all_products[block.settings.quote_product] %}
+
+        {% if block.settings.quote_image %}
+        <div class="tw-flex tw-items-start">
+          <img class="tw-mb-8 tw-relative" src="{{ block.settings.quote_image | img_url: '555x' }}" alt="insta-model">
+            <img class="tw-absolute" src="{{ 'instagram.svg' | asset_url }}" alt="insta-icon">
+        </div>
+        {% endif %}
+        {% if block.settings.test-block_image %}
+        <div class="tw-flex tw-items-end tw-justify-center tw-mb-4 md:tw-mb-8">
+          <img class="tw-justify-self-center tw-relative" src="{{ block.settings.test-block_image | img_url: '439x' }}" alt="testing-fire-extinguisher">
+        {% if request.locale.iso_code == 'en' %}
+          <div class="tw-absolute tw--mb-12 tw-bg-green-200 tw-px-5 tw-pt-4 tw-pb-5">
+            <div class="tw-text-left tw-pb-1 tw-font-serif __test-box__title__3cGD5">Test Our Knit</div>
+            <hr class="__test-border__3EjZy">
+            <div class="tw-text-left tw-uppercase __test-box__product__x1Eux">{{ product.title }}</div>
+            <hr class="__test-border__3EjZy">
+            <div class="tw-text-left tw-uppercase __test-box__product__x1Eux">10 LB FIRE EXTINGUISHER</div>
+            <hr class="__test-border__3EjZy">
+            <div class="tw-text-left tw-uppercase __test-box__product__x1Eux">Testing Strength</div>
+            <hr class="__test-border__3EjZy">
+            <a class="tw-justify-self-center tw-underline tw-uppercase __reviews-product__title__3e7wX" href="{{ product.url}}">
+              Shop {{ product.title }}
+            </a>
+          </div>
+        </div>
+        {% elsif request.locale.iso_code == 'fr' %}
+        <div class="tw-absolute tw--mb-12 tw-bg-green-200 tw-px-5 tw-pt-4 tw-pb-5">
+          <div class="tw-text-left tw-pb-1 tw-font-serif __test-box__title__3cGD5">Testez notre tricot</div>
+          <hr class="__test-border__3EjZy">
+          <div class="tw-text-left tw-uppercase __test-box__product__x1Eux">{{ product.title }}</div>
+          <hr class="__test-border__3EjZy">
+          <div class="tw-text-left tw-uppercase __test-box__product__x1Eux">EXTINCTEUR DE 10 LIVRES</div>
+          <hr class="__test-border__3EjZy">
+          <div class="tw-text-left tw-uppercase __test-box__product__x1Eux">TEST DE RÉSISTANCE</div>
+          <hr class="__test-border__3EjZy">
+          <a class="tw-justify-self-center tw-underline tw-uppercase __reviews-product__title__3e7wX" href="{{ product.url}}">
+            Magasinez {{ product.title }}
+          </a>
+        </div>
+      </div>
+      {% endif %}
+        
+      {% endif %}
+        {% if block.settings.video_url contains '.mp4' %}
+        <video class="tw-justify-self-center tw-pb-6" id="Mp4Video-{{ block.id }}" src="{{ block.settings.video_url }}" loop="" muted="" playsinline="" autoplay="">
+        </video>
+        {% endif %}
+        {% if block.settings.quote_text_large != blank %}
+          <div class="tw-font-serif tw-text-center tw-justify-self-center tw-pb-6 __large-quote__1xd3w">
+            “{{ block.settings.quote_text_large }}”
+          </div>
+        {% endif %}
+
+        <div class="tw-text-center tw-pb-6">
+          <span class="tw-uppercase tw-font-medium __media-handle__3wZSa">
+            {{ block.settings.quote_name }}
+          </span>
+
+          {% if block.settings.quote_rating > 1 %}
+            |
+            <span>
+              ◆ ◆ ◆ ◆ ◆ {{ block.settings.quote_rating }}
+            </span>
+          {% endif %}
+        </div>
+
+        {% if block.settings.quote_text_small != blank %}
+          <div class="tw-justify-self-center tw-pb-4 __small-quote__2BMHF">
+            “{{ block.settings.quote_text_small }}”
+          </div>
+        {% endif %}
+
+        {% if product.title != blank and block.settings.test-block_image == blank %}
+        {% if request.locale.iso_code == 'en' %}
+          <div>
+            <a class="tw-justify-self-center tw-underline tw-uppercase __reviews-product__title__3e7wX" href="{{ product.url}}">
+              Shop {{ product.title }}
+            </a>
+          </div>
+        {% elsif request.locale.iso_code == 'fr' %}
+        <div>
+          <a class="tw-justify-self-center tw-underline tw-uppercase __reviews-product__title__3e7wX" href="{{ product.url}}">
+            Magasinez {{ product.title }}
+          </a>
+        </div>
+        {% endif %}
+        {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<div class="page-width page-content tw-text-center mlg:tw-px-0">
+  {% if request.locale.iso_code == 'en' %}
+    <h3 class="tw-my-6 tw-font-sans tw-text-center tw-uppercase tw-text-xl tw-font-bold tw-tracking-widest">Our hard-earned luck has<br>everyone talking</h3>
+    {% elsif request.locale.iso_code == 'fr' %}
+    <h3 class="tw-my-6 tw-font-sans tw-text-center tw-uppercase tw-text-xl tw-font-bold tw-tracking-widest">NOTRE CHANCE DUREMENT GAGNÉE FAIT <br>PARLER TOUT LE MONDE</h3>
+    {% endif %} 
+    <div class="tw-flex tw-flex-wrap tw-justify-center tw-w-full mlg:tw-mx-0 __media-mainContainer__3-kml">
+        <div class="tw-w-80 tw-h-64 tw-bg-purple-200 sm:tw-mr-8 tw-mr-0 tw-p-8 sm:tw-mx-0 tw-mb-4 __gizmodo-block__NP7qX">
+          <img class="img tw-mx-auto tw-mt-8 tw-pb-3 tw-w-2/5" loading="lazy" src="https://cdn.shopify.com/s/files/1/0316/1119/1435/files/Gizmodo_Media_Group_Logo_360x_ee0ebb4d-e73b-4795-8ea7-700aad79456e.png?v=1580975307">
+          <div class="tw-mt-3">
+            <span class="big-quote">"</span>You can stretch and twist the Sheertex as much as you like and they won't break. You'd have to be the Hulk to tear a hole through these things.<span class="big-quote">"</span>
+          </div>
+        </div>
+        <div class="tw-p-8 tw-w-80 tw-h-64 tw-flex tw-items-center tw-justify-center tw-bg-purple-200 sm:tw-mt-0 tw-mb-4 __times-block__2J2F_">
+          <div class="timeContainer-content">
+            Named One of<br>TIME's 50 Best<br>Inventions of 2018
+          </div>
+        </div>
+        <div class="tw-w-80 tw-h-64 tw-bg-purple-200 sm:tw-ml-8 tw-mr-0 tw-p-8 sm:tw-mx-0 __bustle-block__2LCN_">
+          <img class="img tw-mx-auto tw-pb-3 tw-mt-4 tw-w-2/5" loading="lazy" src="https://cdn.shopify.com/s/files/1/0316/1119/1435/files/Bustle_logo.svg_360x_b58b6477-2a0f-4ee0-a68f-80575b8a86d1.png?v=1580975307">
+          <div class="bustleContainer-content">
+            {% if request.locale.iso_code == 'en' %}
+            <span class="big-quote">"</span>These super pantyhose have been tested and proven to be wearable up to 50 times. Regular brands usually give you two or three wears before you are forced to toss 'em.<span class="big-quote">"</span>
+            {% elsif request.locale.iso_code == 'fr' %}
+            <span class="big-quote">"</span>Ces super collants ont été testés et prouvés comme pouvant être portés jusqu'à 50 fois. Les marques ordinaires vous donnent généralement deux ou trois utilisations avant que vous soyez obligé de les jeter.<span class="big-quote">"</span>
+            {% endif %}
+          </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Reviews",
+    "settings": [
+      {
+        "type": "text",
+        "id": "banner_title_1",
+        "label": "Banner Title 1"
+      },
+      {
+        "type": "text",
+        "id": "banner_title_2",
+        "label": "Banner Title 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "banner_image",
+        "label": "Banner image"
+      }
+    ],
+    "blocks":[
+      {
+        "type": "quote",
+        "name": "Quote",
+        "settings":[
+          {
+            "type": "text",
+            "id": "quote_name",
+            "label": "Name or social media handle"
+          },
+          {
+            "type": "range",
+            "id": "quote_rating",
+            "label": "Rating",
+            "min": 1,
+            "max": 5,
+            "step": 0.1,
+            "default": 5
+          },
+          {
+            "type": "checkbox",
+            "id": "quote_wide",
+            "label": "Spans two columns"
+          },
+          {
+            "type": "text",
+            "id": "quote_text_large",
+            "label": "Quote large"
+          },
+          {
+            "type": "text",
+            "id": "quote_text_small",
+            "label": "Quote small"
+          },
+          {
+            "type": "text",
+            "id": "video_url",
+            "label": "Background video link",
+            "info": "Supports YouTube, .MP4 and Vimeo. Not all features supported by Vimeo. [Learn more](https://archetypethemes.co/blogs/motion/how-do-i-add-background-videos)"
+          },
+          {
+            "type": "product",
+            "id": "quote_product",
+            "label": "Product"
+          },
+          {
+            "type": "image_picker",
+            "id": "quote_image",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "test-block_image",
+            "label": "Test Our Knit block"
+          }
+        ]
+       }
+     ]
+  }
+{% endschema %}

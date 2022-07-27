@@ -1,0 +1,50 @@
+<section class="tw-flex tw-flex-col md:tw-flex-row tw-justify-center tw-items-center tw-mt-12 sm:tw-mt-16">
+  <div class="tw-relative tw-flex tw-items-center tw-justify-center tw-w-full">
+    <video class="tw-relative tw-object-cover tw-w-full msm:tw-max-h-32 __hp-us-vs-them__2ia87" loop="" muted="" playsinline="" autoplay="">
+      <source src="{{ 'homepage_us.webm' | asset_url }}" type="video/webm; codecs=vp9,vorbis">
+      <source src="{{ 'homepage_us.mp4' | asset_url }}" type="video/mp4">
+    </video>
+    <div class="tw-absolute tw-top-8 tw-font-sans tw-font-medium tw-tracking-heading tw-uppercase tw-text-base msm:tw-text-sm">{{ section.settings.us_text }}</div>
+  </div>
+  <div class="tw-relative tw-flex tw-items-center tw-justify-center tw-w-full">
+    <video class="tw-relative tw-object-cover tw-w-full msm:tw-max-h-32 __hp-us-vs-them__2ia87" loop="" muted="" playsinline="" autoplay="">
+      <source src="{{ 'homepage_them.webm' | asset_url }}" type="video/webm; codecs=vp9,vorbis">
+      <source src="{{ 'homepage_them.mp4' | asset_url }}" type="video/mp4">
+    </video>
+    <div class="tw-absolute tw-top-8 tw-font-sans tw-font-medium tw-tracking-widest tw-uppercase tw-text-base msm:tw-text-sm">{{ section.settings.them_text }}</div>
+  </div>
+</section>
+
+<style>
+.__hp-us-vs-them__2ia87 {
+  max-height: 514px;
+}
+</style>
+
+{% schema %}
+
+{
+  "name": "HP Us vs them",
+  "class": "value-prop",
+  "settings": [
+    {
+      "type": "text",
+      "id": "us_text",
+      "label": "Us video overlay text",
+      "default": "US"
+    }, {
+      "type": "text",
+      "id": "them_text",
+      "label": "Them video overlay text",
+      "default": "Everyone else"
+    }
+  ],
+  "presets": [
+    {
+      "name": "HP Us vs them",
+      "category": "Sheertex"
+    }
+  ]
+}
+
+{% endschema %}

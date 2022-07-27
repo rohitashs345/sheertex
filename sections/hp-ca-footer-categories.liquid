@@ -1,0 +1,59 @@
+<section class="tw-grid sm:tw-grid-cols-2 msm:tw-grid-rows-2 sm:tw-mt-16 msm:tw-my-12">
+  <a href="{% include 'utils-placeholder-if-empty', value: section.settings.category_1_link, placeholder: '/pages/shop-sets' %}" class="tw-bg-cover tw-bg-no-repeat tw-w-full tw-h-128 tw-bg-center tw-flex tw-items-center tw-justify-center msm:tw-h-80" style="background-image: url({{ section.settings.category_1_image | img_url: '1200x' }})">
+      <button class="tw-text-white tw-capitalize tw-tracking-normal tw-font-serif tw-text-center tw-font-light tw-leading-tight tw-text-xl sm:tw-text-2xl">
+          {{ section.settings.category_1_title }}
+      </button>
+  </a>
+  <a href="{% include 'utils-placeholder-if-empty', value: section.settings.category_2_link, placeholder: '/pages/refer-a-friend' %}" class="tw-bg-cover tw-bg-no-repeat tw-w-full tw-h-128 tw-bg-center tw-flex tw-items-center tw-justify-center msm:tw-h-80" style="background-image: url({{ section.settings.category_2_image | img_url: '1200x' }})">
+      <button class="tw-text-white tw-capitalize tw-tracking-normal tw-font-serif tw-text-center tw-font-light tw-leading-tight tw-text-xl sm:tw-text-2xl">
+          {{ section.settings.category_2_title }}
+      </button>
+  </a>
+</section>
+
+{% schema %}
+{
+"name": "HP Footer Categories",
+"settings": [
+  {
+    "type": "image_picker",
+    "id": "category_1_image",
+    "label": "Category1 image"
+  },
+  {
+    "type": "text",
+    "id": "category_1_title",
+    "label": "First category title",
+    "default": "Shop Bundles & Save"
+  },
+  {
+    "type": "url",
+    "id": "category_1_link",
+    "label": "First Category link"
+  },
+  {
+    "type": "image_picker",
+    "id": "category_2_image",
+    "label": "Category2 image"
+  },
+  {
+    "type": "text",
+    "id": "category_2_title",
+    "label": "Second category title",
+    "default": "Get $20 for every friend you refer"
+  },
+  {
+    "type": "url",
+    "id": "category_2_link",
+    "label": "Second Category link"
+  }       
+], 
+"presets": [
+  {
+    "name": "HP Footer Categories Section",
+    "category": "Sheertex Inc"
+  }
+]
+}
+
+{% endschema %}

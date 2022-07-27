@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Search</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="D_State-01" transform="translate(-1268.000000, -57.000000)" stroke="#000000" stroke-width="0.85">
+            <path d="M1280,75.0561421 C1284.97056,75.0561421 1289,71.0267048 1289,66.0561421 C1289,61.0855793 1284.97056,57.0561421 1280,57.0561421 C1275.02944,57.0561421 1271,61.0855793 1271,66.0561421 C1271,71.0267048 1275.02944,75.0561421 1280,75.0561421 Z M1280.22213,75.7821256 L1280.22213,81.7821256" id="Search" transform="translate(1280.000000, 69.419134) rotate(-44.000000) translate(-1280.000000, -69.419134) "></path>
+        </g>
+    </g>
+</svg>

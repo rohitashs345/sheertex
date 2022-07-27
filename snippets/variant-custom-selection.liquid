@@ -1,0 +1,305 @@
+<style>
+.custom-variant-swatches {
+  display: flex;
+}
+
+.custom-variant-swatches input,
+.custom-variant-options input {
+  display: none;
+}
+
+.custom-variant-swatches label {
+  max-height: 16px;
+  max-width: 16px;
+  margin-right: 2%;
+}
+
+.custom-variant-swatches label:last-child {
+  margin-right: 0;
+}
+
+
+.custom-variant-swatches input:checked+label {
+  box-shadow: 0 0 0 2px #1c1d1d;
+}
+
+.custom-variant-options label {
+  position: relative;
+  display: inline-block;
+  line-height: 1.6;
+  padding: 7px 7px 7px;
+  margin: 0 8px 12px 0;
+  font-style: normal;
+  font-size: 13px;
+  text-transform: none;
+  background-color: #fff;
+  box-shadow: 0 0 0 1px #e8e8e1;
+  font-family: Agrandir;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.104rem;
+  font-size: 0.6rem;
+}
+
+.custom-variant-options input:checked+label {
+  box-shadow: 0 0 0 2px #1c1d1d;
+}
+
+#cus-selected-color{
+  font-size: 0.76rem;
+  letter-spacing: 0.09em;
+  line-height: 1.6;
+  text-transform: none;
+  font-weight: normal;
+  color: black;
+}
+
+.packDiscount-label{
+  position: relative;
+  line-height: 0.6;
+  font-family: Agrandir;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.104rem;
+  font-size: 0.6rem;
+  margin-bottom: 10px;
+}
+
+.custom-variant-options label.unavailable {
+  background-color: #f6f6f6;
+  color: #777171;
+}
+.custom-variant-options input:checked+label.unavailable {
+  box-shadow: 0 0 0 1px #777171;
+}
+
+.size-guide-popup {  
+  padding: 30px;
+  min-width: 600px;
+  width: 600px;
+  height: 600px;
+  min-height: 600px;
+  position: absolute;
+  z-index: 50;
+  background-color: white;
+  left: 50%;
+  top: 40%;
+}
+
+.size-guide-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  gap: 8px;
+  cursor: pointer;
+  margin: 15px 0;
+}
+
+.size-guide-button img {
+  width: 24px;
+  height: 24px;
+}
+</style>
+
+{%- assign swatch_file_extension_pdp = 'png' -%}
+
+<div class="tw-mb-4 tw-mr-0 tw-block {{ option.name | remove:" " }} variant-wrapper variant-wrapper--{{ settings.variant_type }} js">
+  {% if option.name == "Color" or option.name == "Couleur" %}   
+  {% assign index = forloop.index %}
+    <label class="variant__label tw-mb-4">
+      <span>{{ option.name }}</span>
+      &mdash;
+      <span id="cus-selected-color"></span>
+    </label>
+    <div class="custom-variant-swatches">
+      {% for value in option.values %}        
+        <input 
+          class="variant__input-{{ section_id }} color-select"
+          id="color-{{forloop.index}}" 
+          type="radio" 
+          name="color" 
+          value="{{ value | escape }}"
+          data-index="option{{index}}" 
+          {% if option.selected_value == value %} checked {% endif %}
+        />
+        {% if product.tags contains 'multi_color'  %}
+         {%- assign color_image_pdp = value | handle | append: '.' | append: swatch_file_extension_pdp | asset_img_url: '50x' | prepend: 'https:' | split: '?' | first -%}
+         {%- assign color_swatch_fallback_pdp = value | split: ' ' | last | handle -%}
+          <label
+            for="color-{{forloop.index}}" 
+            class="color-swatch color-swatch--small"
+            style="background-image: url({{ color_image_pdp }}); background-color: {{ color_swatch_fallback_pdp }};"
+          >
+            {{ value | escape }}
+          </label>
+        {% else %}
+          <label for="color-{{forloop.index}}" class="color-swatch color-swatch--small tw-bg-clothing-{{ value | downcase | remove: " "}}">
+          </label>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <label class="variant__label tw-mb-4">{{ option.name }}   
+    {% if option.name == 'Taille' or option.name == 'Size' %}
+    {% if request.locale.iso_code == 'en' %}
+      <span data-select-size-label class="tw-text-red tw-animate-pulse tw-invisible">&larr; select your size</span>
+      <div data-button="open-size-guide-modal" class="size-guide-button" >
+        Size chart<img alt="icon" src="{{ 'tape.svg' | asset_url }}">
+      </div>
+    {% elsif request.locale.iso_code == 'fr' %}
+    <span data-select-size-label class="tw-text-red tw-animate-pulse tw-invisible">&larr; SÉLECTIONNEZ VOTRE TAILLE</span>
+    <div data-button="open-size-guide-modal" class="size-guide-button" >
+      TABLEAU DES TAILLES<img alt="icon" src="{{ 'tape.svg' | asset_url }}">
+    </div>
+    {% endif %}
+      {% include 'size-guide-modal' %}  
+    {% endif %}
+    </label>
+    <div class="custom-variant-options tw-flex tw-flex-wrap">      
+      {% assign index = forloop.index %}
+      {% for value in option.values %}
+        <div class="tw-flex tw-flex-col">
+          <input 
+            class="variant__input-{{ section_id }}"
+            id="{{ option.name }}-{{forloop.index}}" 
+            type="radio" 
+            name="{{ option.name }}" 
+            value="{{ value | escape }}" 
+            data-index="option{{index}}" 
+            {% if option.selected_value == value %}
+              {% if option.name == 'Taille' or option.name == 'Size' %}
+                {% if current_variant.available or current_variant.id %} checked {% endif %}
+              {% else %}             
+                checked
+              {% endif %}
+            {% endif %}           
+          />
+          <label for="{{ option.name }}-{{forloop.index}}">{{ value }}</label>
+          {% if option.name == 'Grab a Pack' or option.name == 'Prenez un Paquet' %}  
+            {% if product.handle != 'essential-sheer-tights' and value contains '2-Pack' and index != 0 %}
+              <div class="packDiscount-label tw-text-center tw-mr-2 tw-border-none">(-10%)</div>             
+            {% elsif product.handle != 'essential-sheer-tights' and value contains '3-Pack' and index != 0 %}   
+              <div class="packDiscount-label tw-text-center tw-mr-2 tw-border-none">(-15%)</div>  
+            {% endif %}   
+          {% endif %}       
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+<script>
+
+(function initializeColorSwitcher() {
+  function setSelectedColor(value) {
+    if (!value) {
+      return
+    }
+
+    let element = document.getElementById('cus-selected-color');
+    if (!element) {
+      return
+    }
+
+    let normalizedValue = value.replace(/\s/g, '');
+    
+    element.innerHTML = (normalizedValue.includes('bestfor') || normalizedValue.includes('idéalpour')) ? value.replaceAll(':', ',') : value;      
+  }
+
+  let colorOptions = document.querySelectorAll(".color-select");
+  if (colorOptions.length === 0) {
+    return
+  }
+  
+  let selectedColorOption = document.querySelector("input.color-select[checked]");
+  selectedColorOption && setSelectedColor(selectedColorOption.value);    
+
+  colorOptions.forEach((option, index) => {
+    option.onclick = function(event) {
+      event.target.value && setSelectedColor(event.target.value);         
+    }
+  });
+})();
+
+(function () {
+// we assume that option1 will always be size
+const SIZE_OPTION = 'option1';
+
+function setSelectSizeLabelVisible (isVisible) {
+  const labelElement = document.querySelector('span[data-select-size-label]');
+  if (!labelElement) {
+    return;
+  }
+
+  if (isVisible) {
+    labelElement.classList.remove('tw-invisible');
+  } else {
+    labelElement.classList.add('tw-invisible');
+  }  
+}
+
+function getSizeVariantsForSelectedOptions({ variants, options }) {
+  const variantsSet = new Set();  
+  variants.forEach(function (variant) {
+      var isCorrect = true;
+      
+      options.forEach(function (option) {
+        if (option.index !== SIZE_OPTION) {
+          isCorrect = isCorrect && variant[option.index] === option.value
+        }
+      })
+
+      if (isCorrect) {
+        variantsSet.add(variant);                
+      }
+  });
+
+  return Array.from(variantsSet);
+}
+
+function markUnavailableColors(visibleVariants) {      
+    visibleVariants.forEach(variant => {
+      const sizeSelectorButton = document.querySelector(`input[data-index="${SIZE_OPTION}"][value="${variant[SIZE_OPTION]}"]`);
+      
+      if (!sizeSelectorButton) {
+        return;
+      }
+
+      const sizeSelectorLabel = sizeSelectorButton.parentElement.querySelector('label');        
+      if (!sizeSelectorLabel) {
+        return;
+      }
+      
+      if (variant.available) {
+        sizeSelectorLabel.classList.remove('unavailable')
+      } else {
+        sizeSelectorLabel.classList.add('unavailable')
+      }      
+  });      
+}
+
+  window.jQuery(document).ready(() => {      
+    window.initializeVariantsSelector = ({ variants, getCurrentOptions }) => {
+      const options = getCurrentOptions();            
+      const hasSizeOption = options.find(option => option.index === SIZE_OPTION);
+      setSelectSizeLabelVisible(hasSizeOption ? false : true);
+      
+      const visibleVariants = getSizeVariantsForSelectedOptions({ variants, options });
+      markUnavailableColors(visibleVariants);      
+    }
+
+    window.onProductFormSelectChanged = ({ variants, options, variant, updateImages }) => {         
+      const hasSizeOption = options.find(option => option.index === SIZE_OPTION);
+      setSelectSizeLabelVisible(hasSizeOption ? false : true);
+
+      const visibleVariants = getSizeVariantsForSelectedOptions({ variants, options });
+      markUnavailableColors(visibleVariants);       
+      
+      if (!variant) {
+        updateImages(visibleVariants[0]);
+      }
+    }
+  })
+})()
+</script>

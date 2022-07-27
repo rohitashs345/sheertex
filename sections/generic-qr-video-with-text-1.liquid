@@ -1,0 +1,140 @@
+<div data-section-id="{{ section.id }}" data-section-type="knit-video-section" class="tw-flex mmd:tw-flex-col-reverse">
+
+  <div class="tw-w-1/2 tw-flex tw-items-center tw-p-8 tw-bg-purple-300 mmd:tw-w-full">
+    <div class="__page-width___yJ0H">
+      {% if section.settings.title != blank %}
+        <h2 class="__title__2aXRU">{{ section.settings.title | escape }}</h2>
+      {% endif %}
+      {% if section.settings.text != blank %}
+        <div>{{ section.settings.text }}</div>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if section.settings.media_type == 'video' %}
+    <div class="tw-flex tw-w-1/2 mmd:tw-w-full tw-flex">
+
+      {% if section.settings.video_url contains 'youtube.com/watch' %}
+        {%- assign video_id = section.settings.video_url | split: 'v=' -%}
+        {%- assign video_id = video_id[1] | split: '&' | first -%}
+        <div id="YouTubeVideo-{{ section.id }}" data-video-id="{{ video_id }}"></div>
+      {% endif %}
+
+      {% if section.settings.video_url contains 'youtu.be/' %}
+        {%- assign video_id = section.settings.video_url | split: '.be/' -%}
+        {%- assign video_id = video_id[1] | split: '&' | first -%}
+        <div id="YouTubeVideo-{{ section.id }}" data-video-id="{{ video_id }}"></div>
+      {% endif %}
+
+      {% if section.settings.video_url contains 'vimeo.com' %}
+        {%- assign video_id = section.settings.video_url | split: '.com/' -%}
+        {%- assign video_id = video_id[1] | split: '/' | first -%}
+        <div id="Vimeo-{{ section.id }}" data-video-id="{{ video_id }}"></div>
+      {% endif %}
+
+      {% if section.settings.video_url contains '.mp4' %}
+        <video class="tw-w-full tw-h-full tw-object-cover" src="{{ section.settings.video_url }}" loading="lazy" loop="" muted="" playsinline="" autoplay=""></video>
+      {% endif %}
+
+    </div>
+  {% else %}
+    <div class="tw-flex tw-w-1/2 mmd:tw-w-full tw-flex">
+      {%- assign img_url = section.settings.image | img_url: 'master' -%}
+      <img loading="lazy" class="tw-w-full tw-h-full tw-object-cover" src="{{ img_url }}">
+    </div>
+  {% endif %}
+</div>
+
+<style>
+
+#shopify-section-{{ section.id }} .video-parent-section{
+  height: {{ section.settings.section_height }};
+}
+
+</style>
+<style>
+  .__page-width___yJ0H {
+    padding: 0;
+    margin: 0 auto;
+    max-width: 420px;
+  }
+  .__title__2aXRU {
+    font-size: 32px;
+    margin-bottom: 1.5rem;
+    font-family: Matiere;
+    line-height: 1.2;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Knit Video with Text",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "video_url",
+        "label": "Video Link"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text"
+      },
+      {
+        "type": "select",
+        "id": "section_height",
+        "label": "Desktop height",
+        "default": "650px",
+        "options": [
+          {
+            "label": "450px",
+            "value": "450px"
+          },
+          {
+            "label": "550px",
+            "value": "550px"
+          },
+          {
+            "label": "650px",
+            "value": "650px"
+          },
+          {
+            "label": "750px",
+            "value": "750px"
+          },
+          {
+            "label": "Full screen",
+            "value": "100vh"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "media_type",
+        "label": "Media Type",
+        "options": [
+          {
+          "value": "image",
+          "label": "Image"
+          },
+          {
+          "value": "video",
+          "label": "Video"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

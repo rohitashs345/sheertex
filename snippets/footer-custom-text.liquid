@@ -1,0 +1,13 @@
+{% if block.settings.show_footer_title %}
+  {% if block.settings.title == 'Contact' and request.locale.iso_code == 'fr' %}
+     <h2 class="footer__title">Contactez-nous</h2> 
+  {% else %}
+    <h2 class="footer__title">{{ block.settings.title }}</h2>
+  {% endif %}
+{% endif %}
+<div>
+	{{ block.settings.text }}
+</div>
+{% if block.settings.title == 'Contact' and settings.enable_accessibility %}
+  <a id="accessibilityEnablerCustomTrigger" href="#">Accessibility</a>
+{% endif %}

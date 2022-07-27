@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 90 90">
+  <g id="Group_733" data-name="Group 733" transform="translate(-553 -1754)">
+    <g id="Group_731" data-name="Group 731" transform="translate(-101 -26)">
+      <g id="Ellipse_1" data-name="Ellipse 1" transform="translate(654 1780)" fill="none" stroke="#000" stroke-width="2">
+        <circle cx="45" cy="45" r="45" stroke="none"/>
+        <circle cx="45" cy="45" r="44" fill="none"/>
+      </g>
+    </g>
+    <path id="Icon_open-envelope-closed" data-name="Icon open-envelope-closed" d="M0,0V4.5l18,9,18-9V0ZM0,9V27H36V9L18,18Z" transform="translate(580.5 1785.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  </g>
+</svg>

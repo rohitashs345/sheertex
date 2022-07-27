@@ -1,0 +1,41 @@
+{%- assign newsletter_form_id = 'newsletter-' | append: 'sub-page' -%}
+{% form 'customer', id: newsletter_form_id %}
+  {% if form.posted_successfully? %}
+    <div class="note note--success">Thanks for subscribing! We can't wait to be in touch.</div>
+  {% endif %}
+  {% if form.errors and form.context == snippet_context %}
+    {{ form.errors | default_errors }}
+  {% endif %}
+
+<!--   <input type="name" value="" placeholder="First name" id="firstName">
+  <input type="text" id="country" value="Your country"> -->
+  <label for="Email-{{ section_id }}" class="hidden-label">{{ 'general.newsletter_form.newsletter_email' | t }}</label>
+  <input type="hidden" name="contact[tags]" value="prospect,newsletter">
+  <input type="hidden" name="contact[context]" value="{{ snippet_context }}">
+  <div class="input-group newsletter__input-group">
+    <input id='newsletterEmailInput' type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="contact[email]" id="Email-{{ section_id }}" class="input-group-field newsletter__input" autocorrect="off" autocapitalize="off">
+    <span class="input-group-btn">
+      <button id='newsletterEmailSubmit' type="submit" class="btn" name="commit">
+        <span class="form__submit--large">{{ 'general.newsletter_form.submit' | t }}</span>
+        <span class="form__submit--small">
+          <img class="tw-mx-auto" style="width:20px" src="{{ 'Arrow.svg' | asset_url }}" alt="arrow">
+        </span>
+      </button>
+    </span>
+  </div>
+{% endform %}
+
+<script type="text/javascript">
+  
+document.getElementById("newsletterEmailSubmit").onclick = function () {
+  var email = document.getElementById('newsletterEmailInput').value;
+    
+  analytics.identify({ email: email }, () => {
+    analytics.track("Email Subscribed", {
+      email: email,
+      elementName: "Landing Page Popup Newsletter",
+      contestSubscription: "True",
+    })
+  });
+};
+</script>

@@ -1,0 +1,65 @@
+<div id="ImageOverlapSection" data-section-id="{{ section.id }}" data-section-type="Image-overlap-text-section" class="tw-flex tw-justify-center tw-relative tw-items-start tw-flex-col">
+  <img src="{{ section.settings.image | img_url: 'master' }}" loading="lazy" class="__image__3H-eD">
+  <div class="__text-wrapper__3-cVb">
+    <p class="__title__2Xqce">{{ section.settings.title }}</p>
+    <p class="__description__1dhTx">{{ section.settings.description }}</p>
+  </div>
+</div>
+
+<style>
+.__image__3H-eD {
+  max-height: 500px;
+  width: 100%;
+  object-fit: cover;
+  min-height: 350px;
+}
+
+.__text-wrapper__3-cVb {
+  position: absolute;
+  text-transform: uppercase;
+  text-align: center;
+  color: #dbff96;
+  max-width: 350px;
+}
+
+.__title__2Xqce {
+  font-family: Matiere;
+  font-size: 32px;
+  font-style: normal;
+  line-height: 1.13;
+  letter-spacing: normal;
+  font-size: 30px;
+}
+.__description__1dhTx {
+  font-family: Agrandir;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.33;
+  letter-spacing: 1.29px;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+</style>
+
+{% schema %}
+  {
+    "name": "Image overlap Text",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "description",
+        "label": "Description"
+      }
+    ]
+  }
+{% endschema %}

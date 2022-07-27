@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="280px" height="191px" viewBox="0 0 280 191" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>9</title>
+    <defs>
+        <polygon id="path-1" points="0 0 175 0 175 13 0 13"></polygon>
+    </defs>
+    <g id="9" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#FFFFFF" x="0" y="0" width="280" height="191"></rect>
+        <polygon id="Fill-1" fill="#E8E8F2" points="96 178 271 178 271 37 96 37"></polygon>
+        <text id="Medium" font-family="Agrandir-Medium, Agrandir" font-size="12" font-weight="400" letter-spacing="1.29" fill="#000000">
+            <tspan x="23" y="77">MEDIUM</tspan>
+        </text>
+        <text id="Large" font-family="Agrandir-Medium, Agrandir" font-size="12" font-weight="400" letter-spacing="1.29" fill="#000000">
+            <tspan x="28" y="147">LARGE</tspan>
+        </text>
+        <line x1="96.5" y1="177.5" x2="96.5" y2="37.5" id="Stroke-2" stroke="#949494" stroke-width="0.5"></line>
+        <line x1="96" y1="72.5" x2="271" y2="72.5" id="Stroke-4" stroke="#949494" stroke-width="0.5"></line>
+        <line x1="9" y1="107.5" x2="271" y2="107.5" id="Stroke-6" stroke="#949494" stroke-width="0.5"></line>
+        <line x1="96" y1="142.5" x2="271" y2="142.5" id="Stroke-8" stroke="#949494" stroke-width="0.5"></line>
+        <text id="Women's-5---9" font-family="Agrandir-Medium, Agrandir" font-size="10" font-weight="400" letter-spacing="1.075" fill="#000000">
+            <tspan x="116" y="58">WOMEN'S		5 - 9</tspan>
+        </text>
+        <text id="Men's-4---7" font-family="Agrandir-Medium, Agrandir" font-size="10" font-weight="400" letter-spacing="1.075" fill="#000000">
+            <tspan x="116" y="93">MEN'S		4 - 7</tspan>
+        </text>
+        <text id="Women's-10---14" font-family="Agrandir-Medium, Agrandir" font-size="10" font-weight="400" letter-spacing="1.075" fill="#000000">
+            <tspan x="116" y="128">WOMEN'S		10 - 14</tspan>
+        </text>
+        <text id="Men's-8---12" font-family="Agrandir-Medium, Agrandir" font-size="10" font-weight="400" letter-spacing="1.075" fill="#000000">
+            <tspan x="116" y="163">MEN'S		8 - 12</tspan>
+        </text>
+        <polygon id="Stroke-15" stroke="#949494" stroke-width="0.5" points="9 178 271 178 271 37 9 37"></polygon>
+        <g id="Group-14" transform="translate(96.000000, 9.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="Clip-13"></g>
+            <text id="US-Shoe-Size" mask="url(#mask-2)" font-family="Agrandir-Medium, Agrandir" font-size="10" font-weight="400" letter-spacing="1.29" fill="#000000">
+                <tspan x="46.44" y="9">US SHOE SIZE</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

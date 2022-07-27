@@ -1,0 +1,375 @@
+{% if product.handle == 'test-kit' %}
+  {% include 'product-testkit-template-1' %}
+{% endif %}
+{%- assign hasDenierModal = false -%}
+{% if product.tags %}
+  {% for tag in product.tags %}
+    {% if tag contains 'show-denier-modal' %}
+      {%- assign hasDenierModal = true -%}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% unless thumbnail_position %} {%- assign thumbnail_position = 'beside' -%} {%
+endunless %} {% unless description_style %} {%- assign description_style =
+'full' -%} {% endunless %}
+
+<div
+  id="ProductSection-{{ section_id }}"
+  class="product-section"
+  data-section-id="{{ section_id }}"
+  data-section-type="product-template"
+  {%
+  if
+  settings.product_zoom_enable
+  %}
+  data-image-zoom="true"
+  {%
+  endif
+  %}
+  {%
+  if
+  settings.inventory_enable
+  %}
+  data-inventory="true"
+  {%
+  endif
+  %}
+  {%
+  if
+  settings.inventory_transfers_enable
+  %}
+  data-incoming-inventory="true"
+  {%
+  endif
+  %}
+  {%
+  unless
+  isModal
+  %}
+  data-enable-history-state="true"
+  {%
+  endunless
+  %}
+>
+  {% include 'product-template-variables' %}
+
+  <div class="page-content">
+    <div class="page-width">
+      {% include 'breadcrumbs' %}
+
+      <div class="grid">
+        <div class="grid__item {{ product_image_width }} existing-pdp-slider-test position-sticky msm:tw-hidden">
+          {% include 'product-images', section_id: section_id, isModal: isModal,
+          thumbnail_position: thumbnail_position, thumbnail_arrows:
+          section.settings.thumbnail_arrows %}
+        </div>
+        <div class="new-pdp-slider-m grid__item sm:tw-hidden">
+          {% include 'pdp-image-slider-mobile' %}
+        </div>
+        <div class="grid__item {{ product_description_width }}">
+          <div class="product-single__meta">
+            <div class="tw-mb-2">{% include 'yotpo-star-rating' %}</div>
+            {% if settings.vendor_enable %}
+            <div class="product-single__vendor">
+              {{ product.vendor }}
+            </div>
+            {% endif %} {% if isModal %}
+            <p class="h2 product-single__title">
+              {{ product.title }}
+            </p>
+            {% else %}
+            <h1 class="h2 product-single__title">
+              {{ product.title }}
+            </h1>
+            {% endif %} {% if settings.sku_enable %}
+            <p id="Sku-{{ section_id }}" class="product-single__sku">
+              {% if current_variant.sku %}
+              {{ current_variant.sku }}
+              {% endif %}
+            </p>
+            {% endif %} 
+            {%- assign hide_sale_price = true -%}   
+            {% if available_variant.compare_at_price %} 
+                {%- assign hide_sale_price = false -%} 
+            {% endif %}
+            {% if product.handle != 'essential-sheer-tights' %}       
+            {% comment %}<p class='tw-text-red'>Add to Cart to Save an Extra 20%</p>{% endcomment %}
+            {% endif %}       
+            {% if available_variant.compare_at_price > available_variant.price %}
+              {%- assign saved_amount = available_variant.compare_at_price | minus: available_variant.price | times: 100.0 | divided_by: available_variant.compare_at_price | floor -%}
+              <p class='tw-text-red ab-test-save-amt'>{{ 'products.general.add_to_cart_to_save' | t: saved_amount: saved_amount }}</p>
+            {% endif %}
+            <div class="tw-flex tw-items-center tw-justify-content msm:tw-mt-2">                            
+            {% if product.compare_at_price_max > product.price %}              
+              <span
+                id="PriceA11y-{{ section_id }}"
+                class="visually-hidden"
+                aria-hidden="{{ hide_sale_price }}"
+              >
+                {{ 'products.general.regular_price' | t }}
+              </span>              
+              <span
+                class="product__price-wrap-{{
+                  section_id
+                }}{% if hide_sale_price or available_variant.compare_at_price <= available_variant.price%} hide{% endif %}"
+              >              
+                <span
+                  id="ComparePrice-{{ section_id }}"
+
+                  data-variant-id="{{available_variant.id}}"
+                  class="product__price product__price--compare"
+                >                
+                  {% if available_variant.compare_at_price > available_variant.price %}                  
+                    {{ available_variant.compare_at_price | money }}
+                  {% endif %}
+                </span>
+              </span>
+              <span
+                id="ComparePriceA11y-{{ section_id }}"
+                class="visually-hidden"
+                >{{ 'products.general.sale_price' | t }}</span
+              >
+            {% else %}
+              <span id="PriceA11y-{{ section_id }}" class="visually-hidden">{{
+                'products.general.regular_price' | t
+              }}</span>
+            {% endif %}
+            <div
+                id="ProductPrice-{{ section_id }}"
+                data-product-id="{{product.id}}"
+                class="tw-flex tw-items-center tw-justify-content igPrice {% if cart.currency.iso_code == "CAD" %}sezzle{% endif %} product__price{% if available_variant.compare_at_price > available_variant.price %} sale-price{% endif %}"
+              >
+                <span class="product-price-sezzle igPrice" data-product-id="{{product.id}}">
+                  {{ available_variant.price | money }}{% if product.handle == 'test-kit'%} <span style="color: #707070">(includes USD $10 credit for your next purchase)</span>{% endif %}
+                </span>
+              </div>
+              {% include 'top-seller' %}
+              {% if product.handle == 'classic-unbreakable-sheer-tights' %}
+                  <div class="save-20-col tw-ml-3 tw-mb-4 ab-test-add-sticker tw-hidden">
+                    <div class="pdp-save__container">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 29">
+                        <path fill="#eb3223" fill-rule="evenodd" d="M66.34 0H5.64A5.68 5.68 0 010 5.71v17.57a5.68 5.68 0 015.64 5.71h60.7A5.69 5.69 0 0172 23.27V5.71A5.68 5.68 0 0166.34 0z"/>
+                      </svg>
+                    </div>
+                    <div class="pdp-save__label">Save 20%</div>
+                  </div>
+                  <div class="pdp-meta-sticker tw-uppercase ab-test-90-day-sticker" style="color: black; background-color: #ddff98; width: 9rem; display: none;">
+                    <p id="ab-test-pdpPriceSticker">90-Day Guarantee</p>
+                  </div>
+              {% endif %}
+              {% include 'save-discount-tag' %}
+            </div>
+            {%- if settings.inventory_enable or
+            settings.inventory_transfers_enable -%} {%- assign
+            variants_with_inventory_tracking = product.variants | where:
+            'inventory_management', 'shopify' -%}
+
+            <script>
+              // Store inventory quantities in JS because they're no longer
+              // available directly in JS when a variant changes.
+              // Have an object that holds all potential products so it works
+              // with quick view or with multiple featured products.
+              window.inventories = window.inventories || {};
+              window.inventories['{{section_id}}'] = {};
+               {% for variant in variants_with_inventory_tracking %}
+                window.inventories['{{section_id}}'][{{variant.id}}] = {
+                  'quantity': {{ variant.inventory_quantity | default: 0 }},
+                  'incoming': {{ variant.incoming | default: false | json }},
+                  'next_incoming_date': {{ variant.next_incoming_date | date: format: 'date' | json }}
+                };
+               {% endfor %}
+            </script>
+
+            {% comment %} If loaded in quick view, it might be from a JS-loaded
+            function that loads recommended products. If that's the case, the
+            above JS will not set the variant inventory. Add it to an accessible
+            data div to read later instead. {% endcomment %} {%- if isModal -%}
+            <div
+              data-section-id="{{ section_id }}"
+              class="hide js-product-inventory-data"
+              aria-hidden="true"
+            >
+              {%- for variant in variants_with_inventory_tracking -%}
+              <div
+                class="js-variant-inventory-data"
+                data-id="{{ variant.id }}"
+                data-quantity="{{ variant.inventory_quantity | default: 0 }}"
+                data-incoming="{{ variant.incoming | default: false | json }}"
+                data-date="{{
+                  variant.next_incoming_date | date: format:'date' | json
+                }}"
+              ></div>
+              {%- endfor -%}
+            </div>
+            {%- endif -%} {%- assign inventory_visible = false -%} {% if
+            settings.inventory_enable and current_variant.inventory_management
+            == 'shopify' %} {%- if current_variant.inventory_quantity <= 200 and
+            current_variant.inventory_quantity >= 0 -%} {%- assign
+            inventory_visible = true -%} {%- endif -%} {% endif %} {% if
+            current_variant.inventory_quantity == 0 %} {%- assign
+            inventory_visible = false -%} {% endif %}
+            <div
+              id="ProductInventory-{{ section_id }}"
+              class="product__inventory tw-hidden {% unless inventory_visible %}hide{% endunless %}"
+            >
+              {% if current_variant.available %}
+              {{
+                'products.product.stock_label'
+                  | t: count:current_variant.inventory_quantity
+              }}
+              {% endif %}
+            </div>
+
+            {%- if settings.inventory_transfers_enable -%}
+            <div
+              id="ProductIncomingInventory-{{ section_id }}"
+              class="product__inventory{% if inventory_visible %} hide{% endif %}"
+            >
+              {%- if current_variant.incoming and inventory_visible == false -%}
+              {%- if current_variant.next_incoming_date -%} {% assign date =
+              current_variant.next_incoming_date | date: format: 'date' %} {%-
+              if current_variant.available -%}
+              {{ 'products.product.will_not_ship_until' | t: date:date }}
+              {%- else -%}
+              {{ 'products.product.will_be_in_stock_after' | t: date:date }}
+              {%- endif -%} {%- else -%}
+              {{ 'products.product.waiting_for_stock' | t }}
+              {%- endif -%} {%- endif -%}
+            </div>
+            {%- endif -%} {% endif %}
+
+            <hr class="hr--medium" />
+
+            {% unless isModal %}
+              <!--             
+              {% comment %} Shopify's product form attaches a
+              number of tracking scripts that cause slower load times and false
+              statistics. Quick view modals request these on-demand. 
+              {%endcomment%}  -->
+              {% include 'product-form', section_id: section_id %} 
+            {% else %}
+              <div id="ProductFormHolder-{{ section_id }}" data-url="{{ product.url }}"></div>
+            {% endunless %}
+            {% if product.handle != 'test-kit' %} 
+              {% include 'afterpay-sezzle' %}
+            {% endif %}
+            {% unless description_style == 'full' %}
+              <div class="product-single__description rte">
+                {{ product.description }}
+              </div>
+              {% if hasDenierModal %}
+                <p class="denier-trigger"><button id="DenierTrigger--{{ section_id }}" type="button" class="denier-trigger__btn js-modal-open-denier-modal">
+                  {% if request.locale.iso_code == 'en' %}
+                    View Sheertex Sheerness Scale
+                  {% elsif request.locale.iso_code == 'fr' %}
+                    Voir l'échelle de transparence Sheertex
+                  {% endif %}
+                <img alt="" src="{{ 'information-icon.svg' | asset_url }}" /></button></p>
+              {% endif %}     
+            {% include 'product-additional-content', section_id: section_id %} 
+            {% endunless  %} 
+            {% if social %} 
+              {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
+            {% endif %}
+            {% if product.handle == 'classic-unbreakable-sheer-tights' %}
+              <section class="tw-justify-items-center tw-hidden tw-items-center md:tw-px-36 md:tw-pb-12 tw-pt-12 ab-test-classics-details-m">
+                <img src="{{ 'Mobile-LP-Classic_Sheer_Features_2x.jpg' | asset_img_url: 'master' }}" class="md:tw-hidden" alt="temp" />
+              </section>
+            {% endif %}
+            {% if product.handle != 'test-kit' %}{% render 'product-upsell' %} {% endif %}
+          </div>
+        </div>
+      </div>
+
+      {% if description_style == 'full' %}
+      <div class="product-single__description-full rte">
+        {{ product.description }}
+      </div>
+      {% include 'product-additional-content', section_id: section_id %} {%
+      endif %}
+    </div>
+  </div>
+</div>
+{% if product.handle == 'classic-unbreakable-sheer-tights' %}
+  <section class="tw-justify-items-center tw-items-center tw-hidden md:tw-px-36 md:tw-pb-12 tw-pb-6 ab-test-classics-details-d">
+      <img src="{{ 'Desktop-LP-Classic_Sheer_Features_2x.jpg' | asset_img_url: 'master' }}" class="mmd:tw-hidden tw-mx-auto" alt="temp" />
+  </section>
+  <section class="tw-pt-8 tw-w-full tw-hidden ab-test-classics-ugc">
+      <p
+          class='msm:tw-text-2xl sm:tw-text-4xl tw-py-4 tw-font-serif tw-leading-tight tw-font-light tw-tracking-normal tw-text-center'>
+          Resilience looks great on you
+      </p>
+      <div class="tw-flex tw-overflow-x-scroll tw-hide-scroll-bar">
+          <div class="tw-flex tw-flex-nowrap tw-flex-row">
+              <div class="tw-inline-block msm:tw-w-72">
+                  <img src="{{ 'Desktop-LP-ClassicSheer_UGC1_2x.jpg' | asset_img_url: 'master' }}" class="tw-w-full" alt="temp" />
+              </div>
+              <div class="tw-inline-block msm:tw-w-72">
+                  <img src="{{ 'Desktop-LP-ClassicSheer_UGC2_2x.jpg' | asset_img_url: 'master' }}" class="tw-w-full" alt="temp" />
+              </div>
+              <div class="tw-inline-block msm:tw-w-72">
+                  <img src="{{ 'Desktop-LP-ClassicSheer_UGC3_2x.jpg' | asset_img_url: 'master' }}" class="tw-w-full" alt="temp" />
+              </div>
+          </div>
+      </div>
+      <div class="tw-text-center tw-py-6">
+        <a href="#MainContent" 
+          class="tw-rounded-3xl tw-uppercase tw-font-medium tw-font-sans tw-py-3 tw-px-20 tw-text-xs tw-cursor-pointer tw-tracking-heading" style="background-color: #ddff98;">
+            <span class="active:tw-text-white">Buy Now</span>
+        </a>
+      </div>
+  </section>
+{% endif %}
+{% if product.handle == 'test-kit' %}
+  {% render 'product-testkit-template-2' %}
+{% endif %}
+<style>
+  @keyframes nodeInserted {
+    from {
+      outline-color: #fff;
+    }
+    to {
+      outline-color: #000;
+    }
+  }
+
+  div.yotpo.bottomLine .star-clickable {
+    animation-duration: 0.01s;
+    animation-name: nodeInserted;
+  }
+</style>
+<script type="text/javascript">
+  document.addEventListener(
+    'animationstart',
+    function (event) {
+      if (event.animationName == 'nodeInserted') {
+        var reviews = jQuery('.total-reviews-search').attr(
+          'total-reviews-search',
+        );
+        if (!reviews || Number(reviews) < {{ settings.yotpo_reviews_min_count }}) {
+          jQuery('.yotpo.bottomLine').remove();
+          jQuery('.yotpo-main-widget').remove();
+        }
+      }
+    },
+    true,
+  );
+  window.jQuery(document).ready(function() {
+    window.jQuery('.product-image-main').each(function(){
+      var $container = window.jQuery(this);
+      var $img = $container.find('img');
+      var img = $img[0];
+      // Only '.zoom()' once the image has loaded to respect image lazy-loading
+      if (img.complete) {
+        $container.zoom();
+      } else {
+        $img.on('load', function() {
+          $container.zoom();
+        });
+      }
+    });
+  });
+</script>
+
+{{ 'denier-modal.js' | asset_url | script_tag }} 

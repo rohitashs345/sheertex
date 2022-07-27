@@ -1,0 +1,68 @@
+{{ 'size-guide-modal.scss.css' | asset_url | stylesheet_tag }}
+<div id="size-guide-modal" class="modal modal--solid">
+  <div class="modal__inner">
+    <div class="modal__centered page-width text-center">
+      <div class="modal__centered-content">
+        <div class="modal-content">
+          <button data-action="close-size-guide" type="button" class="modal__close js-modal-close text-link">
+            <img alt="close-icon" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9Ii43NSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48Y2lyY2xlIHN0cm9rZS1vcGFjaXR5PSIuMzA0IiBjeD0iMTUiIGN5PSIxNSIgcj0iMTQuNjI1Ii8+PHBhdGggZD0iTTggOGwxMy44ODUgMTMuODg1TTggMjEuODg1TDIxLjg4NSA4IiBzdHJva2UtbGluZWNhcD0ic3F1YXJlIi8+PC9nPjwvc3ZnPg==">
+            <span class="icon__fallback-text">{{
+              'general.accessibility.close_modal' | t | json
+            }}</span>
+          </button>        
+          <div class="pb-3 modal-header">
+            <span>
+             Size Guide
+            </span> 
+          </div>
+          <div class="tw-w-full tw-h-full tw-flex tw-items-start tw-justify-center tw-overflow-auto">   
+                {% if product.handle == 'essential-sheer-tights' %}                                         
+                  <img alt="size-guide-for-{{product.handle}}" src="{{ 'size-guide-essentials.png' | asset_url }}">
+                {% elsif product.handle contains 'sheer-knee-high-socks' %}                                
+                  <img alt="size-guide-for-{{product.handle}}" src="{{ 'size-guide-knee-high-socks.svg' | asset_url }}">
+                {% elsif product.handle contains 'thigh-high' %}                                
+                  <img alt="size-guide-for-{{product.handle}}" src="{{ 'size-guide-thigh-highs.svg' | asset_url }}">
+                  {% elsif product.handle contains "bra"  %}
+                    <img src="{{ 'size-guide-bra.png' | asset_url }}" alt="size-guide-for-{{product.handle}}">
+                {% else %}
+                  <img alt="size-guide-for-{{product.handle}}" src="{{ 'size-guide-general.png' | asset_url }}">
+                {% endif %}
+          </div>                        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    (function() {
+        let modal = document.getElementById('size-guide-modal')
+        if (!modal) {
+            return
+        }
+
+        let closeModalButton = document.querySelector('[data-action=close-size-guide]')
+        if (!closeModalButton) {
+            return
+        }
+
+        closeModalButton.addEventListener('click', (e) => {
+            e.preventDefault()
+            e.stopPropagation()
+
+            modal.style.display = 'none';
+        })
+
+        let openModalButton = document.querySelector('[data-button=open-size-guide-modal]')
+        if (!openModalButton) {
+            return
+        }
+
+        openModalButton.addEventListener('click', (e) => {
+            e.preventDefault()
+            e.stopPropagation()
+
+            modal.style.display = 'block';
+        })
+    })()
+</script>
+

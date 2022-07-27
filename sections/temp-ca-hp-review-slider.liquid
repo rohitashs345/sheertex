@@ -1,0 +1,107 @@
+{% style %}
+.swiper-pagination-bullet-active {
+  background: #ddff98!important;
+}
+.swiper-pagination-bullet {
+  background: #000 !important;
+}
+
+{% endstyle %}
+
+<section class="tw-w-full tw-pt-16" data-cypress="reviews">
+  {% if request.design_mode %}
+    <div class="tw-my-32 tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-h-full">
+      <h1 class="tw-text-2xl tw-text-red-700">This section preview is not updated in theme editor</h1>
+      <p>Save the changes & use theme preview to see the changes</p>
+    </div>
+  {% else %}
+  <div>
+    <div class="tw-text-center msm:tw-px-8 hp-reviews-header">
+      <span class="tw-font-sans tw-leading-normal tw-text-center tw-uppercase tw-tracking-mini-heading tw-text-sm msm:tw-text-xs tw-font-bold"> {{ section.settings.header }}</span> | 
+      <a href="{{ section.settings.title_link}}" class="tw-underline tw-font-sans tw-leading-normal tw-text-center tw-uppercase tw-tracking-mini-heading tw-text-sm msm:tw-text-xs tw-font-medium">
+        {{section.settings.title_link_text}}
+      </a>
+    </div>
+    <div class="hp-reviews-slider" data-svelte="reviews-slideshow"></div>
+  <div>
+  {% endif %}
+</div></div></section>
+<script>
+  /* This script should be executed after the markup is generated */
+  (function payloadGenerator() {
+    var payload = [
+    {% for block in section.blocks %}
+      {{block.settings | json }}
+      {% unless forloop.last %},{% endunless %}
+    {% endfor %}
+    ];
+    const reviewsSlideshowEl = document.querySelector("[data-svelte=reviews-slideshow]");
+    if (reviewsSlideshowEl) {
+      reviewsSlideshowEl.setAttribute('data-svelte-payload', JSON.stringify(payload));
+    }
+  })();
+</script>
+
+{% schema %}
+
+{
+  "name": "HP Reviews",
+    "settings": [
+    {
+      "type": "textarea",
+      "id": "header",
+      "label": "Reviews heading"
+    },
+     {
+      "type": "text",
+      "id": "title_link_text",
+      "label": "See more btn text",
+      "default": "See more"
+    },
+    {
+      "type": "url",
+      "id": "title_link",
+      "label": "See more Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "stars_svg",
+          "label": "Review Stars Svg link"          
+        }, {
+          "type": "textarea",
+          "id": "review",
+          "label": "Review",
+          "default": "They look and feel great along with giving you confidence to dash into the garden, walking the dogs, messing with the cat without fear of snags and tears! No more having to stash an extra pair for an emergency!"
+        }, {
+          "type": "text",
+          "id": "reviewer_name",
+          "label": "Reviewer name",
+          "default": "KIM R"
+        }, {
+          "type": "text",
+          "id": "verified_customer",
+          "label": "Verfied customer",
+          "default": "Verified Customer"
+        }, {
+          "type": "url",
+          "id": "review_link",
+          "label": "Review link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "HP Reviews Section",
+      "category": "Sheertex Inc"
+    }
+  ]
+}
+
+{% endschema %}

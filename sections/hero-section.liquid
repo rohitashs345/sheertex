@@ -1,0 +1,229 @@
+{% style %}
+.swiper-pagination-bullet-active {
+  background: #fff !important;
+}
+.swiper-pagination-bullet {
+  background: #ddff98 !important;
+}
+@media(min-width: 768px) {
+    .section-height {
+        min-height: 40vw;
+    }
+}
+
+{% endstyle %}
+<section class="tw-w-full" data-cypress="hero">
+  {% if request.design_mode %}
+    <div class="section-height">
+      <div class="tw-my-32 tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-full tw-h-full">
+        <h1 class="tw-text-2xl tw-text-red-700">This section preview is not updated in theme editor</h1>
+        <p>Save the changes & use theme preview to see the changes</p>
+      </div>
+    </div>
+  {% else %}
+    <div class="section-height" data-svelte="slideshow"></div>
+  {% endif %}
+</section>
+<script>
+  /* This script should be executed after the markup is generated */
+  (function payloadGenerator() {
+    var payload = [
+    {% for block in section.blocks %}
+      {{block.settings | json }}
+      {% unless forloop.last %},{% endunless %}
+    {% endfor %}
+    ];
+    const slideshowEl = document.querySelector("[data-svelte=slideshow]");
+    if (slideshowEl) {
+      slideshowEl.setAttribute('data-svelte-payload', JSON.stringify(payload));
+    }
+  })();
+</script>
+{% schema %}
+
+{
+  "name": "Hero",
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Hero Image Height"
+        }, {
+          "type": "select",
+          "id": "view_height_desktop",
+          "label": "View Height Desktop",
+          "options": [
+            {
+              "value": "70vh",
+              "label": "Standard"
+            },
+            {
+              "value": "calc(100vh - 101px)",
+              "label": "Full"
+            }
+          ]
+        }, {
+          "type": "select",
+          "id": "view_height_mobile",
+          "label": "View Height Mobile",
+          "options": [
+            {
+              "value": "65vh",
+              "label": "Standard"
+            },
+            {
+              "value": "calc(100vh - 101px)",
+              "label": "Full"
+            }
+          ]
+        }, {
+          "type": "header",
+          "content": "Copy Settings"
+        }, {
+          "type": "select",
+          "id": "font_colour",
+          "label": "Font Colour",
+          "options": [
+            {
+              "value": "tw-text-black",
+              "label": "Black"
+            },
+            {
+              "value": "tw-text-white",
+              "label": "White"
+            }
+          ]
+        }, {
+          "type": "textarea",
+          "id": "eyebrow",
+          "label": "Eyebrow",
+          "default": "Eyebrow Text"
+        }, {
+          "type": "select",
+          "id": "header_size",
+          "label": "Header Font Size",
+          "options": [
+            {
+              "value": "tw-text-8xl mlg:tw-text-6xl",
+              "label": "Large"
+            },
+            {
+              "value": "tw-text-6xl mlg:tw-text-4xl",
+              "label": "Small"
+            }
+          ]
+        }, {
+          "type": "textarea",
+          "id": "header",
+          "label": "Header",
+          "default": "Header Text"
+        }, {
+          "type": "textarea",
+          "id": "subheader",
+          "label": "Subheader",
+          "default": "Subheader Text"
+        }, {
+          "type": "header",
+          "content": "CTA Button Settings"
+        }, {
+          "type": "select",
+          "id": "button_count",
+          "label": "Number of CTA Buttons",
+          "options": [
+            {
+              "value": "one",
+              "label": "One"
+            },
+            {
+              "value": "two",
+              "label": "Two"
+            }
+          ]
+        }, {
+          "type": "text",
+          "id": "shop_button_text",
+          "label": "Shop Button Text",
+          "default": "Shop All"
+        }, {
+          "type": "text",
+          "id": "shop_button_link",
+          "label": "Shop Button Link",
+          "default": "https://www.sheertex.com/"
+        }, {
+          "type": "text",
+          "id": "page_button_text",
+          "label": "Page Button Text",
+          "default": "Learn More"
+        }, {
+          "type": "text",
+          "id": "page_button_link",
+          "label": "Page Button Link",
+          "default": "https://www.sheertex.com/"
+        }, {
+          "type": "header",
+          "content": "Image Selection"
+        }, {
+          "type": "image_picker",
+          "id": "image_desktop",
+          "label": "Desktop Background Image"          
+        }, {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Mobile Background Image"          
+        }, {
+          "type": "header",
+          "content": "Video Background"
+        }, {
+          "type": "select",
+          "id": "video_background",
+          "label": "Enable Video Background",
+          "options": [
+            {
+              "value": "true",
+              "label": "Yes"
+            },
+            {
+              "value": "false",
+              "label": "No"
+            }
+          ]
+        }, {
+          "type": "url",
+          "id": "d_blackfriday_mp4",
+          "label": "Desktop BF Sale mp4 url"
+        }, {
+          "type": "url",
+          "id": "d_blackfriday_webm",
+          "label": "Desktop BF Sale webm"
+        }, {
+          "type": "url",
+          "id": "d_blackfriday_poster",
+          "label": "Desktop BF Sale poster"
+        }, {
+          "type": "url",
+          "id": "m_blackfriday_mp4",
+          "label": "Mobile BF Sale mp4 url"
+        }, {
+          "type": "url",
+          "id": "m_blackfriday_webm",
+          "label": "Mobile BF Sale webm"
+        }, {
+          "type": "url",
+          "id": "m_blackfriday_poster",
+          "label": "Mobile BF Sale poster"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Section",
+      "category": "Sheertex Inc"
+    }
+  ]
+}
+
+{% endschema %}

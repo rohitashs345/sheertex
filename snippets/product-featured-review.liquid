@@ -1,0 +1,47 @@
+<style>
+.review-block {
+  width: 100%;
+  background: #ffd9bf;
+  padding: 40px;
+  margin: 0px 0px 20px 0px;
+}
+
+.review-stars{
+  font-family: Agrandir;
+  font-size: 100%;
+  font-weight: 500;
+  letter-spacing: 0.104rem;
+}
+
+.review-title {
+  text-transform: uppercase;
+  font-family: Agrandir;
+  font-size: 100%;
+  font-weight: 500;
+  letter-spacing: 0.104rem;
+}
+
+.review-customer {
+  text-transform: uppercase;
+  font-family: Agrandir;
+  font-size: 80%;
+  font-weight: 500;
+  letter-spacing: 0.104rem;
+}
+
+</style>
+
+{% assign review = product.metafields.review %}
+{% if review.title and review.customer and review.description and request.locale.iso_code == 'en' %}
+  <div class="review-block">
+    <p class="review-title">{{review.title}}</p>
+
+    <div class="review-stars">  
+      <img src="{{ 'Stars.svg' | asset_url }}" alt="stars">
+      5.0
+    </div>
+    <p></p>
+    <p class="review-customer">{{review.customer}}</p>
+    <p class="tw-m-0">{{review.description}}</p>
+  </div>
+{% endif %}

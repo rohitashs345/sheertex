@@ -1,0 +1,104 @@
+{% capture form_id %}AddToCartForm-{{ section_id }}{% endcapture %}
+{% form 'product', product, id: form_id, class: 'product-single__form' %}
+  {% unless product.has_only_default_variant %}
+    {% for option in product.options_with_values %}
+      {% if settings.variant_type == 'button' %}
+        {% include 'variant-button', section_id: section_id, option_drop: option %}
+      {% else %}
+        {% include 'variant-custom-selection', section_id: section_id %}
+      {% endif %}
+    {% endfor %}
+  {% endunless %}
+
+  <select name="id" id="ProductSelect-{{ section_id }}" class="product-single__variants no-js">
+    {% for variant in product.variants %}
+      {% if variant.available %}
+        <option {% if variant == product.selected_variant %}
+          selected="selected" {% endif %}
+          value="{{ variant.id }}">
+          {{ variant.title }} - {{ variant.price | money_with_currency }}
+        </option>
+      {% else %}
+        <option disabled="disabled">
+          {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+        </option>
+      {% endif %}
+    {% endfor %}
+  </select>  
+
+  <div class="chat-experts"><p>Not sure about your size? <span id="sizing-expert" style="text-decoration: underline; cursor: pointer;">Chat with one of our sizing experts</span></p></div>
+
+  <div class="flex-add-to-cart">
+    <div class="product__quantity product__quantity--{{ settings.variant_type }}">
+      <label for="Quantity-{{ section_id }}">{{ 'products.product.quantity' | t }}</label>
+      {% include 'quantity-input', id: section_id, qty: 1, min: 1 %}
+    </div>    
+    <div class="add-and-buy">
+      <button
+        {% if product.empty? %}type="button"{% else %}type="submit"{% endif %}
+        name="add"
+        id="AddToCart-{{ section_id }}"
+        data-loading="true"
+        class="{% if enable_dynamic_buttons %}btn--tertiary{% else %}btn{% endif %} btn--full btn--no-animate tw-rounded-3xl add-to-cart sparkle-hover-animation relative"
+        {% unless current_variant.available %} disabled="disabled"{% endunless %}>        
+        <span class="sparkle-hover-animation__sparkle-set-one"></span>
+        <span class="sparkle-hover-animation__sparkle-set-two"></span>        
+        <span class="add-to-cart-label" id="AddToCartText-{{ section_id }}">
+          {% if current_variant.available %}
+            {% if template == 'product.preorder' %}
+              {{ 'products.product.preorder' | t }}
+            {% else %}
+              {{ 'products.product.add_to_cart' | t }}
+            {% endif %}            
+          {% else %}
+           {% if current_variant.id %} {% comment %} If variant has id then it's out of stock, if not then user doesn't select all needed fields {% endcomment %}
+            {{ 'products.product.sold_out' | t }}
+           {% else %}
+            Pick a Size
+           {% endif %}
+          {% endif %}
+        </span>
+        <span class="add-to-cart-loading">Loading&hellip;</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="ProductInventoryShipping-{{ section_id }}" class="product__inventory abtest-stock tw-hidden">
+    {% if current_variant.available %}
+      {%- assign inventoryCount = 'products.product.custom_inventory_label' | t: count:current_variant.inventory_quantity -%}
+        <span>{{ inventoryCount }}</span>
+    {% endif %}
+  </div>
+  {% include 'variant-shipping-info' %}
+  {%- assign enable_dynamic_buttons = false -%}
+  {% if settings.enable_payment_button and template != 'product.preorder' %}
+    {%- assign enable_dynamic_buttons = true -%}
+  {% endif %}
+
+  {% if enable_dynamic_buttons %}
+    <div class="payment-buttons">
+  {% endif %}
+
+
+    {% if enable_dynamic_buttons %}
+      {{ form | payment_button }}
+    {% endif %}
+
+  {% if enable_dynamic_buttons %}
+    </div>
+  {% endif %}
+
+    <div id="VariantsJson-{{ section_id }}" class="hide" aria-hidden="true">
+    {{ product.variants | json }}
+  </div>
+  {% if product.options.size > 1 %}
+    <div id="CurrentVariantJson-{{ section_id }}" class="hide" aria-hidden="true">
+      {{ current_variant | json }}
+    </div>
+  {% endif %}
+  <div class="font-medium tw-uppercase tw-text-center tw-clear-both shipping-ab-test-control">
+    {{ settings.free_shipping_fee }}
+  </div>  
+{% endform %}
+
+{% include 'shortie-pdp-popup' %}

@@ -1,0 +1,191 @@
+<style type="text/css">
+  .afterpay-paragraph,
+  .sezzle-checkout-button-wrapper {
+    border-top: 1px solid rgb(148, 148, 148);
+    border-bottom: 1px solid rgb(148, 148, 148);
+    font-family: Agrandir, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+      'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 0.75rem !important;
+    line-height: 0.8125rem;
+    letter-spacing: 1.29px;
+    padding: 1.375rem 0;
+    margin-bottom: 1.5rem !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .afterpay-instalments {
+    font-family: Agrandir, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+      'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    font-weight: 500;
+    margin-right: 4px;
+  }
+
+  .sezzle-payment-amount {
+    font-weight: 500 !important;
+  }
+
+  .afterpay-text1 {
+    white-space: nowrap;
+    margin-right: 4px;
+  }
+
+  .afterpay-text2,
+  .afterpay-text3 {
+    display: none;
+  }
+
+  .afterpay-link {
+    margin-left: 6px;
+    font-size: 1rem;
+    font-weight: 300;
+  }
+
+  div#afterpay-modal-modal {
+    background-color: #fff !important;
+  }
+
+  div.afterpay_modal_wrapper * {
+    background-color: #fff !important;
+  }
+
+  /* start formatting specific to cart view */
+  .cart__row .afterpay-paragraph {
+      border: 0;
+      text-transform: none;
+      font-family: 'Agrandir Narrow';
+      font-weight: 400;
+      letter-spacing: 0.01625rem;
+      margin: 0!important;
+      font-size: 0.875rem!important;
+  }
+
+  .cart__row .afterpay-text1 {
+    font-size: small;
+  }
+
+  .cart__row .afterpay-instalments {
+    font-size: small;
+  }
+
+  .cart__row .afterpay-link {
+    font-size: 0.75rem;
+  }
+
+  @media screen and (min-width: 640px) {
+    .cart__row .afterpay-paragraph {
+      justify-content: flex-end;
+    }
+  }
+  
+  .sezzle-shopify-info-button {
+    display: none;
+  }
+  /* end formatting specific to cart view */
+</style>
+
+<!-- Afterpay/Sezzle display -->
+  {% if cart.currency.iso_code == "CAD" %}
+    <div id="sezzle-custom-target"></div>
+  {% elsif cart.currency.iso_code == "USD" %}
+    <div id="product-price-selector"></div>
+  {% endif %}
+<!-- end Afterpay/Sezzle display -->
+
+<script type="text/javascript">
+  const replaceAfterpayContent = async () => {
+    const afterpayText = document.querySelector('.afterpay-text1');
+    if (afterpayText) {
+      {% if request.locale.iso_code == 'en' %}
+        afterpayText.textContent = 'Pay in 4 installments of ';
+      {% elsif request.locale.iso_code == 'fr' %}
+        afterpayText.textContent = 'Payer en 4 versements ';
+      {% endif %}
+    }
+
+    const afterpayLogo = document.querySelector('.afterpay-logo');
+    if (afterpayLogo) {
+      afterpayLogo.style.width = '90px';
+      afterpayLogo.style.height = 'auto';
+    }
+
+    const afterpayLink = document.querySelector('.afterpay-link');
+    if (afterpayLink) {
+      afterpayLink.textContent = 'ⓘ';
+
+      afterpayLink.onclick = async () => {
+        while (!document.querySelector('.afterpay_modal_wrapper')) {
+          await new Promise((r) => setTimeout(r, 500));
+        }
+        const afterpayDisclaimer = document.querySelector(
+          '.afterpay_modal_wrapper p.disclaimer',
+        );
+
+        if (afterpayDisclaimer) {
+          const afterpayDisclaimerText = afterpayDisclaimer.textContent;
+          const newAfterpayDisclaimerText = afterpayDisclaimerText.replace(
+            'U.S.',
+            'U.S. or Canada,',
+          );
+          afterpayDisclaimer.textContent = newAfterpayDisclaimerText;
+        }
+      };
+    };
+  };
+
+  const replaceSezzleContent = async () => {
+    while (!document.querySelector('.sezzle-button-text')) {
+      await new Promise((r) => setTimeout(r, 500));
+    }
+    const sezzleText = document.querySelector('.sezzle-button-text');
+    {% if request.locale.iso_code == 'en' %}
+      sezzleText.childNodes[0].replaceWith('Pay in 4 installments of');
+    {% elsif request.locale.iso_code == 'fr' %}
+      sezzleText.childNodes[0].replaceWith('Payer en 4 versements');
+    {% endif %}
+    sezzleText.childNodes[2].replaceWith('');
+
+    const sezzleTarget = document.querySelector('#sezzle-custom-target');
+    const sezzleContainer = document.querySelector(
+      '.sezzle-checkout-button-wrapper',
+    );
+    sezzleTarget.after(sezzleContainer);
+  };
+
+  const replacePaymentOptionsContent = () => {
+    if (document.querySelector('#sezzle-custom-target')) {
+      replaceSezzleContent();
+    }
+    if (document.querySelector('#product-price-selector')) {
+      replaceAfterpayContent();
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', replacePaymentOptionsContent);
+</script>
+<script type="text/javascript">
+  document.sezzleConfig = {
+    targetXPath: '.sezzle/.product-price-sezzle',
+    widgetType: 'product-page',
+    renderToPath: '..',
+    theme: 'light',
+    alignment: 'auto',
+    fontFamily: 'Agrandir, sans-serif',
+    color: 'inherit',
+    fontSize: 'inherit',
+    fontWeight: 500,
+    logoSize: 1.0,
+    maxWidth: 400,
+    marginTop: 0,
+    marginLeft: 0,
+    marginRight: 0,
+  };
+</script>
+<script src="https://widget.sezzle.com/v1/javascript/price-widget?uuid=d924c041-2e59-4930-abb9-8d809aa2b33c"></script>

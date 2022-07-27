@@ -1,0 +1,304 @@
+<div id="PerformanceUgc" data-section-id="{{ section.id }}" data-section-type="what-the-press-section" class="tw-mt-4 sm:tw-mt-8">
+    <div class="page-width page-content tw-text-center mlg:tw-px-0 tw-mb-6 msm:tw-pt-0">
+    <p class="tw-font-sans tw-text-center tw-tracking-mini-heading tw-leading-loose tw-font-bold tw-uppercase tw-text-sm msm:tw-text-xs tw-mb-0">{{ section.settings.shop_feed }}</p>
+    <p class="tw-text-3xl tw-pb-6 tw-font-serif tw-text-center tw-font-light">{{ section.settings.life_sheertex }}</p>
+    <div class="tw-flex mlg:tw-overflow-x-scroll __image-wrapper__ZM38l">
+      <div class="mlg:tw-ml-4 __card__76isc">
+        {%- assign img_url = section.settings.first_image | img_url: '360x360' -%}
+        <img src="{{ img_url }}" loading="lazy">
+        <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/INSTAGRAM_1.svg?v=1603823710" class="__insta-icon__cM3Sb">
+        <a href="{{ all_products[section.settings.first_product].url }}" class="__overlay__3Ojdw">
+          <div class="__product-info__mgBC0">
+            <p class="__product-title__P2b7n">{{ all_products[section.settings.first_product].title }}</p>
+            <p class="__shop-now__3mS3Z">{{ section.settings.shop_now }}</p>
+            <p class="__intsta-name__QcyBQ">{{ section.settings.first_id }}</p>
+          </div>
+        </a>
+      </div>
+      <div class="__card__76isc">
+        {%- assign img_url = section.settings.second_image | img_url: '360x360' -%}
+        <img src="{{ img_url }}" loading="lazy">
+        <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/INSTAGRAM_1.svg?v=1603823710" class="__insta-icon__cM3Sb">
+        <a href="{{ all_products[section.settings.second_product].url }}" class="__overlay__3Ojdw">
+          <div class="__product-info__mgBC0">
+            <p class="__product-title__P2b7n">{{ all_products[section.settings.second_product].title }}</p>
+            <p class="__shop-now__3mS3Z">{{ section.settings.shop_now }}</p>
+            <p class="__intsta-name__QcyBQ">{{ section.settings.second_id }}</p>
+          </div>
+        </a>
+      </div>
+      <div class="__card__76isc">
+        {%- assign img_url = section.settings.third_image | img_url: '360x360' -%}
+        <img src="{{ img_url }}" loading="lazy">
+        <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/INSTAGRAM_1.svg?v=1603823710" class="__insta-icon__cM3Sb">
+        <a href="{{ all_products[section.settings.third_product].url }}" class="__overlay__3Ojdw">
+          <div class="__product-info__mgBC0">
+            <p class="__product-title__P2b7n">{{ all_products[section.settings.third_product].title }}</p>
+            <p class="__shop-now__3mS3Z">{{ section.settings.shop_now }}</p>
+            <p class="__intsta-name__QcyBQ">{{ section.settings.third_id }}</p>
+          </div>
+        </a>
+      </div>
+      <div class="mlg:tw-pr-4 __card__76isc">
+        {%- assign img_url = section.settings.fourth_image | img_url: '360x360' -%}
+        <img src="{{ img_url }}" loading="lazy">
+        <img loading="lazy" src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/INSTAGRAM_1.svg?v=1603823710" class="__insta-icon__cM3Sb">
+        <a href="{{ all_products[section.settings.fourth_product].url }}" class="__overlay__3Ojdw">
+          <div class="__product-info__mgBC0">
+            <p class="__product-title__P2b7n">{{ all_products[section.settings.fourth_product].title }}</p>
+            <p class="__shop-now__3mS3Z">{{ section.settings.shop_now }}</p>
+            <p class="__intsta-name__QcyBQ">{{ section.settings.fourth_id }}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    </div>
+</div>
+<style>
+
+  .__hp-press-container__38Qx_ {
+    background-image: linear-gradient(to bottom, #f1e7db, #e7ded7);
+  }
+
+  .__section-header__2tJ0j {
+    font-family: 'Agrandir';
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.104rem;
+    font-weight: 500;
+  }
+  .__gizmodoContainer__3-ig6, .__timeContainer__2DJt6, .__bustleContainer__3n3Ys {
+    background: transparent;
+  }
+  .__image-wrapper__ZM38l, .__video-wrapper__msQSM {
+    scroll-snap-type: x mandatory;
+  }
+  .__card__76isc {
+    min-width: 235px;
+    margin-right: 8px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: center;
+  }
+  @media only screen and (max-width: 1023px) {
+    .__card__76isc:last-child {
+      min-width: calc(235px + 1rem);
+    }
+  }
+  .__card__76isc:hover>.__overlay__3Ojdw {
+    width: 100%;
+    height: 100%;
+    content: '';
+    background: rgba(83, 83, 83, 0.6);
+    position: absolute;
+    top: 0;
+    transition: .5s ease;
+  }
+  .__card__76isc>video {
+    object-fit: cover;
+  }
+  .__tiktok-info__3w-o7 {
+    right: 10px;
+  }
+  .__product-info__mgBC0 {
+    display: none;
+  }
+  .__card__76isc:hover .__product-info__mgBC0 {
+    display: block;
+    position: absolute;
+    color: white;
+    bottom: 20px;
+    width: 100%;
+  }
+  .__card__76isc.__video__1kMhi .__product-info__mgBC0 {
+    top: 40%;
+  }
+  .__card__76isc:hover>.__tiktok-info__3w-o7 {
+    display: none;
+  }
+  .__insta-icon__cM3Sb {
+    position: absolute;
+    top: 8px;
+    left: 1.5rem;
+  }
+  .__card__76isc:hover>.__insta-icon__cM3Sb {
+    display: none;
+  }
+  .__product-title__P2b7n {
+    font-family: 'Matiere';
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  .__product-info__mgBC0 .__shop-now__3mS3Z {
+    font-family: 'Agrandir';
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.104rem;
+    font-weight: 500;
+    text-decoration: underline;
+    color: white;
+    margin-bottom: 75px;
+    display: block;
+  }
+  .__intsta-name__QcyBQ {
+    font-size: 12px;
+    font-family: 'Agrandir Narrow';
+  }
+  .__review-header__3U8_3 {
+    font-family: 'Agrandir';
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.104rem;
+    font-weight: bold;
+    margin-top: 75px;
+    margin-bottom: 20px;
+  }
+  .__internet-answer__28g4b {
+    max-width: 400px;
+    margin: 0 auto;
+    font-family: 'Agrandir Narrow';
+    font-size: 14px;
+    margin-bottom: 25px;
+  }
+  .__review-card__1IAWy {
+    margin-top: 50px;
+  }
+  .__review__3zp6d {
+    max-width:700px;
+    font-size: 28px;
+    margin-top: 20px;
+    font-family: 'Matiere';
+  }
+  .__review-button__2LvUl {
+    font-family: 'Agrandir';
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.104rem;
+    font-weight: 500;
+  }
+  .__review-button__2LvUl:hover {
+    text-decoration: underline;
+    border: 1px solid black;
+  }
+  .__review-name__1EGc- {
+    font-family: 'Agrandir';
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.104rem;
+    font-weight: 500;
+  }
+  .__video-wrapper__msQSM {
+    margin-top: 80px;
+  }
+</style>
+{% schema %}
+  {
+    "name": "Performance UGC section",
+    "class": "what-the-press",
+    "settings": [
+      {
+        "type": "header",
+        "content": "First Instgram Card"
+      },
+      {
+        "type": "image_picker",
+        "id": "first_image",
+        "label": "First Image"
+      },
+      {
+        "type": "product",
+        "id": "first_product",
+        "label": "First Product"
+      },
+      {
+        "type": "text",
+        "id": "first_id",
+        "label": "First Instgram ID"
+      },
+      {
+        "type": "header",
+        "content": "Second Instgram Card"
+      },
+      {
+        "type": "image_picker",
+        "id": "second_image",
+        "label": "Second Image"
+      },
+      {
+        "type": "product",
+        "id": "second_product",
+        "label": "Second Product"
+      },
+      {
+        "type": "text",
+        "id": "second_id",
+        "label": "Second Instgram ID"
+      },
+      {
+        "type": "header",
+        "content": "Third Instgram Card"
+      },
+      {
+        "type": "image_picker",
+        "id": "third_image",
+        "label": "Third Image"
+      },
+      {
+        "type": "product",
+        "id": "third_product",
+        "label": "Third Product"
+      },
+      {
+        "type": "text",
+        "id": "third_id",
+        "label": "Third Instgram ID"
+      },
+      {
+        "type": "header",
+        "content": "Fourth Instgram Card"
+      },
+      {
+        "type": "image_picker",
+        "id": "fourth_image",
+        "label": "Fourth Image"
+      },
+      {
+        "type": "product",
+        "id": "fourth_product",
+        "label": "Fourth Product"
+      },
+      {
+        "type": "text",
+        "id": "fourth_id",
+        "label": "Fourth Instgram ID"
+      },
+      {
+        "type": "text",
+        "id": "shop_now",
+        "label": "Shop Now",
+        "default": "Shop Now"
+      },
+      {
+        "type": "text",
+        "id": "life_sheertex",
+        "label": "#LifeInSheertex",
+        "default": "#LifeInSheertex"
+      },
+      {
+        "type": "text",
+        "id": "shop_feed",
+        "label": "Shop the Feed",
+        "default": "Shop the Feed"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Performance UGC section",
+        "category": "Advanced layout"
+      }
+    ]
+  }
+{% endschema %}

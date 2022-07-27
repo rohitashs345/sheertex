@@ -1,0 +1,20 @@
+<div class="site-nav site-nav--icons">
+  {% for block in blocks %}
+  {% case block.type %}
+  {% when 'navigation_and_search' %}
+  <div class="site-nav__icons">   
+    <a data-svelte='search-trigger' class="tw-cursor-pointer site-nav__link site-nav__link--icon">
+      <img class="icon" style="height:24px" src="{{ 'Search.svg' | asset_url }}" alt="search">
+    </a>       
+  </div>
+  {% endcase %}
+  {% endfor %} 
+
+  <a href="{{ routes.cart_url }}" class="site-nav__link site-nav__link--icon js-drawer-open-cart drawer-cart js-no-transition tw-mr-2" aria-controls="CartDrawer">
+    <span class="cart-link">
+      <img class="icon" src="{{ 'Cart.svg' | asset_url }}" alt="cart">
+      <span class="cart-count">{{cart.item_count}}</span>
+      <span class="cart-link__bubble{% if cart.item_count > 0 %} cart-link__bubble--visible{% endif %}"></span>
+    </span>
+  </a>
+</div>

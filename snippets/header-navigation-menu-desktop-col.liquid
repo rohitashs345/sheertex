@@ -1,0 +1,50 @@
+{% if menu.links.size > 0 %}
+<style>
+  .__link__2pzSj {
+    font-family: 'Agrandir';
+    font-weight: 400;
+    letter-spacing: 1.2pt;
+    text-transform: uppercase;
+    line-height: 1.5;
+    font-size: 0.95em;
+  }
+
+  .__link__2pzSj.__last__1XHRW {
+    font-weight: 400;
+    text-decoration: none;
+  }
+
+  .__link__2pzSj:hover {
+    font-weight: 500;
+  }
+
+  .__link__2pzSj::before {
+    display: block;
+    content: attr(data-value);
+    font-weight: 500;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
+
+  .__title__HFGWC {
+    line-height: 1.2;
+    font-size: 1.6em;
+    font-family: Matiere, Georgia, Cambria, 'Times New Roman', Times, serif;
+    font-weight: 300;
+  }
+</style>
+<div style="min-width: 250px; max-width: 410px;" class="tw-pr-5 tw-pb-6 tw-whitespace-normal {% if showRightBorder %}tw-mr-12 tw-border-0 tw-border-r tw-border-solid tw-border-gray-300{% endif %}">
+  <h2 class="__title__HFGWC">{{ menu.title }}</h2>
+  <div class="tw-flex tw-flex-col tw-my-4">
+    {% for link in menu.links %}
+    {% assign link_url = link.url %}
+    {% if forloop.last == true and highlightLastItem == true %}
+    <a data-value="{{ link.title }}" class="tw-my-2 __link__2pzSj __last__1XHRW" href="{{ link_url }}">{{ link.title }}</a>
+    {% else %}
+    <a data-value="{{ link.title }}" class="tw-my-2 __link__2pzSj" href="{{ link_url }}">{{ link.title }}</a>
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
+{% endif %}

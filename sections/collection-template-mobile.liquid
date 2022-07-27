@@ -1,0 +1,718 @@
+{% style %}
+  .PLP-banner {
+    height: 140px;
+    background: #fafafa url("{{ '2020-black-friday-banner.png' | asset_img_url: '2400x' }}") no-repeat;
+    background-size: auto 140px;
+    background-position: center;
+  }
+
+  .main-plp-promo-banner-mob {
+   margin-left: calc(50% - 50vw);
+    width: 100vw;
+  }
+
+  .ess-container{
+    margin-left: calc(50% - 50vw);
+    width: 100vw;
+  }
+
+  @media screen and (max-width: 640px) {
+    .PLP-banner {
+      display: none;
+    }
+  }
+
+  below classes are temporary styles for french email promotion
+  .hero-container{
+    margin: 0;
+    width: 100vw;
+  }
+  .temp-fall-hero-sec {
+    height: 65vh;
+  }
+  .tw-temp-au-socks-hero-img {
+    background-image: url('{{ section.settings.image_desktop | img_url: 'master' }}');
+  }
+  @media (max-width: 640px) {
+    .temp_hero-title {
+      font-size: 3rem;
+    }
+  
+    .temp-fall-hero-sec {
+      height: 60vh;
+    }
+    .tw-temp-au-socks-hero-img {
+      background-image: url('{{ section.settings.image_mobile | img_url: 'master' }}');
+    }
+  }
+  .temp_hero-title {
+    font-size: 3.25rem;
+  }
+  .sparkle-hover-animation__sparkle-set-one {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+  }
+  .sparkle-hover-animation__sparkle-set-two {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+  }
+  .sparkle-hover-animation__sparkle-set-one::after {
+    content: '';
+    position: absolute;
+    right: 20px;
+    top: 1px;
+    width: 9px;
+    height: 9px;
+    background-image: url(https://cdn.shopify.com/s/files/1/0114/4120/9408/files/sparkle-icon-green.svg?v=1626975893);
+    background-size: 9px 9px;
+  }
+  .sparkle-hover-animation__sparkle-set-one::before {
+    content: '';
+    position: absolute;
+    left: 1px;
+    top: .5rem;
+    width: 9px;
+    height: 9px;
+    background-image: url(https://cdn.shopify.com/s/files/1/0114/4120/9408/files/sparkle-icon-white_1.svg?v=1626975894);
+    background-size: 9px 9px;
+  }
+  .sparkle-hover-animation__sparkle-set-two::after {
+    content: '';
+    position: absolute;
+    right: 3px;
+    top: .9rem;
+    width: 9px;
+    height: 9px;
+    background-image: url(https://cdn.shopify.com/s/files/1/0114/4120/9408/files/sparkle-icon-white_1.svg?v=1626975894);
+    background-size: 9px 9px;
+  }
+  .sparkle-hover-animation__sparkle-set-two::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 1px;
+    width: 9px;
+    height: 9px;
+    background-image: url(https://cdn.shopify.com/s/files/1/0114/4120/9408/files/sparkle-icon-green.svg?v=1626975893);
+    background-size: 9px 9px;
+  }
+  .sparkle-hover-animation__sparkle-set-one::before {
+    animation: sparkleBottomLeft 1s .1s infinite;
+    z-index: 1;
+  }
+  .sparkle-hover-animation__sparkle-set-one::after {
+    animation: sparkleTopRight 1s .1s infinite;
+    z-index: 1;
+  }
+  .sparkle-hover-animation__sparkle-set-two::after {
+    animation: sparkleBottomRight 1s .25s infinite;
+    z-index: 1;
+  }
+  .sparkle-hover-animation__sparkle-set-two::before {
+    animation: sparkleTopLeft 1s .25s infinite;
+    z-index: 1;
+  }
+{% endstyle %}
+
+
+{% assign excluded_tags = section.settings.excluded_tags | split: ',' | uniq %}
+{% assign available_tags = '' | split: '' %}
+{% for tag in collection.all_tags %}
+    {% unless excluded_tags contains tag %}    
+      {% assign cur_tag_ar = tag | split: ',' %}
+      {% assign available_tags = available_tags | concat: cur_tag_ar | uniq %}
+    {% endunless %}    
+{% endfor %}
+
+{%- assign per_row = 12 -%}
+{% assign paginate_by = per_row | times: 13 %}
+{% if section.settings.collection_tags_style == 'inline' and available_tags.size > 0 %}
+  {% assign paginate_by = paginate_by | minus: 1 %}
+{% elsif section.settings.collection_subnav_style == 'inline' %}
+  {% assign paginate_by = paginate_by | minus: 1 %}
+{% endif %}
+
+
+{% comment %} This is for the custom Image Box items {% endcomment %}
+{% assign collection_custom_class = '' %}
+{% if section.blocks.size > 0 %}
+  {% assign collection_custom_blocks = section.blocks | map: 'settings' | where: 'collection_list', collection.handle %}
+  {% comment %} <pre>custom_blocks: {{ collection_custom_blocks }}</pre>
+  <pre>collection handle: {{ collection.handle }}</pre> {% endcomment %}
+{% endif %}
+{% if collection_custom_blocks and collection_custom_blocks.size > 0 %}
+  {% assign collection_custom_class = 'custom-grid' %}
+{% endif %}
+
+
+
+{% paginate collection.products by settings.all_products_per_page%}
+
+
+<div
+  id="CollectionSection"
+  data-section-id="{{ section.id }}"
+  data-section-type="collection-template"
+  {% if section.settings.parallax %}data-parallax="true"{% endif %}>
+  <div class="PLP-banner tw-hidden">
+  </div>
+  <img 
+    class="tw-w-full tw-hidden" 
+    src="{{ '2020-black-friday-mob-banner.png' | asset_url }}" 
+    alt="{{ 'black-friday-banner' | t }}">
+
+  <div class="page-width page-content">
+    {% include 'breadcrumbs' %}
+    {% if collection.handle == 'french-emails' %}
+      <section class="tw-bg-sidekickBG ess-container">
+        <div class="tw-bg-cover tw-temp-au-socks-hero-img temp-fall-hero-sec tw-bg-no-repeat tw-bg-center hero-image image-height">
+          <div class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-h-full tw-text-center">
+            {% if section.settings.title != blank %}
+            <button class="relative tw-tracking-widest tw-uppercase tw-text-center tw-font-medium tw-leading-4 tw-text-sm tw-text-medium tw-font-sans tw-text-white sparkle-hover-animation">
+              <span class="sparkle-hover-animation__sparkle-set-one"></span>
+              <span class="sparkle-hover-animation__sparkle-set-two"></span>
+              {{section.settings.title}}
+            </button>
+            {% endif %}
+            {% if section.settings.sub_title1 != blank %}
+              <p class="temp_hero-title tw-pt-4 tw-font-serif tw-text-white tw-text-center tw-font-light tw-text-5xl msm:tw-text-3xl">
+                {{section.settings.sub_title1}}
+                </p>
+            {% endif %}
+            {% if section.settings.sub_title2 != blank %}
+            <div class="tw-leading-normal msm:tw-px-4 tw-text-center tw-tracking-normal tw-text-white msm:tw-text-base tw-font-narrow tw-max-w-lg tw-text-base">
+              {{section.settings.sub_title2}}
+            </div>
+            {% endif %}
+            <a href="{{section.settings.link}}" 
+              class="tw-mt-8 tw-border tw-border-black tw-bg-green-200 tw-rounded-3xl tw-border-solid tw-uppercase tw-font-medium tw-font-sans tw-font-normal tw-py-3 tw-px-16 md:tw-px-20 tw-text-xs tw-cursor-pointer tw-tracking-heading">
+                <span class="active:tw-text-white">{{section.settings.link_text}}</span>
+            </a>
+            {% if section.settings.disclaimer_text != blank %}
+              <div class="tw-max-w-md tw-font-narrow tw-text-center tw-font-light tw-tracking-normal tw-text-xs tw-pt-8 msm:tw-pt-4">
+                {{section.settings.disclaimer_text}}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </section>
+    {% endif %}
+    {% if collection.handle != 'all' or collection.handle != 'french-emails'  %}
+      {% if section.settings.collection_tags_style == 'dropdown' or section.settings.collection_sort_enable %}
+        <div class="collection-filter tw-flex tw-justify-between tw-items-center">
+          <div>
+            <h2 class="section-header__title">
+              {{ collection.title }}
+            </h2>
+          </div>
+          {% if section.settings.collection_tags_style == 'dropdown' %}
+            <div class="grid__item small--one-half medium-up--one-quarter">
+              <label for="SortTags" class="hidden-label">{{ 'collections.filters.title_tags' | t }}</label>
+              <select name="SortTags" id="SortTags">
+                {% if current_tags %}
+                  {% if collection.handle %}
+                    <option value="/collections/{{ collection.handle }}">{{ 'collections.filters.all_tags' | t }}</option>
+                  {% elsif collection.current_type %}
+                    <option value="{{ collection.current_type | url_for_type }}">{{ 'collections.filters.all_tags' | t }}</option>
+                  {% elsif collection.current_vendor %}
+                    <option value="{{ collection.current_vendor | url_for_vendor }}">{{ 'collections.filters.all_tags' | t }}</option>
+                  {% endif %}
+                {% else %}
+                  {% if current_tags contains tag %}
+                    <option value="">{{ 'collections.filters.all_tags' | t }}</option>
+                  {% else %}
+                    <option value="">{{ 'collections.filters.title_tags' | t }}</option>
+                  {% endif %}
+                {% endif %}              
+                {% for tag in available_tags %}                
+                  <option value="/collections/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag | handleize }}"{% if current_tags contains tag %} selected="selected"{% endif %}>{{ tag }}</option>
+                {% endfor %}              
+              </select>
+            </div>
+          {% endif %}
+
+          {% if section.settings.collection_sort_enable %}
+            <div class="float-right grid__item small--one-half medium-up--one-quarter" style="width:auto;">
+              {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+              {%- assign default_sorted = false -%}
+              {% if sort_by == collection.default_sort_by %}
+                {%- assign default_sorted = true -%}
+              {% endif %}
+              <label for="SortBy" class="hidden-label">{{ 'collections.sorting.title' | t }}</label>
+              <select name="SortBy" id="SortBy" style="font-size:16px;">
+                <option value="title-ascending"{% if sort_by == collection.default_sort_by %} selected="selected"{% endif %}>{{ 'collections.sorting.title' | t }}</option>
+                {% for option in collection.sort_options %}
+                  {% unless option.value contains 'title' or option.value contains 'created' %}
+                    <option value="{{ option.value }}" {% unless default_sorted %}{% if option.value == sort_by %}selected="selected"{% endif %}{% endunless %}>{{ option.name }}</option>
+                  {% endunless %}
+                {% endfor %}
+              </select>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    
+      {%- if section.settings.description_position == 'top' -%}
+        {% if collection.description != blank %}
+          {% assign collectionDescriptionMob = collection.description | split:"<!-- split -->"%}
+          <div class='tw-text-lg tw-max-w-xl p-m-0 sm:tw-hidden'>
+          {% if collectionDescriptionMob[1] %}
+            {{ collectionDescriptionMob[1] }}
+          {% else %}
+            {% if section.settings.show_sitewide_collection_copy %}
+              <p class="tw-mb-0">{{ section.settings.sitewide_collection_copy }}</p>
+            {% endif %}
+            {{ collection.description }}
+          {% endif %}
+          </div>
+        <hr class="hr--clear hr--small">
+        {% endif %}
+      {%- endif -%}
+    {% endif %}
+
+    {% if collection.handle == 'shop-all' %}
+      {% include 'shop-all-category-nav' %}
+    {% endif %}
+    <div class="tw-bg-green-200 tw-mb-8 tw--mt-8 tw-py-8 main-plp-promo-banner-mob tw-hidden">
+     <div class="page-width tw-relative tw-flex tw-justify-center tw-items-center"> 
+        <img class="tw-w-10 tw--ml-6 tw-mr-4" src="{{ 'plp-gift.svg' | asset_url }}" alt-"gift-icon" />
+        <p class="tw-mt-2 tw-text-center tw-font-medium tw-font-sans tw-mb-0 tw-uppercase">Order in the next <span id="plp-promo-banner-mob"></span> and <br>get a <span class="plp-special-msg tw-font-bold tw-uppercase">Free Mystery Gift</span></p>
+        <div class="tw-cursor-pointer tw-text-sm tw-absolute tw-right-4 tw-mt-1 tw-font-bold" id="plp-promo-close" onclick ="closePlpBannerPromoMob();"> X </div>
+      </div>
+    </div>
+
+    <div id="CollectionAjaxResult">
+      <div id="CollectionAjaxContent">
+        <div class="grid grid--uniform grid--{{ collection_custom_class }}">
+          {% assign grid_item_width = 'small--one-half medium-up--one-third' %}
+
+          {% case per_row %}
+          {% when 1 %}
+            {%- assign grid_item_width = '' -%}
+          {% when 2 %}
+            {%- assign grid_item_width = 'medium-up--one-half' -%}
+          {% when 3 %}
+            {%- assign grid_item_width = 'small--one-half medium-up--one-third' -%}
+          {% when 4 %}
+            {%- assign grid_item_width = 'small--one-half medium-up--one-quarter' -%}
+          {% when 5 %}
+            {%- assign grid_item_width = 'small--one-half medium-up--one-fifth' -%}
+          {% endcase %}
+
+          {%- assign have_sidebar = false -%}
+          {%- assign tag_count = 0 -%}
+          {%- assign tag_limit = 7 -%}
+          {%- assign have_extra_tags = false -%}
+          {% if section.settings.collection_tags_style == 'inline' %}
+            {% if available_tags.size > 0 %}
+              <div class="grid__item {{ grid_item_width }}">
+                <ul class="tags tags--vertical">
+                  <li{% unless current_tags %} class="tag--active"{% endunless %}>
+                    {% if collection.handle %}
+                      <a href="{{ routes.collections_url }}/{{ collection.handle }}">
+                        {{ 'collections.general.all_of_collection' | t }}
+                      </a>
+                    {% elsif collection.current_type %}
+                      <a href="{{ collection.current_type | url_for_type }}">
+                        {{ 'collections.general.all_of_collection' | t }}
+                      </a>
+                    {% elsif collection.current_vendor %}
+                      <a href="{{ collection.current_vendor | url_for_vendor }}">
+                        {{ 'collections.general.all_of_collection' | t }}
+                      </a>
+                    {% endif %}
+                  </li>
+
+                  {% for tag in available_tags %}
+                    {%- assign tag_count = tag_count | plus: 1 -%}                    
+                    {%- assign tag_with_hyphens = tag | replace: ' ', '-' -%}
+                    {% if tag_count == tag_limit %}
+                      {%- assign have_extra_tags = true -%}
+                      </ul>
+                      <div id="TagList-{{ section.id }}" class="collapsible-content collapsible-content--all">
+                        <ul class="tags tags--vertical collapsible-content__inner collapsible-content__inner--no-translate">
+                    {% endif %}
+                    {% if current_tags contains tag or current_tags contains tag_with_hyphens %}
+                      <li class="tag--active">
+                        {{ tag | link_to_remove_tag: tag | replace: 'title=', 'class="js-no-transition" title=' | replace: 'view=ajax', '' }}
+                      </li>
+                    {% else %}
+                      <li>
+                        {{ tag | link_to_tag: tag | replace: 'title=', 'class="js-no-transition" title=' | replace: 'view=ajax', '' }}
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+
+                  {% if have_extra_tags %}
+                    </div>
+                  {% endif %}
+                </ul>
+
+                {%- assign show_button_limit = tag_limit | minus: 1  -%}
+                {% if tag_count > show_button_limit %}
+                  <p>
+                    <button type="button" class="collapsible-trigger collapsible--auto-height collapsible-trigger-btn btn btn--tertiary tags-toggle" aria-controls="TagList-{{ section.id }}">
+                      <span class="collapsible-label__closed">{{ 'collections.general.see_more' | t }}</span>
+                      <span class="collapsible-label__open">{{ 'collections.general.see_less' | t }}</span>
+                    </button>
+                  </p>
+                {% endif %}
+              </div>
+            {% endif %}
+          {% elsif section.settings.collection_subnav_style == 'inline' %}
+            {% if linklists.main-menu.levels > 0 %}
+              {% for link in linklists.main-menu.links %}
+                {% if link.active %}
+                  {% if link.links.size > 0 %}
+                    {%- assign have_sidebar = true -%}
+                  {% endif %}
+                {% elsif link.child_active %}
+                  {%- assign have_sidebar = true -%}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          {% endif %}
+
+          {% for product in collection.products %}
+            {% assign index_value = forloop.index %}
+
+            {% for custom_block in collection_custom_blocks %}
+              {% assign custom_block_position = custom_block.position | plus: 0 %}
+              {% if index_value == custom_block_position %}
+                {% include 'product-grid-item-custom' block: custom_block %}
+              {% endif %}
+            {% endfor %}
+
+            {% include 'product-grid-item' %}
+          {% else %}
+            <div class="grid__item">
+              <p>{{ 'collections.general.no_matches' | t }}</p>
+            </div>
+          {% endfor %}
+        </div>
+
+        {% if paginate.pages > 1 %}
+          {% include 'pagination-for-collection' %}
+          {% include 'pagination' %}
+        {% endif %}
+
+        {% comment %} disable quick_shop on collections pages only
+        {% if settings.quick_shop_enable %}
+          {% for product in collection.products %}
+            {% if product.available %}
+              {% include 'quick-shop-modal' %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+        {% endcomment %}
+      </div>
+    </div>
+
+    {%- if section.settings.description_position == 'bottom' -%}
+      {% if collection.description != blank %}
+        <hr class="hr--clear hr--small">
+        <div class="rte">
+          {{ collection.description }}
+        </div>
+      {% endif %}
+    {%- endif -%}
+
+  </div>
+</div>
+
+{% endpaginate %}
+
+<script>
+// temp top banner timer with 15 minutes deadline
+function mobtime (secondes) {
+const tempsMob = Date.now();
+const apresMob = tempsMob + secondes * 1000;
+const mobtimer = setInterval(() => {
+    const secondsLeftMob = Math.round((apresMob - Date.now()) / 1000)
+    if (secondsLeftMob <= 0) {
+        clearInterval(mobtimer);
+        sessionStorage.removeItem("mobTimer");
+        document.querySelector('#plp-promo-banner-mob').style.display = 'none';
+        document.querySelector(".main-plp-promo-banner-mob").style.display = 'none';
+        return;
+    }
+    else{
+      //update the div content and show the current mobtimer value in the div or in the span inside the div.
+      var bannerMinutesMob = Math.floor(secondsLeftMob / 60);
+      var bannerSecondsMob = secondsLeftMob - bannerMinutesMob * 60;
+      document.getElementById("plp-promo-banner-mob").innerHTML = '{{section.settings.banners_text_copy}}'+ " " + bannerMinutesMob + " : " + bannerSecondsMob + ""  ;
+    }
+    sessionStorage.setItem("mobTimer", secondsLeftMob)
+    }, 1000);
+}
+
+function startmobTimerOnPageLoad(){
+     var getmobTimer = parseInt( sessionStorage.getItem('mobTimer'));
+     //put a check, mobTimer is present in sessionStorage and getmobTimer is not undefined.
+     if(getmobTimer) {
+       var bannerMinutesMob = Math.floor(getmobTimer / 60);
+       var bannerSecondsMob = getmobTimer - bannerMinutesMob * 60;
+       mobtime(getmobTimer);
+     } else {
+       mobtime(900);
+     }
+}
+
+function closePlpBannerPromoMob(){
+  var getPlpBannerPromo = document.querySelector(".main-plp-promo-banner-mob");
+  if(getPlpBannerPromo) {
+    getPlpBannerPromo.style.display = 'none';
+  }
+}
+
+if(document.getElementById('plp-promo-banner-mob')) {
+  startmobTimerOnPageLoad();
+}
+</script>
+
+
+{% schema %}
+  {
+    "name": "Collection pages Mobile",
+    "settings": [
+      {
+        "type": "range",
+        "id": "products_per_page",
+        "label": "Products per page",
+        "default": 40,
+        "min": 1,
+        "max": 100,
+        "step": 1
+      },
+      {
+        "type": "range",
+        "id": "per_row",
+        "label": "Products per row",
+        "default": 4,
+        "min": 1,
+        "max": 5,
+        "step": 1
+      },
+      {
+        "type": "checkbox",
+        "id": "collection_image_enable",
+        "label": "Show collection image",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "parallax",
+        "label": "Parallax image",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "description_position",
+        "label": "Collection description position",
+        "default": "top",
+        "options": [
+          {
+            "value": "top",
+            "label": "Top of page"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom of page"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "collection_subnav_style",
+        "label": "Subnavigation style",
+        "default": "inline",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "inline",
+            "label": "Inline"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "collection_tags_style",
+        "label": "Tag filter style",
+        "default": "none",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "inline",
+            "label": "Inline"
+          },
+          {
+            "value": "dropdown",
+            "label": "Dropdown"
+          }
+        ],
+        "info": "Only one option can use Inline style at a time"
+      },
+      {
+        "type": "text",
+        "id": "excluded_tags",
+        "label": "Tags to exclude",
+        "default": "_tab_crew-sock-sizing,_tab_mask-size-chart,_tab_size-chart-6,_tab_size-guide,shortie-us-vs-them,show-denier-modal,sticker_back-in-stock,sticker_bundle-up-save,sticker_limited-stock,sticker_new,sticker_save-up-to-30%,sticker_todays-deal,YGroup_classic_sheers,YGroup_classic_thigh_high,YGroup_cross_my_heart,YGroup_footless,YGroup_headband,YGroup_lattice_sheers,YGroup_mask,YGroup_nude_classic_sheers,YGroup_nude_shaping_sheers,YGroup_pattern_bundle,YGroup_polka_dot,YGroup_scrunchie,YGroup_semi_opaque,YGroup_shaping_sheers,YGroup_shortie,YGroup_thigh_high,YGroup_unbreakable"
+      },
+      {
+        "type": "checkbox",
+        "id": "collection_sort_enable",
+        "label": "Show sort options",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_sitewide_collection_copy",
+        "label": "Show a sitewide description callout"
+      },
+      {
+        "type": "html",
+        "id": "sitewide_collection_copy",
+        "label": "Set the universal collection copy",
+        "info": "Wrap the currency with in <span data-currency>$39</span> and it will be converted from USD to customer currency. For example, <span data-currency>$200</span>"
+      },
+      {
+        "type": "html",
+        "id": "title",
+        "label": "Main hero title",
+        "default": "Title for Hero Banner."
+      },
+      {
+        "type": "html",
+        "id": "sub_title1",
+        "label": "Heading line 1"
+      },
+      {
+        "type": "html",
+        "id": "sub_title2",
+        "label": "Heading line 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_desktop",
+        "label": "Image for desktop"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_mobile",
+        "label": "Image for mobile"
+      },
+      {
+        "type": "header",
+        "content": "CTA Settings"
+      }, 
+      {
+        "type": "html",
+        "id": "link_text",
+        "label": "Button text",
+        "default": "Shop all"
+      }, 
+      {
+        "type": "text",
+        "id": "link",
+        "label": "Button link",
+        "default": "https://www.sheertex.com/collections/all"
+      },
+      {
+        "type": "html",
+        "id": "disclaimer_text",
+        "label": "Disclaimer text",
+        "default": "Shop all"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "custom_plp_item",
+        "name": "Custom Image Box",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "collection_list",
+            "label": "Collection Selector",
+            "info": "In which collection should this image box be displayed?"
+          },
+          {
+            "type": "checkbox",
+            "id": "item_double_width",
+            "label": "Is this double width?",
+            "default": false,
+            "info": "This image box will 2 columns wide."
+          },
+          {
+            "type": "checkbox",
+            "id": "image_align",
+            "label": "Align to review",
+            "default": true
+          },
+          {
+            "type": "text",
+            "id": "position",
+            "label": "Item Position",
+            "default": "1",
+            "placeholder": "Enter a number",
+            "info": "If double width: make sure it's at position 1, 2 or 3 within a row!"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading"
+          },
+          {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description",
+            "default": "<p>Custom description for PLP item.</p>"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "For double width, make sure to use a correct image ratio."
+          },
+          {
+            "type": "image_picker",
+            "id": "image-fr",
+            "label": "Image FR",
+            "info": "For double width, make sure to use a correct image ratio."
+          },
+          {
+            "type": "url",
+            "id": "custom_img_link",
+            "label": "Link for image CTA",
+            "info": "Optional. If empty, the image won't redirect to any page."
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link",
+            "info": "Optional. If empty, the link will not appear."
+          },
+          {
+            "type": "text",
+            "id": "link_text",
+            "label": "Link Text",
+            "info": "Optional. If empty, the link will not appear."
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

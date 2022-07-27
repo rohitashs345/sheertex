@@ -1,0 +1,97 @@
+<div id="AboutProductSection" data-section-id="{{ section.id }}" data-section-type="about-product-section" class="tw-flex mlg:tw-flex-col xl:tw-container tw-justify-center tw-py-16 mlg:tw-items-center">
+  {% if section.blocks.size > 0 %}
+    {% for block in section.blocks %}
+      <div class="tw-z-{{ forloop.rindex | times: 10}} mlg:tw-py-8 __image-block__3LZ5t">
+        <p class="__description__NDxf9">{{ block.settings.text }}</p>
+        <img src="{{ 'plus.png' | asset_url }}" loading="lazy" class="__plus__6kzfw">
+        <img src="{{ block.settings.image | img_url: '300x300' }}" loading="lazy" class="__main-image__35Iq7">
+      </div>
+    {% endfor %}
+  {% endif %}
+</div>
+<style>
+  .__image-block__3LZ5t {
+    position: relative;
+    margin-right: -50px;
+  }
+  .__description__NDxf9 {
+    -webkit-transform: rotate(-30deg);
+    position: absolute;
+    left: calc(50% - 15px);
+    top: -20px;
+    text-transform: uppercase;
+    border-bottom: 1px solid;
+    text-align: right;
+    width: 170px;
+  }
+  .__plus__6kzfw {
+    position: absolute;
+    width: 30px;
+    top: 55px;
+    left: calc((100% - 30px)/2);
+  }
+  .__main-image__35Iq7 {
+    max-width: 250px;
+    margin-top: 70px;
+    border-radius: 50%;
+  }
+  @media screen and (max-width: 1023px) {
+    .__image-block__3LZ5t {
+      margin-right: 0;
+    }
+    .__image-block__3LZ5t:nth-child(odd) .__description__NDxf9 {
+      top: calc(30% - 15px);
+      width: 100px;
+      right: -80%;
+      text-align: left;
+      -webkit-transform: unset;
+      left: auto;
+    }
+    .__image-block__3LZ5t:nth-child(odd) .__plus__6kzfw {
+      right: -15px;
+      top: calc(50% - 15px);
+      left: auto;
+    }
+    .__main-image__35Iq7 {
+      max-width: 150px;
+      margin-top: 0;
+    }
+
+    .__image-block__3LZ5t:nth-child(even) .__description__NDxf9 {
+      top: calc(30% - 15px);
+      width: 100px;
+      left: -80%;
+      text-align: left;
+      -webkit-transform: unset;
+    }
+    .__image-block__3LZ5t:nth-child(even) .__plus__6kzfw {
+      left: -15px;
+      top: calc(40% - 15px);
+    }
+
+  }
+</style>
+{% schema %}
+  {
+    "name": "About Product",
+    "class": "tw-my-16",
+    "blocks": [
+      {
+        "type": "image-block",
+        "name": "Image Block",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Text"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

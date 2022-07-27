@@ -1,0 +1,45 @@
+<style>
+    .__scroll-button__21e2i {
+        display: inline-block;
+        background: none;    
+        cursor: pointer;
+        position: fixed;
+        bottom: 24px;
+        z-index: 2147483000;
+        border: none;
+        outline: none;
+        /* left: auto; */
+    }    
+</style>
+<button aria-label="scroll to top" type="button" data-scroll-btn="" class="tw-opacity-0 __scroll-button__21e2i" style="{{settings.scrollTop_placement}}: 24px;">
+  <svg width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g filter="url(#filter0_d)"><path fill="rgba(221,255,152,1)" d="M8 4h52v52H8z"></path><g clip-path="url(#clip0)"><path d="M22 29.948l3.698 3.717 5.286-5.263v13.614h6V28.402l5.317 5.295L46 29.979 33.984 18.016 22 29.948z" fill="rgba(0,0,0,1)"></path></g></g><defs><clipPath id="clip0"><path fill="rgba(0,0,0,1)" transform="translate(22 18)" d="M0 0h24v24H0z"></path></clipPath><filter id="filter0_d" x="0" y="0" width="68" height="68" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood><feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></feColorMatrix><feOffset dy="4"></feOffset><feGaussianBlur stdDeviation="4"></feGaussianBlur><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.16 0"></feColorMatrix><feBlend in2="BackgroundImageFix" result="effect1_dropShadow"></feBlend><feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape"></feBlend></filter></defs></svg>
+</button>
+<script>
+    (function initializeScrollToTopButton() {
+        let scrollToTopBtn = document.querySelector("button[data-scroll-btn]");
+        let rootElement = document.documentElement;
+
+        function scrollToTop() {    
+            rootElement.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            })
+        }
+
+        scrollToTopBtn.addEventListener("click", scrollToTop);
+
+        function handleScroll() {
+            // Do something on scroll
+            let scrollTotal = rootElement.scrollHeight - rootElement.clientHeight            
+
+            if (rootElement.scrollTop > 50) {                
+                scrollToTopBtn.classList.remove("tw-opacity-0")
+            } else {                
+                scrollToTopBtn.classList.add("tw-opacity-0")
+            }
+        }
+
+        document.addEventListener("scroll", handleScroll);        
+    }());
+</script>

@@ -1,0 +1,149 @@
+<style>
+@media (max-width: 640px) {
+  .__test-gif-cards__1zWWi {
+    min-width: 80%;
+    margin: 0 auto;
+  }
+}
+.__testkit-gifs__2rjYP{
+  width: 150px;
+  height: 150px;
+}
+.__testkit-gif-horseshoe__3Px8M {
+  width: 110px;
+  height: 110px;
+}
+.__test-gif-cards__1zWWi {
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.__testkit-gif-clover__1bcT0 {
+  width: 120px;
+  height: 120px;
+}
+
+.__test-animated-gifs-container__2IrAq::-webkit-scrollbar {
+  display: none;
+}
+.__testkit-testimonial-container__11Hcq::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .__testkit-testimonal-video__3tmTn {
+    max-width: 95vw;
+    margin: 0 auto;
+  }
+
+  .__testkit-gif-horseshoe__3Px8M {
+    width: 150px;
+    height: 150px;
+  }
+}
+</style>
+<section class="sm:tw-mt-8 tw-mb-12 sm:tw-mb-16 msm:tw-hidden">
+  <div class="tw-uppercase tw-mb-6 tw-font-bold tw-text-sm msm:tw-text-xs tw-tracking-mini-heading tw-text-center tw-font-sans tw-font-heading tw-pt-12">{{section.settings.header}}</div>
+  {% if product.handle !="test-kit" %}
+      <div class="tw-mb-6 tw--mt-2 tw-font-serif msm:tw-text-2xl msm:tw-px-4 sm:tw-text-4xl tw-font-light tw-tracking-normal tw-text-center tw-font-sans tw-font-heading">{{section.settings.title}}</div>
+  {% endif %}
+
+  <div class="tw-flex tw-container tw-mx-auto tw-overflow-x-scroll __test-animated-gifs-container__2IrAq">
+    <a href="{{section.setting.strength_link}}" class="tw-flex tw-flex-col tw-items-center tw-justify-center __test-gif-cards__1zWWi">
+      <img class="tw-mx-auto __testkit-gif-horseshoe__3Px8M" src="{{section.settings.strength_icon_svg}}" loading="lazy">
+      <div class="tw-uppercase tw-mb-6 tw-font-bold tw-text-center tw-font-sans tw-font-heading tw-pt-4">{{ section.settings.strength_title}}</div>
+      <p class="text-center tw-m-0">{{ section.settings.strength_desc}}</p>
+    </a>
+    <a href="{{ section.settings.magical_link }}" class="tw-flex tw-flex-col tw-items-center tw-justify-center __test-gif-cards__1zWWi">
+      <img tw-mx-auto="" tw--mb-8"="" src="{{section.settings.magical_icon_svg}}" loading="lazy" class="__testkit-gifs__2rjYP">
+      <div class="tw-uppercase tw-mb-6 tw-font-bold tw-text-center tw-font-sans tw-font-heading">{{ section.settings.magical_title }}</div>
+      <p class="text-center">{{ section.settings.magical_desc }}</p>
+    </a>
+    <a href="{{ section.settings.magical_link }}" class="tw-flex tw-flex-col tw-items-center tw-justify-center __test-gif-cards__1zWWi">
+      <img tw-mx-auto"="" src="{{section.settings.sustainably_icon_svg}}" loading="lazy" class="__testkit-gifs__2rjYP __testkit-gif-clover__1bcT0">
+      <div class="tw-uppercase tw-mb-6 tw-font-bold tw-text-center tw-font-sans tw-font-heading sm:tw-pt-4">{{section.settings.sustainably_title}}</div>
+      <p class="text-center">{{ section.settings.sustainably_desc }}</p>
+    </a>
+  </div>
+</section>
+
+{% schema %}
+
+{
+  "name": "HP Strength Icons D",
+    "settings": [
+    {
+      "type": "text",
+      "id": "header",
+      "label": "Strength Icons Sec heading",
+       "default": "WHY SHEERTEX?"
+    }, {
+      "type": "text",
+      "id": "title",
+      "label": "Strength Icons title",
+      "default": "The World’s Most Resilient Tights"
+    }, {
+      "type": "text",
+      "id": "strength_icon_svg",
+      "label": "Strength Svg Link"          
+    }, {
+      "type": "textarea",
+      "id": "strength_title",
+      "label": "Strength Icon title",
+      "default": "10X STRONGER THAN STEEL"
+    }, {
+      "type": "textarea",
+      "id": "strength_desc",
+      "label": "Strength Icon Description",
+      "default": "Made using one of the world’s strongest polymers, our tights are guaranteed to last."
+    }, {
+      "type": "url",
+      "id": "strength_link",
+      "label": "Strength Icon link"
+    }, {
+      "type": "text",
+      "id": "magical_icon_svg",
+      "label": "Magical Svg Link"          
+    }, {
+      "type": "textarea",
+      "id": "magical_title",
+      "label": "Magical Icon title",
+      "default": "MAGICAL PROPERTIES"
+    }, {
+      "type": "textarea",
+      "id": "magical_desc",
+      "label": "Magical Icon Description",
+      "default": "Antimicrobial, water resistant,cooling, quick-dry and machine washable."
+    }, {
+      "type": "url",
+      "id": "magical_link",
+      "label": "Magical Icon link"
+    }, {
+      "type": "text",
+      "id": "sustainably_icon_svg",
+      "label": "Sustainably Svg Link"          
+    }, {
+      "type": "textarea",
+      "id": "sustainably_title",
+      "label": "Sustainably Icon title",
+      "default": "SUSTAINABLY MADE FOR ALL"
+    }, {
+      "type": "textarea",
+      "id": "sustainably_desc",
+      "label": "Sustainably Icon Description",
+      "default": "Designed and made-to-last responsibly in Canada, with inclusive sizing up to 3XL."
+    }, {
+      "type": "url",
+      "id": "sustainably_link",
+      "label": "Sustainably Icon link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "HP Strength Icons Desktop",
+      "category": "Sheertex Inc"
+    }
+  ]
+}
+
+{% endschema %}

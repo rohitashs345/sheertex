@@ -1,0 +1,25 @@
+<style>
+.text-m{ 
+    font-family: Agrandir Narrow !important;
+    font-weight: normal !important;
+    font-stretch: normal !important;
+    font-style: normal !important;
+    letter-spacing: 0.31px !important; 
+    line-height: 1.6 !important;
+    padding-top: 4px !important;
+    color: black !important;
+    text-decoration: underline !important;
+}
+</style>
+
+<div class="yotpo bottomLine"
+    data-appkey="adHUgZ44BbeiOCY10qaUDqvvZbshC3XsPNl48aLn"
+    data-domain="{{shop.permanent_domain | escape }}"
+    data-product-id="{{ product.id }}"
+    data-product-models="{{ product.id }}"
+    data-name="{{ product.title | escape }}"
+    data-url="{{ shop.url }}{{ product.url }}"
+    data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
+    data-description="{{ product.description | escape }}"
+    data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
+</div> 

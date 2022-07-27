@@ -1,0 +1,38 @@
+<script>  
+  function addShippingNotice() {
+    const shippingNotice = 'Estimated Shipping Date 3-6 December.';
+    if (jQuery('div.sheertex-shipping-notice').length > 0) {
+      return;
+    }
+
+    let skusInCart = [
+       {% for item in checkout.line_items %}
+          "{{ item.sku }}",          
+        {% endfor %}
+    ];
+
+    let skusOutOfStock = new Set([
+      'PH-FINERIBSHEER0-M-BLK', 'PH-SHEER0-S-BLK', 'PH-SHEER0-M-BLK', 'PH-SHEER0-2XL-BLK', 'PH-FINERIBSHEER0-2XL-BLK', 'PH-DOTSSHEER0-M-BLK', 'PH-BKSMSHEER0-M-BLK', 'PH-FINERIBSHEER0-XS-BLK', 'CT-SHEER0-2XL-BLK', 'PH-SEMI0-2XL-BLK'
+    ])
+
+    let hasOutOfStockSku = false;
+
+    for (let sku of skusInCart) {
+      if (skusOutOfStock.has(sku)) {
+        hasOutOfStockSku = true;
+        break;
+      } 
+    }
+
+    if (!hasOutOfStockSku) {
+      return;
+    }    
+
+    jQuery('div[data-shipping-method].radio-wrapper').each((idx, el) => {
+      jQuery(`<div class="radio-wrapper sheertex-shipping-notice" style="font-size: 12px;">${shippingNotice}</div>`).insertAfter(el)        
+    })
+  }
+
+  setInterval(addShippingNotice, 500);
+  
+</script>

@@ -1,0 +1,415 @@
+{%comment%}
+{% include 'footer-banner' %}
+{%endcomment%}
+{% style %}
+.common-footer-links {
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 1.08px;
+  color: white !important;
+  font-family: NeueMontreal,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";
+}
+
+{% endstyle %}
+{% if section.settings.show_announcement %}
+  <div class="footer_announcement">
+    <div class="desktop">
+      {%- assign img_url = section.settings.announcement_desktop_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+      <img class="desktop_image"
+        loading="lazy"
+        src="{{ img_url }}"
+        alt="{{ section.settings.announcement_desktop_image.alt }}">
+    </div>
+    <div class="mobile">
+      {%- assign img_url = section.settings.announcement_mobile_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+      <img class="mobile_image"
+        loading="lazy"
+        src="{{ img_url }}"
+        alt="{{ section.settings.announcement_mobile_image.alt }}">
+    </div>
+  </div>
+{% endif %}
+<footer class="site-footer">  
+  <div class="site-footer__admin-items">
+    {% for block in section.blocks %}
+      {% case block.type %}
+      {% when 'menu' %}
+        <div {{ block.shopify_attributes }} class="footer__column footer__column--menu">
+          {% include 'footer-menu', block: block %}
+        </div>
+      {% when 'newsletter' %}
+        <div {{ block.shopify_attributes }} class="footer__column footer__column--newsletter tw-bg-green-200 tw-pt-8 tw-pb-4 tw-pl-4 tw-pr-8">
+          {% include 'footer-newsletter', block: block %}
+        </div>
+      {% when 'custom' %}
+        <div {{ block.shopify_attributes }} class="footer__column footer__column--custom">
+          {% include 'footer-custom-text', block: block %}
+        </div>
+      {% endcase %}
+    {% endfor %}
+    <div class="tw-block md:tw-hidden">
+      <div class="tw-flex tw-justify-between">
+        <div class="tw-grid tw-grid-rows-2 tw-gap-8">
+          <div {{ block.shopify_attributes }} class="footer__item--{{ block.id }}">
+            <p style="margin-bottom:10px;"> 
+            {% if request.locale.iso_code == 'en' %}
+              Connect with us </p>
+            {% elsif request.locale.iso_code == 'fr' %} 
+              Suivez-nous
+            {% endif %} 
+            {% include 'footer-logo-social', block: block, first_instance: true %}
+          </div>
+          <div>
+          {% if request.locale.iso_code == 'en' %}
+            <p style="margin-bottom:10px;"> Select your currency </p>
+          {% elsif request.locale.iso_code == 'fr' %} 
+            <p style="margin-bottom:10px;">Sélectionnez votre devise</p>
+          {% endif %}
+            {% include 'currency-picker', picker_id: 'header', currency_class: 'currency-picker--header' %}
+          </div>
+        </div>
+        <div class="footer__column site-footer__custom" style="margin-right:0">
+          <img
+            loading="lazy"
+            class="tw-inline-block"
+            src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/cloverSm_2x_f265a35e-50ab-46ef-8406-7636a92ccb17.png?v=1602777059" 
+            alt="Clover">
+          {% if request.locale.iso_code == 'en' %}
+            <p>Responsibly Made in<br />Montreal, Canada</p>
+          {% elsif request.locale.iso_code == 'fr' %} 
+            <p>FABRICATION RESPONSABLE <br />À MONTRÉAL, AU CANADA.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__column site-footer__custom tw-hidden md:tw-block" style="margin-right:0">
+      <img
+        loading="lazy"
+        class="tw-inline-block"
+        src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/cloverSm_2x_f265a35e-50ab-46ef-8406-7636a92ccb17.png?v=1602777059" 
+        alt="Clover">
+      {% if request.locale.iso_code == 'en' %}
+        <p>Responsibly Made in<br />Montreal, Canada</p>
+      {% elsif request.locale.iso_code == 'fr' %} 
+        <p>FABRICATION RESPONSABLE <br />À MONTRÉAL, AU CANADA.</p>
+      {% endif %}
+    </div>
+  </div>
+  
+  <div class="tw-hidden md:tw-block">
+    <div class="tw-flex tw-justify-between">
+      <div class="tw-flex tw-items-center">
+        {% if request.locale.iso_code == 'en' %}
+          <p style="margin-right:20px; margin-bottom:0px"> Select your currency </p>
+        {% elsif request.locale.iso_code == 'fr' %} 
+          <p style="margin-right:20px; margin-bottom:0px"> Sélectionnez votre devise </p>
+        {% endif %}
+        {% include 'currency-picker', picker_id: 'header', currency_class: 'currency-picker--header' %}
+      </div>
+      <div class='tw-flex tw-items-center'>
+        {% if request.locale.iso_code == 'en' %}
+          <p style="margin-right:20px; margin-bottom:0px"> Select your language </p>
+        {% elsif request.locale.iso_code == 'fr' %} 
+          <p style="margin-right:20px; margin-bottom:0px"> Sélectionnez votre langue </p>
+        {% endif %}
+        {% include 'header-language-switcher' %}  
+      </div>
+      <div {{ block.shopify_attributes }} class="footer__item--{{ block.id }} tw-flex tw-items-center" style="margin-botom:0px">
+        <p style="margin-right:20px; margin-bottom:0px"> 
+        {% if request.locale.iso_code == 'en' %}
+          Connect with us </p>
+        {% elsif request.locale.iso_code == 'fr' %} 
+          Suivez-nous
+        {% endif %} 
+        </p>
+        {% include 'footer-logo-social', block: block, first_instance: true %}
+      </div>
+    </div>
+  </div>
+  
+  <div class="tw-block md:tw-hidden">
+    <div class="site-footer__bottom">
+      {% if section.settings.show_copyright %}
+        <p class="footer__copyright">
+          &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}
+            {% if request.locale.iso_code == 'en' %} 
+              All Rights Reserved.<a class="foot-terms" href="https://sheertex.com/pages/terms-of-service">Terms</a> <a class="foot-terms" href="https://sheertex.com/pages/privacy-policy">Privacy</a>
+            {% elsif request.locale.iso_code == 'fr' %}
+              Tous droits réservés.<br/><a class="foot-terms" href="https://sheertex.com/pages/terms-of-service">Termes</a> <a class="foot-terms" href="https://sheertex.com/pages/privacy-policy">Confidentialité et modalités</a>
+            {% endif %}
+        </p>
+      {% endif %}      
+    </div>
+  </div>
+  <div class="tw-hidden md:tw-block">
+    <div class="site-footer__bottom tw-flex tw-justify-between tw-items-center">
+      {% if section.settings.show_copyright %}
+        <p class="footer__copyright">
+          &copy; {{ 'now' | date: '%Y' }} {{ shop.name }} 
+          {% if request.locale.iso_code == 'en' %}
+            All Rights Reserved.<a class="foot-terms" href="https://sheertex.com/pages/terms-of-service">Terms</a> <a class="foot-terms" href="https://sheertex.com/pages/privacy-policy">Privacy</a>
+          {% elsif request.locale.iso_code == 'fr' %}
+            Tous droits réservés.<a class="foot-terms" href="https://sheertex.com/pages/terms-of-service">Termes</a> <a class="foot-terms" href="https://sheertex.com/pages/privacy-policy">Confidentialité et modalités</a>
+          {% endif %} 
+        </p>
+      {% endif %}      
+    </div>
+  </div>
+</footer>
+
+<section class="tw-bg-black tw-text-white tw-hidden lg:tw-block">
+  <hr style="height:2px;background:transparent linear-gradient(270deg, #58DFFF 0%, #EACCA9 47%, #DDFE98 100%) 0% 0% no-repeat padding-box">
+  <div class="tw-max-w-[1600px] tw-mx-auto tw-px-10 tw-py-10 tw-flex tw-flex-row tw-justify-between">
+    <div class="tw-flex tw-w-1/3"><span class="tw-my-auto tw-mr-12 common-footer-links">Powered by Sheertex</span>
+      <a class="tw-m-auto common-footer-links " href="https://www.sheertex.com/collections/sheertex-collection">Sheertex</a>
+        <span class="tw-m-auto tw-mx-1 common-footer-links">|</span>
+      <a class="tw-m-auto common-footer-links" href="https://www.sheertex.com/collections/brae">Brae</a>
+    </div>
+    <div class="tw-w-1/2 tw-flex tw-items-center tw-justify-center">
+      <span class="tw-m-auto">
+        © <!-- -->2022<!-- --> Srtx<!-- -->
+      </span>
+      <div>
+        {% if request.locale.iso_code == 'en' %}
+        <a href="https://www.sheertex.com/pages/privacy-policy" class="tw-m-auto tw-px-2 common-footer-links">Privacy</a>
+        <a href="https://www.sheertex.com/pages/terms-of-service" class="tw-m-auto tw-px-2 common-footer-links">Terms &amp; Conditions</a>
+        {% elsif request.locale.iso_code == 'fr' %}
+        <a href="https://www.sheertex.com/pages/privacy-policy" class="tw-m-auto tw-px-2 common-footer-links">Confidentialité</a>
+        <a href="https://www.sheertex.com/pages/terms-of-service" class="tw-m-auto tw-px-2 common-footer-links">Termes &amp; Modalités</a>
+        {% endif %} 
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "max_blocks": 12,
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_payment_icons",
+        "label": "Show payment icons",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_copyright",
+        "label": "Show copyright"
+      },
+      {
+        "type": "text",
+        "id": "copyright_text",
+        "label": "Additional copyright text"
+      },
+      {
+        "type": "header",
+        "content": "Announcement bar"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_announcement",
+        "label": "Show an announcement"
+      },
+      {
+        "type": "image_picker",
+        "id": "announcement_desktop_image",
+        "label": "Announcement Desktop Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "announcement_mobile_image",
+        "label": "Announcement Mobile Image"
+      }
+    ],
+    "blocks": [
+		{
+        "type": "newsletter",
+        "name": "Newsletter",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "show_footer_title",
+            "label": "Show title",
+            "default": true
+          },
+          {
+            "type": "paragraph",
+            "content": "Any customers who sign up will have an account created for them in Shopify. [View customers](/admin/customers)."
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Sign up and save"
+          },
+          {
+            "type": "richtext",
+            "id": "richtext",
+            "label": "Text",
+            "info": "Optional",
+            "default": "<p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>"
+          },
+          {
+            "type": "richtext",
+            "id": "richtext-fr",
+            "label": "Text",
+            "info": "Optional",
+            "default": "<p>Inscrivez-vous à notre liste de diffusion et profitez d’un rabais de 10 %, en plus de recevoir en primeur des offres spéciales, des annonces de lancement de produits et des offres exclusives pour nos clientes privilégiées. Qu’attendez-vous?</p>"
+          },
+          {
+            "type": "range",
+            "id": "container_width",
+            "label": "Column width",
+            "default": 20,
+            "min": 15,
+            "max": 95,
+            "unit": "%"
+          }
+        ]
+      },
+		{
+        "type": "menu",
+        "name": "Menu",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "show_footer_title",
+            "label": "Show title",
+            "default": true
+          },
+          {
+            "type": "link_list",
+            "id": "menu",
+            "label": "Choose a menu",
+            "default": "footer",
+            "info": "This menu won't show dropdown items"
+          },
+          {
+            "type": "range",
+            "id": "container_width",
+            "label": "Column width",
+            "default": 20,
+            "min": 15,
+            "max": 95,
+            "unit": "%"
+          }
+        ]
+      },
+      {
+        "type": "logo_social",
+        "name": "Logo and social",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "logo",
+            "label": "Logo image"
+          },
+          {
+            "type": "range",
+            "id": "desktop_logo_height",
+            "label": "Logo height",
+            "default": 50,
+            "min": 20,
+            "max": 120,
+            "unit": "px"
+          },
+          {
+            "type": "range",
+            "id": "container_width",
+            "label": "Column width",
+            "default": 20,
+            "min": 15,
+            "max": 95,
+            "unit": "%"
+          }
+        ]
+      },
+      {
+        "type": "custom",
+        "name": "Custom text",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "show_footer_title",
+            "label": "Show title",
+            "default": true
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Custom text"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Add your own custom text here.</p>"
+          },
+          {
+            "type": "range",
+            "id": "container_width",
+            "label": "Column width",
+            "default": 20,
+            "min": 15,
+            "max": 95,
+            "unit": "%"
+          }
+        ]
+      }
+    ],
+    "default": {
+      "settings": {},
+      "blocks": [
+        {
+          "type": "logo_social",
+          "settings": {}
+        },
+		{
+          "type": "menu",
+          "settings": {}
+        }
+      ]
+    }
+  }
+{% endschema %}
+
+{% comment %} 
+This script triggers a tracking event with upsell product information when user hits on ADD btn.
+Added this in footer file as the selly scripts are added from URL and we've no control over it in code and to trigger everytime when upsell product added 
+{% endcomment %}
+
+<script  defer="defer">
+window.jQuery( window ).on( "load", function() {
+  window.jQuery('.tdf_normal_btn').on('click', function(){
+    var lastObj = window.jQuery(this);
+    var parent = lastObj.parent();
+    var productName = parent.closest(":has(h4)").find('h4').text();
+    var moneyObject = parent.closest(":has('.tdf_money')").find('.tdf_money');
+    var res = moneyObject.text().split("$");
+    var price = parseFloat(res[res.length-1]);
+    var currency= moneyObject.data('currency');
+    var selectedvar =parent.closest(":has('.tdf_select_input')").find('.tdf_select_input');
+    var variantid = selectedvar.val();
+    var selectedValue= selectedvar.find('option:selected').text();
+
+    var mainObject = parent.closest(":has('.tdf_rec_product')").find('.tdf_rec_product');
+    var pid= mainObject.data('rec-product-id').toString();
+
+    analytics.track("Upsell Product Added", {
+      name: productName,
+      shopify_product_id: pid,
+      shopify_variant_id: variantid, 
+      price: price,
+      currency: currency,
+      variant: selectedValue,
+    })
+  });
+});
+</script>

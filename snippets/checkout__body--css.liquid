@@ -1,0 +1,155 @@
+<style>
+      .floating{
+      	width: 130px;
+      }
+      
+      .main-why{
+        
+      	  position: relative;
+          padding-top: 10px;
+ 
+      }
+      
+      
+      .why{
+       display: flex;
+       position: absolute;
+       padding-top: 30px;
+       justify-content: center;
+       width: 411px;
+      }
+      
+      .wyustit{
+      	position:relative;
+        z-index:1;
+        text-align:center;
+      }
+      
+      .wyustit:before {
+    border-top: 1px solid #dfdfdf;
+    content: "";
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
+}
+  
+  @media only screen 
+  and (max-device-width: 600px) { 
+    .why{
+       position: relative;
+          width: 350px;
+      }
+    .main-why{
+       position: relative;
+          padding-bottom: 20px;
+          width: 340px;
+    margin: 0 auto;
+      }
+    .wyustit{
+    	width: 350px;
+    }
+    
+}
+
+.free-gift{
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.free-gift__image--wrapper {
+  width: 5rem;
+}
+.free-gift__body{
+  width: 100%;
+  padding-left: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.free-gift__body--center{
+  max-width: 16.5rem;
+}
+
+.free-gift__body--title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.43;
+  color: #323232;
+}
+
+.free-gift__body--text{
+  font-size: 0.75rem;
+  line-height: 1.33;
+  letter-spacing: 0.01px;
+  text-align: left;
+  padding: 4px 0;
+  max-width: 14rem;
+  color: black;
+}
+
+.free-gift__body--disclaimer {
+  font-size: 0.625rem;
+  line-height: 1.6;
+  letter-spacing: 0.01px;
+  text-align: left;
+  color: #848484;
+  padding-bottom: 0.5rem;
+}
+
+.free-gift__price{
+  display: flex;
+  flex-direction: column;
+  font-size: 0.875rem;
+  letter-spacing: 0.14px;
+  text-align: right;    
+  padding-left: 4px;
+}
+
+.free-gift__price-strikethrough{
+  font-size: 0.875rem;
+  text-decoration: line-through;
+  font-weight: 500;
+  color: #323232;
+}
+
+  
+  /* Overrides for Guarantee + 2 charms */
+  .why-body {
+    display: flex;
+    justify-content: space-around;
+    flex: auto;
+    margin-top: 1rem;
+  }
+
+  .why-main-image {
+    width: 50%;
+    margin-right: 2rem;
+    align-self: center;
+  }
+
+  .why {
+    position: relative;
+    padding-top: 0;
+    display: flex;
+    width: auto;
+    flex-direction: column;
+  }
+
+  .charm {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.6rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+  }
+  /* End overrides for Guarantee + 2 charms */
+
+</style>

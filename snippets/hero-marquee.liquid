@@ -1,0 +1,112 @@
+<style>
+.marquee {
+  margin: 0 auto;
+  width: 100%;
+  color: black;
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.marquee__content {
+  width: 330%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  color: white;
+  animation: marquee 38s linear infinite forwards;
+  font-family: Agrandir, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 18px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 2;
+  letter-spacing: 0.104rem;
+  text-transform: uppercase;
+  padding-top: 4px;
+}
+
+.marquee__content .list-inline {
+  justify-content: space-around;
+  width: 26.66%;
+  /* reset list */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-66.6%);
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .marquee__content .list-inline{
+    width: 220%;
+  }
+
+  .marquee__content {
+    animation: marquee 20s linear infinite forwards;
+  }
+
+  .marquee__content {
+    height: 80px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1440px) {
+  .marquee__content .list-inline{
+    width: 33.33%;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1200px) {
+  .marquee__content .list-inline{
+    width: 55%;
+  }
+  .marquee__content ul li:last-child {
+    display: none;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1024px) {
+  .marquee__content .list-inline {
+    width: 33%;
+  }
+  .marquee__content ul li:nth-last-child(-n+2) {
+    display: none;
+  }
+}
+</style>
+<a href="https://www.sheertex.com/collections/todaysdeal">
+<section class="marquee">
+  <div class="marquee__content {{ bg_marquee }}">
+    <ul class="list-inline tw-flex">
+      <li class="sm:tw-hidden">&diams;&diams;&diams;&diams;</li>
+      <li>SHOP HOLIDAY COLLECTION</li>
+      <li>&diams;&diams;&diams;&diams;</li>
+      <li>SAVE 20-40%</li>
+      <li>&diams;&diams;&diams;&diams;</li>
+      <li class="sm:tw-hidden">SAVE 20-40%</li>
+    </ul>
+    <ul class="list-inline tw-flex msm:tw-hidden">
+      <li>SHOP HOLIDAY COLLECTION</li>
+      <li>&diams;&diams;&diams;&diams;</li>
+      <li>SAVE 20-40%</li>
+      <li>&diams;&diams;&diams;&diams;</li>
+      <li>SHOP HOLIDAY COLLECTION</li>
+    </ul>
+    <ul class="list-inline tw-flex msm:tw-hidden">
+      <li>&diams;&diams;&diams;&diams;</li>
+      <li>SAVE 20-40%</li>
+      <li>&diams;&diams;&diams;&diams;</li>
+      <li>SAVE 20-40%</li>
+    </ul>
+  </div>
+</section>
+</a>

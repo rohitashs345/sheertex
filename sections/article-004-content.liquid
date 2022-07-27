@@ -1,0 +1,493 @@
+<div id="myModal" class="modal"> 
+    <span class="close cursor" onclick="closeModal()">&times;</span>
+    
+    <div class="modal-content">
+
+        <div class="mySlides">
+            <div class="numbertext">{{ 'sections.article-004-content.article_slide1_html' | t}}</div>
+            <iframe width="600" height="500" class="lookbookVid1" src="https://www.youtube.com/embed/gcY_O5URkSk"></iframe>
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">{{ 'sections.article-004-content.article_slide2_html' | t}}</div>
+            <img src="{{ '1-Hol-LookBook_Gallery_Solene1.gif' | asset_img_url: 'master' }}" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">{{ 'sections.article-004-content.article_slide3_html' | t}}</div>
+            <img src="{{ '2-Hol-LookBook_Gallery_Solene2.gif' | asset_img_url: 'master' }}" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">{{ 'sections.article-004-content.article_slide4_html' | t}}</div>
+            <img src="{{ '3-Hol-LookBook_Gallery_Karaoke1.gif' | asset_img_url: 'master' }}" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">{{ 'sections.article-004-content.article_slide5_html' | t}}</div>
+            <img src="{{ '4-Hol-LookBook_Gallery_Karaoke2.gif' | asset_img_url: 'master' }}" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">{{ 'sections.article-004-content.article_slide6_html' | t}}</div>
+            <img src="{{ '5-Hol-LookBook_Gallery_Karaoke3.gif' | asset_img_url: 'master' }}" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">{{ 'sections.article-004-content.article_slide7_html' | t}}</div>
+            <iframe width="600" height="500" class="lookbookVid2" src="https://www.youtube.com/embed/Ei-YZSMFulk"></iframe>
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">{{ 'sections.article-004-content.article_slide8_html' | t}}</div>
+            <img src="{{ '6-Hol-LookBook_Gallery_Tug1.gif' | asset_img_url: 'master' }}" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">{{ 'sections.article-004-content.article_slide9_html' | t}}</div>
+            <img src="{{ '7-Hol-LookBook_Gallery_Tug2.gif' | asset_img_url: 'master' }}" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">{{ 'sections.article-004-content.article_slide10_html' | t}}</div>
+            <iframe width="600" height="500" class="lookbookVid3" src="https://www.youtube.com/embed/u1uOHcSXgUQ"></iframe>
+        </div>
+
+    </div>
+    
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+
+<section class="tw-bg-labLookBookBG">
+
+    <section class="msm:tw-px-2 sm:tw-px-8 tw-grid sm:tw-grid-cols-5 msm:tw-grid-cols-1 tw-py-10">
+        <div class="sm:tw-col-span-3 sm:tw-border-0 sm:tw-border-r sm:tw-border-solid sm:tw-border-black">
+            <div class="tw-flex tw-flex-col tw-justify-items-center tw-border tw-border-r-8 tw-border-black">
+                <div class="tw-mx-auto tw-text-center">
+                    <img src="{{ 'Hol_Look_Dance_2x.jpg' | asset_img_url: 'master' }}" onclick="openModal();currentSlide(7)" class="tw-cursor-pointer tw-px-8 msm:tw-hidden">
+                    <img src="{{ 'M-Hol_Look_Dance_2x.jpg' | asset_img_url: 'master' }}" onclick="openModal();currentSlide(7)" class="sm:tw-hidden">
+                    <p class="tw-text-8xl msm:tw-text-6xl tw-font-serif tw-leading-tight tw-font-light tw-tracking-wide tw-mx-auto tw-py-6">
+                        {{ 'sections.article-004-content.article_p1_html' | t}}
+                    </p>
+                    <a class="tw-rounded-3xl tw-px-12 msm:tw-px-16 tw-py-3 tw-max-w-sm tw-bg-green-200 tw-mx-auto tw-text-xs tw-font-sans tw-leading-normal tw-text-center tw-font-medium tw-uppercase tw-tracking-heading" href="https://www.sheertex.com/collections/new-arrivals">
+                        {{ 'sections.article-004-content.article_a1_html' | t}}
+                    </a>
+                    <p class="tw-pt-12 msm:tw-text-2xl sm:tw-text-3xl tw-mx-auto msm:tw-px-1 sm:tw-px-24 tw-max-w-4xl">
+                        {{ 'sections.article-004-content.article_p2_html' | t}}
+                    </p>
+                    <p class="tw-text-lg tw-mx-auto msm:tw-px-1 sm:tw-px-24 sm:tw-pt-4 sm:tw-pb-8 msm:tw-py-4 tw-max-w-4xl">
+                        {{ 'sections.article-004-content.article_p3_html' | t}}
+                    </p>
+                    <div class="msm:tw-hidden tw-container tw-mx-auto tw-grid sm:tw-grid-cols-3 msm:tw-grid-rows-3 tw-gap-4 tw-py-16 msm:tw-py-12 tw-max-w-4xl">
+                        <div class="tw-flex tw-items-center tw-justify-center tw-flex-col">
+                            <img src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Shipping-footer.svg?v=1631225501" class="tw-w-12" alt="shipping-icon">
+                            <p class="tw-pt-6 tw-text-xs sm:tw-text-sm tw-font-narrow tw-leading-tight tw-text-center tw-tracking-wide tw-max-w-xs">
+                                {{ 'sections.article-004-content.article_h1_html' | t}}
+                            </p>
+                        </div>
+                        <div class="tw-flex tw-items-center tw-justify-center tw-flex-col">
+                            <img src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/guarantee-footer-01.svg?v=1635013663" class="tw-w-12" alt="guarantee-icon">
+                            <p class="tw-pt-6 tw-text-xs sm:tw-text-sm tw-font-narrow tw-leading-tight tw-text-center tw-tracking-wide tw-max-w-xs">
+                                {{ 'sections.article-004-content.article_h2_html' | t}}
+                            </p>
+                        </div>
+                        <div class="tw-flex tw-items-center tw-justify-center tw-flex-col">
+                            <img src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/strength-icon.svg?v=1629753388" class="tw-w-12" alt="strength-icon">
+                            <p class="tw-pt-6 tw-text-xs sm:tw-text-sm tw-font-narrow tw-leading-tight tw-text-center tw-tracking-wide tw-max-w-xs">
+                                {{ 'sections.article-004-content.article_h3_html' | t}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sm:tw-col-span-2">
+            <div class="tw-flex tw-flex-col tw-justify-items-center">
+                <div class="tw-mx-auto tw-text-center">
+                    <p class="tw-text-6xl msm:tw-text-6xl tw-font-serif tw-leading-tight tw-font-light tw-tracking-wide tw-mx-auto msm:tw-px-1 sm:tw-px-20">
+                        {{ 'sections.article-004-content.article_p4_html' | t}}
+                    </p>
+                    <img src="{{ 'Hol_Look_Solene_2x.jpg' | asset_img_url: 'master' }}" onclick="openModal();currentSlide(2)" class="tw-cursor-pointer tw-px-8 msm:tw-hidden">
+                    <img src="{{ 'M-Hol_Look_Solene_2x.jpg' | asset_img_url: 'master' }}" onclick="openModal();currentSlide(2)" class="msm:tw-px-2 sm:tw-hidden">
+                    <p class="tw-text-lg tw-mx-auto msm:tw-px-1 sm:tw-px-14 tw-pt-8 sm:tw-pb-2 tw-max-w-4xl">
+                        {{ 'sections.article-004-content.article_p5_html' | t}}
+                    </p>
+                    <span class="msm:tw-hidden">
+                        {% comment %}{% section 'lookbook-collection-1' %}{% endcomment %}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <span class="sm:tw-hidden">
+        {% comment %}{% section 'lookbook-collection-1' %}{% endcomment %}
+    </span>
+
+    <div class="sm:tw-hidden tw-container tw-mx-auto tw-grid sm:tw-grid-cols-3 msm:tw-grid-rows-3 tw-gap-4 tw-py-16 msm:tw-pb-6 msm:tw-pt-0">
+        <div class="tw-flex tw-items-center tw-justify-center tw-flex-col">
+            <img src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Shipping-footer.svg?v=1631225501" class="tw-w-12" alt="shipping-icon">
+            <p class="tw-pt-6 tw-text-xs sm:tw-text-sm tw-font-narrow tw-leading-tight tw-text-center tw-tracking-wide tw-max-w-xs">
+                {{ 'sections.article-004-content.article_h1_html' | t}}
+            </p>
+        </div>
+        <div class="tw-flex tw-items-center tw-justify-center tw-flex-col">
+            <img src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/guarantee-footer-01.svg?v=1635013663" class="tw-w-12" alt="guarantee-icon">
+            <p class="tw-pt-6 tw-text-xs sm:tw-text-sm tw-font-narrow tw-leading-tight tw-text-center tw-tracking-wide tw-max-w-xs">
+                {{ 'sections.article-004-content.article_h2_html' | t}}
+            </p>
+        </div>
+        <div class="tw-flex tw-items-center tw-justify-center tw-flex-col">
+            <img src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/strength-icon.svg?v=1629753388" class="tw-w-12" alt="strength-icon">
+            <p class="tw-pt-6 tw-text-xs sm:tw-text-sm tw-font-narrow tw-leading-tight tw-text-center tw-tracking-wide tw-max-w-xs">
+                {{ 'sections.article-004-content.article_h3_html' | t}}
+            </p>
+        </div>
+    </div>
+    
+    <section class="page-width">
+        <p class="tw-text-center msm:tw-text-6xl tw-text-9xl msm:tw-pt-8 sm:tw-pt-4 tw-uppercase tw-font-serif tw-leading-tight tw-font-light tw-tracking-wider">
+            {{ 'sections.article-004-content.article_p6_html' | t}}
+        </p>
+    </section>
+
+    <section class="msm:tw-px-2 sm:tw-px-8 tw-grid sm:tw-grid-cols-5 msm:tw-grid-cols-1 tw-pb-8">
+        <div class="tw-flex tw-flex-col tw-justify-items-center sm:tw-col-span-2">
+            <div class="msm:tw-hidden tw-mx-auto tw-text-center">
+                <p class="tw-text-lg tw-mx-auto msm:tw-px-1 tw-px-14 tw-max-w-4xl">
+                    {{ 'sections.article-004-content.article_p7_html' | t}}
+                </p>
+                <span>
+                    {% comment %}{% section 'lookbook-collection-2' %}{% endcomment %}
+                </span>
+            </div>
+        </div>
+        <div class="sm:tw-col-span-3 msm:tw-text-center">
+            <img src="{{ 'Hol_Look_Karaoke_2x.jpg' | asset_img_url: 'master' }}" onclick="openModal();currentSlide(4)" class="tw-cursor-pointer msm:tw-hidden tw-px-8">
+            <img src="{{ 'M-Hol_Look_Karaoke_2x.jpg' | asset_img_url: 'master' }}" onclick="openModal();currentSlide(4)" class="msm:tw-px-2 msm:tw-pb-4 sm:tw-hidden">
+            <p class="sm:tw-hidden tw-text-lg tw-mx-auto msm:tw-px-1 tw-px-14">
+                {{ 'sections.article-004-content.article_p7_html' | t}}
+            </p>
+        </div>
+    </section>
+
+    <span class="sm:tw-hidden">
+        {% comment %}{% section 'holiday-gg-collection002' %}{% endcomment %}
+    </span>
+
+    <section class="msm:tw-px-2 sm:tw-px-8 tw-grid sm:tw-grid-cols-5 msm:tw-grid-cols-1 tw-pb-10 tw-pt-16 tw-border-0 tw-border-t tw-border-solid">
+        <div class="tw-flex tw-flex-col tw-justify-items-center sm:tw-col-span-2 sm:tw-border-0 sm:tw-border-r sm:tw-border-solid sm:tw-border-black msm:tw-pb-10">
+            <div class="tw-mx-auto tw-text-center">
+                <p class="tw-text-lg tw-max-w-sm tw-mx-auto tw-font-bold">
+                    {{ 'sections.article-004-content.article_p8_html' | t}}
+                </p>
+                <p class="tw-text-6xl msm:tw-text-6xl tw-font-serif tw-leading-tight tw-font-light tw-tracking-wide tw-max-w-sm tw-mx-auto">
+                    {{ 'sections.article-004-content.article_p9_html' | t}}
+                </p>
+                <img src="{{ 'Hol_Look_Betsy_2x.jpg' | asset_img_url: 'master' }}" onclick="openModal();currentSlide(1)" class="tw-cursor-pointer msm:tw-hidden tw-px-8">
+                <img src="{{ 'M-Hol_Look_Betsy_2x.jpg' | asset_img_url: 'master' }}" onclick="openModal();currentSlide(1)" class="sm:tw-hidden">
+                <p class="tw-text-lg tw-mx-auto msm:tw-px-1 tw-px-14 tw-py-8 tw-max-w-4xl">
+                    {{ 'sections.article-004-content.article_p10_html' | t}}
+                </p>
+                <a class="tw-rounded-3xl tw-px-12 msm:tw-px-16 tw-py-3 tw-max-w-xs tw-bg-green-200 tw-mx-auto tw-text-xs tw-font-sans tw-leading-normal tw-text-center tw-font-medium tw-uppercase tw-tracking-heading" href="https://www.sheertex.com/collections/new-arrivals">
+                    {{ 'sections.article-004-content.article_a1_html' | t}}
+                </a>
+            </div>
+        </div>
+        <div class="tw-flex tw-flex-col tw-justify-items-center sm:tw-col-span-3 msm:tw-pt-6 msm:tw-border-0 msm:tw-border-tx msm:tw-border-solid msm:tw-border-black">
+            <div class="tw-mx-auto tw-text-center">
+                <img src="{{ 'Hol_Look_Tug_2x.jpg' | asset_img_url: 'master' }}" onclick="openModal();currentSlide(8)" class="tw-cursor-pointer msm:tw-hidden tw-px-8">
+                <img src="{{ 'M-Hol_Look_Tug_2x.jpg' | asset_img_url: 'master' }}" onclick="openModal();currentSlide(8)" class="sm:tw-hidden">
+                <div class="tw-grid msm:tw-grid-cols sm:tw-grid-cols-3 tw-px-3 tw-py-8">
+                    <div class="tw-flex tw-flex-col tw-justify-items-center">
+                        <div class="tw-mx-auto tw-text-center">
+                            <p class="tw-text-5xl tw-max-w-md tw-font-serif tw-leading-tight tw-font-light tw-tracking-wide tw-mx-auto">
+                                {{ 'sections.article-004-content.article_p11_html' | t}}
+                            </p>
+                            <p class="tw-text-lg tw-mx-auto msm:tw-px-1 tw-px-2 tw-py-6 tw-max-w-4xl">
+                                {{ 'sections.article-004-content.article_p12_html' | t}}
+                            </p>
+                            <a class="msm:tw-hidden tw-rounded-3xl tw-px-12 msm:tw-px-8 tw-py-3 tw-max-w-xs tw-bg-green-200 tw-mx-auto tw-text-xs tw-font-sans tw-leading-normal tw-text-center tw-font-medium tw-uppercase tw-tracking-heading" href="https://www.sheertex.com/collections/all">
+                                {{ 'sections.article-004-content.article_a2_html' | t}}
+                            </a>
+                        </div>
+                    </div>
+                    <img src="{{ 'Hol_Look_Desk_2x.jpg' | asset_img_url: 'master' }}" onclick="openModal();currentSlide(10)" class="tw-cursor-pointer msm:tw-hidden sm:tw-px-3 msm:tw-pb-3">
+                    <img src="{{ 'M-Hol_Look_Desk_2x.jpg' | asset_img_url: 'master' }}" onclick="openModal();currentSlide(10)" class="sm:tw-hidden msm:tw-px-8">
+                    <img src="{{ 'Hol_Look_Limbo_2x.gif' | asset_img_url: 'master' }}" class="msm:tw-p-8 sm:tw-pr-6">
+                    <a class="sm:tw-hidden tw-rounded-3xl tw-px-12 msm:tw-px-16 tw-py-3 tw-max-w-xs tw-bg-green-200 tw-mx-auto tw-text-xs tw-font-sans tw-leading-normal tw-text-center tw-font-medium tw-uppercase tw-tracking-heading" href="https://www.sheertex.com/collections/all">
+                        {{ 'sections.article-004-content.article_a2_html' | t}}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tw-text-center tw-border-0 tw-border-t tw-border-b tw-border-solid tw-border-black tw-py-10">
+        <div class="tw-flex tw-flex-col tw-justify-items-center tw-items-center tw-justify-center">
+            <img src="{{ 'Hol_Look_GiftGuide_2x.jpg' | asset_img_url: 'master' }}" class="msm:tw-hidden tw-px-8" alt="temp">
+            <img src="{{ 'M-Hol_Look_GiftGuide_2x.jpg' | asset_img_url: 'master' }}" class="sm:tw-hidden tw-px-2" alt="temp">
+            <div class="tw-absolute">
+                <p class="tw-text-8xl msm:tw-text-5xl tw-uppercase tw-font-serif tw-leading-tight tw-font-light tw-tracking-wide tw-mx-auto tw-text-white">
+                    {{ 'sections.article-004-content.article_p13_html' | t}}
+                </p>
+                <a class="tw-rounded-3xl sm:tw-px-12 msm:tw-px-16 tw-py-3 tw-max-w-xs tw-bg-green-200 tw-mx-auto tw-text-xs tw-font-sans tw-leading-normal tw-text-center tw-font-medium tw-uppercase tw-tracking-heading" href="https://www.sheertex.com/pages/holiday-gift-guide">
+                    {{ 'sections.article-004-content.article_a3_html' | t}}
+                </a>
+            </div>
+        </div>
+    </section>
+</section>
+
+{% style %}
+
+/* overlay background */
+.modal {
+display: none;
+position: fixed;
+z-index: 100000;
+padding-top: 50px;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+overflow: auto;
+background: rgba(0,0,0,.6);
+justify-content: center;
+align-items: center;
+outline: none;
+}
+
+/* overlay content */
+.modal-content {
+position: relative;
+margin: auto;
+padding: 0;
+max-width: 35%;
+background: none;
+}
+
+@media (max-width: 639px) {
+    .modal-content {
+        position: relative;
+        margin: auto;
+        padding: 0;
+        max-width: 70%;
+        background: none;
+    }
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 100000;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background: rgba(0,0,0,.6);
+        justify-content: center;
+        align-items: center;
+        outline: none;
+    }
+}
+
+/* close button */
+.close {
+position: absolute;
+top: 10px;
+right: 30px;
+font-size: 55px;
+font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+color: #999;
+text-decoration: none;
+cursor: pointer;
+}
+
+.mySlides {
+display: none;
+}
+
+.cursor {
+cursor: pointer;
+}
+
+/* buttons */
+.prev,
+.next {
+cursor: pointer;
+position: absolute;
+top: 50%;
+width: auto;
+padding: 16px;
+margin-top: -50px;
+color: white;
+font-weight: bold;
+font-size: 50px;
+transition: 0.6s ease;
+border-radius: 0 3px 3px 0;
+user-select: none;
+-webkit-user-select: none;
+}
+
+/* position next button to the right */
+.next {
+right: 0;
+border-radius: 3px 0 0 3px;
+}
+
+/* button hover */
+.prev:hover,
+.next:hover {
+background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* number label */
+.numbertext {
+color: #f2f2f2;
+font-size: 12px;
+padding: 8px 12px;
+position: absolute;
+top: 0;
+}
+
+img {
+margin-bottom: -4px;
+}
+
+.demo {
+opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+opacity: 1;
+}
+{% endstyle %}
+
+<script type="text/javascript">
+    var lookbookVid1 = document.querySelector('.lookbookVid1');
+    var lookbookVid2 = document.querySelector('.lookbookVid2');
+    var lookbookVid3 = document.querySelector('.lookbookVid3');
+
+    function openModal() {
+        document.getElementById("myModal").style.display = "block";
+    }
+
+    function closeModal() {
+        lookbookVid1.src = lookbookVid1.src;
+        lookbookVid2.src = lookbookVid2.src;
+        lookbookVid3.src = lookbookVid3.src;
+        document.getElementById("myModal").style.display = "none";
+    }
+
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        lookbookVid1.src = lookbookVid1.src;
+        lookbookVid2.src = lookbookVid2.src;
+        lookbookVid3.src = lookbookVid3.src;
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo");
+        var captionText = document.getElementById("caption");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        captionText.innerHTML = dots[slideIndex - 1].alt;
+    }
+
+</script>
+
+{% schema %}
+{
+  "name": "Magazine Article 004",
+  "locales": {
+    "en": {
+        "article_slide1_html": "1 OF 10",
+        "article_slide2_html": "2 OF 10",
+        "article_slide3_html": "3 OF 10",
+        "article_slide4_html": "4 OF 10",
+        "article_slide5_html": "5 OF 10",
+        "article_slide6_html": "6 OF 10",
+        "article_slide7_html": "7 OF 10",
+        "article_slide8_html": "8 OF 10",
+        "article_slide9_html": "9 OF 10",
+        "article_slide10_html": "10 OF 10",
+        "article_p1_html": "Office'ially On<br> Holiday!",
+        "article_a1_html": "SHOP HOLIDAY TIGHTS",
+        "article_p2_html": "The corporate halls are decked, the karaoke machine is ready and waiting, and the punch is calling your name—",
+        "article_p3_html": "Which may or may not be spiked with something stronger than holiday cheer (don't tell Linda from HR). Now's the time to surround yourself with your favorite people and raise a glass to resilience. From office festivities to living room dance parties, our new holiday drop will have you celebrating overtime.",
+        "article_h1_html": "FREE SHIPPING",
+        "article_h2_html": "90-DAY GUARANTEE",
+        "article_h3_html": "STRENGTH TESTED",
+        "article_p4_html": "Jingle Belle<br> Of The Ball",
+        "article_p5_html": "Even when she's behind the camera, our Art Director, Solène, belongs in the spotlight. When she wasn't mid-dance move, she could be found getting down to the ground in her Sheertex and snapping the night away with her camera, documenting this merry office rager.",
+        "article_p6_html": "karaoke caroling",
+        "article_p7_html": "The bottles were popped by the karaoke machine with glee while our team tried their hand at a caroling spree. They say that there's nothing like music to bring people together… and while our crew may not always be pitch perfect, they're always full of the resilient Sheertex spirit.",
+        "article_p8_html": "SPOTTED",
+        "article_p9_html": "Santa Claws?",
+        "article_p10_html": "It was a night filled with scowls for Betsy, our beloved Content Creator, who enjoys keeping to herself but who graced us with a rare appearance for this holiday soirée. In an attempt to survive the socializing, she brought along her boisterous kitten, Patti, for emotional support. With Patti and her claws on her lap, it's a good thing Betsy was wearing Sheertex.",
+        "article_p11_html": "Tugging At<br> Holiday<br> Heartstrings",
+        "article_p12_html": "After a long year of hard work, it was time to unwind and embrace the holiday cheer. But it turns out our team can't help but get a little competitive, even during party time. Things got a little feisty (but friendly) with an impromptu game of tug-of-war—with Sheertex tights used as rope. Obviously.",
+        "article_a2_html": "SHOP TIGHTS",
+        "article_p13_html": "something<br> for every body",
+        "article_a3_html": "SHOP GIFT GUIDE",
+        "article_a4_html": "Shop Now &rarr;"
+    },
+    "fr": {
+        "article_slide1_html": "1 OF 10",
+        "article_slide2_html": "2 OF 10",
+        "article_slide3_html": "3 OF 10",
+        "article_slide4_html": "4 OF 10",
+        "article_slide5_html": "5 OF 10",
+        "article_slide6_html": "6 OF 10",
+        "article_slide7_html": "7 OF 10",
+        "article_slide8_html": "8 OF 10",
+        "article_slide9_html": "9 OF 10",
+        "article_slide10_html": "10 OF 10",
+        "article_p1_html": "Office'ially On<br> Holiday!",
+        "article_a1_html": "SHOP HOLIDAY TIGHTS",
+        "article_p2_html": "The corporate halls are decked, the karaoke machine is ready and waiting, and the punch is calling your name—",
+        "article_p3_html": "Which may or may not be spiked with something stronger than holiday cheer (don't tell Linda from HR). Now's the time to surround yourself with your favorite people and raise a glass to resilience. From office festivities to living room dance parties, our new holiday drop will have you celebrating overtime.",
+        "article_h1_html": "FREE SHIPPING",
+        "article_h2_html": "90-DAY GUARANTEE",
+        "article_h3_html": "STRENGTH TESTED",
+        "article_p4_html": "Jingle Belle<br> Of The Ball",
+        "article_p5_html": "Even when she's behind the camera, our Art Director, Solène, belongs in the spotlight. When she wasn't mid-dance move, she could be found getting down to the ground in her Sheertex and snapping the night away with her camera, documenting this merry office rager.",
+        "article_p6_html": "karaoke caroling",
+        "article_p7_html": "The bottles were popped by the karaoke machine with glee while our team tried their hand at a caroling spree. They say that there's nothing like music to bring people together… and while our crew may not always be pitch perfect, they're always full of the resilient Sheertex spirit.",
+        "article_p8_html": "SPOTTED",
+        "article_p9_html": "Santa Claws?",
+        "article_p10_html": "It was a night filled with scowls for Betsy, our beloved Content Creator, who enjoys keeping to herself but who graced us with a rare appearance for this holiday soirée. In an attempt to survive the socializing, she brought along her boisterous kitten, Patti, for emotional support. With Patti and her claws on her lap, it's a good thing Betsy was wearing Sheertex.",
+        "article_p11_html": "Tugging At<br> Holiday<br> Heartstrings",
+        "article_p12_html": "After a long year of hard work, it was time to unwind and embrace the holiday cheer. But it turns out our team can't help but get a little competitive, even during party time. Things got a little feisty (but friendly) with an impromptu game of tug-of-war—with Sheertex tights used as rope. Obviously.",
+        "article_a2_html": "SHOP TIGHTS",
+        "article_p13_html": "something<br> for every body",
+        "article_a3_html": "SHOP GIFT GUIDE",
+        "article_a4_html": "Shop Now &rarr;"
+    }
+  }
+}
+{% endschema %}

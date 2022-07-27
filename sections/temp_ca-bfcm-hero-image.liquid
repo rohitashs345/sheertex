@@ -1,0 +1,54 @@
+{% if section.settings.blackfriday_image_link %}
+<a href="{{section.settings.blackfriday_image_link }}">
+  <div class="msm:tw-hidden"> 
+        {%- assign img = section.settings.d_blackfriday_image -%}
+        <img class="tw-w-full" srcset="{{ img | img_url: '625x' }} 625w,
+                  {{ img | img_url: '750x' }} 750w,
+                  {{ img | img_url: '880x' }} 880w,
+                  {{ img | img_url: '1150x' }} 1150w,
+                  {{ img | img_url: '1400x' }} 1400w,
+                  {{ img | img_url: '1600x' }} 1600w,
+                  {{ img | img_url: '3200x' }} 3200w" sizes="(max-width: 639px) 625px, (max-width: 750px) 750px, (max-width: 1023px) 880px, (max-width: 1279px) 1150px, (max-width: 1535px) 1400px, 1600px" alt="Black friday promo image">
+  </div>
+
+  <div class="sm:tw-hidden"> 
+        {%- assign img = section.settings.m_blackfriday_image -%}
+        <img class="tw-w-full" srcset="{{ img | img_url: '625x' }} 625w,
+                  {{ img | img_url: '750x' }} 750w,
+                  {{ img | img_url: '880x' }} 880w,
+                  {{ img | img_url: '1150x' }} 1150w,
+                  {{ img | img_url: '1400x' }} 1400w,
+                  {{ img | img_url: '1600x' }} 1600w,
+                  {{ img | img_url: '3200x' }} 3200w" sizes="(max-width: 639px) 625px, (max-width: 750px) 750px, (max-width: 1023px) 880px, (max-width: 1279px) 1150px, (max-width: 1535px) 1400px, 1600px" alt="Black friday promo image">
+  </div>
+</a>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Black Friday Image",
+    "presets": [
+      {
+        "name": "Black Friday Image",
+        "category": "Promotional"
+      }
+    ],
+    "settings": [
+      {
+        "type": "url",
+        "id": "blackfriday_image_link",
+        "label": "Link to BGFCM Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "d_blackfriday_image",
+        "label": "Desktop BF Sale Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "m_blackfriday_image",
+        "label": "Mobile BF Sale Image"
+      }
+    ]
+  }
+{% endschema %}

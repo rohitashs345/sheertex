@@ -1,0 +1,110 @@
+/* Shipping Motivator text (floating and in cart) */
+body .cart.GBP #tdf_discount_widget,
+body .cart.EUR #tdf_discount_widget {
+  display: none;
+}
+body #tdf_discount_widget .tdf_motivator.tdf_container .tdf_motivator_container {
+  font-family: 'Agrandir';
+  letter-spacing: 0.104rem;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 11px;
+  text-transform: uppercase;
+  
+  .tdf_money {
+    font-weight: 500;
+  }
+}
+
+body #tdf_discount_widget.tdf_content_section_discounted {
+  margin-bottom: 29px;
+  
+  h3 {
+  	display: none;
+  }
+}
+
+/* Shipping motivator black progress bar */
+
+body #tdf_discount_widget .tdf_motivator.tdf_container {
+  .tdf_motivator_border {
+    height: 2px !important;
+    border: 1px solid black !important;
+  }
+  /* Shipping motivator colourful progress bar */
+  .tdf_motivator_progress {
+    height: 4px !important;
+    top: -2px !important;
+    left: -2px !important;
+    background: linear-gradient(
+      to right,
+      rgba(2, 0, 36, 1),
+      rgba(216, 255, 140, 1) 0%,
+      rgba(255, 202, 117, 1)
+    ) !important;
+  }
+} 
+
+
+/* Free shipping specific styling within cart and outer popup*/
+body
+  #tdf_discount_widget.tdf_container
+  .tdf_discounted_product
+  .tdf_discount_icon_3 {
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    rgba(2, 0, 36, 1),
+    rgba(216, 255, 140, 1) 0%,
+    rgba(255, 202, 117, 1)
+  ) !important;
+  top: 36px;
+  border-radius: 0;
+}
+
+
+body
+  #tdf_discount_widget.tdf_container
+  .tdf_discount_icon_3
+  + .tdf_discount_content {
+  padding-left: 0;
+  min-height: auto;
+}
+
+body #tdf_discount_widget.tdf_container .tdf_discounted_product:first-of-type {
+  height: 73px;
+  text-align: center;
+}
+
+body #tdf_discount_widget.tdf_container .tdf_discount_tag_freeship {
+  font-family: Agrandir;
+  font-weight: 500;
+  letter-spacing: 0.104rem;
+  font-size: 0.8rem;
+}
+
+body #tdf_discount_widget span.tdf_money {
+    color: transparent;
+    display: inline-block;
+    width: 37px;
+    position: relative;
+}
+body .cart.CAD #tdf_discount_widget span.tdf_money.money::before {
+    content: '$135';
+    letter-spacing: 0.104rem;
+    font-size: 11px;
+    font-weight: 500;
+}
+body .cart.USD #tdf_discount_widget span.tdf_money.money::before {
+    content: '$100';
+    letter-spacing: 0.104rem;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+
+.tdf_notify_msgs,
+.tdf_notify_minicon {
+  display: none !important;
+}

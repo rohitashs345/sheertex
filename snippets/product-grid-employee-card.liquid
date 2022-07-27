@@ -1,0 +1,81 @@
+
+
+<style>
+.green-card {
+  width: 100%;
+  background-color: #00a170;
+  min-height: 450px;
+}
+
+.gradient-card {
+  width: 100%;
+  background-image: linear-gradient(to bottom, #f7eee3, #e8e8f2);
+  min-height: 450px;
+}
+
+.employeeCard-title {
+  font-family: Agrandir;
+  font-size: 15.2px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.38;
+  letter-spacing: 1.37px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.employeeCard-content p {
+  max-width: 220px;
+  font-family: Matiere;
+  font-size: 21px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: center;
+}
+@media (min-width: 740px) {
+  .green-card, .gradient-card {
+    min-height: 460px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .green-card, .gradient-card {
+    min-height: 518px;
+  }
+}
+</style>
+
+{% assign custom_grid_item_width = grid_item_width %}
+{% if block.item_double_width == true %}
+  {% assign custom_grid_item_width = 'medium-up--one-half' %}
+{% endif %}
+
+<div class="grid__item grid-product medium-up--one-quarter"
+     data-aos="row-of-{{ per_row }}">
+  <div class="grid-product__content custom">
+    {% if block.green_box %}
+      <div class="green-card tw-min-h-sm tw-flex tw-items-center tw-justify-center tw-flex-col">
+        {% if block.description != blank %}
+          <div class="employeeCard-content tw-text-white tw-px-4 sm:tw-px-2">{{ block.description }}</div>
+        {% endif %}
+        {% if block.title != blank %}
+          <div class="employeeCard-title tw-text-white">{{ block.title }}</div>
+        {% endif %}
+      </div>
+    {% elsif block.gradient_box %}
+      <div class="gradient-card tw-min-h-sm tw-flex tw-items-center tw-justify-center tw-flex-col">
+        {% if block.description != blank %}
+          <div class="employeeCard-content tw-text-black tw-px-4 sm:tw-px-2">{{ block.description }}</div>
+        {% endif %}
+        {% if block.title != blank %}
+          <div class="employeeCard-title tw-text-black">{{ block.title }}</div>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+

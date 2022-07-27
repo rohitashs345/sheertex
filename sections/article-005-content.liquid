@@ -1,0 +1,225 @@
+<section class="tw-text-center sm:tw-py-12 msm:tw-py-8 tw-w-full">
+    <p class="tw-rounded-3xl tw-mx-auto sm:tw-w-2/12 msm:tw-w-1/3 tw-bg-orange-300 tw-text-xs tw-font-sans tw-leading-normal tw-font-medium tw-uppercase tw-tracking-heading tw-py-2 tw-mb-0">
+        {{ 'sections.article-005-content.article_type_html' | t}}
+    </p>
+    <p class="tw-mx-auto tw-font-serif sm:tw-px-40 sm:tw-text-8xl msm:tw-text-4xl tw-leading-tight sm:tw-py-6 msm:tw-pt-5 msm:tw-pb-3 msm:tw-px-2 tw-mb-0">
+        {{ 'sections.article-005-content.article_title_html' | t}}
+    </p>
+    <p class="tw-mx-auto tw-font-serif sm:tw-px-40 msm:tw-px-6 sm:tw-text-3-5-xl tw-leading-normal sm:tw-pb-5 msm:tw-pb-2 tw-mb-0">
+        {{ 'sections.article-005-content.article_subtitle_html' | t}}
+    </p>
+    <p class="tw-mx-auto tw-font-sans tw-font-bold tw-uppercase tw-text-base tw-leading-normal msm:tw-text-sm sm:tw-pt-5 msm:tw-py-2 tw-mb-0">
+        {{ 'sections.article-005-content.article_author_html' | t}}
+    </p>
+    <p class="tw-mx-auto tw-font-narrow tw-text-base tw-leading-normal msm:tw-text-sm tw-mb-0">
+        {{ 'sections.article-005-content.article_date_html' | t}}
+    </p>
+</section>
+
+<section class="tw-grid tw-grid-cols-2 sm:tw-py-8 msm:tw-py-2 tw-w-full">
+    <div>
+        <img src="{{ 'Lab_Article005_img1_Desktop.jpg' | asset_img_url: 'master' }}" class="" alt="temp">
+    </div>
+    <div>
+        <img src="{{ 'Lab_Article005_img2_Desktop.jpg' | asset_img_url: 'master' }}" class="" alt="temp">
+    </div>
+</section>
+
+<section class="page-width tw-text-start">
+    <p class="tw-mx-auto tw-font-narrow sm:tw-text-2xl sm:tw-px-36">
+        {{ 'sections.article-005-content.article_p1_html' | t}}
+    </p>
+    <p class="tw-mx-auto tw-font-narrow sm:tw-text-2xl sm:tw-px-36">
+        {{ 'sections.article-005-content.article_p2_html' | t}}
+    </p>
+</section>
+
+<section class="tw-grid tw-grid-cols-2 sm:tw-py-8 msm:tw-py-2 tw-w-full">
+    <div>
+        <img src="{{ 'Lab_Article005_img3_Desktop.jpg' | asset_img_url: 'master' }}" class="" alt="temp">
+    </div>
+    <div>
+        <img src="{{ 'Lab_Article005_img4_Desktop.jpg' | asset_img_url: 'master' }}" class="" alt="temp">
+    </div>
+</section>
+
+<section class="page-width">
+    <h2 class="tw-mx-auto tw-font-serif sm:tw-text-5-5xl msm:tw-text-2xl sm:tw-px-36 sm:tw-py-8 msm:tw-py-2">
+        {{ 'sections.article-005-content.article_h1_html' | t}}
+    </h2>
+    <p class="tw-mx-auto tw-font-narrow sm:tw-text-2xl sm:tw-px-36">
+        {{ 'sections.article-005-content.article_p3_html' | t}}
+    </p>
+    <p class="tw-mx-auto tw-font-narrow sm:tw-text-2xl sm:tw-px-36">
+        {{ 'sections.article-005-content.article_p4_html' | t}}
+    </p>
+    <p class="tw-mx-auto tw-font-narrow sm:tw-text-2xl sm:tw-px-36">
+        {{ 'sections.article-005-content.article_p5_html' | t}}
+    </p>
+    <h2 class="tw-text-center tw-font-serif sm:tw-text-5-5xl msm:tw-text-2xl sm:tw-px-20 sm:tw-pt-16 sm:tw-pb-8 msm:tw-py-2">
+        {{ 'sections.article-005-content.article_h2_html' | t}}
+    </h2>
+    <h2 class="tw-mx-auto tw-font-serif sm:tw-text-5-5xl msm:tw-text-2xl sm:tw-px-36 sm:tw-py-8 msm:tw-py-2">
+        {{ 'sections.article-005-content.article_h3_html' | t}}
+    </h2>
+    <p class="tw-mx-auto tw-font-narrow sm:tw-text-2xl sm:tw-px-36">
+        {{ 'sections.article-005-content.article_p6_html' | t}}
+    </p>
+    <p class="tw-mx-auto tw-font-narrow sm:tw-text-2xl sm:tw-px-36">
+        {{ 'sections.article-005-content.article_p7_html' | t}}
+    </p>
+</section>
+
+<section class="page-width sm:tw-py-8 msm:tw-py-2 tw-justify-items-center tw-items-center">
+    <div class="tw-mx-auto tw-max-w-4xl">
+        <img src="{{ 'Lab_Article005_img5_Desktop.jpg' | asset_img_url: 'master' }}" class="tw-rounded-xl msm:tw-px-16" alt="temp">
+        <div class="tw-grid sm:tw-grid-cols-4 msm:tw-grid-cols-1 msm:tw-justify-items-center msm:tw-items-center msm:tw-space-y-4">
+            <div class="sm:tw-col-start-3 tw-items-center msm:tw-m-auto">
+                <p class="tw-m-auto tw-font-serif tw-font-medium tw-text-base tw-text-black tw-mb-0">
+                    Essential Sheer Tights
+                </p>
+                <p class="tw-m-auto tw-font-narrow tw-text-light tw-text-sm tw-tracking-wider tw-uppercase tw-text-black">
+                        {% assign product = collections['essential-classics'].products.first %} 
+                        Only {{ product.price  | money }} For a 2-Pack
+                </p>
+            </div>
+            <div class="sm:tw-col-start-4 tw-items-center tw-m-auto">
+                <a class="tw-border-0 tw-border tw-border-solid tw-border-black tw-rounded-3xl tw-px-4 tw-py-3 tw-max-w-xs tw-bg-green-200 tw-mx-auto tw-text-xxs tw-font-sans tw-leading-normal tw-text-center tw-font-medium tw-uppercase tw-tracking-heading" href="https://www.sheertex.com/products/classic-semi-opaque-tights">
+                        SHOP ESSENTIAL SHEER TIGHTS
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="page-width">
+    <h2 class="tw-mx-auto tw-font-serif sm:tw-text-5-5xl msm:tw-text-2xl sm:tw-px-36 sm:tw-py-8 msm:tw-pt-8 msm:tw-pb-2">
+        {{ 'sections.article-005-content.article_h4_html' | t}}
+    </h2>
+    <p class="tw-mx-auto tw-font-narrow sm:tw-text-2xl sm:tw-px-36">
+        {{ 'sections.article-005-content.article_p8_html' | t}}
+    </p>
+    <p class="tw-mx-auto tw-font-narrow sm:tw-text-2xl sm:tw-px-36">
+        {{ 'sections.article-005-content.article_p9_html' | t}}
+    </p>
+    <p class="tw-mx-auto tw-font-sans tw-font-bold tw-uppercase sm:tw-px-36 tw-tracking-widest sm:tw-pt-8 msm:tw-pt-2">
+        {{ 'sections.article-005-content.article_p10_html' | t}}
+    </p>
+    <h2 class="tw-mx-auto tw-font-serif sm:tw-text-5-5xl msm:tw-text-2xl sm:tw-px-36 sm:tw-py-8 msm:tw-py-2">
+        {{ 'sections.article-005-content.article_h5_html' | t}}
+    </h2>
+    <p class="tw-mx-auto tw-font-narrow sm:tw-text-2xl sm:tw-px-36">
+        {{ 'sections.article-005-content.article_p11_html' | t}}
+    </p>
+</section>
+
+<section class="tw-grid tw-grid-cols-2 sm:tw-py-8 msm:tw-py-2 tw-w-full">
+    <div>
+        <img src="{{ 'Lab_Article005_img6_Desktop.jpg' | asset_img_url: 'master' }}" class="" alt="temp">
+    </div>
+    <div>
+        <img src="{{ 'Lab_Article005_img7_Desktop.jpg' | asset_img_url: 'master' }}" class="" alt="temp">
+    </div>
+</section>
+
+<section class="page-width tw-pb-12">
+    <h2 class="tw-mx-auto tw-font-serif sm:tw-text-5-5xl msm:tw-text-2xl sm:tw-px-36 sm:tw-py-8 msm:tw-py-2">
+        {{ 'sections.article-005-content.article_h6_html' | t}}
+    </h2>
+    <p class="tw-mx-auto tw-font-narrow sm:tw-text-2xl sm:tw-px-36">
+        {{ 'sections.article-005-content.article_p12_html' | t}}
+    </p>
+    <p class="tw-mx-auto tw-font-narrow sm:tw-text-2xl sm:tw-px-36">
+        {{ 'sections.article-005-content.article_p13_html' | t}}
+    </p>
+    <h2 class="tw-text-center tw-font-serif sm:tw-text-5-5xl msm:tw-text-2xl sm:tw-px-16 sm:tw-pt-16 sm:tw-pb-8 msm:tw-py-2">
+        {{ 'sections.article-005-content.article_h7_html' | t}}
+    </h2>
+    <h2 class="tw-mx-auto tw-font-serif sm:tw-text-5-5xl msm:tw-text-2xl sm:tw-px-36 sm:tw-py-8 msm:tw-py-2">
+        {{ 'sections.article-005-content.article_h8_html' | t}}
+    </h2>
+    <p class="tw-mx-auto tw-font-narrow sm:tw-text-2xl sm:tw-px-36">
+        {{ 'sections.article-005-content.article_p14_html' | t}}
+    </p>
+    <p class="tw-mx-auto tw-font-narrow sm:tw-text-2xl sm:tw-px-36">
+        {{ 'sections.article-005-content.article_p15_html' | t}}
+    </p>
+    <p class="tw-mx-auto tw-font-narrow sm:tw-text-2xl sm:tw-px-36">
+        {{ 'sections.article-005-content.article_p16_html' | t}}
+    </p>
+    <a href="https://www.sheertex.com/collections/all/products/essential-sheer-tights" class="tw-font-medium tw-font-sans tw-uppercase sm:tw-px-36 tw-py-8">
+        {{ 'sections.article-005-content.article_a1_html' | t}}
+    </a>
+</section>
+
+{% schema %}
+{
+  "name": "Magazine Article 005",
+  "locales": {
+    "en": {
+        "article_type_html": "article",
+        "article_title_html": "An Essential step towards sustainability: How tights that last are making an impact",
+        "article_subtitle_html": "Every year, over 2 billion pairs of cheap, unsustainable pantyhose are sent to the landfills. We sat down with Katherine Homuth, Founder and CEO of Sheertex, to explore how the World's Most Resilient Tights and their latest product, Essential Sheer Tights, are playing their part in reducing the ecological footprint of the hosiery industry.",
+        "article_author_html": "staff contributor",
+        "article_date_html": "February 8, 2022",
+        "article_p1_html": "The notion of tackling climate change feels insurmountable. But it is possible for individuals to make a meaningful impact on the environment, and it usually starts with an idea, an action small enough for one person to do, but can catch on and spread from there. Katherine Homuth, Founder and CEO of Sheertex, is evidence of that. The seed for the company was first planted in 2017, after she experienced a universal hardship that anyone who's ever worn regular tights knows all too well: they ripped, far too easily. From there, she wondered why tights that don't rip at the drop of a hat hadn't been invented yet. And the rest is history.",
+        "article_p2_html": "Every single year, over two billion pairs of disposable pantyhose rip and are tossed into the trash, clogging up the landfills and contributing to the decline of the planet's health. Here's what Homuth has to say about Sheertex's mission of eliminating disposable hosiery on a global scale and how they're planning to do it.",
+        "article_h1_html": "Creating tights that last—<br>more expensive than you'd think",
+        "article_p3_html": "Katherine Homuth's goal has always been to design tights that stand the test of time. After all, why should humans be able to land on the moon but pantyhose aren't able to last more than a day before ripping? Following countless rounds of experimenting with different materials and breaking many sewing machines in the process, Homuth discovered one tiny yet mighty miracle fiber which is now woven into every single Sheertex product to make them as resilient as they are. The only problem is that miracle fiber is very expensive.",
+        "article_p4_html": "Sheertex's premium products—such as the Classic Sheer Tights, which have sold over 500,000 pairs since 2019—are woven with Sheertex's trademark resilient knit, with a wide and comfy waistband, high-end stitching, and are available in seven different sizes. They also have an average price tag of about $100 USD. In the early days of the company, it cost around $100 to make a single pair of pantyhose due to material and labor costs. However, over the last few years, strides have been made in the production process which have helped to lower those costs, allowing for further innovation in tech-enabled automation processes which led to new, more affordable products.",
+        "article_h2_html": "\"We always dreamed of making our technology accessible to everyone so that no one has to buy a pair of disposable tights ever again.\"",
+        "article_h3_html": "Essential Sheer Tights: The leap of faith",
+        "article_p5_html": "\"We always dreamed of making our technology accessible to everyone so that no one has to buy a pair of disposable tights ever again. But we knew that in order to make that happen, we'd have to make our tights really affordable,\" says Homuth.",
+        "article_p6_html": "Everyone who wears tights wants tights that don't rip, but the fact of the matter is that Sheertex's typical products sit at a far higher price point than regular tights, something which new customers or skeptics aren't always willing to pay. That's why in January 2022, Sheertex took a leap of faith by releasing their most affordable product yet: Essential Sheer Tights. At $29 USD, the new product is sold for as much as it costs to produce, allowing for an accessible entrypoint into the primarily premium brand.",
+        "article_p7_html": "\"What we've done is removed some of our very special fiber from the parts of the product where it isn't entirely required,\" Homuth explains. \"From the thigh up, we've used a combination of nylon and lycra, and our magic fiber is used from the thigh down.\" In essence, it's resilient in all the places that traditional tights would be most likely to catch a snag. Stripped of any excess frills, the Essential is accompanied by clean, minimal white packaging—all in an effort to bring customers the best possible product at the lowest possible price.",
+        "article_h4_html": "Why now?",
+        "article_p8_html": "\"We launched these as soon as we were able to lower our cost to produce enough to be able to offer Essentials quite literally at cost,\" Homuth explains. The company isn't making money off of the Essential; the entire goal is to make the product as widely accessible to as many people as possible.",
+        "article_p9_html": "\"We had to ask ourselves, 'How do we try to get more people to try Sheertex?' Because that's how we'll eliminate disposable hosiery,\" says Homuth. The Essential is the easiest way for someone who's curious about Sheertex to ease themselves into the brand, start believing in the products, and start understanding what Sheertex is all about. \"And then, of course, we hope they grow with us over time,\" says Homuth.",
+        "article_p10_html": "Lowering production costs",
+        "article_h5_html": "Towards full automation",
+        "article_p11_html": "While a pair of Sheertex may look like a traditional pair of pantyhose, they're anything but, and therefore require special automated equipment to accommodate the unique knit. \"If we were to walk into another pantyhose factory and run our tights through their machines, they would break because of how different and untraditional our material is,\" explains Dave Cox, Head of Automation at Sheertex. To avoid this, they have a team of engineers dedicated to determining exactly how to customize and adjust traditional off-the-shelf machines to suit Sheertex's distinct material.",
+        "article_h6_html": "What makes the Essential different",
+        "article_p12_html": "All of Sheertex's premium products are made with a very high-end, hand-sewn flatlock stitch, which has to be done by hand. The Essential, on the other hand, is created mostly through an automated process using heavily retrofitted equipment, which means that there is far less human labour required—which has also helped cut the costs roughly in half. But this isn't a case of machines-overtaking-humans; instead, it allows the factory workers to be more efficient and effective. The Essential product design also features a more minimal waistband that's similar to a traditional pair of pantyhose, which is thinner and easier to make. \"With the improved patterns and ease of loading, it's twice as fast to make, so that helps reduce our costs significantly,\" explains Cox.",
+        "article_p13_html": "In the spirit of keeping things as minimal as possible, the Essential is available in three general sizes—Small/Medium, Large/Extra-Large, and 2XL/3XL—compared to the premium products, which are offered in seven sizes. As Sheertex's automation process stands currently, the machines must be adjusted each time a new size needs to be created. Having three general sizes means they can batch up production to avoid having to frequently adjust their automated machines, which also contributes to the decreased price point since less adjustments and less labour are required.",
+        "article_h7_html": "\"At the end of the day, the Essential is a way for everyone to hopefully fall in love with our products and see that our mission is worth supporting\"",
+        "article_h8_html": "Making a lasting impact on the community & the environment",
+        "article_p14_html": "The launch of the Essential plays into the same goal that Homuth has envisioned for Sheertex since day one: eliminating disposable hosiery by making resilient tights accessible to everyone. Even though Sheertex may not be making much of a profit with the new Essential, she is confident that it's a key product to initiate newcomers into discovering what the company is all about.",
+        "article_p15_html": "\"If you believe in Sheertex and believe in what we're trying to do for the world—which is to eliminate disposable hosiery, for good—the way that you can support our mission is by buying our premium products so that we can continue to fund our productions,\" Homuth explains. Profits made from the higher-end premium products are invested into research and development, growing the company, and continuing to optimize production to lower costs on other products.",
+        "article_p16_html": "\"At the end of the day, the Essential is a way for everyone to hopefully fall in love with our products and see that our mission is worth supporting,\" Homuth says. \"I think that as we grow and more and more people begin to take the leap towards Sheertex, we inch closer and closer to our goal of eliminating all disposable hosiery.\"",
+        "article_a1_html": "shop essential sheer tights &rarr;"
+    },
+    "fr": {
+        "article_type_html": "article",
+        "article_title_html": "Un pas essentiel vers le développement durable : l'impact des collants qu'on ne jette pas",
+        "article_subtitle_html": "Chaque année, plus de 2 milliards de paires de collants bon marché sont expédiées dans les sites d'enfouissement. Nous avons eu la chance de s'entretenir avec Katherine Homuth, fondatrice et présidente de Sheertex, qui nous explique comment le tout dernier membre de la famille des collants résolument résilients, le diaphane essentiel, contribue réellement à réduire l'empreinte écologique de l'industrie des dessous.",
+        "article_author_html": "Contributeur interne",
+        "article_date_html": "February 8, 2022",
+        "article_p1_html": "On sent une telle impuissance devant les changements climatiques qu’il semble impensable d’exercer une mince influence sur le cours des choses. Pourtant, il arrive qu’un seul individu puisse avoir un impact significatif sur l’environnement avec un concept si pertinent qu’il influencera les masses. Katherine Homuth, fondatrice et présidente de Sheertex en est la preuve vivante. Cette idée a pris racine dans un événement banal. En 2017, après avoir vu ses collants se déchirer une énième fois entre ses mains, elle s’est demandé pourquoi personne n’avait jamais pensé à inventer des collants résistants. Et vous devinez le reste!",
+        "article_p2_html": "Encore chaque année, plus de deux milliards de collants sont bons à jeter aux poubelles, augmentant ainsi la densité des sites d’enfouissement et contribuant au déclin de l’environnement. Voici ce que Katherine Homuth avait à dire sur la mission que s’est donnée Sheertex d’éliminer les collants prêts-à-jeter à l’échelle mondiale et comment pense-t-elle y parvenir.",
+        "article_h1_html": "Créer des collants durables, mais à quel prix?",
+        "article_p3_html": "Dès le départ, Katherine avait l’ambition de fabriquer des collants qui résistent à l'épreuve du temps. Après tout, nous sommes bien capables d’aller sur la lune, alors pourquoi ne pouvons-nous pas passer plus d’une journée sans que nos bas déchirent? Au bout d'innombrables tentatives avec différents matériaux et brisant au passage de nombreuses machines à tisser, Homuth a enfin découvert une fibre miracle, aussi minuscule que résistante, qui allait devenir la base du tissage de tous les produits Sheertex, les rendant aussi résilients qu’ils sont aujourd’hui. Seul problème? Cette fibre était très dispendieuse.",
+        "article_p4_html": "La gamme de produits premium de Sheertex, où figure, par exemple, le Collant diaphane classique dont 500 000 paires se sont écoulées depuis 2019, est conçue avec le tissage résistant qui a fait la renommée de Sheertex. Chaque paire comprend une large bande confortable à la taille, de fines coutures de haute qualité et sont disponibles en sept tailles. Ils sont vendus autour de 100 $ US. Au tout début de l’aventure Sheertex, le coût de fabrication d’une seule paire s’élevait à 100 $ en raison des frais élevé du matériel et de la main-d'œuvre. Puis, avec le temps, le processus de production a été amélioré, réduisant ainsi les coûts de production. Cette innovation technologique dans les processus d'automatisation technologiques allait permettre de produire un collant beaucoup plus abordable.",
+        "article_h2_html": "« Nous avons toujours rêvé de rendre notre technologie accessible à tous afin que personne n’ait plus jamais à acheter de bas prêts-à-jeter. Mais nous savions que pour y arriver, nous devions rendre notre produit accessible à toutes les bourses »",
+        "article_h3_html": "Les Collants diaphanes essentiels : le grand saut",
+        "article_p5_html": "« Nous avons toujours rêvé de rendre notre technologie accessible à tous afin que personne n’ait plus jamais à acheter de bas prêts-à-jeter. Mais nous savions que pour y arriver, nous devions rendre notre produit accessible à toutes les bourses » affirme Homuth.",
+        "article_p6_html": "Tout le monde veut un collant résistant, mais le fait que les prix des produits Sheertex sont typiquement beaucoup plus élevés que ceux des collants ordinaires peut repousser n’importe quel client un peu sceptique. C'est pourquoi en janvier 2022, Sheertex a fait le pari de lancer leur collant le plus abordable : le Collant diaphane essentiel. À 29 $ US, ce nouveau produit est vendu au prix coûtant, donnant ainsi à Sheertex un point d'entrée dans le marché.",
+        "article_p7_html": "« Nous avons tout simplement retiré une partie de notre fibre exclusive là où ce n’était pas nécessaire, explique Homuth. À partir de la cuisse vers le haut, nous avons utilisé une combinaison de nylon et de lycra, et notre fibre miracle couvre de la cuisse vers le bas. » Essentiellement, ils ont fait en sorte que le collant résiste là où il est le plus susceptible d’être accroché. Débarrassé de tout excès de fioritures, le Collant diaphane essentiel vient dans un simple emballage blanc, tout ça dans le but d'offrir aux clients le meilleur produit possible au prix le plus bas possible.",
+        "article_h4_html": "Pourquoi maintenant?",
+        "article_p8_html": "« Dès le moment où nous avons été en mesure de réduire nos coûts de production, nous avons lancé le collant Essentiel au prix coûtant », explique Homuth. L'entreprise ne fait pas de profit sur ce produit, car l'objectif est de le rendre accessible au plus grand nombre de gens possible.",
+        "article_p9_html": "« Nous nous sommes posé la question : comment amener le plus de gens possible à essayer Sheertex? Parce que pour nous, c’est la seule façon d’éliminer les bass prêts-à-jeter », explique Homuth. Avec le collant Essentiel, nous arrivons à faire mousser l’intérêt envers la marque, de faire comprendre l’esprit de Sheertex et surtout, d’inciter les gens à croire en notre produit. « Et puis, bien sûr, nous espérons qu’ils adhèrent à la marque au fil du temps », déclare Homuth.",
+        "article_p10_html": "Réduire nos coûts de production",
+        "article_h5_html": "Vers une automatisation complète",
+        "article_p11_html": "À première vue, une paire de Sheertex peut se confondre n’importe quelle autre paire de collants, mais ils sont complètement différents et leur fabrication nécessite un équipement automatisé spécifiquement adapté au matériel. « Si nous devions faire passer nos collants dans les machines d’une autre usine, ils déchireraient aussitôt tellement notre matériel se distingue », explique Dave Cox, responsable de l'automatisation chez Sheertex. Pour éviter cela, ils ont mis en place toute une équipe d’ingénieurs qui déterminent la façon de personnaliser et ajuster les machines traditionnelles pour s'adapter au matériau distinct de Sheertex.",
+        "article_h6_html": "Les particularités du collant Essentiel",
+        "article_p12_html": "Tous les produits haut de gamme de Sheertex sont fabriqués avec une couture flatlock très précise qui doit être faite à la main. Le collant Essentiel, quant à lui, est conçu principalement à l’aide d’un processus automatisé utilisant des équipements de pointe. Sa fabrication requiert moins de main-d’œuvre, ce qui a permis de faire baisser son coût de production d’environ de moitié. Cependant, on ne parle pas ici d’un cas où la machine dépasse l’humain, au contraire, ce procédé permet aux employés de l’usine d’être plus efficaces et d’offrir un meilleur rendement. De plus, la ceinture de celui-ci est plus minimale et s’apparente à celle des collants traditionnels, qui est plus mince et donc plus facile à fabriquer. « Grâce aux patrons améliorés et à la facilité de chargement, il est deux fois plus rapide à fabriquer, ce qui contribue grandement à réduire nos coûts, » explique Cox.",
+        "article_p13_html": "Dans le but de garder les choses le plus simple possible, le collant Essentiel est disponible en seulement trois tailles : petit/médium, large/extra-large et 2XL/3XL, alors que les produits haut de gamme sont offerts en sept tailles différentes. Présentement, le processus de fabrication de Sheertex fait en sorte que les machines doivent être réajustées pour produire chaque grandeur. Réduire le nombre de tailles offertes évite d’ajuster fréquemment les machines et réduit ainsi la quantité de travail, permettant la baisse du prix.",
+        "article_h7_html": "\"Au bout du compte, le collant Essentiel est le moyen par excellence de convaincre les gens de tomber amoureux de nos produits et de leur montrer que notre mission se doit d’être soutenue\"",
+        "article_h8_html": "Un impact réel sur la communauté et l'environnement",
+        "article_p14_html": "Le lancement du collant Essentiel rejoint l’objectif que Katherine Homuth avait en tête lorsqu’elle a créé Sheertex : éliminer les collants prêts-à-jeter en rendant les bas résistants accessibles à tous. Pour le moment, même si le profit de Sheertex est maigre, elle est convaincue d’avoir en main un produit clé pour initier de nouveaux adeptes à la mission de son entreprise.",
+        "article_p15_html": "« Si vous croyez en Sheertex et avez la foi en ce que nous essayons de faire pour la planète, soit éliminer les collants prêts-à-jeter pour de bon, vous pouvez soutenir notre mission en achetant nos produits haut de gamme afin que nous puissions continuer à financer notre production », explique Homuth. Les profits réalisés avec ces produits sont réinvestis dans la recherche et le développement, dans la croissance de l'entreprise et l'optimisation de la production afin de continuer à réduire les coûts des autres produits.",
+        "article_p16_html": "« Au bout du compte, le collant Essentiel est le moyen par excellence de convaincre les gens de tomber amoureux de nos produits et de leur montrer que notre mission se doit d’être soutenue, déclare Homuth. À mon avis, au fur et à mesure que nous prenons de l’expansion et que de plus en plus de gens font le saut vers Sheertex, nous nous rapprochons chaque jour de notre objectif ultime, celui d'éliminer tous les collants jetables. »",
+        "article_a1_html": "shop essential sheer tights &rarr;"
+    }
+  }
+}
+{% endschema %}

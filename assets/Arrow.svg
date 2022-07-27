@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="31px" height="32px" viewBox="0 0 31 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(0.200342, 1.345598)" stroke="#000000">
+            <line x1="0" y1="14.4544017" x2="29.1695167" y2="14.4544017" id="Path"></line>
+            <polyline id="Path-2" points="14.6491105 29.4 29.1457469 14.4004729 14.6491105 -1.81188398e-13"></polyline>
+        </g>
+    </g>
+</svg>

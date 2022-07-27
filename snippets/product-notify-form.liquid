@@ -1,0 +1,42 @@
+{% capture form_id %}AddToCartForm-{{ section_id }}{% endcapture %}
+<form id='product_notify_form' action='https://hooks.zapier.com/hooks/catch/6311450/o10k5kr/'>
+  {% unless product.has_only_default_variant %}
+    {% for option in product.options_with_values %}
+      {% if settings.variant_type == 'button' %}
+        {% include 'variant-button', section_id: section_id, option_drop: option %}
+      {% else %}
+        {% include 'variant-dropdown', section_id: section_id %}
+      {% endif %}
+    {% endfor %}
+  {% endunless %}
+
+  <select name="id" id="ProductSelect-{{ section_id }}" class="product-single__variants no-js">
+    {% for variant in product.variants %}
+      <option {% if variant == product.selected_or_first_available_variant %}
+        selected="selected" {% endif %}
+        value="{{ variant.id }}">
+        {{ variant.title }} - {{ variant.price | money_with_currency }}
+      </option>
+    {% endfor %}
+  </select>
+
+  <input name='product_name' type='hidden' class='hidden' value={{product.handle}}>
+
+  <input type="email" required value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="Enter your email" name="Email" id="Email-{{ section_id }}" class="tw-placeholder-gray-500  input-group-field" autocorrect="off" autocapitalize="off">
+
+  <button type="submit" class="btn notify-btn tw-mb-8 tw-align-baseline" name="commit">
+    <span class="form__submit--large notify-btn-text">Notify me when it's available</span>
+  </button>
+
+  <div id="VariantsJson-{{ section_id }}" class="hide" aria-hidden="true">
+    {{ product.variants | json }}
+  </div>
+  {% if product.options.size > 1 %}
+    <div id="CurrentVariantJson-{{ section_id }}" class="hide" aria-hidden="true">
+      {{ current_variant | json }}
+    </div>
+  {% endif %}
+
+</form>
+
+

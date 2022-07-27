@@ -1,0 +1,31 @@
+<button class="tw-hidden sm:tw-block __kustomer-app__3H3nK" onclick="loadAndOpenKustomer()">
+  <img src="{{ 'kustomer-icon.svg' | asset_url }}" alt="Chat" class="__kustomer-icon__1WoIc">
+</button>
+
+<script>
+  function insertKustomerScript() {
+    !function(a,b,c,d){a.Kustomer=c,c._q=[],c._i=[],c.init=function(a){function b(a,b){a[b]=function(){a._q.push([b].concat(Array.prototype.slice.call(arguments,0)))}}for(var d="init clear identify track start describe on".split(" "),e=0;e<d.length;e++)b(c,d[e]);c._i.push(a)};var e=b.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://cdn.kustomerapp.com/cw/sdk.v1.1.min.js";var f=b.getElementsByTagName("script")[0];f.parentNode.insertBefore(e,f)}(this,document,window.Kustomer||{});
+    Kustomer.init('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZGY4NjYxMzliZTgyMDA5NTRkOGMzMSIsInVzZXIiOiI1ZWRmODY2MDhhZGQ5ZDAwMWRkNTUyMzUiLCJvcmciOiI1ZWI1NWU0OGU0NjhiMjAwMWE3NjIzZTUiLCJvcmdOYW1lIjoic2hlZXJ0ZXgiLCJ1c2VyVHlwZSI6Im1hY2hpbmUiLCJwb2QiOiJwcm9kMSIsInJvbGVzIjpbIm9yZy50cmFja2luZyJdLCJhdWQiOiJ1cm46Y29uc3VtZXIiLCJpc3MiOiJ1cm46YXBpIiwic3ViIjoiNWVkZjg2NjA4YWRkOWQwMDFkZDU1MjM1In0.pLDTjlFzM9yU4r0grZTzTcFPijMdG-DAYSzQMIL6J68');
+  }
+
+  function loadAndOpenKustomer() {
+    var init = sessionStorage.getItem('kustomer-loaded');
+    if (typeof(init) === 'undefined' || init === null) {
+      insertKustomerScript();
+      sessionStorage.setItem('kustomer-loaded', 'true');
+      Kustomer.start({ icon: false }, () => {
+        Kustomer.open();
+      });
+    } else {
+      Kustomer.open();
+    }
+  }
+
+  window.jQuery(document).ready(function() {
+    var init = sessionStorage.getItem('kustomer-loaded');
+    if (typeof(init) !== 'undefined' && init !== null){
+      insertKustomerScript();
+      Kustomer.start({ icon: false });
+    }
+  });
+</script>

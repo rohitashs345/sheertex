@@ -1,0 +1,121 @@
+{% if section.settings.desktop_mp4 %}
+<header class="tw-relative tw-flex tw-items-center tw-justify-center tw-h-screen tw-mb-12 tw-overflow-hidden">
+  <div class="tw-relative tw-z-30 tw-flex tw-flex-col tw-items-center tw-justify-center tw-h-full tw-text-center msm:tw-hidden">     
+      <p class="tw-text-white tw-relative tw-tracking-widest tw-uppercase tw-text-center tw-font-medium tw-text-sm tw-text-medium tw-font-sans sparkle-hover-animation tw-mb-4">
+          {{section.settings.eyebrow_copy}}
+      </p>
+      <p class="tw-text-white tw-text-7xl msm:tw-text-3xl tw-tracking-normal tw-font-serif tw-text-center tw-leading-tight tw-font-light tw-max-w-3xl tw-mb-4">
+          {{section.settings.header_copy}}
+      </p>
+      <p class="tw-text-white tw-font-narrow tw-text-center tw-font-light tw-text-lg tw-max-w-lg tw-mb-8">
+          {{section.settings.subheader_copy}}
+      </p>
+      <a href="{{section.settings.cta_link}}" class="tw-bg-green-200 tw-rounded-3xl tw-uppercase tw-font-medium tw-font-sans tw-py-3 tw-px-20 tw-text-xs tw-cursor-pointer tw-tracking-heading">
+          {{section.settings.cta_copy}}
+      </a>
+  </div>
+  <video autoplay="" loop="" muted="" playsinline="" poster="{{ section.settings.desktop_poster }}" class="tw-absolute tw-z-10 tw-w-auto tw-min-w-full tw-min-h-full tw-max-w-none msm:tw-hidden">
+      <source src="{{ section.settings.desktop_webm }}" type="video/webm"> 
+      <source src="{{ section.settings.desktop_mp4 }}" type="video/mp4"> 
+      Your browser does not support the video tag.
+  </video>
+  <video autoplay="" loop="" muted="" playsinline="" poster="{{ section.settings.mobile_poster }}" class="tw-absolute tw-z-10 tw-w-auto tw-min-w-full tw-min-h-full tw-max-w-none sm:tw-hidden">
+    <source src="{{ section.settings.mobile_webm }}" type="video/webm"> 
+    <source src="{{ section.settings.mobile_mp4 }}" type="video/mp4">
+      Your browser does not support the video tag.
+  </video>
+</header>
+{% endif %}
+
+{% comment %}
+  <a href="{{section.settings.cta_link }}">
+    <div class="msm:tw-hidden tw-text-center"> 
+      <video class="tw-z-10 tw-absolute " width="100%" loop="" muted="" autoplay="" playsinline="" poster="{{ section.settings.desktop_poster }}"> 
+        <source src="{{ section.settings.desktop_webm }}" type="video/webm"> 
+        <source src="{{ section.settings.desktop_mp4 }}" type="video/mp4"> 
+      </video> 
+      <p class="tw-relative tw-text-7xl tw-z-50 tw-mx-auto">
+        hello
+      </p>
+    </div>
+
+    <div class="sm:tw-hidden"> 
+      <video width="100%" loop="" muted="" autoplay="" playsinline="" poster="{{ section.settings.mobile_poster }}"> 
+        <source src="{{ section.settings.mobile_webm }}" type="video/webm"> 
+        <source src="{{ section.settings.mobile_mp4 }}" type="video/mp4"> 
+      </video> 
+    </div>
+  </a>
+  {% endcomment %}
+
+{% schema %}
+  {
+    "name": "Hero Video",
+    "presets": [
+      {
+        "name": "Hero Video",
+        "category": "Promotional"
+      }
+    ],
+    "settings": [
+      {
+        "type": "html",
+        "id": "eyebrow_copy",
+        "label": "Eyebrow Copy",
+        "default": "testing1"
+      },
+      {
+        "type": "html",
+        "id": "header_copy",
+        "label": "Header Copy",
+        "default": "testing2"
+      },
+      {
+        "type": "html",
+        "id": "subheader_copy",
+        "label": "Subheader Copy",
+        "default": "testing3"
+      },
+      {
+        "type": "url",
+        "id": "cta_link",
+        "label": "CTA Link"
+      },
+      {
+        "type": "html",
+        "id": "cta_copy",
+        "label": "CTA Button Copy"
+      },
+      {
+        "type": "url",
+        "id": "desktop_mp4",
+        "label": "Link to Desktop mp4 file"
+      },
+      {
+        "type": "url",
+        "id": "desktop_webm",
+        "label": "Link to Desktop webm file"
+      },
+      {
+        "type": "url",
+        "id": "desktop_poster",
+        "label": "Desktop Video Poster"
+      }, 
+      {
+        "type": "url",
+        "id": "mobile_mp4",
+        "label": "Link to Mobile mp4 file"
+      },
+      {
+        "type": "url",
+        "id": "mobile_webm",
+        "label": "Link to Mobile webm file"
+      },
+      {
+        "type": "url",
+        "id": "mobile_poster",
+        "label": "Mobile Video Poster"
+      }
+    ]
+  }
+{% endschema %}

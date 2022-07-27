@@ -1,0 +1,21 @@
+{% comment %} The Modal  {% endcomment %}
+<div id="geoModal" class="modalgeo">
+
+{% comment %} Modal content {% endcomment %}
+  <div class="modal-content" style="padding:0">
+    <button type="button" class="modal__close js-modal-close text-link close-geopop tw-relative" style="padding:10px;color:#1c1d1d;">
+      <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64"><path d="M19 17.61l27.12 27.13m0-27.12L19 44.74"/></svg>
+      <span class="icon__fallback-text">{{ 'general.accessibility.close_modal' | t | json }}</span>
+    </button>
+    <div class="inner-content" style="padding:40px 20px;">
+      <h2 style="margin-top:10px;">We're sorry, we don't deliver to your country yet</h2>
+      <p>In the meantime, subscribe to our mailing list and be the first to get updates on special offers, product launches, and insider exclusives.</p>
+      {% include 'geo-form' %}
+      <button id="continue-shopping" type="button" class="text-close tw-underline">No thanks</button>
+    </div>
+    <div class="success tw-hidden tw-text-center" style="margin:40px;">
+      <p>Thanks for signing up!</p>
+      <p>We'll keep you updated when we start shipping to your country.</p>
+    </div>
+  </div>
+</div>

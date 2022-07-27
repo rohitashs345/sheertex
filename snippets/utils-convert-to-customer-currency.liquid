@@ -1,0 +1,55 @@
+<script>
+/*
+ Every 500ms we traverse the DOM to find elements with data-currency attribute and convert it's USD currency to customer currency.
+ For example, <span data-currency>$200</span> will become <span>EUR 170</span>
+*/
+function tryConvertToCustomerCurrency() { 
+  if (!window.Currency || !theme.Currency) {    
+    return;
+  } 
+
+  const cartCurrency = "{{ cart.currency.iso_code }}";
+  if (cartCurrency === 'USD') {
+    return;
+  }
+  
+  const cartCurrencySymbol = "{{ cart.currency.symbol }}";
+
+  const elements = document.querySelectorAll('span[data-currency]');
+  if (!elements || elements.length === 0) {
+      return;      
+  }
+
+  elements.forEach((element) => {
+    const baseValue = element.innerText;
+    const findUSDRegex = /\$(\d+)/im;
+
+    const usdRegexMatch = baseValue.match(findUSDRegex);
+    if (!usdRegexMatch) {
+        return;
+    }
+
+    const textWithUsdCurrency = usdRegexMatch[0];
+    const priceWithoutCurrency = usdRegexMatch[1];  
+
+    const format = theme.settings.moneyFormat.replace(/\{\{(.+)\}\}/i, '\{\{amount_no_decimals_with_space_separator\}\}');  
+
+    const CURRENCY_CONVERSION_FEE = 1.015;        
+
+    let priceInCustomerCurrency = Math.ceil(window.Currency.convert(priceWithoutCurrency, 'USD', cartCurrency) * CURRENCY_CONVERSION_FEE) * 100;   
+        
+    const formattedPrice = theme.Currency.formatMoney(priceInCustomerCurrency, format);
+    const resultString = baseValue.replace(textWithUsdCurrency, formattedPrice);
+    element.innerHTML = resultString;
+    element.removeAttribute('data-currency');    
+  })  
+}
+
+(() => {
+  // trying to set proper Shipping Fee every 500ms, if succeseded we clear interval
+  window.setInterval(() => {    
+      tryConvertToCustomerCurrency();    
+  }, 500);  
+})();
+
+</script>

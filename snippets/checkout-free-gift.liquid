@@ -1,0 +1,80 @@
+<style>
+	.free-gift {
+		display: flex;
+		align-items: flex-start;
+		margin-bottom: 1rem;
+	}
+
+	.free-gift__image--wrapper {
+		width: 5rem;
+	}
+
+	.free-gift__body {
+		width: 100%;
+		padding-left: 0.875rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.free-gift__body--center {
+		max-width: 16.5rem;
+	}
+
+	.free-gift__body--title {
+		font-size: 0.875rem;
+		font-weight: 500;
+		line-height: 1.43;
+		color: #323232;
+	}
+
+	.free-gift__body--text {
+		font-size: 0.75rem;
+		line-height: 1.33;
+		letter-spacing: 0.01px;
+		text-align: left;
+		padding: 4px 0;
+		max-width: 14rem;
+		color: black;
+	}
+
+	.free-gift__body--disclaimer {
+		font-size: 0.625rem;
+		line-height: 1.6;
+		letter-spacing: 0.01px;
+		text-align: left;
+		color: #848484;
+		padding-bottom: 0.5rem;
+	}
+
+	.free-gift__price {
+		display: flex;
+		flex-direction: column;
+		font-size: 0.875rem;
+		letter-spacing: 0.14px;
+		text-align: right;
+		padding-left: 4px;
+	}
+
+	.free-gift__price-strikethrough {
+		font-size: 0.875rem;
+		text-decoration: line-through;
+		font-weight: 500;
+		color: #323232;
+	}
+	#fgwp-timer {
+		color: #FF0000;
+		font-weight: 600;
+		font-size: 0.75rem;
+		margin-top: -6px;
+	}
+</style>
+
+<script>
+{% if settings.free_gift_image %}
+  window.jQuery('.order-summary__section--discount').before('<br><div class="free-gift appear-animation appear-delay-10"><div class="product-thumbnail free-gift__image--wrapper"><img class="free-gift__image product-thumbnail__image" src ="{{settings.free_gift_image | img_url: '64x' }}" alt="free-gift-image"></div><div class="free-gift__body"><div class ="free-gift__body--center"><div class = "free-gift__body--title">{{settings.free_gift_product_title}}</div><div class = "free-gift__body--text">{{settings.free_gift_info}}</div><div class = "free-gift__body--disclaimer">{{settings.free_gift_disclaimer}}</div><div class="tw-font-bold tw-tracking-heading tw-text-xs tw-text-red sm:tw-text-sm tw-clear-both"><span id="fgwp-timer"></span></div></div><div class= "free-gift__price"><span class="free-gift__price-strikethrough" style="white-space:nowrap;">{{settings.free_gift_price}}</span><span class="free-gift__free-text">{{settings.free_gift_price_label}}</span></div></div></div>');
+{% endif %}
+</script>
+{% if settings.free_gift_image %}
+	{% render 'countdown-timer' %}
+{% endif %}

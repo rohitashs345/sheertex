@@ -1,0 +1,49 @@
+
+{% if product.tags contains  'sticker_low_stock' %}
+    <div class="pdp-meta-sticker tw-uppercase" style="color: black; background-color: #DDFF98; width: 6rem;">
+      <p>Low Stock</p>
+    </div>
+{% elsif product.tags contains  'sticker_new' %}
+    <div class="pdp-meta-sticker tw-uppercase" style="color: black; background-color: #DDFF98; width: 4rem;">
+      <p>New</p>
+    </div>
+  {% comment %} temp workaround for tags {% endcomment %}
+{% elsif product.tags contains  'sticker_best_seller' %}
+    <div class="pdp-meta-sticker tw-uppercase" style="color: black; background-color: #DDFF98; width: 6rem;">
+      <p>Best Seller</p>
+    </div>
+{% elsif product.tags contains  'sticker_todaysdeal' %}
+    <div class="pdp-meta-sticker tw-uppercase" style="color: white; background-color: #FC4242; width: 7.5rem;">
+      <p>Today's Deal</p>
+    </div>
+{% elsif product.metafields.sticker.data  %}
+    {% assign pdpSticker = product.metafields.sticker.data %}      
+      <div class="pdp-meta-sticker tw-uppercase" style="color: {{ pdpSticker.color }}; background-color: {{ pdpSticker.backgroundColor }}; width: {{ pdpSticker.width }};">
+        <p id="ab-test-pdpPriceSticker">{{ product.metafields.sticker.data.text }}</p>
+      </div>
+{% endif %}
+
+
+<style>
+.pdp-meta-sticker {
+  padding: 6px 9px;
+  color: #000;
+  text-align: center;
+  height: 27px;
+  display:inline-block;
+  margin-left: 10px;
+  margin-top: 2px;
+  position: relative;
+  top: -6px;
+}
+
+.pdp-meta-sticker p{
+  font-family: Agrandir;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.104rem;
+  font-size: 0.6rem;
+  line-height: 1.9;
+  white-space: nowrap;
+}
+</style>

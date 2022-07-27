@@ -1,0 +1,76 @@
+<script
+  id="sentry-bundle-script"
+  src="https://browser.sentry-cdn.com/5.29.0/bundle.min.js"
+  integrity="sha384-/dYT/04VSU9ItKRPTkWeVZ0kqRsVh/T/5rNCjzBwpx7sYeeueKgJzGMNXSal3xoo"
+  crossorigin="anonymous"
+  defer
+></script>
+
+<script>
+  {% comment %}
+    See also: './sentry-top-of-page.liquid'
+  {% endcomment %}
+  (function(window, script) {
+    // once raven.js is loaded then install
+    script.onreadystatechange = script.onload = function () {
+      if (window.__sx_sentry_loaded) return;
+      window.__sx_sentry_loaded = true;
+
+      {% assign environment = 'development' %}
+
+      {% comment %}
+        Production theme id
+      {% endcomment %}
+      {% if theme.id == 80405528647 %}
+        {% assign environment = 'production' %}
+      {% endif %}
+
+      window.Sentry.init({
+        dsn: 'https://75e9beb68e2d4845913e6a2cd713d80d@o372669.ingest.sentry.io/5551150',
+        environment: '{{ environment }}'
+      });
+
+      window.__sx_sentry_error_queue.forEach(function (error) {
+        {% comment %}
+        /**
+         *  error[0] = message
+         *  error[1] = file, url, or type
+         *  error[2] = line number or event
+         *  error[3] = column number (old browsers may not emit this)
+         *  error[4] = Error Object (old browsers may not emit this either!)
+         */
+        {% endcomment %}
+        Sentry.captureException(error[4] || new Error(error[0]), {
+          extra: {
+            file: error[1],
+            line: error[2],
+            col: error[3],
+          },
+        });
+      });
+
+      {% comment %}
+      // same compatibility caveats as the above Promise error events
+      // DW NOTE: commented, since I don't *think* this is helpful
+      //window.onunhandledrejection = function e(error) {
+      //  Sentry.captureException(new Error(error.reason.reason || error.reason.message), {
+      //    extra: {
+      //      type: error.type,
+      //      reason: JSON.stringify(error.reason),
+      //    },
+      //  });
+      //};
+      /** Alternatively also track handled Promise rejections: */
+      // window.onrejectionhandled = window.onunhandledrejection =
+      //   function e(error) {
+      //     Raven.captureException(new Error(error.reason.reason || error.reason.message), {
+      //       extra: {
+      //         type: error.type,
+      //         reason: JSON.stringify(error.reason),
+      //       },
+      //     });
+      //   };
+      {% endcomment %}
+    };
+  })(window, document.getElementById("sentry-bundle-script"));
+</script>

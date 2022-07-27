@@ -1,0 +1,118 @@
+{% assign shop_url = routes.collections_url | append: '/all' %}
+{% assign bestseller_url = '/products/classic-sheers' %}
+
+<div id="mavbar" class="m-navbar">
+  <a href="{{ routes.root_url }}" id="home">
+    <img class="m-icons" src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Home.svg?v=1602276995">
+    <p class="m-icon-text">Home</p>
+  </a>
+  <a href="{{shop_url}}" id="shop">
+    <img class="m-icons" src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/shop-icon.svg?v=1603726053">
+    <p class="m-icon-text">Shop</p>
+  </a>
+  <a href="https://www.sheertex.com/collections/best-sellers-1" id="best">
+    <img class="m-icons" src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Best_Seller.svg?v=1602276995">
+    <p class="m-icon-text">Best Sellers</p>
+  </a>
+  {% comment %}
+  Keep this button since it'll be used when we have a sale again.
+  <a href="https://www.sheertex.com/collections/offers" id="offers">
+    <img class="m-icons" src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Shop_d2eb4de8-20f0-4d11-b558-29cb728dab11.svg?v=1603725570">
+    <p class="m-icon-text">Offers</p>
+  </a>
+  {% endcomment %}
+  <a href="https://www.sheertex.com/pages/refer-a-friend" id="refer">
+    <img class="m-icons" src={{ "Refer.svg" | asset_url }}>
+    <p class="m-icon-text">Refer</p>
+  </a>
+  <a id="newsletter-btn">
+    <img class="m-icons" src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Email.svg?v=1603985094">
+    <p class="m-icon-text">Sign Up</p>
+  </a>
+</div>
+
+
+<style>
+  /* Place the navbar at the bottom of the page, and make it stick */
+.m-navbar {
+  background-color: #fff;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 9999;
+  border-top: solid 1px;
+  border-color: hsla(220, 26%, 14%, 0.1);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  padding-top: 4px;
+  white-space: nowrap;
+
+}
+
+ /* Style the links inside the navigation bar */
+.m-navbar a {
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-flow: column;
+  color: #2D3748;
+  text-align: center;
+  padding: 8px 3px;
+  transition: color 0.2s ease;
+  text-decoration: none;
+  width: 25%;
+}
+
+ /* Change the color of links on hover */
+.m-navbar a:hover {
+  color: #000000;
+}
+
+ /* Add a color to the active/current link */
+  #mavbar a.active {
+  background-color: #fff;
+  color: #000000;
+}
+
+  .m-icons{
+  	width: 28px;
+    height: 28px;
+  }
+
+  .m-icon-text{
+    font-family: Agrandir;
+    font-weight: 500;
+    letter-spacing: 0.68px;
+    text-transform: uppercase;
+    font-size: 8.4px;
+    margin: 0px;
+    padding-top: 6px;
+  }
+</style>
+
+
+
+<script>
+  window.jQuery( document ).ready(function() {
+    var modal = document.getElementById('NewsletterPopup-newsletter-popup');
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("newsletter-btn");
+    var span = document.getElementsByClassName("modal__close")[0];
+    // When the user clicks the button, open the modal
+      if (typeof(btn) != 'undefined' && btn != null){
+        btn.onclick = function() {
+          modal.style.display = "block";
+        }
+      }
+
+    // When the user clicks on <span> (x), close the modal
+    if (typeof(span) != 'undefined' && span != null){
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+    }
+    window.jQuery('#mavbar a[href^="/collections/' + location.pathname.split("/")[2] + '"]').addClass('active');
+  });
+</script>

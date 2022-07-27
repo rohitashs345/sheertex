@@ -1,0 +1,16 @@
+
+<form id='geo_modal_form' action='https://hooks.zapier.com/hooks/catch/6311450/omol8sh'>
+  <input class="tw-mb-2 tw-placeholder-gray-500" type="name" required value="" placeholder="Name" id="Name" name='name'>
+  <input class="tw-placeholder-gray-500" type="text" id="country" value="" name='country' placeholder="Country">
+  <div class="input-group newsletter__input-group" style="margin-top:0.5rem;">
+    <input type="email" required value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="Enter your email" name="email" id="Email-{{ section_id }}" class="tw-placeholder-gray-500  input-group-field" autocorrect="off" autocapitalize="off">
+    <span class="input-group-btn">
+      <button type="submit" class="btn" name="commit">
+        <span class="form__submit--large">SUBSCRIBE</span>
+        <span class="form__submit--small">
+          <img class="tw-mx-auto" style="width:20px" src="{{ 'Arrow.svg' | asset_url }}" alt="arrow">
+        </span>
+      </button>
+    </span>
+  </div>
+</form>

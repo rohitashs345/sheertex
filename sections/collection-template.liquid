@@ -1,0 +1,500 @@
+{% style %}
+ select.boost-pfs-filter-top-sorting-select {
+   border: 1px solid #e3e3e3 !important;
+ }
+
+ .sheertex-collection-description p:last-child {
+   margin-bottom: 0;
+ }
+ 
+.plp-meta-sticker {
+  padding: 6px 9px;
+  text-align: center;
+  height: 28px;
+  display: inline-block;
+  margin-left: 10px;
+  margin-top: 2px;
+  position: absolute;
+  bottom: 10px;  
+  border-radius: 30px;
+}
+
+.plp-meta-sticker p{
+  font-family: Agrandir;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.104rem;
+  font-size: 0.6rem;
+  line-height: 2;
+}
+
+@media (max-width: 800px) { 
+  .boost-pfs-filter-products {
+    margin-left: -22px !important;
+  }
+}
+{% endstyle %}
+
+{% assign show_filters = true %}
+{% if collection.handle == 'todays-deals' %}
+  {% assign show_filters = false %}
+{% endif %}
+
+{%- assign per_row = section.settings.per_row -%}
+{% assign boost_settings = shop.metafields.bc-sf-filter.settings %}
+{% assign boost_in_collection_search = boost_settings | split: 'enableCollectionSearch":' | last | split: ',"' | first | strip %}
+{% assign paginate_by = per_row | times: 5 %}
+{% if section.settings.collection_tags_style == 'inline' and collection.all_tags.size > 0 %}
+	{% assign paginate_by = paginate_by | minus: 1 %}
+{% elsif section.settings.collection_subnav_style == 'inline' %}
+	{% assign paginate_by = paginate_by | minus: 1 %}
+{% endif %}
+
+{% paginate collection.products by paginate_by %}
+
+<div
+	id="CollectionSection"
+	data-section-id="{{ section.id }}"
+	data-section-type="collection-template"
+	>
+  <div class="page-width page-content tw-py-0">
+    {% comment %} exclude the banner on the warehouse collection {% endcomment %}
+    {% if collection.handle != 'clearance' or collection.handle != 'french-emails' %}
+    <div class='tw-flex msm:tw-flex-col tw-flex-row tw-w-full tw-items-center msm:tw-items-start tw-justify-start msm:tw-my-2 tw-my-4'>
+        <h2 class="tw-text-4xl msm:tw-mx-auto sm:tw-w-1/5 sm:tw-pr-8 sm:tw-mb-0">
+          {{ collection.title }}
+        </h2>
+        {% assign collectionDescription = collection.description | split:"<!-- split -->"%}
+        <div class='tw-text-lg tw-max-w-xl p-m-0 sm:tw-hidden sheertex-collection-description'>
+        {% if collectionDescriptionMob[1] %}
+          {{ collectionDescriptionMob[1] }}
+        {% else %}
+          {% if section.settings.show_sitewide_collection_copy %}
+            <p class="tw-mb-0">{{ section.settings.sitewide_collection_copy }}</p>
+          {% endif %}
+          {{ collection.description }}
+        {% endif %}
+        </div>
+        <div class='tw-text-lg tw-w-4/5 p-m-0 msm:tw-hidden'>
+          {% if collectionDescription[0] %}
+            {% if section.settings.show_sitewide_collection_copy %}
+              <p class="tw-mb-0">{{ section.settings.sitewide_collection_copy }}</p>
+            {% endif %}
+            {{ collectionDescription[0] }}
+          {% else %}
+            {{ collection.description }}
+          {% endif %}
+        </div>
+    </div>
+    {% endif %}
+  </div>
+
+  {% comment %} include warehouse sale banner {% endcomment %}
+  {% if collection.handle == 'clearance' %}
+    {% include 'temp_clearance-sale-banner' %}
+  {% endif %}
+
+  {% comment %} include warehouse sale banner {% endcomment %}
+  {% if collection.handle == 'french-emails' %}
+    {% include 'temp_french-emails-banner' %}
+  {% endif %}
+
+	<div class="page-width page-content tw-py-0">
+		{% include 'breadcrumbs' %}	
+
+		{% if boost_in_collection_search == 'true' %}
+    <div class="tw-w-full tw-flex">
+			<div class="boost-pfs-in-collection-search">
+				{% render 'boost-pfs-filter-skeleton', width: 4 %}
+			</div>
+    </div>
+		{% endif %}
+
+    {% if show_filters %}
+      {% if section.settings.collection_sort_enable and collection.handle != 'clearance' %}
+        <div class="collection-filter msm:tw-hidden">
+          <div class="grid grid--uniform tw-flex tw-justify-end">				
+            {% if section.settings.collection_sort_enable %}
+              <div class="float-right boost-pfs-filter-top-sorting grid__item small--one-half medium-up--one-quarter">{% include 'boost-pfs-filter-skeleton', width: 3 %}</div>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}		
+    {% endif %}		
+		<div id="CollectionAjaxResult">
+			<div id="CollectionAjaxContent">
+				<div class="grid boost-pfs-filter-wrapper grid--uniform">
+				
+				{% assign grid_item_width = 'small--one-half medium-up--one-third' %}
+
+				{% case per_row %}
+					{% when 1 %}
+						{%- assign grid_item_width = '' -%}
+					{% when 2 %}
+						{%- assign grid_item_width = 'medium-up--one-half' -%}
+					{% when 3 %}
+						{%- assign grid_item_width = 'small--one-half medium-up--one-third' -%}
+					{% when 4 %}
+						{%- assign grid_item_width = 'small--one-half medium-up--one-quarter' -%}
+					{% when 5 %}
+						{%- assign grid_item_width = 'small--one-half medium-up--one-fifth' -%}
+				{% endcase %}				
+
+        {% if show_filters %}
+				<div class="boost-pfs-filter-tree-mobile-button" >{% include 'boost-pfs-filter-skeleton', type: 'button' %}</div>
+				<div class="boost-pfs-filter-tree boost-pfs-filter-tree-v" >
+					{% comment %} Include placeholder template {% endcomment %}
+					{% include 'boost-pfs-filter-skeleton', type: 'filter-tree'  %}
+				</div>
+        {% endif %}
+        
+				<div class="boost-pfs-filter-right" {% unless show_filters %} style='width: 100%;' {%endunless %}>
+					<div class="boost-pfs-filter-products">
+					{% for product in collection.products %}
+						{% include 'product-grid-item' %}
+					{% endfor %}
+					</div>
+				</div>        
+			</div>
+
+      {% if show_filters %}
+			<div class="boost-pfs-filter-bottom-pagination pagination"></div>
+			<div class="boost-pfs-filter-load-more"></div>
+      {% endif %}
+		</div>
+	</div>
+</div>
+
+{% if settings.quick_shop_enable %}
+	{% for product in collection.products %}
+		{% if product.available %}
+			{% include 'quick-shop-modal' %}
+		{% endif %}
+	{% endfor %}
+{% endif %}
+
+{% endpaginate %}
+
+<script>
+	// Declare boostPFSThemeConfig variable
+	var boostPFSThemeConfig = {
+		label: {
+			sold_out: {{ 'products.product.sold_out' | t | json }},
+			save_html: {{ 'products.general.save_html' | t | json }},
+			regular_price: {{ 'products.general.regular_price' | t | json }},
+			sale_price: {{ 'products.general.sale_price' | t | json }},
+			from_text_html: {{ 'products.general.from_text_html' | t | json }},
+			quick_shop: {{ settings.quick_shop_text | json }},
+
+			items_with_count_one: {{ 'collections.general.items_with_count.one' | t | json}},
+			items_with_count_other: {{ 'collections.general.items_with_count.other' | t | json }},
+		},
+		custom: {
+			products_per_page: {% if paginate_by %} {{ paginate_by | json }} {% else %} 24 {% endif %},
+			products_per_row: {% if per_row %} {{ per_row }} {% else %} 4 {% endif %},
+			grid_item_width: {% if grid_item_width != blank %} {{ grid_item_width | json }} {% else %} 'small--one-half medium-up--one-third' {% endif %},
+			vendor_enable: {% if settings.vendor_enable %} {{ settings.vendor_enable | json }} {% else %} false {% endif %},
+			quick_shop_enable: {% if settings.quick_shop_enable %} {{ settings.quick_shop_enable | json }} {% else %} false {% endif %},
+			product_hover_image: {% if settings.product_hover_image %} {{ settings.product_hover_image | json }} {% else %} false {% endif %},
+			product_grid_image_size: {% if settings.product_grid_image_size %} {{ settings.product_grid_image_size | json }} {% else %} 'natural' {% endif %},
+			collection_color_swatches: {% if settings.collection_color_swatches %} {{ settings.collection_color_swatches | json }} {% else %} false {% endif %},      
+			enable_product_reviews:  {% if settings.enable_product_reviews %} {{ settings.enable_product_reviews | json }} {% else %} false {% endif %},
+		}
+	};
+
+	var boostPFSTemplate = {
+		// Product grid item template
+		'productGridItemHtml': {% render 'boost-pfs-filter-html', layout: 'productGridItemHtml' %},
+			
+		// Pagination template
+		'previousActiveHtml': {% render 'boost-pfs-filter-html', layout: 'previousActiveHtml' %},
+		'previousDisabledHtml': {% render 'boost-pfs-filter-html', layout: 'previousDisabledHtml' %},
+		'nextActiveHtml': {% render 'boost-pfs-filter-html', layout: 'nextActiveHtml' %},
+		'nextDisabledHtml': {% render 'boost-pfs-filter-html', layout: 'nextDisabledHtml' %},
+		'pageItemHtml': {% render 'boost-pfs-filter-html', layout: 'pageItemHtml' %},
+		'pageItemSelectedHtml': {% render 'boost-pfs-filter-html', layout: 'pageItemSelectedHtml' %},
+		'pageItemRemainHtml': {% render 'boost-pfs-filter-html', layout: 'pageItemRemainHtml' %},
+		'paginateHtml': {% render 'boost-pfs-filter-html', layout: 'paginateHtml' %},
+
+		// Sorting template
+		'sortingHtml': {% render 'boost-pfs-filter-html', layout: 'sortingHtml' %},
+	};
+</script>
+
+{% comment %} Deploy reduce stickers test on todays deal page {% endcomment %}
+<script>
+(function() {
+  {% if collection.handle contains "todays-deal" %}
+    const todaysDealStickers = Array.from(document.querySelectorAll('.plp-meta-sticker'));
+    const todaysDealClientWidth =  document.documentElement.clientWidth;
+    if(todaysDealStickers.length > 0 && todaysDealClientWidth > 640) {
+        todaysDealStickers.forEach( (el,index) => {
+              if((index !=0 && index !=1)) {
+                    el.remove();
+                }
+        });
+    }
+  {% endif %}
+})();
+</script>
+
+{% schema %}
+
+  {
+    "name": "Collection pages Desktop",
+    "settings": [
+      {
+        "type": "range",
+        "id": "products_per_page",
+        "label": "Products per page",
+        "default": 40,
+        "min": 1,
+        "max": 100,
+        "step": 1
+      },
+      {
+        "type": "range",
+        "id": "per_row",
+        "label": "Products per row",
+        "default": 4,
+        "min": 1,
+        "max": 5,
+        "step": 1
+      },
+      {
+        "type": "checkbox",
+        "id": "collection_image_enable",
+        "label": "Show collection image",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "parallax",
+        "label": "Parallax image",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "description_position",
+        "label": "Collection description position",
+        "default": "top",
+        "options": [
+          {
+            "value": "top",
+            "label": "Top of page"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom of page"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "collection_subnav_style",
+        "label": "Subnavigation style",
+        "default": "inline",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "inline",
+            "label": "Inline"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "collection_tags_style",
+        "label": "Tag filter style",
+        "default": "none",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "inline",
+            "label": "Inline"
+          },
+          {
+            "value": "dropdown",
+            "label": "Dropdown"
+          }
+        ],
+        "info": "Only one option can use Inline style at a time"
+      },
+      {
+        "type": "text",
+        "id": "excluded_tags",
+        "label": "Tags to exclude",
+        "default": "_tab_crew-sock-sizing,_tab_mask-size-chart,_tab_size-chart-6,_tab_size-guide,shortie-us-vs-them,show-denier-modal,sticker_back-in-stock,sticker_bundle-up-save,sticker_limited-stock,sticker_new,sticker_save-up-to-30%,sticker_todays-deal,YGroup_classic_sheers,YGroup_classic_thigh_high,YGroup_cross_my_heart,YGroup_footless,YGroup_headband,YGroup_lattice_sheers,YGroup_mask,YGroup_nude_classic_sheers,YGroup_nude_shaping_sheers,YGroup_pattern_bundle,YGroup_polka_dot,YGroup_scrunchie,YGroup_semi_opaque,YGroup_shaping_sheers,YGroup_shortie,YGroup_thigh_high,YGroup_unbreakable"
+      },
+      {
+        "type": "checkbox",
+        "id": "collection_sort_enable",
+        "label": "Show sort options",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_sitewide_collection_copy",
+        "label": "Show a sitewide description callout"
+      },
+      {
+        "type": "html",
+        "id": "sitewide_collection_copy",
+        "label": "Set the universal collection copy",
+        "info": "Wrap the currency with in <span data-currency>$39</span> and it will be converted from USD to customer currency. For example, <span data-currency>$200</span>"
+      },
+      {
+        "type": "html",
+        "id": "title",
+        "label": "Main hero title",
+        "default": "Title for Hero Banner."
+      },
+      {
+        "type": "html",
+        "id": "sub_title1",
+        "label": "Heading line 1"
+      },
+      {
+        "type": "html",
+        "id": "sub_title2",
+        "label": "Heading line 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_desktop",
+        "label": "Image for desktop"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_mobile",
+        "label": "Image for mobile"
+      },
+      {
+        "type": "header",
+        "content": "CTA Settings"
+      }, 
+      {
+        "type": "html",
+        "id": "link_text",
+        "label": "Button text",
+        "default": "Shop all"
+      }, 
+      {
+        "type": "text",
+        "id": "link",
+        "label": "Button link",
+        "default": "https://www.sheertex.com/collections/all"
+      },
+      {
+        "type": "html",
+        "id": "disclaimer_text",
+        "label": "Disclaimer text",
+        "default": "Shop all"
+      },
+      {
+        "type": "html",
+        "id": "clearance_sale_top",
+        "label": "top copy on clearance sale",
+        "default": "Clearance Sale"
+      },
+      {
+        "type": "html",
+        "id": "clearance_sale_bottom",
+        "label": "bottom copy on clearance sale",
+        "default": "Save up to 65% off"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "custom_plp_item",
+        "name": "Custom Image Box",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "collection_list",
+            "label": "Collection Selector",
+            "info": "In which collection should this image box be displayed?"
+          },
+          {
+            "type": "checkbox",
+            "id": "item_double_width",
+            "label": "Is this double width?",
+            "default": false,
+            "info": "This image box will 2 columns wide."
+          },
+          {
+            "type": "checkbox",
+            "id": "image_align",
+            "label": "Align to review",
+            "default": true
+          },
+          {
+            "type": "text",
+            "id": "position",
+            "label": "Item Position",
+            "default": "1",
+            "placeholder": "Enter a number",
+            "info": "If double width: make sure it's at position 1, 2 or 3 within a row!"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading"
+          },
+          {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description",
+            "default": "<p>Custom description for PLP item.</p>"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "For double width, make sure to use a correct image ratio."
+          },
+          {
+            "type": "image_picker",
+            "id": "image-fr",
+            "label": "Image FR",
+            "info": "For double width, make sure to use a correct image ratio."
+          },
+          {
+            "type": "url",
+            "id": "custom_img_link",
+            "label": "Link for image CTA",
+            "info": "Optional. If empty, the image won't redirect to any page."
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link",
+            "info": "Optional. If empty, the link will not appear."
+          },
+          {
+            "type": "text",
+            "id": "link_text",
+            "label": "Link Text",
+            "info": "Optional. If empty, the link will not appear."
+          }
+        ]
+      }
+    ],
+    "locales": {
+        "en": {
+          "new_arrivals_html": "new <br>arrivals",
+          "best_sellers_html": "best <br>sellers",
+          "classic_sheer_html": "classic sheer<br> tights",
+          "ribbed_classic_sheer_html": "ribbed classic<br> sheer tights",
+          "colored_html": "Nude <br>tights",
+          "shop_bundles_html": "shop <br> bundles"
+        }
+    }
+  }
+{% endschema %}

@@ -1,0 +1,61 @@
+<div id="KnitImageWithText" data-section-id="{{ section.id }}" data-section-type="knit-image-with-text">
+  {% if section.blocks.size > 0 %}
+    {% for block in section.blocks %}
+      <div class="block tw-flex mlg:tw-flex-col">
+        <div class="image-wrapper tw-p-8 tw-w-1/2 tw-flex mlg:tw-w-full mlg:tw-p-16">
+          {%- assign img = block.settings.image -%}
+          <img loading="lazy" class="tw-w-full tw-h-full tw-object-cover __image__2xSAf" srcset="{{ img | img_url: '550x' }} 550w,
+                    {{ img | img_url: '800x' }} 800w,
+                    {{ img | img_url: '1600x' }} 1600w" sizes="(max-width: 770px) 550px, (max-width: 1023px) 800px, 550px">
+        </div>
+        <div class="text-wrapper tw-w-1/2 mlg:tw-w-full tw-items-center tw-flex tw-flex-col tw-justify-center mlg:tw-text-center mlg:tw-p-8">
+          <div class="__text__2CN9d">
+            <p class="__title__Cfank">{{ block.settings.title }}</p>
+            <p>{{ block.settings.description }}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  {% endif %}
+</div>
+<style>
+.__text__2CN9d {
+  max-width: 350px;
+}
+.__title__Cfank {
+  font-size: 27px;
+  font-family: 'Matiere';
+}
+.__image__2xSAf {
+  max-height: 350px;
+}
+</style>
+{% schema %}
+  {
+    "name": "Knit Image with text",
+    "class": "tw-my-16 page-width",
+    "blocks": [
+      {
+        "type": "image-block",
+        "name": "Image Block",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "description",
+            "label": "Description"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

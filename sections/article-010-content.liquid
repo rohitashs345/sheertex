@@ -1,0 +1,223 @@
+<section class="tw-text-center sm:tw-py-12 msm:tw-py-8 tw-w-full">
+    <p class="tw-rounded-3xl tw-mx-auto sm:tw-w-2/12 msm:tw-w-1/3 tw-bg-orange-300 tw-text-xs tw-font-sans tw-leading-normal tw-font-medium tw-uppercase tw-tracking-heading tw-py-2 tw-mb-0">
+        {{ 'sections.article-010-content.article_type_html' | t}}
+    </p>
+    <p class="tw-mx-auto tw-font-serif sm:tw-px-40 sm:tw-text-8xl msm:tw-text-4xl tw-leading-tight sm:tw-py-6 msm:tw-pt-5 msm:tw-pb-3 msm:tw-px-2 tw-mb-0">
+        {{ 'sections.article-010-content.article_title_html' | t}}
+    </p>
+    <p class="tw-mx-auto tw-font-serif sm:tw-px-40 msm:tw-px-6 sm:tw-text-3-5-xl tw-leading-normal sm:tw-pb-5 msm:tw-pb-2 tw-mb-0">
+        {{ 'sections.article-010-content.article_subtitle_html' | t}}
+    </p>
+    <p class="tw-mx-auto tw-font-sans tw-font-bold tw-uppercase tw-text-base tw-leading-normal msm:tw-text-sm sm:tw-pt-5 msm:tw-py-2 tw-mb-0">
+        {{ 'sections.article-010-content.article_author_html' | t}}
+    </p>
+    <p class="tw-mx-auto tw-font-narrow tw-text-base tw-leading-normal msm:tw-text-sm tw-mb-0">
+        {{ 'sections.article-010-content.article_date_html' | t}}
+    </p>
+</section>
+
+<section class="page-width sm:tw-py-8 msm:tw-py-2 tw-flex tw-justify-items-center tw-items-center">
+    <div class="tw-mx-auto sm:tw-max-w-4xl">
+        <img src="{{ 'Lab_Article010_Img1_Desktop.jpg' | asset_img_url: 'master' }}" class="mx-auto tw-rounded-3xl" alt="temp">
+    </div>
+</section>
+
+<section class="page-width tw-text-start">
+    <p class="tw-mx-auto tw-font-narrow sm:tw-text-2xl sm:tw-px-36">
+        {{ 'sections.article-010-content.article_p1_html' | t}}
+        <a href="https://www.statista.com/statistics/1126823/worldwide-developer-gender/" class="tw-underline">{{ 'sections.article-010-content.article_a1_html' | t}}</a>
+        {{ 'sections.article-010-content.article_p1-2_html' | t}}
+        <a href="https://www.newyorker.com/tech/annals-of-technology/ada-lovelace-the-first-tech-visionary" class="tw-underline">{{ 'sections.article-010-content.article_a2_html' | t}}</a>
+        {{ 'sections.article-010-content.article_p1-3_html' | t}}
+    </p>
+    <p class="tw-mx-auto tw-font-narrow sm:tw-text-2xl sm:tw-px-36">
+        {{ 'sections.article-010-content.article_p2_html' | t}}
+        {% if request.locale.iso_code == 'en' %}
+            <a href="https://kidscodejeunesse.org/" class="tw-underline">{{ 'sections.article-010-content.article_a3_html' | t}}</a>
+        {% elsif request.locale.iso_code == 'fr' %}
+            <a href="https://kidscodejeunesse.org/fr" class="tw-underline">{{ 'sections.article-010-content.article_a3_html' | t}}</a>
+        {% endif %}
+        {{ 'sections.article-010-content.article_p2-2_html' | t}}
+    </p>
+</section>
+
+<section class="page-width sm:tw-pt-8 msm:tw-py-2 tw-flex tw-justify-items-center tw-items-center msm:tw-hidden">
+    <div class="tw-mx-auto">
+        <img src="{{ 'Lab_Article010_Img2-3_Desktop.jpg' | asset_img_url: 'master' }}" class="mx-auto" alt="temp">
+    </div>
+</section>
+<div class="page-width tw-grid tw-grid-cols-2 tw-text-center tw-pt-1 msm:tw-hidden">
+    <p class="tw-mx-auto tw-font-narrow tw-text-xs tw-uppercase tw-tracking-widest tw-max-w-sm">
+        <span class="tw-font-bold">{{ 'sections.article-010-content.article_p13_html' | t}}</span><br>{{ 'sections.article-010-content.article_p14_html' | t}}
+    </p>
+    <p class="tw-mx-auto tw-font-narrow tw-text-xs tw-uppercase tw-tracking-widest tw-max-w-sm">
+        {{ 'sections.article-010-content.article_p15_html' | t}}
+    </p>
+</div>
+<section class="page-width sm:tw-py-8 msm:tw-py-2 tw-justify-items-center tw-items-center sm:tw-hidden">
+    <div class="tw-mx-auto sm:tw-max-w-4xl">
+        <img src="{{ 'Lab_Article010_Img2_Desktop.png' | asset_img_url: 'master' }}" class="tw-rounded-3xl" alt="temp">
+    </div>
+    <p class="tw-mx-auto tw-font-narrow tw-text-xs tw-uppercase tw-tracking-widest tw-max-w-sm tw-pt-1">
+        <span class="tw-font-bold">{{ 'sections.article-010-content.article_p13_html' | t}}</span><br>{{ 'sections.article-010-content.article_p14_html' | t}}
+    </p>
+</section>
+<section class="page-width sm:tw-py-8 msm:tw-py-2 tw-justify-items-center tw-items-center sm:tw-hidden">
+    <div class="tw-mx-auto sm:tw-max-w-4xl">
+        <img src="{{ 'Lab_Article010_Img3_Desktop.png' | asset_img_url: 'master' }}" class="tw-rounded-3xl" alt="temp">
+    </div>
+    <p class="tw-mx-auto tw-font-narrow tw-text-xs tw-uppercase tw-tracking-widest tw-max-w-sm tw-pt-1">
+        {{ 'sections.article-010-content.article_p15_html' | t}}
+    </p>
+</section>
+
+<section class="page-width tw-text-start">
+    <h2 class="tw-mx-auto tw-font-serif sm:tw-text-5-5xl msm:tw-text-2xl sm:tw-px-36 sm:tw-py-8 msm:tw-py-2">
+        {{ 'sections.article-010-content.article_h1_html' | t}}
+    </h2>
+    <p class="tw-mx-auto tw-font-narrow sm:tw-text-2xl sm:tw-px-36">
+        {{ 'sections.article-010-content.article_p3_html' | t}}
+        <a href="https://puebloscience.org/women-in-coding-hacking-the-gender-gap/" class="tw-underline">{{ 'sections.article-010-content.article_a4_html' | t}}</a>
+        {{ 'sections.article-010-content.article_p3-2_html' | t}}
+    </p>
+    <h2 class="tw-text-center tw-font-serif sm:tw-text-7xl msm:tw-text-3xl sm:tw-px-6 sm:tw-py-8 msm:tw-py-2">
+        {{ 'sections.article-010-content.article_h3_html' | t}}
+    </h2>
+    <p class="tw-mx-auto tw-font-narrow sm:tw-text-2xl sm:tw-px-36">
+        {{ 'sections.article-010-content.article_p4_html' | t}}
+    </p>
+</section>
+
+<section class="page-width sm:tw-py-8 msm:tw-py-2 tw-flex tw-justify-items-center tw-items-center">
+    <div class="tw-mx-auto">
+        <img src="{{ 'Lab_Article010_Img4_Desktop.jpg' | asset_img_url: 'master' }}" class="mx-auto tw-rounded-3xl" alt="temp">
+    </div>
+</section>
+
+<section class="page-width tw-text-start">
+    <h2 class="tw-mx-auto tw-font-serif sm:tw-text-5-5xl msm:tw-text-2xl sm:tw-px-36 sm:tw-py-8 msm:tw-py-2">
+        {{ 'sections.article-010-content.article_h2_html' | t}}
+    </h2>
+    <p class="tw-mx-auto tw-font-narrow sm:tw-text-2xl sm:tw-px-36">
+        {{ 'sections.article-010-content.article_p5_html' | t}}
+    </p>
+    <h2 class="tw-mx-auto tw-font-serif sm:tw-text-5-5xl msm:tw-text-2xl sm:tw-px-36 sm:tw-py-8 msm:tw-py-2">
+        {{ 'sections.article-010-content.article_h4_html' | t}}
+    </h2>
+    <p class="tw-mx-auto tw-font-narrow sm:tw-text-2xl sm:tw-px-36">
+        {{ 'sections.article-010-content.article_p6_html' | t}}
+    </p>
+    <p class="tw-mx-auto tw-font-narrow sm:tw-text-2xl sm:tw-px-36">
+        {{ 'sections.article-010-content.article_p7_html' | t}}
+    </p>
+    <p class="tw-mx-auto tw-font-narrow sm:tw-text-2xl sm:tw-px-36">
+        {{ 'sections.article-010-content.article_p8_html' | t}}
+    </p>
+</section>
+
+<section class="page-width sm:tw-py-8 msm:tw-py-2 tw-flex tw-justify-items-center tw-items-center">
+    <div class="tw-mx-auto">
+        <img src="{{ 'Lab_Article010_Img5_Desktop.jpg' | asset_img_url: 'master' }}" class="mx-auto tw-rounded-3xl" alt="temp">
+    </div>
+</section>
+
+<section class="page-width tw-text-start tw-pb-8">
+    <h2 class="tw-mx-auto tw-font-serif sm:tw-text-5-5xl msm:tw-text-2xl sm:tw-px-36 sm:tw-py-8 msm:tw-py-2">
+        {{ 'sections.article-010-content.article_h5_html' | t}}
+    </h2>
+    <p class="tw-mx-auto tw-font-narrow sm:tw-text-2xl sm:tw-px-36">
+        {{ 'sections.article-010-content.article_p9_html' | t}}
+    </p>
+    <p class="tw-mx-auto tw-font-narrow sm:tw-text-2xl sm:tw-px-36">
+        {{ 'sections.article-010-content.article_p10_html' | t}}
+    </p>
+    <h2 class="tw-text-center tw-font-serif sm:tw-text-7xl msm:tw-text-3xl sm:tw-px-6 sm:tw-py-8 msm:tw-py-2">
+        {{ 'sections.article-010-content.article_h6_html' | t}}
+    </h2>
+    <p class="tw-mx-auto tw-font-narrow sm:tw-text-2xl sm:tw-px-36">
+        {{ 'sections.article-010-content.article_p11_html' | t}}
+    </p>
+    <p class="tw-mx-auto tw-font-narrow sm:tw-text-2xl sm:tw-px-36">
+        {{ 'sections.article-010-content.article_p12_html' | t}}
+    </p>
+</section>
+
+{% schema %}
+{
+  "name": "Magazine Article 010",
+  "locales": {
+    "en": {
+        "article_type_html": "article",
+        "article_title_html": "Girls can, too:<br> Empowering women in code",
+        "article_subtitle_html": "Coding: no longer is it reserved for data team members or kid genius hackers from early 2000s box office movies.",
+        "article_author_html": "staff contributor",
+        "article_date_html": "March 31, 2022",
+        "article_p1_html": "As everything becomes increasingly digital, the need to know how to code is becoming more and more integral, on par with learning a second language. It's another way to transmit information, to express oneself, and more ambitiously, change the world. However, if we take a look at who runs the tech sector, it's very clear: men are estimated to account for ",
+        "article_p1-2_html": "of all developer jobs, followed by women at just over 5% and non-binary, genderqueer, or gender non-conforming individuals at 1.42%. But in a field that was initially founded by a woman (in ",
+        "article_p1-3_html": "no kidding), why is it that women occupy only such a small percentage of developer roles?",
+        "article_h1_html": "The making of the boys club",
+        "article_p2_html": "We spoke with Kate Arthur, founder of ",
+        "article_p2-2_html": "a charity focused on giving kids access to a digital skills education, about the power of code, why it's important to encourage equality, and how we can empower women to find their place in the tech world.",
+        "article_p3_html": "Fluently understanding code allows you to communicate in a new way and gives the ability to control a narrative in an extremely creative manner. In short, it's a new language, and those who learn it hold a certain amount of power. However, if you take a look at the tech world today, the majority of roles are occupied by men, meaning that they are the ones wielding that power. But coding was initially seen as 'women's work', on par with secretarial duties or even ",
+        "article_p3-2_html": "—so why has there been such a shift, with men leading the pack?",
+        "article_p4_html": "Arthur says. “One would be the power that coding has. It's perceived in a much more powerful light today, which attracts male interest.” But it's not only that; over the years, tech professions have been glorified through media and entertainment, such as Back To The Future, earning an elevated status and garnering further attention from everyone, particularly boys and men.",
+        "article_p5_html": "For decades, STEM was predominantly encouraged for boys, which plays a huge role in the tech industry's gender landscape as we see it today. Meanwhile, most women gravitated more towards the arts because that's the direction they were guided towards. “Currently, we separate the sciences from the arts, which I think is a huge disservice and is quite anti-innovation,” says Arthur. \"You need the two together to really make a change. If you think about the real innovators—from da Vinci to Einstein to Steve Jobs—they all blended this beautiful balance of both science and art.\"",
+        "article_p6_html": "A really interesting scenario that came to light in a Kids Code Jeunesse workshop included, of all things, LEGO. According to Arthur, if you observe how most boys play with LEGO, they build a structure and then break it down simply for the purpose of building and breaking down and understanding what these building blocks are doing. Whereas most girls would play with LEGO driven by a purpose, like building a house. The boys had curiosity. The girls had purpose.",
+        "article_p7_html": "Arthur also describes an app which was created by a team of female students she mentored, which they dubbed Garbage Bag. The concept was to geotag trash around the city and alert city officials, with an option to even tag which fast food restaurants or brands the trash originated from. The amazing thing about this was that the girls didn't know how to code prior to this project; learning how to code was a byproduct of fulfilling their mission's purpose.",
+        "article_p8_html": "\"I believe it was Zuckerberg who said, 'move fast and break things',\" Arthur mentions, which very much relates to the way that the boys interacted with their LEGO. Because the tech world has long been governed without enough female, or other diverse, input, Arthur believes that we're seeing the repercussions of that mentality. “We can't go fast and break things, because it ruins and destroys our values and society in so many ways.” Case in point: we need more equality and diversity in tech in order to approach problems from different perspectives.",
+        "article_h2_html": "Establishing equal playing ground",
+        "article_p9_html": "The tech industry still has a ways to go before achieving gender equality, but the first step is to empower girls to follow their dreams in STEM if that's where their dreams lie. “Role models are so important for women,” says Arthur. “For a young girl to have someone to look up to who encourages them is really important.” It's key for other successful women to act as role models and mentors for the next generation, and to ensure that young girls, in STEM or otherwise, feel like they belong and that they can achieve their goals.",
+        "article_p10_html": "\"If we empower younger generations to be able to understand the power of AI and data, to understand algorithms, then they'll be equipped with the tools needed to take on problems like climate change and advances in healthcare,\" says Arthur.",
+        "article_p11_html": "At the end of the day, technology is neutral; it's neither good nor bad. It's up to us to determine how it's used, and part of that lies in how we teach and guide the younger generations to use it.",
+        "article_h3_html": "\"There's a lot of discussion and many different views around why women don't have as much of a place as they used to,\"",
+        "article_p12_html": "Arthur's advice for girls looking to blaze their own path in the coding or tech world? “Reach out to women who are years ahead of you in their career. Because they have fought through similar obstacles, and they'll be willing to give advice.” They'll also, ultimately, be happy to pass on the baton, so that the next generation can go ahead and lay the foundation for the—hopefully more equal—future of code.",
+        "article_h4_html": "The call for equality in tech",
+        "article_h5_html": "Lifting up our girls in tech—and beyond",
+        "article_h6_html": "\"There are so many great areas that technology can address, it just needs to be done ethically and responsibly.\"",
+        "article_p13_html": "Putting our knit to the test:",
+        "article_p14_html": " Attempting to rip our impossibly resilient fabric.",
+        "article_p15_html": "Kate Arthur and her three daughters in STEM wear our Classic Sheer Tights.",
+        "article_a1_html": "91.7%",
+        "article_a2_html": "19th century England",
+        "article_a3_html": "Kids Code Jeunesse",
+        "article_a4_html": "planning a dinner"
+    },
+    "fr": {
+        "article_type_html": "article",
+        "article_title_html": "La programmation,<br> aussi une affaire de filles",
+        "article_subtitle_html": "La programmation n'est plus l'apanage des équipes des TI ou des petits génies du piratage informatique qu'on voyait dans les films à succès des années 2000.",
+        "article_author_html": "Contributeur interne",
+        "article_date_html": "March 31, 2022",
+        "article_p1_html": "Avec le passage accéléré au numérique, la nécessité de savoir coder devient incontournable, au même titre que la connaissance d'une deuxième langue. C'est une autre façon de communiquer l'information, de s'exprimer et, si on a beaucoup d'ambition, de changer le monde. Mais qui domine le secteur des technologies? Le constat est clair : les hommes occupent ",
+        "article_p1-2_html": " de tous les emplois de développeurs, suivis par les femmes à un peu plus de 5 % et les personnes non binaires, queers ou au genre non conforme à 1,42 %. Mais dans un domaine qui a été fondé à l'origine par une femme (dans l'Angleterre du 19e siècle, ",
+        "article_p1-3_html": "sans blague), comment se fait-il que les femmes soient si peu représentées?",
+        "article_h1_html": "La naissance du boys club",
+        "article_p2_html": "Nous avons rencontré Kate Arthur, fondatrice de",
+        "article_p2-2_html": ", une organisation caritative dont l'objectif est de donner à chaque enfant l'accès à une éducation aux compétences numériques, et nous avons discuté du pouvoir de la programmation, de l'importance de promouvoir l'égalité et des solutions pour encourager les femmes à prendre leur place dans le monde des technologies.",
+        "article_p3_html": "Maîtriser le codage permet de communiquer d'une autre façon et de contrôler le récit d'une manière extrêmement créative. Bref, c'est un nouveau langage et ceux qui l'apprennent détiennent un certain pouvoir. Et dans l'univers de la tech, ce sont les hommes qui occupent la majorité des emplois, ce qui veut dire que ce sont eux qui exercent ce pouvoir. Pourtant, à l'origine, la programmation était vue comme un « travail de femmes », au même titre que les tâches de secrétariat ou même la ",
+        "article_p3-2_html": "Pourquoi y a-t-il eu un tel retournement au profit des hommes?",
+        "article_p4_html": "précise Arthur. L’une de ces raisons est que la programmation est associée au pouvoir. On le voit comme quelque chose de beaucoup plus puissant qu’auparavant, et ça attire les hommes. » Mais ça n’explique pas tout. Au fil des ans, les professions dans le domaine des technologies ont été glorifiées par les médias et le divertissement, pensons à des productions comme Back To The Future, ce qui leur a conféré un certain prestige suscitant l’intérêt de tous, en particulier des garçons et des hommes.",
+        "article_p5_html": "Pendant des décennies, on a encouragé les garçons à étudier les STIM, ce qui a grandement façonné le paysage des genres que nous observons aujourd’hui dans le secteur des technologies. Parallèlement, la plupart des femmes ont investi les arts, puisque c’est la voie vers laquelle elles ont été orientées. « À l’heure actuelle, nous séparons les arts et les sciences, ce qui est à mon avis une grande erreur, et contraire à l’innovation, remarque Arthur. Les deux doivent aller de pair pour que les choses changent. Pensons aux grands innovateurs : da Vinci, Einstein, Steve Jobs; ils ont tous marié, dans un parfait équilibre, science et art. »",
+        "article_p6_html": "Lors d’un atelier Kids Code Jeunesse avec des blocs LEGO, Arthur a observé un phénomène particulièrement intéressant. La plupart des petits garçons bâtissaient une structure, puis la démolissaient, parce qu’ils cherchaient à comprendre comment se comportent les blocs. Tandis que les petites filles, lorsqu’elles jouaient avec les LEGO, elles avaient un but précis, comme construire une maison. Les garçons avaient une curiosité; les filles, un objectif.",
+        "article_p7_html": "Arthur me parle également d’une appli appelée Garbage Bag, qui a été créée par une équipe d’étudiantes qu’elle supervisait. L’idée était de géomarquer les déchets repérés dans la ville, puis de les signaler aux autorités municipales – l’appli inclut même la possibilité d’identifier la chaîne de fast-food ou l’entreprise d’où proviennent les déchets. Ce qui est génial, c’est ce que les filles ne savaient pas programmer avant de commencer ce projet. Apprendre à coder a été l’effet collatéral de la réalisation de leur objectif.",
+        "article_p8_html": "« Je crois que c’est Zuckerberg qui a dit : “move fast and break things” [fonce et casse tout] », ce qui s’apparente drôlement à la manière dont les garçons interagissent avec les blocs LEGO. Le monde des technologies a longtemps été gouverné sans l’apport de perspectives féminines ou diversifiées et, selon Arthur, nous subissons aujourd’hui les répercussions de cette mentalité. « Nous ne pouvons pas foncer et tout casser, parce que ça ruine et détruit nos valeurs et la société à tant d’égards. » Ce que ça nous dit? Il faut plus d’égalité et de diversité dans le secteur des technologies et aborder les problèmes sous différentes perspectives.",
+        "article_h2_html": "Histoire de partir sur un pied d’égalité",
+        "article_p9_html": "L’industrie de la tech a du chemin à faire avant d’atteindre l’égalité des genres; la première étape consiste à donner aux filles qui en rêve les moyens de poursuivre une carrière dans les STIM. « Les modèles féminins sont si importants, indique Arthur. Pour une jeune fille, avoir quelqu’un à admirer qui l’encourage est vraiment précieux. » Il est essentiel que les femmes qui ont du succès agissent en tant que modèles et mentores auprès de la prochaine génération, qu’elles veillent à ce que les jeunes filles, que ce soit dans les STIM ou ailleurs, sentent qu’elles ont leur place et qu’elles peuvent atteindre leurs objectifs.",
+        "article_p10_html": "« Si nous dotons les prochaines générations des outils nécessaires pour comprendre le pouvoir de l’IA et des données, comprendre les algorithmes, elles auront tout en main pour s’attaquer à des enjeux importants comme les changements climatiques et la modernisation des soins de santé, explique Arthur.",
+        "article_p11_html": "Au fond, les technologies sont neutres; elles ne sont ni bonnes ni mauvaises. C’est à nous de déterminer comment nous les utilisons, et cela dépend en partie de la façon dont nous formons et guidons les générations à venir.",
+        "article_h3_html": "« Il y a beaucoup de discussions et différents points de vue sur les raisons pour lesquelles les femmes n’ont pas autant de place qu’avant,",
+        "article_p12_html": "Le conseil de Kate Arthur aux filles qui souhaitent frayer leur propre chemin dans le monde du codage ou de la technologie? « Rapprochez-vous des femmes qui ont choisi ce domaine avant vous. Parce qu’elles ont traversé des épreuves similaires et qu’elles seront heureuses de vous guider. » Elles seront aussi heureuses de passer le flambeau, afin que la prochaine génération puisse jeter les bases de l’avenir de la programmation, un avenir qui sera, espérons-le, plus égalitaire.",
+        "article_h4_html": "L’appel à l’égalité dans le monde des technologies",
+        "article_h5_html": "Stimuler la fibre technologique et scientifique de nos filles",
+        "article_h6_html": "Il y a tant de domaines auxquels les technologies peuvent contribuer, mais il faut le faire de manière éthique et responsable. »",
+        "article_p13_html": "Mettre la résilience à l’épreuve :",
+        "article_p14_html": " Tenter de déchirer notre tissu résistant.",
+        "article_p15_html": "Kate Arthur et ses trois filles dans STIM portent notre Collant diaphane classique.",
+        "article_a1_html": "91.7%",
+        "article_a2_html": "l’Angleterre du 19e siècle",
+        "article_a3_html": "Kids Code Jeunesse",
+        "article_a4_html": "planification d’un souper"
+    }
+  }
+}
+{% endschema %}

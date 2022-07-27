@@ -1,0 +1,60 @@
+<div class="shortie-popup-mobile tw-fixed tw-z-50 tw-left-0 tw-top-0 tw-w-full tw-h-full tw-overflow-hidden tw-text-white  tw-items-center tw-text-center tw-hidden">
+    <div class="shortie-popup-inner tw-flex tw-flex-col tw-justify-around tw-items-center tw-h-3/4 tw-py-8">
+       <img src="{{ 'shortie-close.svg' | asset_url }}" alt="" class="shortie-close-icon-mobile tw-absolute tw-top-5 tw-right-5" style="width: 30px;">
+       <img src="{{ 'shortie-pdp-popup-logo.png' | asset_url }}" alt="" class="shortie-popup-logo tw-mb-10">
+       <div class="tw-mb-5">
+           <h1 class="tw-font-serif tw-text-4xl tw-font-light">Why the Brae no-sweat shortie?</h1>
+           <p class="tw-text-base">The No-Sweat Shortie has stepped up its game, so much so that we gave it a whole new identity. Made with the same
+           resilient Sheertex Knit Technology with a sleeker, more elevated look.</p>
+       </div>
+       <div class="tw-mb-5">
+           <h1 class="tw-font-serif tw-text-4xl tw-font-light">What's New</h1>
+               <p class="tw-text-left tw-text-base tw-mb-1">- Softer to the touch</p>
+               <p class="tw-text-left tw-text-base tw-mb-1">- More sheer and lightweight</p>
+               <p class="tw-text-left tw-text-base tw-mb-1">- Designed to go incognito under clothing</p>
+       </div>
+       <div class="">
+           <a class="shortie-shop-mobile tw-border-0 tw-rounded-3xl tw-px-12 msm:tw-px-16 tw-py-3 tw-max-w-xs tw-bg-green-200 tw-mx-auto tw-text-xs tw-font-sans tw-leading-normal tw-text-center tw-font-medium tw-uppercase tw-tracking-heading" href="#affiliate-learn">
+               SHOP BRAE SHORTIE
+           </a>
+       </div>
+    </div>
+   </div>
+
+   <script>
+    (function() {
+           let popup = document.querySelector('.shortie-popup-mobile')
+           if (!popup) {
+               return
+           }
+   
+           let closeModalButton = document.querySelector('.shortie-close-icon-mobile');
+               if (!closeModalButton) {
+                   return
+               }
+
+            let shopBtn = document.querySelector(".shortie-shop-mobile");
+            if (!shopBtn) {
+                return;
+            }
+
+            
+            if(sessionStorage && !sessionStorage.getItem('isshow') && window.matchMedia("(max-width: 1023px)").matches){
+                
+                popup.style.display = "flex";
+                    sessionStorage.setItem('isshow', true);
+                } else {
+                    popup.style.display = "none";
+                }
+       
+               [closeModalButton, shopBtn].forEach((curr) => {
+                curr.addEventListener('click', (e) => {
+                   e.preventDefault()
+                   e.stopPropagation()
+   
+                   popup.style.display = 'none';
+               })
+               })
+           
+       })()
+   </script>

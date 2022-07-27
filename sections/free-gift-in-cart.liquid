@@ -1,0 +1,107 @@
+
+<style>
+  .cart__row .free-gift__body--disclaimer {
+    font-size: 0.625rem;
+    line-height: 1.6;
+    letter-spacing: 0.01px;
+    text-align: left;
+    color: #848484;
+    padding-bottom: 0.5rem;
+  }
+
+  .cart__row .free-gift__price-strikethrough{
+    font-size: 0.875rem;
+    text-decoration: line-through;
+    color: #323232;
+  }
+</style>
+
+{% for block in section.blocks %}
+  {%if block.settings.image != blank %}
+    <div class="cart__row tw-mb-0">
+      <div class="grid grid--full cart__row--table-large tw-pb-8">
+        <div class="grid__item medium-up--three-fifths">
+          <div class="grid">
+            <div class="grid__item one-quarter">
+              <img src="{{ block.settings.image | img_url: '540x' }}" loading="lazy" />
+            </div>
+            <div class="grid__item grid__item three-quarters">
+              {%if block.settings.product_title != blank %}
+              <a href="" class="cart__product-name full-cart-header" style="font-size: 1rem;">
+                {{ block.settings.product_title }}
+              </a>
+              {% endif %} {%if block.settings.free_gift_info != blank %}
+              <div class="free-gift__body--text">{{ block.settings.free_gift_info}}</div>
+              {% endif %} {%if block.settings.free_gift_disclaimer != blank %}
+              <div class="free-gift__body--disclaimer">{{ block.settings.free_gift_disclaimer}}</div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="grid__item medium-up--two-fifths tw-flex tw-justify-between">
+          <div class="grid grid--full cart__row--table">
+            <div class="grid__item one-third medium-up--one-third medium-up--text-center">
+              <input type="number" name="updates[]" class="cart__product-qty" value="1" max="1" disabled />
+            </div>
+            <div class="grid__item one-third text-center">
+              <small class="tw-hidden">REMOVE</small>
+            </div>
+            <div class="grid__item one-third medium-up--two-thirds text-right">
+              <div class="tw-flex tw-flex-col">
+                {%if block.settings.free_gift_price != blank %}
+                <div class="free-gift__price-strikethrough"><span data-currency>{{ block.settings.free_gift_price }}</span></div>
+                {% endif %} {%if block.settings.price_label != blank %}
+                <div class="free-gift__free-text">{{ block.settings.price_label}}</div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+
+{% schema %}
+  {
+  "name":"FreeGiftProduct",
+  "blocks":[
+    {
+      "type":"product",
+      "name":"FreeGift",
+      "settings":[
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type":"text",
+          "id":"product_title",
+          "label":"Product title"
+        },
+        {
+          "type":"text",
+          "id":"free_gift_info",
+          "label":"Free gift info"
+        },
+        {
+          "type":"text",
+          "id":"free_gift_disclaimer",
+          "label":"Free gift disclaimer"
+        },
+        {
+          "type":"text",
+          "id":"price_label",
+          "label":"Price label (free)"
+        },
+        {
+          "type":"text",
+          "id":"free_gift_price",
+          "label":"Free gift price"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

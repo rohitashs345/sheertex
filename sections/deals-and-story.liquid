@@ -1,0 +1,176 @@
+<style>
+  .__sheertex-green__2rnOW {
+    background-color: #ddff98;
+  }
+  .__sheertex-font-agrandir__ty0_E {
+    font-family: Agrandir;
+  }
+  .__sheertex-font-matiere__1_LDB {
+    font-family: Matiere;
+  }
+  .__button-hover__dG7Od:hover {
+    text-decoration: underline;
+    border: 1px solid black;
+    background-color: #ffffff;
+  }
+</style>
+
+<section class="tw-w-full tw-flex tw-flex-col tw-justify-center tw-items-center tw-px-8 tw-my-16">
+  <div class="tw-w-full tw-max-w-screen-lg tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-x-8 tw-gap-y-4">
+    <div>
+      <div>
+        <a href="{{section.settings.link_1}}" class="tw-underline tw-text-lg __sheertex-font-matiere__1_LDB">          
+            {{section.settings.title_link_1}}
+        </a>
+      </div>
+      <div class="tw-grid tw-grid-cols-1 sm:tw-grid-cols-2 tw-gap-x-4 tw-gap-y-4 tw-mt-4">
+        <a href="{{section.settings.link_1}}">
+          {%- assign img = section.settings.image_1 -%}
+          <img class="tw-w-full" loading="lazy" srcset="{{ img | img_url: '560x' }},
+                    {{ img | img_url: '464x' }},
+                    {{ img | img_url: '240x' }},
+                    {{ img | img_url: '928x' }}">
+        </a>
+        <div class="tw-flex tw-flex-col tw-justify-center tw-text-center">
+          <p class="tw-m-0 tw-text-2xl __sheertex-font-matiere__1_LDB">            
+              <span>{{section.settings.title_1}}</span>            
+          </p>
+            
+            <p class="tw-m-0 tw-text-s tw-mt-8 sm:tw-mt-10 tw-mb-12 sm:tw-mb-18 tw-text-center">
+              {{section.settings.description_1}}
+            </p>            
+          <a href="{{section.settings.link_1}}" class="tw-text-xs tw-py-2 tw-uppercase tw-border tw-font-medium tw-tracking-widest tw-border-solid tw-border-gray-400 tw-rounded-3xl __sheertex-font-agrandir__ty0_E __button-hover__dG7Od">            
+              <span>{{section.settings.button_1}}</span>            
+          </a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div>
+        <a href="{{section.settings.link_2}}" class="tw-underline tw-text-lg msm:tw-mt-4 __sheertex-font-matiere__1_LDB">          
+            {{section.settings.title_link_2}}         
+        </a>
+      </div>
+      <div class="tw-grid tw-grid-cols-1 sm:tw-grid-cols-2 tw-gap-x-4 tw-gap-y-4 tw-mt-4">
+        <a href="{{section.settings.link_2}}">
+          {%- assign img = section.settings.image_2 -%}
+          <img class="tw-w-full" loading="lazy" srcset="{{ img | img_url: '560x' }},
+                    {{ img | img_url: '464x' }},
+                    {{ img | img_url: '240x' }},
+                    {{ img | img_url: '928x' }}">
+        </a>
+        <div class="tw-flex tw-flex-col tw-justify-center tw-text-center">          
+            <p class="tw-mb-8 tw-text-2xl __sheertex-font-matiere__1_LDB">
+              {{section.settings.title_2}}         
+            </p>
+            <p class="tw-m-0 tw-text-s tw-mt-2 msm:tw-mb-10 sm:tw-mb-16">
+              {{section.settings.description_2}}         
+            </p>
+            <a href="{{section.settings.link_2}}" class="tw-text-xs sm:tw-mt-4 tw-py-2 tw-uppercase tw-border tw-font-medium tw-tracking-widest tw-border-solid tw-border-gray-400 tw-rounded-3xl __sheertex-font-agrandir__ty0_E __button-hover__dG7Od">
+              {{section.settings.button_2}}         
+            </a>          
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tw-max-w-screen-md tw-text-center tw-mt-24 tw-mb-6">
+    <p class="tw-m-0 tw-text-2xl __sheertex-font-matiere__1_LDB">     
+        {{section.settings.bottom_text}}     
+    </p>
+  </div>
+  <a href="{{section.settings.bottom_link}}" class="tw-font-medium tw-text-xs tw-px-24 tw-py-2 tw-uppercase tw-tracking-widest tw-my-6 tw-border tw-rounded-3xl tw-border-solid tw-border-white __sheertex-green__2rnOW __sheertex-font-agrandir__ty0_E __button-hover__dG7Od">    
+      Shop&nbsp;Now    
+  </a>
+</section>
+
+{% schema %}
+  {
+    "name": "Deals and story",
+    "presets": [
+      {
+        "name": "Deals and story",
+        "category": "Promotional"
+      }
+    ],
+    "settings": [
+      {
+        "type": "text",
+        "id": "title_link_1",
+        "label": "Link title of the 1-st column",
+        "default": "Shop Sets"
+      },
+      {
+        "type": "text",
+        "id": "title_1",
+        "label": "Title of the 1-st column",
+        "default": "Shop Sets & Save"
+      },
+      {
+        "type": "text",
+        "id": "description_1",
+        "label": "Description text of the 1-st column",
+        "default": "Shop our hand-picked sets featuring our best sellers—and save 10% while you’re at it."
+      },
+      {
+        "type": "text",
+        "id": "button_1",
+        "label": "Button label of the 1-st column",
+        "default": "SHOP NOW"
+      },
+      {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "Image for the 1-st column"
+      },
+      {
+        "type": "url",
+        "id": "link_1",
+        "label": "Header & Button link of the 1-st column"        
+      },
+      {
+        "type": "text",
+        "id": "title_link_2",
+        "label": "Link title of the 2-nd column",
+        "default": "Our Story"
+      },
+      {
+        "type": "text",
+        "id": "title_2",
+        "label": "Title of the 2-nd column",
+        "default": "Where it all started"
+      },
+      {
+        "type": "text",
+        "id": "description_2",
+        "label": "Description text of the 2-nd column",
+        "default": "Wondering how we became the creators behind the world’s toughest tights? Here's the whole story."
+      },
+      {
+        "type": "text",
+        "id": "button_2",
+        "label": "Button label of the 2-nd column",
+        "default": "LEARN MORE"
+      },
+      {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Image for the 2-nd column"
+      },
+      {
+        "type": "url",
+        "id": "link_2",
+        "label": "Header & Button link of the 2-nd column"        
+      },
+      {
+        "type": "text",
+        "id": "bottom_text",
+        "label": "Bottom text with 90 Day Gurantee msg"
+      },
+      {
+        "type": "url",
+        "id": "bottom_link",
+        "label": "Bottom Button link"        
+      }
+    ]
+  }
+{% endschema %}

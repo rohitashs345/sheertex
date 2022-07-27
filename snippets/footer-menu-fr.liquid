@@ -1,0 +1,33 @@
+{% if linklists[block.settings.menu].links.size > 0 %}
+  {% if block.settings.show_footer_title %}
+  <h2 class="footer__title">
+    {% if linklists[block.settings.menu].title == 'About' %}
+      À propos
+    {% endif %}
+    {% if linklists[block.settings.menu].title == 'Shop' %}
+      Magasinez
+    {% endif %}
+  </h2>
+  {% endif %}
+  <div>
+    {% if linklists[block.settings.menu].title != 'About' %}
+        <ul class="no-bullets site-footer__linklist">
+          {% for link in linklists[block.settings.menu].links %}
+            {% assign link_url = link.url %}
+            {% if link.title == "Page d'accueil" %}
+              <li><a href="https://www.sheertex.com/fr">{{ link.title }}</a></li>
+            {% elsif link.title == "Parrainez un ami" %}
+              <li><a href="https://www.sheertex.com/fr/pages/refer-a-friend-fr">{{ link.title }}</a></li>
+            {% else %}
+              <li><a href="{{ link_url }}">{{ link.title }}</a></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+    {% elsif linklists[block.settings.menu].title == 'About' %}
+        <ul class="no-bullets site-footer__linklist">
+            <li><a href="https://www.sheertex.com/fr/pages/knit">Notre tricot</a></li>
+            <li><a href="https://www.sheertex.com/fr/pages/faq">FAQ</a></li>
+        </ul>
+    {% endif %}
+  </div>
+{% endif %}

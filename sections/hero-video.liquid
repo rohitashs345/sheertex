@@ -1,0 +1,116 @@
+{% style %}
+  
+  .hero-image {
+      background-image: url({{section.settings.mobile_img_url}});   
+  }
+
+  .image-height {
+    height: 45vh;
+  }
+
+  @media (min-width: 768px) { 
+    .image-height {
+      height: 40vw;
+    }    
+
+    .hero-image {
+      background-image: url({{ section.settings.desktop_img_url}});   
+    } 
+  }    
+{% endstyle %}
+
+<section class="tw-w-full" data-cypress="hero">
+  <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2">
+      <div>
+        <div class="tw-bg-left-top tw-bg-cover tw-bg-no-repeat tw-bg-center hero-image image-height"></div>
+      </div>
+      <div>
+        <div class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-h-full tw-text-center">
+          <div class="tw-font-serif tw-text-3xl tw-m-4 tw-mt-12">
+            {% if request.locale.iso_code == 'en' %}
+              {{ section.settings.title | newline_to_br }}
+            {% elsif request.locale.iso_code == 'fr' %}
+              {{ section.settings.title-fr | newline_to_br }}
+            {% endif %}            
+          </div>
+          <div class="tw-my-4 md:tw-mb-12 tw-leading-relaxed md:tw-max-w-lg">
+            {% if request.locale.iso_code == 'en' %}
+              {{ section.settings.subheading | newline_to_br }}                   
+            {% elsif request.locale.iso_code == 'fr' %}
+              <div class="tw-max-w-xs">{{ section.settings.subheading-fr | newline_to_br }}</div>
+            {% endif %}
+          </div>
+          <div class="tw-m-4">
+            <a href="{{section.settings.link}}" class="tw-border tw-border-black tw-border-solid tw-uppercase tw-font-medium tw-font-sans  tw-font-normal tw-py-3 tw-px-20 md:tw-px-28 tw-text-xs tw-cursor-pointer hover:tw-text-black hover:tw-border-green-200 hover:tw-bg-green-200 tw-tracking-heading">
+              {% if request.locale.iso_code == 'en' %}
+                <span>{{section.settings.link_text}}</span>
+              {% elsif request.locale.iso_code == 'fr' %}
+                <span>VOIR TOUT</span>
+              {% endif %}
+            </a>
+          </div>
+        </div>
+      </div>      
+  </div>  
+</section>
+
+{% schema %}
+  {
+   "name":"Video hero",
+   "settings":[
+      {
+         "type":"textarea",
+         "id":"title",
+         "label":"Heading",
+         "default":"It's a spring thing."
+      },
+      {
+         "type":"textarea",
+         "id":"title-fr",
+         "label":"Heading FR",
+         "default":"C’est dans l’air du printemps."
+      },
+      {
+         "type":"textarea",
+         "id":"subheading",
+         "label":"Subheading",
+         "default":"The world's toughest tights, now available in\nvibrant colors & versatile patterns for this season.\nDebut your spring look—it's time."
+      },
+      {
+         "type":"textarea",
+         "id":"subheading-fr",
+         "label":"Subheading FR",
+         "default":"Les collants les plus résistants, maintenant offerts en couleurs vibrantes et dans des motifs polyvalents pour la saison. \nLaissez le vent printanier vous inspirer!"
+      },
+      {
+         "type":"text",
+         "id":"link_text",
+         "label":"Button text",
+         "default":"Shop all"
+      },
+      {
+         "type":"url",
+         "id":"link",
+         "label":"Button link"        
+      },
+      {
+         "type":"text",
+         "id":"desktop_img_url",
+         "label":"Background desktop image link",
+         "default":"https://cdn.shopify.com/s/files/1/0114/4120/9408/files/themichellekunz_Color_Pop_Luxury_Semi-Sheer_Tights_-_Mint.jpg?v=1617377939"
+      },
+      {
+         "type":"text",
+         "id":"mobile_img_url",
+         "label":"Background mobile image link",
+         "default":"https://cdn.shopify.com/s/files/1/0114/4120/9408/files/hero_image.jpg?v=1617360632"
+      }
+   ],
+   "presets":[
+      {
+         "name":"Video hero",
+         "category":"Video"
+      }
+   ]
+}
+{% endschema %}

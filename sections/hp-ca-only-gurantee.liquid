@@ -1,0 +1,63 @@
+<section class="tw-bg-peach tw-pt-16 sm:tw-pb-16">
+  <div class="md:tw-container md:tw-mx-auto">
+    <p class="msm:tw-px-4 tw-font-sans tw-leading-normal tw-text-center tw-uppercase tw-tracking-mini-heading tw-text-sm msm:tw-text-xs tw-font-bold tw-pb-4">
+			{{ section.settings.header }}
+		</p>
+    <div class="tw-flex tw-flex-row msm:tw-flex-col tw-items-center tw-justify-between">
+      <div class="tw-flex tw-items-start msm:tw-items-center tw-flex-col tw-justify-center msm:tw-mb-20 sm:tw-mr-36 md:tw-mr-44">
+        <p class="tw-text-2xl sm:tw-text-4xl tw-font-serif tw-leading-tight tw-text-center sm:tw-text-left tw-font-light tw-max-w-md">
+          {{ section.settings.body }}
+        </p>
+        <a class="tw-rounded-full tw-text-xs tw-font-narrow tw-mt-4 tw-text-center tw-tracking-wide tw-uppercase tw-font-medium tw-font-sans tw-font-normal tw-cursor-pointer tw-tracking-heading tw-py-4 msm:tw-py-2 msm:tw-px-10 tw-px-12 sm:tw-px-16 tw-bg-green-200" href="{{ section.settings.button_link }}">
+        		{{ section.settings.button_text }}
+        </a>
+      </div>
+      <div class="tw-relative">
+        <img class="tw-w-full msm:tw-mb-2" loading="lazy" src="{{ section.settings.right_image | img_url: 'master' }}" alt="model with sheertex tights">
+        <img loading="lazy" class="tw-absolute sm:tw-w-48 msm:tw-w-28 msm:tw--top-16 msm:tw-left-4 sm:tw--left-24 sm:tw-top-10" src="{{ section.settings.gurantee_svg }}" alt="model with sheertex tights">
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "HP Only gurantee sec",
+  "settings": [
+    {
+      "type": "html",
+      "id": "header",
+      "label": "header",
+      "default": "The only guarantee in hosiery"
+    }, {
+      "type": "html",
+      "id": "body",
+      "label": "Left side copy",
+      "default": "Every pair comes with a 90 Day Guarantee —<br> the only one in hosiery."
+    }, {
+      "type": "html",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Shop tights"
+    }, {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    }, {
+      "type": "text",
+      "id": "gurantee_svg",
+      "label": "Gurantee svg link"
+    }, {
+      "type": "image_picker",
+      "id": "right_image",
+      "label": "Right side image"
+		}
+  ],
+  "presets": [
+    {
+      "name": "HP Only gurantee sec",
+      "category": "Sheertex"
+    }
+  ]
+}
+{% endschema %}

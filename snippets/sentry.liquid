@@ -1,0 +1,23 @@
+{% comment %}
+  Instead of including 'sentry.liquid' directly, 'sentry-top-of-page' should be
+  included at the top of the file, and 'sentry-end-of-page' should be included
+  at the end of the file (see comments in 'sentry-top-of-page.liquid').
+
+  To ensure backwards compatibility, this file will make sure that 'sentry' can
+  still be included (although, in Dev, it will show a bunch of errors).
+{% endcomment %}
+
+{% include 'sentry-top-of-page' %}
+{% include 'sentry-end-of-page' %}
+
+{% if theme.id != 80405528647 %}
+  {% comment %}
+    If we're running in dev, show a warning when sentry.liquid is used.
+  {% endcomment %}
+  <script>
+    for (var x = 0; x < 10; x += 1) {
+      console.error("WARNING! 'sentry.liquid' should not be used!")
+      console.error("Use 'sentry-top-of-page' and 'sentry-end-of-page' instead.")
+    }
+  </script>
+{% endif %}

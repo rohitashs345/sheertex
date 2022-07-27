@@ -1,0 +1,51 @@
+<script crossorigin="anonymous" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+{%comment%} Link logo header to shop/all page {%endcomment%}
+{% comment %} <script>
+window["friendbuyAPI"] = friendbuyAPI = window["friendbuyAPI"] || [];
+
+  // registers your merchant using your merchant ID found in the
+  // retailer app https://retailer.fbot.me/settings/general
+  friendbuyAPI.merchantId = "1796c202-33fd-4994-a652-1ff05f531c49";
+  friendbuyAPI.push(["merchant", friendbuyAPI.merchantId]);
+
+  // load the merchant SDK and your campaigns
+  (function (f, r, n, d, b, u, y) {
+    while ((u = n.shift())) {
+      (b = f.createElement(r)), (y = f.getElementsByTagName(r)[0]);
+      b.async = 1;
+      b.src = u;
+      y.parentNode.insertBefore(b, y);
+    }
+  })(document, "script", [
+    "https://static.fbot.me/friendbuy.js",
+    "https://campaign.fbot.me/" + friendbuyAPI.merchantId + "/campaigns.js",
+  ]);
+</script>
+<script>
+  window.jQuery(document).ready(function(){
+    window.jQuery(".main__header > a:nth-child(1)").attr("href", "/collections/all");    
+  });
+   var pageName = "checkout-{{ request.locale.iso_code }}";
+
+  friendbuyAPI.push(["track", "page", { name: pageName }]);
+</script> {% endcomment %}
+
+{% if settings.remove_one_hour_delivery %}
+  {% render 'checkout-one-hour-delivery' %}
+{% endif %}
+
+{% if settings.checkout_show_shipping_notice %}
+  {% render 'checkout-shipping-notice' %}
+{% endif %}
+
+
+
+{% render 'checkout-marketing-checkbox' %}
+{% render 'checkout-line-item-prices' %}
+{% render 'checkout-free-gift' %}
+{% if request.locale.iso_code == 'en' %}
+    {% render 'checkout-guarantee-badge' %}
+{% else %}
+    {% render 'checkout-guarantee-badge-fr' %}
+{% endif %}

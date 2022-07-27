@@ -1,0 +1,52 @@
+<style>
+  .__page-title__1y_pb {
+    font-family: Agrandir;
+    letter-spacing: 0.104rem;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .__page-description__1HSk- {
+    font-family: 'Matiere';
+    font-size: 30px;
+    font-weight: 500;
+  }
+</style>
+<div id="PageHeaderSection" data-section-id="{{ section.id }}" data-section-type="page-header-section" class="tw-flex mmd:tw-flex-col">
+  {%- assign img_url = section.settings.image | img_url: 'master' -%}
+  <div class="tw-w-1/2 mmd:tw-w-full tw-flex">
+    <img src="{{ img_url }}" loading="lazy" class="tw-w-full tw-h-full">
+  </div>
+  <div class="tw-w-1/2 mmd:tw-w-full tw-bg-green-200 tw-items-center tw-justify-center tw-flex tw-flex-col mmd:tw-py-16">
+    {% if section.settings.page_title %}
+      <h2 class="__page-title__1y_pb">{{ section.settings.page_title }}</h2>
+    {% endif %}
+    {% if section.settings.page_description %}
+      <p class="__page-description__1HSk-">{{ section.settings.page_description }}</p>
+    {% endif %}
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Page Header Template",
+    "class": "page_header",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "page_title",
+        "label": "Page Title"
+      },
+      {
+        "type": "text",
+        "id": "page_description",
+        "label": "Page Description"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,114 @@
+<section class="tw-flex tw-flex-col tw-justify-items-center tw-items-center tw-justify-center sm:tw-col-span-3">
+    <img src="{{ 'Essential_LP_Slider_slide2.jpg' | asset_img_url: 'master' }}" class="" alt="temp">
+    <div class="tw-m-auto tw-text-center tw-absolute">
+        {% if request.locale.iso_code == 'en' %}
+        <p class="tw-mx-auto tw-text-5xl msm:tw-text-base tw-font-serif tw-text-white tw-mb-0 tw-max-w-lg">
+            How can we help you?
+        </p>
+        <p class="tw-mx-auto tw-text-2xl msm:tw-text-xs tw-font-sans tw-text-white tw-max-w-lg">
+            Need a quick answer - you've come to the right place 
+        </p>
+        {% elsif request.locale.iso_code == 'fr' %}
+        <p class="tw-mx-auto tw-text-5xl msm:tw-text-base tw-font-serif tw-text-white tw-mb-0 tw-max-w-lg">
+            Comment pouvons-nous vous aider?
+        </p>
+        <p class="tw-mx-auto tw-text-2xl msm:tw-text-xs tw-font-sans tw-text-white tw-max-w-lg">
+            Vous avez besoin d'une réponse rapide - vous êtes au bon endroit. 
+        </p>
+        {% endif %}
+    </div>
+</section>
+
+{% if request.locale.iso_code == 'en' %}
+<section class="page-width tw-py-12 sm:tw-px-36 tw-grid sm:tw-grid-cols-2 tw-gap-3 msm:tw-grid-cols-1">
+    <a href="https://www.sheertex.com/pages/faq-general">
+    <div class="tw-items-center tw-justify-items-center tw-text-center tw-p-12 tw-bg-sidekickBG tw-rounded-2xl">
+        <p class="tw-uppercase tw-font-sans tw-font-bold tw-m-auto tw-text-xl">
+            general
+        </p>
+    </div>
+    </a>
+    <a href="https://www.sheertex.com/pages/faq-product-facts">
+    <div class="tw-items-center tw-justify-items-center tw-text-center tw-p-12 tw-bg-sidekickBG tw-rounded-2xl">
+        <p class="tw-uppercase tw-font-sans tw-font-bold tw-m-auto tw-text-xl">
+            product features
+        </p>
+    </div>
+    </a>
+    <a href="https://www.sheertex.com/pages/faq-size-style">
+    <div class="tw-items-center tw-justify-items-center tw-text-center tw-p-12 tw-bg-sidekickBG tw-rounded-2xl">
+        <p class="tw-uppercase tw-font-sans tw-font-bold tw-m-auto tw-text-xl">
+            sizing & style
+        </p>
+    </div>
+    </a>
+    <a href="https://www.sheertex.com/pages/faq-billing">
+    <div class="tw-items-center tw-justify-items-center tw-text-center tw-p-12 tw-bg-sidekickBG tw-rounded-2xl">
+        <p class="tw-uppercase tw-font-sans tw-font-bold tw-m-auto tw-text-xl">
+            billing
+        </p>
+    </div>
+    </a>
+    <a href="https://www.sheertex.com/pages/faq-order-changes">
+    <div class="tw-items-center tw-justify-items-center tw-text-center tw-p-12 tw-bg-sidekickBG tw-rounded-2xl">
+        <p class="tw-uppercase tw-font-sans tw-font-bold tw-m-auto tw-text-xl">
+            order changes
+        </p>
+    </div>
+    </a>
+    <a href="https://www.sheertex.com/pages/faq-shipping-returns">
+    <div class="tw-items-center tw-justify-items-center tw-text-center tw-p-12 tw-bg-sidekickBG tw-rounded-2xl">
+        <p class="tw-uppercase tw-font-sans tw-font-bold tw-m-auto tw-text-xl">
+            shipping and returns
+        </p>
+    </div>
+    </a>
+</section>
+{% elsif request.locale.iso_code == 'fr' %}
+<section class="page-width tw-py-12 sm:tw-px-36 tw-grid sm:tw-grid-cols-2 tw-gap-3 msm:tw-grid-cols-1">
+    <a href="https://www.sheertex.com/pages/faq-general">
+    <div class="tw-items-center tw-justify-items-center tw-text-center tw-p-12 tw-bg-sidekickBG tw-rounded-2xl">
+        <p class="tw-uppercase tw-font-sans tw-font-bold tw-m-auto tw-text-xl">
+            GÉNÉRALITÉS
+        </p>
+    </div>
+    </a>
+    <a href="https://www.sheertex.com/pages/faq-product-facts">
+    <div class="tw-items-center tw-justify-items-center tw-text-center tw-p-12 tw-bg-sidekickBG tw-rounded-2xl">
+        <p class="tw-uppercase tw-font-sans tw-font-bold tw-m-auto tw-text-xl">
+            CARACTÉRISTIQUES DU PRODUIT
+        </p>
+    </div>
+    </a>
+    <a href="https://www.sheertex.com/pages/faq-size-style">
+    <div class="tw-items-center tw-justify-items-center tw-text-center tw-p-12 tw-bg-sidekickBG tw-rounded-2xl">
+        <p class="tw-uppercase tw-font-sans tw-font-bold tw-m-auto tw-text-xl">
+            TAILLE & STYLE
+        </p>
+    </div>
+    </a>
+    <a href="https://www.sheertex.com/pages/faq-billing">
+    <div class="tw-items-center tw-justify-items-center tw-text-center tw-p-12 tw-bg-sidekickBG tw-rounded-2xl">
+        <p class="tw-uppercase tw-font-sans tw-font-bold tw-m-auto tw-text-xl">
+            FACTURATION
+        </p>
+    </div>
+    </a>
+    <a href="https://www.sheertex.com/pages/faq-order-changes">
+    <div class="tw-items-center tw-justify-items-center tw-text-center tw-p-12 tw-bg-sidekickBG tw-rounded-2xl">
+        <p class="tw-uppercase tw-font-sans tw-font-bold tw-m-auto tw-text-xl">
+            MODIFICATIONS DE COMMANDE
+        </p>
+    </div>
+    </a>
+    <a href="https://www.sheertex.com/pages/faq-shipping-returns">
+    <div class="tw-items-center tw-justify-items-center tw-text-center tw-p-12 tw-bg-sidekickBG tw-rounded-2xl">
+        <p class="tw-uppercase tw-font-sans tw-font-bold tw-m-auto tw-text-xl">
+            EXPÉDITION ET RETOURS
+        </p>
+    </div>
+    </a>
+</section>
+{% endif %}
+
+{% section 'featured-collection' %}

@@ -1,0 +1,65 @@
+{% comment %}
+  This file handles each block available on product.sections or page.sections templates.
+  Each block is a near identical duplicate of a section also available on the home page.
+  Exception is sections that had blocks become hard coded options.
+{% endcomment %}
+{%if product.handle != 'test-kit' %}
+<div class="page-blocks">
+  {% for block in section.blocks %}
+    <div {{ block.shopify_attributes }}>
+      {% case block.type %}
+
+        {% when 'contact-form' %}
+          {% include 'page-block-contact-form' %}
+
+        {% when 'life-in-sheertex' %}
+          {%if product.handle != 'no-sweat-shortie' %}
+            <div class="ab-test-ugc-classics">{% render 'page-block-ugc-content', block: block %}</div>
+          {% endif %}
+        {% when 'ugc-shortie-section' %}
+          {%if product.handle == 'no-sweat-shortie' %}
+            {% render 'page-block-ugc-shortie', block: block  %}
+          {% endif %}
+        {% when 'custom-html' %}
+          {% include 'page-block-custom-html' %}
+
+        {% when 'background-image-text' %}
+          {% include 'page-block-background-image-text' %}
+
+        {% when 'hero-video' %}
+          {% include 'page-block-hero-video' %}
+
+        {% when 'image-hero' %}
+          {% include 'page-block-image-hero' %}
+
+        {% when 'image-row' %}
+          {% include 'page-block-image-row' %}
+
+        {% when 'rich-text'%}
+          {% include 'page-block-rich-text' %}
+
+        {% when 'text-and-image' %}
+          {% include 'page-block-text-and-image' %}
+
+        {% when 'text-columns' %}
+          {% include 'page-block-text-columns' %}
+
+        {% when 'testimonials' %}
+          {% include 'page-block-testimonials' %}
+
+        {% when 'map' %}
+          {% include 'page-block-map' %}
+
+        {% when 'featured-collection' %}
+          {% include 'page-block-featured-collection' %}
+
+        {% when 'fading-images' %}
+          {% include 'page-block-fading-images' %}
+        {% when 'instagram' %}
+          {% include 'page-block-instagram' %}
+
+      {% endcase %}
+    </div>
+  {% endfor %}
+</div>
+{% endif %}

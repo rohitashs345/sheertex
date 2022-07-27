@@ -1,0 +1,43 @@
+<section class="tw-bg-labBlue">
+    <section class="tw-w-full tw-grid tw-grid-cols-2 sm:tw-grid-cols-4 tw-justify-between msm:tw-px-4 md:tw-px-20 tw-py-4 sm:tw-py-8 sm:tw-justify-items-start msm:tw-justify-items-center tw-items-center">
+        <div class="tw-flex sm:tw-w-full msm:tw-w-5/6 tw-my-auto msm:tw-m-auto tw-justify-items-start sm:tw-col-start-1 msm:tw-py-6">
+            <a class="" href="https://www.sheertex.com/blogs/home">
+                <img src="{{ 'sheertex-lab.svg' | asset_url }}">
+            </a>
+        </div>
+        <div class="tw-items-center tw-w-full sm:tw-col-span-2 msm:tw-hidden ">
+            <p class="tw-my-auto tw-text-3xl msm:tw-text-2xl tw-font-serif tw-text-center tw-mx-auto tw-font-light tw-tracking-normal tw-leading-tight">
+                    {{ 'sections.magazine-header.magazine_title_html' | t}}
+            </p>
+        </div>
+        <div class="tw-my-auto sm:tw-w-full msm:tw-w-5/6 sm:tw-col-start-4">
+            <hr class="msm:tw-my-2" style="border-bottom: 1px solid black; width: 100%;">
+            <p class="tw-font-sans msm:tw-text-sm tw-font-light tw-tracking-wider tw-uppercase tw-mb-0">
+                <a href="https://www.sheertex.com/blogs/articles">
+                    {{ 'sections.magazine-header.article_html' | t}}
+                </a>
+            </p>
+            <hr class="msm:tw-my-2" style="border-bottom: 1px solid black; width: 100%;">
+            <p class="tw-font-sans msm:tw-text-sm tw-font-light tw-tracking-wider tw-uppercase tw-mb-0">
+                <a href="https://www.sheertex.com/blogs/experiments">
+                    {{ 'sections.magazine-header.experiments_html' | t}}
+                </a>
+            </p>
+            <hr class="msm:tw-my-2" style="border-bottom: 1px solid black; width: 100%;">
+        </div>
+    </section>
+</section>
+
+{% schema %}
+{
+  "name": "Magazine Header",
+  "locales": {
+    "en": {
+        "magazine_title_html": "Stories Powered<br>By Resilience",
+        "article_html": "Articles",
+        "experiments_html": "Experiments"
+    }
+  }
+}
+{% endschema %}
+

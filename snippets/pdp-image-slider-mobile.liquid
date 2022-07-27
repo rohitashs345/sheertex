@@ -1,0 +1,106 @@
+<style>
+  .pdpImageContainer {
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+  }
+  .pdpImgScroller {
+    overflow-x: scroll;
+    display: flex;
+    scroll-snap-type: x mandatory;
+  }
+  .pdpImgItem {
+    min-width: 100%;
+    scroll-snap-align: center;
+    background-color: white;
+  }
+  .pdpImgItem img {
+    width: 100vh;
+    height: auto;
+    z-index: 2;
+  }
+  .pdpImageContainer .btn-m {
+    position: absolute;
+    cursor: pointer;
+    top: 45%;
+    height: 30px;
+    width: 30px;
+    z-index: 1;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 30px;
+  }
+  .pdpImageContainer .btn-m:hover{
+    cursor: pointer;
+  }
+  .pdpImageContainer .btn-m.next {
+    right: 5px;
+  }
+  .pdpImageContainer .btn-m.prev {
+    left: 5px;
+  }
+</style>
+
+{%- assign featured_image_m = current_variant.featured_image | default: product.featured_image -%}
+
+<section class="pdpImageContainer">
+  <div class="pdpImgScroller">
+    {% for image in product.images %}
+    {%- assign is_featured_m = false -%}
+    {% if featured_image_m == image %}
+    {%- assign is_featured_m = true -%}
+    {% endif %}
+    <div class="pdpImgItem">          
+      <img 
+      {% unless is_featured_m %}
+      loading="lazy"
+      {% endunless %}
+      {% if forloop.index >= 5 %}
+      src="{{ image | img_url: product_image_size }}"
+      {% else %}
+      src="{{ image | img_url: product_image_size, format: 'pjpg' }}"
+      {% endif %}
+      alt="{{ product.title }}">
+    </div>
+    {% endfor %}
+  </div>
+  <span class="btn-m prev">&lt;</span>
+  <span class="btn-m next">&gt;</span>
+</section>
+
+
+<script>
+(function() {
+    const pdpSlideItems = document.querySelector('.pdpImageContainer');
+    const pdpImgScroller = pdpSlideItems.querySelector('.pdpImgScroller');
+    const nextBtn = pdpSlideItems.querySelector('.btn-m.next');
+    const prevBtn = pdpSlideItems.querySelector('.btn-m.prev');
+    const itemWidth = pdpSlideItems.querySelector('.pdpImgItem').clientWidth;
+
+    nextBtn.addEventListener('click', scrollToNextItem);
+    prevBtn.addEventListener('click', scrollToPrevItem);
+
+    function scrollToNextItem() {
+      if(pdpImgScroller.scrollLeft < (pdpImgScroller.scrollWidth - itemWidth)) {
+        // The scroll position is not at the beginning of last item
+        pdpImgScroller.scrollBy({left: itemWidth, top: 0, behavior:'smooth'});
+      }
+      else {
+        // Last item reached. Go back to first item by setting scroll position to 0
+        pdpImgScroller.scrollTo({left: 0, top: 0, behavior:'smooth'});
+      }
+    }
+    function scrollToPrevItem() {
+      if(pdpImgScroller.scrollLeft != 0) {
+        // The scroll position is not at the beginning of first item
+        pdpImgScroller.scrollBy({left: -itemWidth, top: 0, behavior:'smooth'});
+      }
+      else {
+        // This is the first item. Go to last item by setting scroll position to pdpImgScroller width
+        pdpImgScroller.scrollTo({left: pdpImgScroller.scrollWidth, top: 0, behavior:'smooth'});
+      }
+    }
+  })();
+</script>

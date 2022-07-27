@@ -1,0 +1,118 @@
+<div class="index-section index-section--{{ block.settings.content_id }}">
+  <div class="page-width">
+    {% if block.settings.star_text != blank %}
+      {% if request.locale.iso_code == 'en' %}
+        <div class="star-shape{% if product.handle == 'no-sweat-shortie' %} md:tw-ml-16 {% endif %}">
+          <span>{{ block.settings.star_text }}</span>
+          <img src="{{ 'shape-us-vs-them.svg' | asset_url }}" />
+        </div>
+      {% else %}
+        <div class="star-shape{% if product.handle == 'no-sweat-shortie' %} md:tw-ml-16 {% endif %}">
+          <img src="{{ 'shape-us-vs-them-fr.svg' | asset_url }}" />
+        </div>
+      {% endif %}
+    {% endif %}
+    {% capture image_layout %}
+      <div class="feature-row__item">
+        <div style="margin: 0 auto; max-width: {{ block.settings.image_width }}px;">
+          {% if block.settings.image != blank %}
+            {% if block.settings.button_label != blank and block.settings.button_link != blank %}<a href="{{ block.settings.button_link }}">{% endif %}
+            {% if product.tags contains 'shortie-us-vs-them' %}
+              {% if request.locale.iso_code == 'en' %}
+                <video class="pdp-usvsthem-video lozad md:tw-ml-16" autoplay playsinline loop muted poster={{ 'us-vs-them-shortie-v2.png' | asset_url }}>
+                  <source data-src={{ 'us-vs-them-shortie-v2.webm' | asset_url }} type='video/webm; codecs=vp9,vorbis'>
+                  <source data-src={{ 'us-vs-them-shortie-v2.mp4' | asset_url }} type='video/mp4'>
+                </video>
+              {% else %}
+                <video class="pdp-usvsthem-video lozad md:tw-ml-16" autoplay playsinline loop muted poster={{ 'us-vs-them-shortie-v2-fr.png' | asset_url }}>
+                  <source data-src={{ 'us-vs-them-shortie-v2-fr.webm' | asset_url }} type='video/webm; codecs=vp9,vorbis'>
+                  <source data-src={{ 'us-vs-them-shortie-v2-fr.mp4' | asset_url }} type='video/mp4'>
+                </video>
+              {% endif %}
+            {% else %}
+               {% if request.locale.iso_code == 'en' %}
+                  <video class="pdp-usvsthem-video lozad tw-bg-black tw-pb-1.5 sm:tw-pb-3" autoplay playsinline loop muted poster={{ 'product-usvsthem.png' | asset_url }}>
+                    <source data-src={{ 'product-usvsthem.webm' | asset_url }} type='video/webm; codecs=vp9,vorbis'>
+                    <source data-src={{ 'product-usvsthem.mp4' | asset_url }} type='video/mp4'>
+                  </video>
+                {% else %}
+                  <video class="pdp-usvsthem-video lozad tw-bg-black tw-pb-1.5 sm:tw-pb-3" autoplay playsinline loop muted poster={{ 'product-usvsthem-fr.png' | asset_url }}>
+                    <source data-src={{ 'product-usvsthem-fr.webm' | asset_url }} type='video/webm; codecs=vp9,vorbis'>
+                    <source data-src={{ 'product-usvsthem-fr.mp4' | asset_url }} type='video/mp4'>
+                  </video>
+                {% endif %}
+            {% endif%}
+              {% if block.settings.button_label != blank and block.settings.button_link != blank %}</a>{% endif %}
+          {% else %}
+            <div class="image-wrap">
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endcapture %}
+
+    <div class="feature-row" data-aos>
+      {% if block.settings.layout == 'left' %}
+        {{ image_layout }}
+      {% endif %}
+
+      <div class="feature-row__item feature-row__text feature-row__text--{{ block.settings.layout }} larger-text">
+        {% if block.settings.subtitle != blank %}
+          <p class="subtitle">{{ block.settings.subtitle }}</p>
+        {% endif %}
+        {% if block.settings.title != blank %}
+          <h2 class="h3">
+          {% if product.handle != 'no-sweat-shortie' %}
+          <h2 class="h3">
+            {{ block.settings.title | escape }}
+          </h2>
+          {% else %}
+          <h3 class="shortie-pdp-text">
+            <div class="sm:tw-mt-8">
+              {% if request.locale.iso_code == 'en' %}
+                The 2021 slip is here
+              {% else %}
+                Le short 2021 est arrivé
+              {% endif %}
+            </div>
+          </h3>
+          {% endif %}
+        {% endif %}
+        {% if block.settings.text != blank %}
+          <div class="rte featured-row__subtext">
+          {% if product.handle != 'no-sweat-shortie' %}  
+            {{ block.settings.text }}
+          {% else %}
+            {% if request.locale.iso_code == 'en' %}
+              Say goodbye to chafing & sticky summer thighs with our new cooling short. With a stay-in-place hem, a waistband engineered for comfort, and our stronger-than-ever Sheertex™ Knit Technology—you'll be all set this summer with this trusty sidekick.
+            {% else %}
+              Dites adieu aux cuisses d’été irritantes et collantes avec notre nouveau short rafraîchissant. Avec un ourlet qui reste en place, une ceinture conçue pour plus de confort et notre technologie de tricot Sheertex™ plus résistante que jamais, vous serez prêt à tout cet été avec ce fidèle compagnon.
+            {% endif %}
+          {% endif %}
+          </div>
+        {% endif %}
+        {% if block.settings.button_label != blank %}
+          <a href="{{ block.settings.button_link }}" class="btn">
+            {{ block.settings.button_label }}
+          </a>
+        {% endif %}
+      </div>
+
+      {% if block.settings.layout == 'right' %}
+        {{ image_layout }}
+      {% endif %}
+    </div>
+  </div>
+</div>
+<style>
+.shortie-pdp-text {
+  font-size: 48px !important;
+}
+
+@media (max-width: 640px) {
+  .shortie-pdp-text {
+    font-size: 32px !important;
+  }
+}
+</style>

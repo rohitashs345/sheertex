@@ -1,0 +1,26 @@
+{% style %}
+@media(max-width: 640px) {
+  .hero--{{ section.id }} {
+    display: none;
+}
+{% endstyle %}
+
+{% comment %} 
+-Removes the hero video and inserts the GIF +CTA on home page for Mobie view.
+-css can be found in index files
+{% endcomment %}
+
+<div class = "hero-gif__container">  
+  <div class="hero-gif__img">
+      <img class="ab-hero_img" src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/8D6A6779_Edit-2.jpg?v=1594335872" alt=""/>
+  </div>
+  
+  <div class = "hero-gif__sec">
+      <div class="hero-gif__wrapper">
+        <div class="hero-gif__text">
+          <h4 id="hero-gif__head">The world’s strongest tights.</h4>
+        </div>
+        <a href="/collections/all" class="hero-gif__button">SHOP NOW</a>
+      </div>
+  </div>  
+</div>

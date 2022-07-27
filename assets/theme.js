@@ -2439,10 +2439,10 @@ window.theme = window.theme || {}, window.slate = window.slate || {}, window.laz
             AOS && AOS.refreshHard(), theme.settings.currenciesEnabled && theme.currencySwitcher.ajaxrefresh(), theme.initQuickShop(!0), window.SPR && (SPR.initDomEls(), SPR.loadBadges()), sections.register("product-template", theme.Product, e), theme.collapsibles.init()
         }, window.onpageshow = function (e) {
             e.persisted && h("body").removeClass("unloading")
-        }, h(document).ready(function () {
+        }, setTimeout(function () {
             theme.init(), window.sections = new theme.Sections, sections.register("header-section", theme.HeaderSection), sections.register("slideshow-section", theme.SlideshowSection), sections.register("video-section", theme.VideoSection), sections.register("product", theme.Product), sections.register("product-recommendations", theme.Recommendations), sections.register("product-template", theme.Product), sections.register("collection-template", theme.Collection), sections.register("featured-content-section", theme.FeaturedContentSection), sections.register("collection-switcher", theme.CollectionSwitcher), sections.register("testimonials", theme.Testimonials), sections.register("instagram", theme.Instagram), sections.register("newsletter-popup", theme.NewsletterPopup), sections.register("fading-images", theme.FadingImages), sections.register("background-image", theme.BackgroundImage), sections.register("map", theme.Maps), sections.register("blog", theme.Blog), sections.register("photoswipe", theme.Photoswipe)
         })
-    }(theme.jQuery), window.jQuery(document).ready(function () {
+    }(theme.jQuery), setTimeout(function () {
         window.jQuery(".add-to-cart").click(function () {
             setTimeout(function () {
                 window.jQuery(".cart-link").load(location.href + " .cart-link", "")
@@ -2456,11 +2456,11 @@ window.theme = window.theme || {}, window.slate = window.slate || {}, window.laz
                 window.jQuery(".cart-link").load(location.href + " .cart-link", "")
             }, 1e3)
         })
-    }), window.jQuery(document).ready(function () {
+    }), setTimeout(function () {
         window.jQuery(".cart-link").click(function () {
             jQuery("#kustomer-root").attr("style", "display:none !important")
         })
-    }), window.jQuery(document).ready(function () {
+    }), setTimeout(function () {
         window.jQuery(".icon-close").click(function () {
             jQuery("#kustomer-root").attr("style", "display:block !important")
         })

@@ -339,7 +339,7 @@ endunless %} {% unless description_style %} {%- assign description_style =
     animation-name: nodeInserted;
   }
 </style>
-<script type="text/javascript">
+<script type="lazyload2">
   document.addEventListener(
     'animationstart',
     function (event) {
@@ -355,7 +355,7 @@ endunless %} {% unless description_style %} {%- assign description_style =
     },
     true,
   );
-  window.jQuery(document).ready(function() {
+  setTimeout(function() {
     window.jQuery('.product-image-main').each(function(){
       var $container = window.jQuery(this);
       var $img = $container.find('img');
@@ -369,7 +369,7 @@ endunless %} {% unless description_style %} {%- assign description_style =
         });
       }
     });
-  });
+  }, 3000);
 </script>
 
 {{ 'denier-modal.js' | asset_url | script_tag }} 

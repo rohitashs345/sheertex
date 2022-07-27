@@ -1,5 +1,4 @@
-{{ 'shortie-pdp-popup.scss.css' | asset_url | stylesheet_tag }}
-
+<link data-href="{{ 'shortie-pdp-popup.scss.css' | asset_url }}" rel="stylesheet" />
 {% if product.handle contains "no-sweat-6-shortie" %}
 <!-- Mobile Layout -->
 {% include 'shortie-pdp-popup-mobile' %}

@@ -1,31 +1,31 @@
 
 {%- if layout == 'checkout' -%}
-<script type="text/javascript" src="{{ 'layout.checkout.js' | asset_url }}" defer="defer"></script>
+<script type="lazyload2" data-src="{{ 'layout.checkout.js' | asset_url }}"></script>
 {%- else -%}
-<link rel="prefetch" href="{{ 'layout.checkout.js' | asset_url }}" as="script">
+
 {%- endif -%} {%- if layout == 'theme' -%}
-<script type="text/javascript" src="{{ 'layout.theme.js' | asset_url }}" defer="defer"></script>
+<script type="lazyload2" data-src="{{ 'layout.theme.js' | asset_url }}"></script>
 {%- else -%}
-<link rel="prefetch" href="{{ 'layout.theme.js' | asset_url }}" as="script">
+
 {%- endif -%} {%- if template == 'index' -%}
-<script type="text/javascript" src="{{ 'template.index.js' | asset_url }}" defer="defer"></script>
+<script type="lazyload2" data-src="{{ 'template.index.js' | asset_url }}"></script>
 {%- else -%}
-<link rel="prefetch" href="{{ 'template.index.js' | asset_url }}" as="script">
+
 {%- endif -%} {%- if template == 'page.reviews' -%}
-<script type="text/javascript" src="{{ 'template.page.reviews.js' | asset_url }}" defer="defer"></script>
+<script type="lazyload2" data-src="{{ 'template.page.reviews.js' | asset_url }}"></script>
 {%- else -%}
-<link rel="prefetch" href="{{ 'template.page.reviews.js' | asset_url }}" as="script">
+
 {%- endif -%} {%- if template == 'page.sheertex-our-story' -%}
-<script type="text/javascript" src="{{ 'template.page.sheertex-our-story.js' | asset_url }}" defer="defer"></script>
+<script type="lazyload2" data-src="{{ 'template.page.sheertex-our-story.js' | asset_url }}"></script>
 {%- else -%}
-<link rel="prefetch" href="{{ 'template.page.sheertex-our-story.js' | asset_url }}" as="script">
+
 {%- endif -%} {%- if template == 'page.thigh-highs' -%}
-<script type="text/javascript" src="{{ 'template.page.thigh-highs.js' | asset_url }}" defer="defer"></script>
+<script type="lazyload2" data-src="{{ 'template.page.thigh-highs.js' | asset_url }}"></script>
 {%- else -%}
-<link rel="prefetch" href="{{ 'template.page.thigh-highs.js' | asset_url }}" as="script">
+
 {%- endif -%} {%- if template contains 'product' -%}
-<script type="text/javascript" src="{{ 'template.product.js' | asset_url }}" defer="defer"></script>
-<script type="text/javascript" src="{{ 'jquery.zoom.min.js' | asset_url }}"></script>
+<script type="lazyload2" data-src="{{ 'template.product.js' | asset_url }}"></script>
+<script type="lazyload2" data-src="{{ 'jquery.zoom.min.js' | asset_url }}"></script>
 {%- else -%}
-<link rel="prefetch" href="{{ 'template.product.js' | asset_url }}" as="script">
+
 {%- endif -%}

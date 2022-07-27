@@ -33,7 +33,7 @@
         <div class="footer__newsletter">
           <input id='newsletterFooterEmailInput' type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="contact[email]" id="Email-{{ block.id }}" class="footer__newsletter-input" autocorrect="off" autocapitalize="off">
           <button id='newsletterFooterEmailSubmit' type="submit" class="footer__newsletter-btn" name="commit">
-			    <img src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/arrow-right.svg?v=1602849460" alt="arrow right" />
+			    <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="https://cdn.shopify.com/s/files/1/0114/4120/9408/files/arrow-right.svg?v=1602849460" alt="arrow right" />
           </button>
         </div>
       {% endform %}

@@ -3,7 +3,16 @@
 <!doctype html>
 <html class="no-js" lang="{{ shop.locale }}">
 <head>
-  <script type="text/javascript">(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/adHUgZ44BbeiOCY10qaUDqvvZbshC3XsPNl48aLn/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();</script>  
+  {% if template contains "index" %}
+	{% render "index-css" %}
+{% elsif template contains "collection" %}
+	{% render "collection-css" %}
+{% elsif template contains "product" %}
+	{% render "product-css" %}
+{% else %}
+	{% render "critical-css" %}
+{% endif %}
+  <script type="lazyload2">(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/adHUgZ44BbeiOCY10qaUDqvvZbshC3XsPNl48aLn/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();</script>  
   {% comment %} load HEAD js asap, e.g. for analytics tags {% endcomment %}
   {% include '_theme__head--js' %}
   <meta name="google-site-verification" content="HSd57L7znJPp62dJe19jfAo3hsPrUaQeGrDZWS4wfJc" />
@@ -31,11 +40,17 @@
 
   {% include '_theme__head--css' %}
 
-  {{ 'sheertex-bundle.css' | asset_url | stylesheet_tag }}
+  <link data-href="{{ 'sheertex-bundle.css' | asset_url }}" rel="stylesheet" />
 
   {% render 'treedify' %}
 
-  {{ content_for_header }}
+  {%- if request.design_mode or template contains 'cart' or template contains 'checkout' -%}
+	{{ content_for_header }}
+  {%- else -%}
+	{% capture content_for_header2 %}{{ content_for_header }}{% endcapture %}
+	{{ content_for_header2 | replace: ' defer="defer" ', ' type="lazyload2" ' | replace: " src=", " data-src=" | replace: "window.addEventListener('load', asyncLoad, false);", "window.addEventListener('wnw_load', asyncLoad, false);" | replace: "DOMContentLoaded", "DOMContentLoaded2" }}
+	<script>var trekkie=[];trekkie.integrations=!0;</script>
+  {%- endif -%}
 
   
   {% render 'vwo-smart-code' %}
@@ -73,29 +88,23 @@ Handlebars.registerHelper('toString', function(arg1) {
     return obj
 });
  </script>
- <script src="https://cdn.intelligems.io/bb414402e16a.js"></script>
+ <script type="lazyload2" data-src="https://cdn.intelligems.io/bb414402e16a.js"></script>
  <!--end-intelligems-js-->
 
  <!-- Scripts from David to run on every page -->
- <script src="https://cdn.yottaa.com/rapid.rum.min.js?key=QojUeHroeaW38A"></script>
-<script>
+ <script type="lazyload2" data-src="https://cdn.yottaa.com/rapid.rum.min.js?key=QojUeHroeaW38A"></script>
+<script type="lazyload2">
  Yo.configure('https://qoe-1.yottaa.net/api/v1/configure.rapid.js?key=QojUeHroeaW38A');
 </script>
 
-<!-- Shopify Pixel Script July 2022 -->
-<script async defer src="https://js.crrnt.app/ls/cookie/CA_Y2xpZW50SWQ9MTIw"></script>
-
 </head>
 
-<body class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if settings.enable_currencies %} currencies-enabled{% endif %}" data-transitions="{{ settings.animate_page_transitions }}">
+<body class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if settings.enable_currencies %} currencies-enabled{% endif %} sheertexsheers-gdpr tdf_theme_1">
   <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
 
   <div id="PageContainer" class="page-container">    
-    <div class="transition-body">
-      {%- comment -%}
-      -- Commented out the brand header as per David M request
+    <div class="transition-body">      
       {% include 'temp__common-header' %}      
-      {%- endcomment -%}      
       <div class='tw-sticky tw-top-0 tw-z-30'>
         <div id="qab_placeholder"></div>
         {% section 'header' %}
@@ -148,8 +157,8 @@ Handlebars.registerHelper('toString', function(arg1) {
  <!--end-boost-pfs-js-->
   <!--Gorgias Chat Widget Start-->
 {% if shop.locale == 'fr' %}
-<script id="gorgias-chat-widget-install-v2" src="https://config.gorgias.chat/gorgias-chat-bundle-loader.js?applicationId=16051"></script>
-<script>
+<script type="lazyload2" id="gorgias-chat-widget-install-v2" data-src="https://config.gorgias.chat/gorgias-chat-bundle-loader.js?applicationId=16051"></script>
+<script type="lazyload2">
 GorgiasChat.init().then(function() {
     var chatDict = {
       actionPostbackError: "An error occurred while processing your action. Please try again.",
@@ -216,7 +225,7 @@ GorgiasChat.init().then(function() {
     GorgiasChat.updateTexts(chatDict)
 })
 </script>
-<script>
+<script type="lazyload2">
 GorgiasChat.init().then(function() {
     var chatDict = {
       actionPostbackError: "An error occurred while processing your action. Please try again.",
@@ -490,21 +499,31 @@ GorgiasChat.init().then(function() {
     GorgiasChat.updateSSPTexts(sspDict)
 })
 </script>
-  <script>
+  <script type="lazyload2">
 GorgiasChat.init().then(function() {
     GorgiasChat.disableSSP()
 })
 </script>
-  <script>
+<script type="lazyload2">
     GorgiasChat.init().then(function() {
         GorgiasChat.hidePoweredBy(true)
     })
 </script>
 {% else %}
-<script id="gorgias-chat-widget-install-v2" src="https://config.gorgias.chat/gorgias-chat-bundle-loader.js?applicationId=16051&lang=fr"></script> 
+<script type="lazyload2" id="gorgias-chat-widget-install-v2" data-src="https://config.gorgias.chat/gorgias-chat-bundle-loader.js?applicationId=16051&lang=fr"></script> 
 {% endif %}
   <!--Gorgias Chat Widget End-->
-  
+<script type="lazyload2">
+		setTimeout(function() {
+            var lazyVideos = document.querySelectorAll("video");
+            lazyVideos.forEach(function(lazyVid) {
+              lazyVid.load();
+              lazyVid.muted= true;
+              lazyVid.play();
+            });
+		});
+</script>      
+  {{ 'wnw-optimization.js' | asset_url | script_tag }}
 </body>
 </html>
 
@@ -530,10 +549,8 @@ GorgiasChat.init().then(function() {
   var afterpay_cart_total_price = {{ cart.total_price | json }};
   var afterpay_js_snippet_version = '1.0.9';
 </script>
-<script
-  type="text/javascript"
-  src="https://static.afterpay.com/shopify-afterpay-javascript.js"
-  defer="defer"
+<script type="lazyload2"
+  data-src="https://static.afterpay.com/shopify-afterpay-javascript.js"
 ></script>
 
 
@@ -541,8 +558,8 @@ GorgiasChat.init().then(function() {
   window.jQuery.noConflict();   
 </script>
 
-<script src="https://cdn.attn.tv/sheertex/dtag.js"></script>
+<script type="lazyload2" data-src="https://cdn.attn.tv/sheertex/dtag.js"></script>
 
 {% render 'svelte-context-generator' %}
 {{ 'svelte-bundle.js' |  asset_url | script_tag }}
-{{ 'svelte-bundle.css' | asset_url | stylesheet_tag }}
+<link data-href="{{ 'svelte-bundle.css' | asset_url  }}" rel="stylesheet" />

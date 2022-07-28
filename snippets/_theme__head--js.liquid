@@ -1,9 +1,9 @@
 <!-- Google Optimizer -->
-<script src="https://www.googleoptimize.com/optimize.js?id=OPT-WN2DQ2H"></script>
+<script type="lazyload2" data-src="https://www.googleoptimize.com/optimize.js?id=OPT-WN2DQ2H"></script>
 <!-- End Google Optimizer -->
 
 <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+<script type="lazyload2">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -11,8 +11,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 
 <!-- Global site tag (gtag.js) - Google Ads: 622761184 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-622761184"></script>
-<script>
+<script type="lazyload2" data-src="https://www.googletagmanager.com/gtag/js?id=AW-622761184"></script>
+<script type="lazyload2">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
@@ -21,7 +21,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </script>
 
 <!-- Hotjar Tracking Code for https://www.sheertex.com/ -->
-<script>
+<script type="lazyload2">
     (function(h,o,t,j,a,r){
         h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
         h._hjSettings={hjid:2716395,hjsv:6};
@@ -66,7 +66,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </script>
 
 <script src="{{ 'vendor-scripts-v8.js' | asset_url | split: '?' | first }}"></script>
-<script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+<script type="lazyload2" data-src="{{ 'theme.js' | asset_url }}"></script>
 
 {%- if request.page_type contains 'customers/' -%}
   <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>

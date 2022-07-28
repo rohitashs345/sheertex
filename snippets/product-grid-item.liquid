@@ -98,11 +98,11 @@
             {% else %}
             {% comment %}end of temp block to change the featured image on an evergreen ad campaign for Julian March 2022{% endcomment %}
             <img 
-              class="grid-product__image hey"
+              class="grid-product__image hey lazy2 lazy3"
               width="400"
               height="500"
-              loading="lazy"
-              src="{{ product.featured_image | img_url: '400x' }}"
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
+              data-src="{{ product.featured_image | img_url: '400x' }}"
               alt="{{ product.featured_image.alt | escape }}"
               style="height:auto;"
               >

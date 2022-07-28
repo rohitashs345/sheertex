@@ -1,79 +1,14 @@
-{{ 'theme.scss.css' | asset_url | stylesheet_tag }}
-{{ 'landing2.scss' | asset_url | stylesheet_tag }}
-{{ 'countrySelect.min.css' | asset_url | stylesheet_tag }}
+<link data-href="{{ 'theme.scss.css' | asset_url }}" rel="stylesheet"/>
+<link data-href="{{ 'landing2.scss' | asset_url  }}" rel="stylesheet"/>
+<link data-href="{{ 'countrySelect.min.css' | asset_url }}" rel="stylesheet"/>
+
 
 {% if settings.enable_currencies %}
-  <link rel="stylesheet" href="{{ 'currency-flags.css' | asset_url }}">
+  <link rel="stylesheet" data-href="{{ 'currency-flags.css' | asset_url }}">
 {% endif %}
 
 
 <style>
-/* Agrandir */
-@font-face {
-  font-family: Agrandir;
-  font-weight: 400;
-  font-style: normal;
-  src: local('Agrandir Regular'), local('Agrandir-Regular'), url("https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Agrandir-Regular.woff2?v=1602163609") format("woff2"),
-       url("https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Agrandir-Regular.woff?v=1602163620") format("woff");
-  font-display: swap; 
-}
-
-@font-face {
-  font-family: Agrandir;
-  font-weight: 500;
-  font-style: normal;
-  src: local('Agrandir Medium'), local('Agrandir-Medium'), url("https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Agrandir-Medium.woff2?v=1602163609") format("woff2"),
-       url("https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Agrandir-Medium.woff?v=1602163621") format("woff");
-       font-display: swap;
-}
-
-
-@font-face {
-  font-family: Agrandir;
-  font-weight: 700;
-  font-style: normal;
-  src: local('Agrandir Bold'), local('Agrandir-Bold'), url("https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Agrandir-Bold.woff2?v=1602163609") format("woff2"),
-       url("https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Agrandir-Bold.woff?v=1602163620") format("woff");
-  font-display: swap;
-      }
-
-
-@font-face {
-  font-family: 'Agrandir Narrow';
-  font-weight: 400;
-  font-style: normal;
-  src: local('Agrandir Narrow'), local('Agrandir-Narrow'), url("https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Agrandir-Narrow.woff2?v=1602163608") format("woff2"),
-       url("https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Agrandir-Narrow.woff?v=1602163620") format("woff");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Agrandir Narrow';
-  font-weight: 500;
-  font-style: normal;
-  src: local('Agrandir NarrowMedium'), local('Agrandir-NarrowMedium'), url("https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Agrandir-NarrowMedium.woff2?v=1602163609") format("woff2"),
-       url("https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Agrandir-NarrowMedium.woff?v=1602163620") format("woff");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Agrandir Narrow';
-  font-weight: 400;
-  font-style: italic;
-  src: local('Agrandir NarrowItalic'), local('Agrandir-NarrowItalic'), url("https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Agrandir-NarrowItalic.woff2?v=1602163609") format("woff2"),
-       url("https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Agrandir-NarrowItalic.woff?v=1602163620") format("woff");
-  font-display: swap;
-}
-
-/* Matiere */
-@font-face {
-  font-family: Matiere;
-  font-weight: 400;
-  font-style: normal;
-  src: local('Matiere S Light'), local('Matiere-S-Light'), url("https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Matiere-S-Light.woff2?v=1602163648") format("woff2"),
-       url("https://cdn.shopify.com/s/files/1/0114/4120/9408/files/Matiere-S-Light.woff?v=1602163648") format("woff");
-  font-display: swap;
-}
 
 /* Eckmannpsych Small */
 @font-face {font-family: "Eckmannpsych Small"; src: url("//db.onlinewebfonts.com/t/2222cf021b5f54c92d76328a2f7ec80b.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/2222cf021b5f54c92d76328a2f7ec80b.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/2222cf021b5f54c92d76328a2f7ec80b.woff") format("woff"), url("//db.onlinewebfonts.com/t/2222cf021b5f54c92d76328a2f7ec80b.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/2222cf021b5f54c92d76328a2f7ec80b.svg#Eckmannpsych Small") format("svg"); } 
